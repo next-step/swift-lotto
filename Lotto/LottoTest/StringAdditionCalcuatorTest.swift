@@ -50,5 +50,10 @@ class StringAdditionCalcuatorTest: XCTestCase {
 			XCTAssertEqual(error as! ValueError, .invalid)
 		}
 	}
+	
+	func test_shouldReturn0WhenInputValueIsOnlyAColonOrComma() {
+		XCTAssertEqual(0, try calculator.add(","))
+		XCTAssertEqual(0, try calculator.add(":"))
+	}
 }
 
