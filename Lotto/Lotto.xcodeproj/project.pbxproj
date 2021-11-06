@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		517A0CBE27368EA10055018B /* LottoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CBD27368EA10055018B /* LottoTest.swift */; };
 		517A0CC227368EB50055018B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 		517A0CC427368FB00055018B /* CalcuatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CC327368FB00055018B /* CalcuatorTest.swift */; };
 		517A0CC62736A9F10055018B /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CC52736A9F10055018B /* Calculator.swift */; };
@@ -33,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		517A0CBB27368EA10055018B /* LottoTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LottoTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		517A0CBD27368EA10055018B /* LottoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTest.swift; sourceTree = "<group>"; };
 		517A0CC327368FB00055018B /* CalcuatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcuatorTest.swift; sourceTree = "<group>"; };
 		517A0CC52736A9F10055018B /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		517A0CC92736BBCD0055018B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 		517A0CBC27368EA10055018B /* LottoTest */ = {
 			isa = PBXGroup;
 			children = (
-				517A0CBD27368EA10055018B /* LottoTest.swift */,
 				517A0CC327368FB00055018B /* CalcuatorTest.swift */,
 			);
 			path = LottoTest;
@@ -197,7 +194,6 @@
 			files = (
 				517A0CC227368EB50055018B /* main.swift in Sources */,
 				517A0CC72736AA8B0055018B /* Calculator.swift in Sources */,
-				517A0CBE27368EA10055018B /* LottoTest.swift in Sources */,
 				517A0CCB2736BBE90055018B /* String+Extension.swift in Sources */,
 				517A0CCE2736BC440055018B /* ValueError.swift in Sources */,
 				517A0CC427368FB00055018B /* CalcuatorTest.swift in Sources */,
