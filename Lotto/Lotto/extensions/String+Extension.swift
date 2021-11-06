@@ -7,15 +7,6 @@
 
 import Foundation
 
-extension Optional where Wrapped == String {
-	func toPositiveInt() throws -> Int {
-		guard let unwrappedString = self else {
-			throw ValueError.invalid
-		}
-		return try unwrappedString.toPositiveInt()
-	}
-}
-
 extension String {
 	func toPositiveInt() throws -> Int {
 		guard let unwrappedInt = Int(self),
