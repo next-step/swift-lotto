@@ -55,5 +55,10 @@ class CalcuatorTest: XCTestCase {
 		let results = try calculator.add(input)
 		XCTAssertEqual(results, 55)
 	}
+	
+	func test_shouldReturnTheSameNumberWhenInputValueIsANumber() {
+		XCTAssertEqual(1, try calculator.add("1"))
+		XCTAssertEqual(112, try calculator.add("112"))
+	}
 }
 
