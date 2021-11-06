@@ -20,5 +20,10 @@ class StringAdditionCalcuatorTest: XCTestCase {
 		let results = try calculator.add(input)
 		XCTAssertEqual(results, 10)
 	}
+	
+	func test_shouldReturn0WhenInputValueIsNilOrEmpty() throws {
+		XCTAssertEqual(0, try calculator.add(""))
+		XCTAssertEqual(0, try calculator.add(nil))
+	}
 }
 
