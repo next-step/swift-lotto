@@ -8,7 +8,7 @@
 import Foundation
 
 final class Calculator {
-	func add(_ input: String) throws -> Int {
+	func add(_ input: String?) throws -> Int {
 		try split(input)
 			.map { try $0.toPositiveInt() }
 			.reduce(0) { partialResult, number in
@@ -16,8 +16,9 @@ final class Calculator {
 			}
 	}
 	
-	func split(_ input: String) -> [String] {
-		input.split {
+	func split(_ input: String?) -> [String] {
+		guard let input: String = input else { return [] }
+		return input.split {
 			[",", ":"].contains($0)
 		}.map(String.init)
 	}
