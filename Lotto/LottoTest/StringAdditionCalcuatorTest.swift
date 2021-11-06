@@ -32,5 +32,23 @@ class StringAdditionCalcuatorTest: XCTestCase {
 			XCTAssertEqual(error as! ValueError, .invalid)
 		}
 	}
+	
+	func test_shouldThrowInvalidErrorWhenInputIsContainedAnyOtherCharacters() {
+		XCTAssertThrowsError(try calculator.add("!10,5")) { error in
+			XCTAssertEqual(error as! ValueError, .invalid)
+		}
+		
+		XCTAssertThrowsError(try calculator.add("!#1^&")) { error in
+			XCTAssertEqual(error as! ValueError, .invalid)
+		}
+		
+		XCTAssertThrowsError(try calculator.add("#")) { error in
+			XCTAssertEqual(error as! ValueError, .invalid)
+		}
+		
+		XCTAssertThrowsError(try calculator.add("3#5")) { error in
+			XCTAssertEqual(error as! ValueError, .invalid)
+		}
+	}
 }
 
