@@ -9,10 +9,10 @@ import XCTest
 
 class StringAdditionCalcuatorTest: XCTestCase {
 	func test_shouldBeAnArrayOfNumbersWhenInputStringIsSplitted() throws {
-		let inputs = "1, 2"
+		let inputs = "1,2:3"
 		let calculator = Calculator()
 		let result = calculator.split(inputs)
-		XCTAssertEqual(result, ["1", "2"])
+		XCTAssertEqual(result, ["1", "2", "3"])
 	}
 }
 

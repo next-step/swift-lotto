@@ -10,6 +10,8 @@
 		517A0CBE27368EA10055018B /* LottoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CBD27368EA10055018B /* LottoTest.swift */; };
 		517A0CC227368EB50055018B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 		517A0CC427368FB00055018B /* StringAdditionCalcuatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CC327368FB00055018B /* StringAdditionCalcuatorTest.swift */; };
+		517A0CC62736A9F10055018B /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CC52736A9F10055018B /* Calculator.swift */; };
+		517A0CC72736AA8B0055018B /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CC52736A9F10055018B /* Calculator.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,7 @@
 		517A0CBB27368EA10055018B /* LottoTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LottoTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		517A0CBD27368EA10055018B /* LottoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTest.swift; sourceTree = "<group>"; };
 		517A0CC327368FB00055018B /* StringAdditionCalcuatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAdditionCalcuatorTest.swift; sourceTree = "<group>"; };
+		517A0CC52736A9F10055018B /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				C7905FC527311CC6004C3FCC /* main.swift */,
+				517A0CC52736A9F10055018B /* Calculator.swift */,
 			);
 			path = Lotto;
 			sourceTree = "<group>";
@@ -176,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				517A0CC227368EB50055018B /* main.swift in Sources */,
+				517A0CC72736AA8B0055018B /* Calculator.swift in Sources */,
 				517A0CBE27368EA10055018B /* LottoTest.swift in Sources */,
 				517A0CC427368FB00055018B /* StringAdditionCalcuatorTest.swift in Sources */,
 			);
@@ -186,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
+				517A0CC62736A9F10055018B /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
