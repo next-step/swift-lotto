@@ -15,9 +15,9 @@ class StringAdditionCalcuatorTest: XCTestCase {
 		XCTAssertEqual(results, ["1", "2", "3"])
 	}
 	
-	func test_shouldReturn10WhenAddingInputValues6And4() {
+	func test_shouldReturn10WhenAddingInputValues6And4() throws {
 		let input = "6,4"
-		let results = calculator.add(input)
+		let results = try calculator.add(input)
 		XCTAssertEqual(results, 10)
 	}
 }
