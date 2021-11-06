@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum CalculatorOption {
+	static let divider: [String.Element] = [",", ":"]
+}
+
 struct Calculator {
 	func add(_ input: String?) throws -> Int {
 		try split(input)
@@ -19,7 +23,7 @@ struct Calculator {
 	func split(_ input: String?) -> [String] {
 		guard let input: String = input else { return [] }
 		return input.split {
-			[",", ":"].contains($0)
+			CalculatorOption.divider.contains($0)
 		}.map(String.init)
 	}
 }
