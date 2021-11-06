@@ -1,5 +1,5 @@
 //
-//  StringAdditionCalcuatorTest.swift
+//  CalcuatorTest.swift
 //  LottoTest
 //
 //  Created by Mephrine on 2021/11/06.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-class StringAdditionCalcuatorTest: XCTestCase {
+class CalcuatorTest: XCTestCase {
 	let calculator = Calculator()
 	func test_shouldReturn10WhenAddingInputValues6And4() throws {
 		let input = "6,4"
