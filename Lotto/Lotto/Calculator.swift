@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Calculator {
+struct Calculator {
 	func add(_ input: String?) throws -> Int {
 		try split(input)
 			.map { try $0.toPositiveInt() }
