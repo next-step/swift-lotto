@@ -25,5 +25,12 @@ class StringAdditionCalcuatorTest: XCTestCase {
 		XCTAssertEqual(0, try calculator.add(""))
 		XCTAssertEqual(0, try calculator.add(nil))
 	}
+	
+	func test_shouldThrowInvalidErrorWhenInputIsContainedNegativeNumber() {
+		let input = "-1,10:5"
+		XCTAssertThrowsError(try calculator.add(input)) { error in
+			XCTAssertEqual(error as! ValueError, .invalid)
+		}
+	}
 }
 
