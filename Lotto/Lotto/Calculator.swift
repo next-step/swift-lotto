@@ -20,7 +20,7 @@ struct Calculator {
 			}
 	}
 	
-	func split(_ input: String?) -> [String] {
+	private func split(_ input: String?) -> [String] {
 		guard let input: String = input else { return [] }
 		return input.split {
 			CalculatorOption.divider.contains($0)
