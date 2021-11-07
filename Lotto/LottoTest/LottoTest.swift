@@ -65,14 +65,14 @@ class LottoTest: XCTestCase {
 		}
 	}
 	
-//	func test_shouldGet5000WonWhen3NumbersMatchOneLotto() {
-//		let randomNumberGenerator = RandomNumberGenerator(range: 10...15)
-//		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
-//		let lottoStore = LottoStore(machine: lottoMachine)
-//		let user = User(store: LottoStore)
-//		user.buyLotto(amount: 5000)
-//		user.checkLottoWinningResults()
-//
-//		XCTAssertEqual(user.prizeMoney, 5000)
-//	}
+	func test_shouldGet5000WonWhen3NumbersMatchEachLotto() {
+		let randomNumberGenerator = RandomNumberGenerator(range: 10...15)
+		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
+		let lottoStore = LottoStore(machine: lottoMachine)
+		let user = User(store: LottoStore)
+		user.buyLotto(amount: 5000)
+		user.checkLottoWinningResults()
+
+		XCTAssertEqual(user.prizeMoney, 5000)
+	}
 }
