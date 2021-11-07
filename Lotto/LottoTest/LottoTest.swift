@@ -20,7 +20,7 @@ class LottoTest: XCTestCase {
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lotteryTickes = lottoMachine.quickPicks(for: 2)
 		
-		XCTAssertEqual(lotteryTickes, [[10, 10, 10, 10, 10, 10], [10, 10, 10, 10, 10, 10]])
+		XCTAssertEqual(lotteryTickes, [Lotto(numbers: [10, 10, 10, 10, 10, 10]), Lotto(numbers: [10, 10, 10, 10, 10, 10])])
 	}
 	
 	func test_shouldGet5TicketsWhenInputIs5200Won() throws {
