@@ -188,4 +188,12 @@ class LottoTest: XCTestCase {
 	fileprivate func makeRandomNumberGenerator(range: ClosedRange<Int> = 10...15) -> RandomNumberGenerator{
 		RandomNumberGenerator(range: range)
 	}
+	
+	func test_shouldGetNumbersWhenContainedInTheRangeOfRandomNumbers() throws {
+		let randomNumberGenerator = RandomNumberGenerator(range: 10...10)
+		let lottoMachine = LottoMachine()
+		let lotteryTickes = lottoMachine.quickPicks(for: 2)
+		
+		XCTAssertEqual(lotteryTickes, [[10, 10, 10, 10, 10, 10], [10, 10, 10, 10, 10, 10]])
+	}
 }
