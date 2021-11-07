@@ -197,9 +197,12 @@ class LottoTest: XCTestCase {
 		XCTAssertEqual(lotteryTickes, [[10, 10, 10, 10, 10, 10], [10, 10, 10, 10, 10, 10]])
 	}
 	
-	func test_shouldGet5TicketsWhenInputIs5200Won() {
-		let lottoStore = LottoStore()
-		let purchasedLottos = bulottoStore.sell(for: 5200)
+	func test_shouldGet5TicketsWhenInputIs5200Won() throws {
+		let randomNumberGenerator = RandomNumberGenerator(range: 10...10)
+		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
+		let lottoStore = LottoStore(machine: lottoMachine)
+		
+		let purchasedLottos = try lottoStore.sell(for: 5200)
 		
 		XCTAssertEqual(purchasedLottos.count, 5)
 	}
