@@ -181,7 +181,11 @@ class LottoTest: XCTestCase {
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lottoStore = LottoStore(machine: lottoMachine)
 		
-		XCTAssertThrowsError(try lottoStore.sell(for: "-100")) { error in
+		XCTAssertThrowsError(try lottoStore.sell(for: -100)) { error in
+			XCTAssertEqual(error as! PaymentError, .invalid)
+		}
+		
+		XCTAssertThrowsError(try lottoStore.sell(for: -10000)) { error in
 			XCTAssertEqual(error as! PaymentError, .invalid)
 		}
 	}
