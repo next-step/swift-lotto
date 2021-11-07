@@ -13,7 +13,7 @@ enum PaymentError: Error {
 }
 
 struct LottoStore {
-	let lottoMachine: LottoMachine
+	private let lottoMachine: LottoMachine
 	
 	init(machine: LottoMachine) {
 		self.lottoMachine = machine
