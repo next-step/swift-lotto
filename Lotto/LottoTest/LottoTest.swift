@@ -189,4 +189,17 @@ class LottoTest: XCTestCase {
 			XCTAssertEqual(error as! PaymentError, .invalid)
 		}
 	}
+	
+	func test_shouldBeDifferentNumbersWhenLottoIsGenerated() throws {
+		let randomNumberGenerator = RandomNumberGenerator(range: 10...15)
+		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
+		let lottoStore = LottoStore(machine: lottoMachine)
+		
+		let purchasedLottos = try lottoStore.sell(for: 100000)
+		
+		let result = Set(purchasedLottos)
+		result.forEach { lotto in
+			XCTAssertEqual(lotto.numbers.count , 6)
+		}
+	}
 }
