@@ -9,22 +9,27 @@ import XCTest
 
 class LottoTest: XCTestCase {
 	func test_shouldGet5LottosWhenTheLottoMachineQuickPicks5Tickets() throws {
-		let randomNumberGenerator = RandomNumberGenerator(range: 10...10)
+		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lotteryTickets = lottoMachine.quickPicks(for: 5)
 		XCTAssertEqual(lotteryTickets.count, 5)
 	}
 	
 	func test_shouldGetNumbersWhenContainedInTheRangeOfRandomNumbers() throws {
-		let randomNumberGenerator = RandomNumberGenerator(range: 10...10)
+		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
-		let lotteryTickes = lottoMachine.quickPicks(for: 2)
+		let lotteryTickes = lottoMachine
+			.quickPicks(for: 2)
+			.map { $0.numbers.sorted { $0 < $1 } }
+			.map(Lotto.init)
 		
-		XCTAssertEqual(lotteryTickes, [Lotto(numbers: [10, 10, 10, 10, 10, 10]), Lotto(numbers: [10, 10, 10, 10, 10, 10])])
+		let results = [Lotto(numbers: [10, 11, 12, 13, 14, 15]), Lotto(numbers: [10, 11, 12, 13, 14, 15])]
+		
+		XCTAssertEqual(lotteryTickes, results)
 	}
 	
 	func test_shouldGet5TicketsWhenInputIs5200Won() throws {
-		let randomNumberGenerator = RandomNumberGenerator(range: 10...10)
+		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lottoStore = LottoStore(machine: lottoMachine)
 		
@@ -34,7 +39,7 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldThrowInvalidErrorWhenAmountIsNotPositiveNumber() throws {
-		let randomNumberGenerator = RandomNumberGenerator(range: 10...10)
+		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lottoStore = LottoStore(machine: lottoMachine)
 		
@@ -48,7 +53,7 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldBeDifferentNumbersWhenLottoIsGenerated() throws {
-		let randomNumberGenerator = RandomNumberGenerator(range: 10...15)
+		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lottoStore = LottoStore(machine: lottoMachine)
 		
@@ -59,4 +64,15 @@ class LottoTest: XCTestCase {
 			XCTAssertEqual(lotto.numbers.count , 6)
 		}
 	}
+	
+//	func test_shouldGet5000WonWhen3NumbersMatchOneLotto() {
+//		let randomNumberGenerator = RandomNumberGenerator(range: 10...15)
+//		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
+//		let lottoStore = LottoStore(machine: lottoMachine)
+//		let user = User(store: LottoStore)
+//		user.buyLotto(amount: 5000)
+//		user.checkLottoWinningResults()
+//
+//		XCTAssertEqual(user.prizeMoney, 5000)
+//	}
 }

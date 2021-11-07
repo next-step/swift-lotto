@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Lotto: Equatable {
+struct Lotto: Equatable, Hashable {
 	let numbers: [Int]
 	init(numbers: [Int]) {
 		self.numbers = numbers
