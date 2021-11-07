@@ -20,6 +20,10 @@
 		5180DF862737AE4100F7382C /* LottoMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF842737ADC600F7382C /* LottoMachine.swift */; };
 		5180DF882737AECA00F7382C /* LottoNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF872737AECA00F7382C /* LottoNumberGenerator.swift */; };
 		5180DF892737B00400F7382C /* LottoNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF872737AECA00F7382C /* LottoNumberGenerator.swift */; };
+		5180DF8B2737B59200F7382C /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF8A2737B59200F7382C /* RandomNumberGenerator.swift */; };
+		5180DF8D2737B6FF00F7382C /* LottoOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF8C2737B6FF00F7382C /* LottoOption.swift */; };
+		5180DF8E2737B7F100F7382C /* LottoOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF8C2737B6FF00F7382C /* LottoOption.swift */; };
+		5180DF8F2737B7F500F7382C /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF8A2737B59200F7382C /* RandomNumberGenerator.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +48,8 @@
 		5180DF802737A35000F7382C /* LottoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTest.swift; sourceTree = "<group>"; };
 		5180DF842737ADC600F7382C /* LottoMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoMachine.swift; sourceTree = "<group>"; };
 		5180DF872737AECA00F7382C /* LottoNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumberGenerator.swift; sourceTree = "<group>"; };
+		5180DF8A2737B59200F7382C /* RandomNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberGenerator.swift; sourceTree = "<group>"; };
+		5180DF8C2737B6FF00F7382C /* LottoOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoOption.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +103,8 @@
 			children = (
 				5180DF842737ADC600F7382C /* LottoMachine.swift */,
 				5180DF872737AECA00F7382C /* LottoNumberGenerator.swift */,
+				5180DF8A2737B59200F7382C /* RandomNumberGenerator.swift */,
+				5180DF8C2737B6FF00F7382C /* LottoOption.swift */,
 			);
 			path = Lotto;
 			sourceTree = "<group>";
@@ -226,7 +234,9 @@
 				517A0CCE2736BC440055018B /* ValueError.swift in Sources */,
 				517A0CC427368FB00055018B /* CalcuatorTest.swift in Sources */,
 				5180DF862737AE4100F7382C /* LottoMachine.swift in Sources */,
+				5180DF8F2737B7F500F7382C /* RandomNumberGenerator.swift in Sources */,
 				5180DF892737B00400F7382C /* LottoNumberGenerator.swift in Sources */,
+				5180DF8E2737B7F100F7382C /* LottoOption.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,8 +247,10 @@
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
 				517A0CCA2736BBCD0055018B /* String+Extension.swift in Sources */,
 				517A0CCD2736BC250055018B /* ValueError.swift in Sources */,
+				5180DF8D2737B6FF00F7382C /* LottoOption.swift in Sources */,
 				5180DF882737AECA00F7382C /* LottoNumberGenerator.swift in Sources */,
 				5180DF852737ADC600F7382C /* LottoMachine.swift in Sources */,
+				5180DF8B2737B59200F7382C /* RandomNumberGenerator.swift in Sources */,
 				517A0CC62736A9F10055018B /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

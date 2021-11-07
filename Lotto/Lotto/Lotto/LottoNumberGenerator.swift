@@ -13,7 +13,13 @@ protocol LottoNumberGeneratable {
 
 
 struct AutomaticGenerator: LottoNumberGeneratable {
+	let randomNumberGenerator: RandomNumberGenerator
+	
+	init(randomNumberGenerator: RandomNumberGenerator) {
+		self.randomNumberGenerator = randomNumberGenerator
+	}
+	
 	func generate() -> [Int] {
-		return [1, 2, 3, 4, 5, 6]
+		randomNumberGenerator.generateLottoNumbers()
 	}
 }
