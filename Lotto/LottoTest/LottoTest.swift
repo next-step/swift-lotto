@@ -77,7 +77,7 @@ class LottoTest: XCTestCase {
 		XCTAssertEqual(buyer.prizeMoney, 25000)
 	}
 	
-	func test_shouldBeRateOfReturnThreeFiftyWhenBuy14000AndWin5000() throws {
+	func test_shouldBeRateOfReturnThreeFiftyWhenBuy14000AndWin70000() throws {
 		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lottoStore = LottoStore(machine: lottoMachine)
@@ -86,6 +86,6 @@ class LottoTest: XCTestCase {
 		try buyer.buyLotto(by: 14000)
 		buyer.checkLottoWinningResults(winningNumber: winningNumbers)
 
-		XCTAssertEqual(buyer.rateOfReturn, 0.35)
+		XCTAssertEqual(buyer.rateOfReturn, 5.0)
 	}
 }

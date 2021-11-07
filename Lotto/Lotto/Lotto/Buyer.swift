@@ -9,6 +9,8 @@ import Foundation
 
 final class Buyer {
 	private(set) var prizeMoney: Int = 0
+	private(set) var rateOfReturn: Double = 0
+	
 	let lottoStore: LottoStore
 	var purchasedLottos = [Lotto]()
 
@@ -21,9 +23,17 @@ final class Buyer {
 	}
 	
 	func checkLottoWinningResults(winningNumber: Lotto) {
-		purchasedLottos.forEach { lotto in
+		self.purchasedLottos.forEach { lotto in
 			let winnings = lotto.checkWinningRanking(with: winningNumber)
-			prizeMoney += winnings.getPrize()
+			self.prizeMoney += winnings.getPrize()
 		}
+		
+		self.rateOfReturn = calculateRateOfReturn()
+	}
+	
+	func calculateRateOfReturn() -> Double {
+		let purchasedAmount = Double(self.purchasedLottos.count * LottoOption.lottoAmount)
+		let prizeMoney = Double(self.prizeMoney)
+		return (prizeMoney / purchasedAmount).floorTwoDecimalPlaces
 	}
 }
