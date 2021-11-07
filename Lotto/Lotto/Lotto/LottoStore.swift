@@ -19,7 +19,7 @@ struct LottoStore {
 		self.lottoMachine = machine
 	}
 	
-	func sell(for money: Int) throws -> [[Int]] {
+	func sell(for money: Int) throws -> [Lotto] {
 		try isValid(money: money)
 		let buyableQuantity = changeToBuyableQuantity(fromMoney: money)
 		let lottos = lottoMachine.quickPicks(for: buyableQuantity)

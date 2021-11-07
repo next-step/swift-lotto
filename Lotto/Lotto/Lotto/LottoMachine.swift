@@ -14,9 +14,9 @@ struct LottoMachine {
 		self.randomNumberGenerator = randomNumberGenerator
 	}
 	
-	func quickPicks(for tickets: Int) -> [[Int]] {
+	func quickPicks(for tickets: Int) -> [Lotto] {
 		let lottoNumberGenerator = AutomaticGenerator(randomNumberGenerator: randomNumberGenerator)
-		var lottos = [[Int]]()
+		var lottos = [Lotto]()
 		for _ in 0 ..< tickets {
 			let generatedLotto = lottoNumberGenerator.generate()
 			lottos.append(generatedLotto)

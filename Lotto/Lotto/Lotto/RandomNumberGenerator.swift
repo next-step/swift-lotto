@@ -15,11 +15,11 @@ struct RandomNumberGenerator {
 	}
 	
 	func generateLottoNumbers() -> [Int] {
-		var lottos = [Int]()
+		var lottoNumbers = [Int]()
 		for _ in 0 ..< LottoOption.numberOfLottoNumbers {
-			lottos.append(generateNumber())
+			lottoNumbers.append(generateNumber())
 		}
-		return lottos
+		return lottoNumbers
 	}
 	
 	private func generateNumber() -> Int {
