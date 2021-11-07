@@ -16,6 +16,7 @@
 		517A0CCD2736BC250055018B /* ValueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CCC2736BC250055018B /* ValueError.swift */; };
 		517A0CCE2736BC440055018B /* ValueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CCC2736BC250055018B /* ValueError.swift */; };
 		5180DF812737A35000F7382C /* LottoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF802737A35000F7382C /* LottoTest.swift */; };
+		5180DF852737ADC600F7382C /* LottoMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF842737ADC600F7382C /* LottoMachine.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		517A0CC92736BBCD0055018B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		517A0CCC2736BC250055018B /* ValueError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueError.swift; sourceTree = "<group>"; };
 		5180DF802737A35000F7382C /* LottoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTest.swift; sourceTree = "<group>"; };
+		5180DF842737ADC600F7382C /* LottoMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoMachine.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +79,23 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		5180DF822737ADAA00F7382C /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				517A0CC52736A9F10055018B /* Calculator.swift */,
+				517A0CCC2736BC250055018B /* ValueError.swift */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		5180DF832737ADBA00F7382C /* Lotto */ = {
+			isa = PBXGroup;
+			children = (
+				5180DF842737ADC600F7382C /* LottoMachine.swift */,
+			);
+			path = Lotto;
+			sourceTree = "<group>";
+		};
 		C7905FB927311CC6004C3FCC = {
 			isa = PBXGroup;
 			children = (
@@ -98,9 +117,9 @@
 		C7905FC427311CC6004C3FCC /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
+				5180DF822737ADAA00F7382C /* Calculator */,
+				5180DF832737ADBA00F7382C /* Lotto */,
 				C7905FC527311CC6004C3FCC /* main.swift */,
-				517A0CC52736A9F10055018B /* Calculator.swift */,
-				517A0CCC2736BC250055018B /* ValueError.swift */,
 				517A0CC82736BBC10055018B /* extensions */,
 			);
 			path = Lotto;
@@ -211,6 +230,7 @@
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
 				517A0CCA2736BBCD0055018B /* String+Extension.swift in Sources */,
 				517A0CCD2736BC250055018B /* ValueError.swift in Sources */,
+				5180DF852737ADC600F7382C /* LottoMachine.swift in Sources */,
 				517A0CC62736A9F10055018B /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
