@@ -32,4 +32,14 @@ class LottoTest: XCTestCase {
 		
 		XCTAssertEqual(purchasedLottos.count, 5)
 	}
+	
+	func test_shouldThrowInvalidErrorWhenAmountIsNotPositiveNumber() throws {
+		let randomNumberGenerator = RandomNumberGenerator(range: 10...10)
+		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
+		let lottoStore = LottoStore(machine: lottoMachine)
+		
+		XCTAssertThrowsError(try lottoStore.sell(for: "-100")) { error in
+			XCTAssertEqual(error as! PaymentError, .invalid)
+		}
+	}
 }
