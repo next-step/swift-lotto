@@ -88,4 +88,17 @@ class LottoTest: XCTestCase {
 
 		XCTAssertEqual(buyer.rateOfReturn, 5.0)
 	}
+	
+	func test_shouldThrowInvalidErrorWhenAmountIsNotNumber() throws {
+		let inputView: Inputable = StubInputView(input: "abcd")
+		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
+		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
+		let lottoStore = LottoStore(machine: lottoMachine)
+		let buyer = Buyer(store: lottoStore, inputView: InputView)
+		try buyer.buyLotto()
+		
+		XCTAssertThrowsError(try buyer.buyLotto()) { error in
+			XCTAssertEqual(error as! PaymentError, .invalid)
+		}
+	}
 }
