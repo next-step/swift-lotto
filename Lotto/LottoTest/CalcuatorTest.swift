@@ -50,7 +50,7 @@ class CalcuatorTest: XCTestCase {
 		XCTAssertEqual(0, try calculator.add(":"))
 	}
 	
-	func test_shouldReturn55WhenAddingInputValuesFrom1to10() throws {
+	func test_shouldReturn55WhenAdding1To10InTheSeperatedInput() throws {
 		let input = "1,2:3,4:5,6:7:8:9:10"
 		let results = try calculator.add(input)
 		XCTAssertEqual(results, 55)
