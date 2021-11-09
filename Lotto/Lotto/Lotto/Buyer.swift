@@ -31,7 +31,7 @@ final class Buyer {
 		self.purchasedLottos.forEach { lotto in
 			let winnings = lotto.checkWinningRanking(with: winningNumber)
 			winningStatistics.winning(winnings)
-			self.prizeMoney += winnings.getPrize()
+			self.prizeMoney += winnings.prize()
 		}
 		
 		self.rateOfReturn = calculateRateOfReturn()
