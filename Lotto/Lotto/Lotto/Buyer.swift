@@ -12,14 +12,18 @@ final class Buyer {
 	private(set) var rateOfReturn: Double = 0
 	
 	let lottoStore: LottoStore
+	var money: Int = 0
 	var purchasedLottos = [Lotto]()
-
-	init(store: LottoStore) {
+	
+	init(store: LottoStore, inputView: Inputable) throws {
 		self.lottoStore = store
+		try inputView.read { inputtedAmount  in
+			self.money = inputtedAmount.amount
+		}
 	}
 	
-	func buyLotto(by amount: Int) throws {
-		self.purchasedLottos = try lottoStore.sell(for: amount)
+	func buyLotto() throws {
+		self.purchasedLottos = try lottoStore.sell(for: money)
 	}
 	
 	func checkLottoWinningResults(winningNumber: Lotto) {

@@ -21,6 +21,11 @@
 		517A0CCB2736BBE90055018B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CC92736BBCD0055018B /* String+Extension.swift */; };
 		517A0CCD2736BC250055018B /* ValueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CCC2736BC250055018B /* ValueError.swift */; };
 		517A0CCE2736BC440055018B /* ValueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0CCC2736BC250055018B /* ValueError.swift */; };
+		5180DD96273AA8F1007553C2 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DD95273AA8F1007553C2 /* InputView.swift */; };
+		5180DD97273AAD4B007553C2 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DD95273AA8F1007553C2 /* InputView.swift */; };
+		5180DD9A273AB003007553C2 /* StubInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DD99273AB003007553C2 /* StubInputView.swift */; };
+		5180DD9C273ABE67007553C2 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DD9B273ABE66007553C2 /* Amount.swift */; };
+		5180DD9D273ABFEC007553C2 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DD9B273ABE66007553C2 /* Amount.swift */; };
 		5180DF812737A35000F7382C /* LottoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF802737A35000F7382C /* LottoTest.swift */; };
 		5180DF852737ADC600F7382C /* LottoMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF842737ADC600F7382C /* LottoMachine.swift */; };
 		5180DF862737AE4100F7382C /* LottoMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF842737ADC600F7382C /* LottoMachine.swift */; };
@@ -58,6 +63,9 @@
 		517A0CC52736A9F10055018B /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		517A0CC92736BBCD0055018B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		517A0CCC2736BC250055018B /* ValueError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueError.swift; sourceTree = "<group>"; };
+		5180DD95273AA8F1007553C2 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		5180DD99273AB003007553C2 /* StubInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubInputView.swift; sourceTree = "<group>"; };
+		5180DD9B273ABE66007553C2 /* Amount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amount.swift; sourceTree = "<group>"; };
 		5180DF802737A35000F7382C /* LottoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTest.swift; sourceTree = "<group>"; };
 		5180DF842737ADC600F7382C /* LottoMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoMachine.swift; sourceTree = "<group>"; };
 		5180DF872737AECA00F7382C /* LottoNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumberGenerator.swift; sourceTree = "<group>"; };
@@ -90,6 +98,7 @@
 		517A0CBC27368EA10055018B /* LottoTest */ = {
 			isa = PBXGroup;
 			children = (
+				5180DD98273AAFF5007553C2 /* Stub */,
 				517A0CC327368FB00055018B /* CalcuatorTest.swift */,
 				5180DF802737A35000F7382C /* LottoTest.swift */,
 			);
@@ -105,6 +114,22 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		5180DD94273AA8E4007553C2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5180DD95273AA8F1007553C2 /* InputView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5180DD98273AAFF5007553C2 /* Stub */ = {
+			isa = PBXGroup;
+			children = (
+				5180DD99273AB003007553C2 /* StubInputView.swift */,
+			);
+			path = Stub;
+			sourceTree = "<group>";
+		};
 		5180DF822737ADAA00F7382C /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +142,7 @@
 		5180DF832737ADBA00F7382C /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
+				5180DD94273AA8E4007553C2 /* Views */,
 				5180DF9727380B9C00F7382C /* Options */,
 				5180DF9627380B8D00F7382C /* Models */,
 				5180DF902737DA7600F7382C /* LottoStore.swift */,
@@ -133,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				5180DF932738091400F7382C /* Lotto.swift */,
+				5180DD9B273ABE66007553C2 /* Amount.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -266,12 +293,15 @@
 				5180DF952738097800F7382C /* Lotto.swift in Sources */,
 				5180DF812737A35000F7382C /* LottoTest.swift in Sources */,
 				517A0CC227368EB50055018B /* main.swift in Sources */,
+				5180DD9A273AB003007553C2 /* StubInputView.swift in Sources */,
 				517A0CC72736AA8B0055018B /* Calculator.swift in Sources */,
 				517A0CCB2736BBE90055018B /* String+Extension.swift in Sources */,
+				5180DD97273AAD4B007553C2 /* InputView.swift in Sources */,
 				517A0CCE2736BC440055018B /* ValueError.swift in Sources */,
 				517A0CC427368FB00055018B /* CalcuatorTest.swift in Sources */,
 				5180DF922737DFCD00F7382C /* LottoStore.swift in Sources */,
 				51465251273832EE00C155B8 /* Double+Extension.swift in Sources */,
+				5180DD9D273ABFEC007553C2 /* Amount.swift in Sources */,
 				5180DF862737AE4100F7382C /* LottoMachine.swift in Sources */,
 				5180DF8F2737B7F500F7382C /* RandomNumberGenerator.swift in Sources */,
 				5146524E27382B9700C155B8 /* Winnings.swift in Sources */,
@@ -286,9 +316,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
+				5180DD96273AA8F1007553C2 /* InputView.swift in Sources */,
 				5146524A273822F300C155B8 /* Buyer.swift in Sources */,
 				517A0CCA2736BBCD0055018B /* String+Extension.swift in Sources */,
 				517A0CCD2736BC250055018B /* ValueError.swift in Sources */,
+				5180DD9C273ABE67007553C2 /* Amount.swift in Sources */,
 				514652502738320F00C155B8 /* Double+Extension.swift in Sources */,
 				5180DF8D2737B6FF00F7382C /* LottoOption.swift in Sources */,
 				5180DF912737DA7600F7382C /* LottoStore.swift in Sources */,
