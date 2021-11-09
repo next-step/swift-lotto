@@ -66,38 +66,38 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldGet5000WonWhen3NumbersMatchEachLotto() throws {
+		let stubInputView: Inputable = StubInputView(input: "5000")
 		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lottoStore = LottoStore(machine: lottoMachine)
-		let buyer = Buyer(store: lottoStore)
+		let buyer = try Buyer(store: lottoStore, inputView: stubInputView)
+		try buyer.buyLotto()
 		let winningNumbers = Lotto(numbers: [10, 11, 12, 20, 30, 40])
-		try buyer.buyLotto(by: 5000)
 		buyer.checkLottoWinningResults(winningNumber: winningNumbers)
 
 		XCTAssertEqual(buyer.prizeMoney, 25000)
 	}
 	
 	func test_shouldBeRateOfReturn5WhenBuy14000AndWin70000() throws {
+		let stubInputView: Inputable = StubInputView(input: "14000")
 		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lottoStore = LottoStore(machine: lottoMachine)
-		let buyer = Buyer(store: lottoStore)
+		let buyer = try Buyer(store: lottoStore, inputView: stubInputView)
+		try buyer.buyLotto()
 		let winningNumbers = Lotto(numbers: [10, 11, 12, 20, 30, 40])
-		try buyer.buyLotto(by: 14000)
 		buyer.checkLottoWinningResults(winningNumber: winningNumbers)
 
 		XCTAssertEqual(buyer.rateOfReturn, 5.0)
 	}
 	
 	func test_shouldThrowInvalidErrorWhenAmountIsNotNumber() throws {
-		let inputView: Inputable = StubInputView(input: "abcd")
+		let stubInputView: Inputable = StubInputView(input: "abcd")
 		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lottoStore = LottoStore(machine: lottoMachine)
-		let buyer = Buyer(store: lottoStore, inputView: InputView)
-		try buyer.buyLotto()
-		
-		XCTAssertThrowsError(try buyer.buyLotto()) { error in
+	
+		XCTAssertThrowsError(try Buyer(store: lottoStore, inputView: stubInputView)) { error in
 			XCTAssertEqual(error as! PaymentError, .invalid)
 		}
 	}
