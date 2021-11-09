@@ -27,8 +27,10 @@ final class Buyer {
 	}
 	
 	func checkLottoWinningResults(winningNumber: Lotto) {
+		var winningStatistics = WinningStatistics()
 		self.purchasedLottos.forEach { lotto in
 			let winnings = lotto.checkWinningRanking(with: winningNumber)
+			winningStatistics.winning(winnings)
 			self.prizeMoney += winnings.getPrize()
 		}
 		

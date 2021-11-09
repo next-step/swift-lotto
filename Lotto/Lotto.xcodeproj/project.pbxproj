@@ -26,6 +26,9 @@
 		5180DD9A273AB003007553C2 /* StubInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DD99273AB003007553C2 /* StubInputView.swift */; };
 		5180DD9C273ABE67007553C2 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DD9B273ABE66007553C2 /* Amount.swift */; };
 		5180DD9D273ABFEC007553C2 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DD9B273ABE66007553C2 /* Amount.swift */; };
+		5180DD9F273AC709007553C2 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DD9E273AC709007553C2 /* ResultView.swift */; };
+		5180DDA1273ACBAF007553C2 /* WinningStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DDA0273ACBAF007553C2 /* WinningStatistics.swift */; };
+		5180DDA2273AD085007553C2 /* WinningStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DDA0273ACBAF007553C2 /* WinningStatistics.swift */; };
 		5180DF812737A35000F7382C /* LottoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF802737A35000F7382C /* LottoTest.swift */; };
 		5180DF852737ADC600F7382C /* LottoMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF842737ADC600F7382C /* LottoMachine.swift */; };
 		5180DF862737AE4100F7382C /* LottoMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF842737ADC600F7382C /* LottoMachine.swift */; };
@@ -66,6 +69,8 @@
 		5180DD95273AA8F1007553C2 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		5180DD99273AB003007553C2 /* StubInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubInputView.swift; sourceTree = "<group>"; };
 		5180DD9B273ABE66007553C2 /* Amount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amount.swift; sourceTree = "<group>"; };
+		5180DD9E273AC709007553C2 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		5180DDA0273ACBAF007553C2 /* WinningStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningStatistics.swift; sourceTree = "<group>"; };
 		5180DF802737A35000F7382C /* LottoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTest.swift; sourceTree = "<group>"; };
 		5180DF842737ADC600F7382C /* LottoMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoMachine.swift; sourceTree = "<group>"; };
 		5180DF872737AECA00F7382C /* LottoNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumberGenerator.swift; sourceTree = "<group>"; };
@@ -118,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				5180DD95273AA8F1007553C2 /* InputView.swift */,
+				5180DD9E273AC709007553C2 /* ResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,6 +166,7 @@
 			children = (
 				5180DF932738091400F7382C /* Lotto.swift */,
 				5180DD9B273ABE66007553C2 /* Amount.swift */,
+				5180DDA0273ACBAF007553C2 /* WinningStatistics.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -305,6 +312,7 @@
 				5180DF862737AE4100F7382C /* LottoMachine.swift in Sources */,
 				5180DF8F2737B7F500F7382C /* RandomNumberGenerator.swift in Sources */,
 				5146524E27382B9700C155B8 /* Winnings.swift in Sources */,
+				5180DDA2273AD085007553C2 /* WinningStatistics.swift in Sources */,
 				5180DF892737B00400F7382C /* LottoNumberGenerator.swift in Sources */,
 				5180DF8E2737B7F100F7382C /* LottoOption.swift in Sources */,
 				5146524B2738238D00C155B8 /* Buyer.swift in Sources */,
@@ -316,10 +324,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
+				5180DDA1273ACBAF007553C2 /* WinningStatistics.swift in Sources */,
 				5180DD96273AA8F1007553C2 /* InputView.swift in Sources */,
 				5146524A273822F300C155B8 /* Buyer.swift in Sources */,
 				517A0CCA2736BBCD0055018B /* String+Extension.swift in Sources */,
 				517A0CCD2736BC250055018B /* ValueError.swift in Sources */,
+				5180DD9F273AC709007553C2 /* ResultView.swift in Sources */,
 				5180DD9C273ABE67007553C2 /* Amount.swift in Sources */,
 				514652502738320F00C155B8 /* Double+Extension.swift in Sources */,
 				5180DF8D2737B6FF00F7382C /* LottoOption.swift in Sources */,
