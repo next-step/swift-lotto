@@ -25,6 +25,7 @@ final class Buyer {
 	func buyLotto(at store: LottoStore) throws {
 		self.purchasedLottos = try store.sell(for: money)
 		resultView.printOut(numberOfPurchasedLottos: self.purchasedLottos.count)
+		resultView.printOut(purchasedLottos: self.purchasedLottos)
 	}
 	
 	func checkLottoWinningResults(winningNumber: Lotto) {
