@@ -14,7 +14,7 @@ final class Buyer {
 	var money: Int = 0
 	var purchasedLottos = [Lotto]()
 	
-	init(inputView: Inputable) throws {
+	init(inputView: Inputable, resultView: Presentable) throws {
 		try inputView.read { inputtedAmount  in
 			self.money = inputtedAmount.amount
 		}
