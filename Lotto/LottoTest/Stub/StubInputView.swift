@@ -21,6 +21,6 @@ struct StubInputView: Inputable {
 	}
 	
 	func makeWinningLotto() -> WinningLotto? {
-		WinningLotto(input: inputtedWinningLottos, numberRange: LottoOption.randomLottoNumberRange)
+		WinningLotto(input: inputtedWinningLottos, numberRange: LottoOption.lottoNumberRange)
 	}
 }

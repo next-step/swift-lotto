@@ -34,6 +34,6 @@ struct InputView: Inputable {
 	}
 	
 	func makeWinningLotto() -> WinningLotto? {
-		WinningLotto(input: readLine(), numberRange: LottoOption.randomLottoNumberRange)
+		WinningLotto(input: readLine(), numberRange: LottoOption.lottoNumberRange)
 	}
 }
