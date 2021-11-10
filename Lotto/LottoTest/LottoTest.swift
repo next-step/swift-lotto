@@ -70,8 +70,8 @@ class LottoTest: XCTestCase {
 		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lottoStore = LottoStore(machine: lottoMachine)
-		let buyer = try Buyer(store: lottoStore, inputView: stubInputView)
-		try buyer.buyLotto()
+		let buyer = try Buyer(inputView: stubInputView)
+		try buyer.buyLotto(at: lottoStore)
 		let winningNumbers = Lotto(numbers: [10, 11, 12, 20, 30, 40])
 		buyer.checkLottoWinningResults(winningNumber: winningNumbers)
 
@@ -83,8 +83,8 @@ class LottoTest: XCTestCase {
 		let randomNumberGenerator = try RandomNumberGenerator(range: 10...15)
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lottoStore = LottoStore(machine: lottoMachine)
-		let buyer = try Buyer(store: lottoStore, inputView: stubInputView)
-		try buyer.buyLotto()
+		let buyer = try Buyer(inputView: stubInputView)
+		try buyer.buyLotto(at: lottoStore)
 		let winningNumbers = Lotto(numbers: [10, 11, 12, 20, 30, 40])
 		buyer.checkLottoWinningResults(winningNumber: winningNumbers)
 
@@ -97,7 +97,7 @@ class LottoTest: XCTestCase {
 		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
 		let lottoStore = LottoStore(machine: lottoMachine)
 	
-		XCTAssertThrowsError(try Buyer(store: lottoStore, inputView: stubInputView)) { error in
+		XCTAssertThrowsError(try Buyer(inputView: stubInputView)) { error in
 			XCTAssertEqual(error as! PaymentError, .invalid)
 		}
 	}
