@@ -94,7 +94,7 @@ class LottoTest: XCTestCase {
 		}
 	}
 	
-	func test_shouldOutputTheNumberOfPurchasedLottoWhenInputIsValid() throws {
+	func test_shouldOutputTheNumberOfPurchasedLottosWhenBuyerPurchasesLotto() throws {
 		let stubInputView = StubInputView(input: "10000")
 		let stubResultView = StubResultView()
 		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
