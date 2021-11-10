@@ -8,6 +8,7 @@
 import Foundation
 
 final class Buyer {
+	private let resultView: Presentable
 	private(set) var prizeMoney: Int = 0
 	private(set) var rateOfReturn: Double = 0
 	
@@ -15,6 +16,7 @@ final class Buyer {
 	var purchasedLottos = [Lotto]()
 	
 	init(inputView: Inputable, resultView: Presentable) throws {
+		self.resultView = resultView
 		try inputView.read { inputtedAmount  in
 			self.money = inputtedAmount.amount
 		}
@@ -22,6 +24,7 @@ final class Buyer {
 	
 	func buyLotto(at store: LottoStore) throws {
 		self.purchasedLottos = try store.sell(for: money)
+		resultView.printOut(numberOfPurchasedLottos: self.purchasedLottos.count)
 	}
 	
 	func checkLottoWinningResults(winningNumber: Lotto) {
