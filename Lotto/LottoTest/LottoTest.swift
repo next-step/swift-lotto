@@ -21,9 +21,9 @@ class LottoTest: XCTestCase {
 		let lotteryTickes = lottoMachine
 			.quickPicks(for: 2)
 			.map { $0.numbers.sorted { $0 < $1 } }
-			.map(Lotto.init)
+			.map { Lotto(numbers: $0, numberRange: LottoOption.lottoNumberRange) }
 		
-		let results = [Lotto(numbers: [10, 11, 12, 13, 14, 15]), Lotto(numbers: [10, 11, 12, 13, 14, 15])]
+		let results = [Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.lottoNumberRange), Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.lottoNumberRange)]
 		
 		XCTAssertEqual(lotteryTickes, results)
 	}
@@ -63,31 +63,27 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldGet5000WonWhen3NumbersMatchEachLotto() throws {
-		let stubInputView: Inputable = StubInputView(input: "5000")
+		let stubInputView: Inputable = StubInputView(amount: "5000", winningLottos: "10, 11, 12, 20, 30, 40")
 		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
 		let lottoStore = LottoStore(machine: lottoMachine)
 		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
-		try buyer.buyLotto(at: lottoStore)
-		let winningNumbers = Lotto(numbers: [10, 11, 12, 20, 30, 40])
-		buyer.checkLottoWinningResults(winningNumber: winningNumbers)
+		try buyer.enter(to: lottoStore)
 
 		XCTAssertEqual(buyer.prizeMoney, 25000)
 	}
 	
 	func test_shouldBeRateOfReturn5WhenBuy14000AndWin70000() throws {
-		let stubInputView: Inputable = StubInputView(input: "14000")
+		let stubInputView: Inputable = StubInputView(amount: "14000", winningLottos: "10, 11, 12, 20, 30, 40")
 		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
 		let lottoStore = LottoStore(machine: lottoMachine)
 		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
-		try buyer.buyLotto(at: lottoStore)
-		let winningNumbers = Lotto(numbers: [10, 11, 12, 20, 30, 40])
-		buyer.checkLottoWinningResults(winningNumber: winningNumbers)
+		try buyer.enter(to: lottoStore)
 
 		XCTAssertEqual(buyer.rateOfReturn, 5.0)
 	}
 	
 	func test_shouldThrowInvalidErrorWhenAmountIsNotNumber() throws {
-		let stubInputView: Inputable = StubInputView(input: "abcd")
+		let stubInputView: Inputable = StubInputView(amount: "abcd", winningLottos: "")
 	
 		XCTAssertThrowsError(try Buyer(inputView: stubInputView, resultView: stubResultView)) { error in
 			XCTAssertEqual(error as! InputError, .invalid)
@@ -95,25 +91,36 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldOutputPurchasedLottosWhenBuyerPurchasesLotto() throws {
-		let stubInputView = StubInputView(input: "10000")
+		let stubInputView = StubInputView(amount: "10000", winningLottos: "10, 11, 12, 13, 14, 15")
 		let stubResultView = StubResultView()
 		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
 		let lottoStore = LottoStore(machine: lottoMachine)
 		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
-		try buyer.buyLotto(at: lottoStore)
+		try buyer.enter(to: lottoStore)
 		
 		XCTAssertTrue(StubResultView.Verify.printOutPurchasedLottos)
 	}
 	
 	func test_shouldOutputWinningStatisticsWhenInputWinningNumbers() throws {
-		let stubInputView = StubInputView(input: "10000")
+		let stubInputView = StubInputView(amount: "10000", winningLottos: "10, 11, 12, 13, 14, 15")
 		let stubResultView = StubResultView()
 		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
 		let lottoStore = LottoStore(machine: lottoMachine)
 		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
-		try buyer.buyLotto(at: lottoStore)
+		try buyer.enter(to: lottoStore)
 		
-		XCTAssertTrue(StubResultView.Verify.printOutPurchasedLottos)
+		XCTAssertTrue(StubResultView.Verify.printOutWinningStatistics)
+	}
+	
+	func test_shouldOutputWRateOfReturnWhenInputWinningNumbers() throws {
+		let stubInputView = StubInputView(amount: "10000", winningLottos: "10, 11, 12, 13, 14, 15")
+		let stubResultView = StubResultView()
+		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
+		let lottoStore = LottoStore(machine: lottoMachine)
+		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
+		try buyer.enter(to: lottoStore)
+		
+		XCTAssertTrue(StubResultView.Verify.printOutRateOfReturn)
 	}
 	
 	private func makeRandomNumberGenerator() throws -> RandomNumberGenerator{
