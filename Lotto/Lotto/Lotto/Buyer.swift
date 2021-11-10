@@ -10,6 +10,7 @@ import Foundation
 final class Buyer {
 	private let resultView: Presentable
 	private let inputView: Inputable
+	private(set) var winningStatistics = WinningStatistics()
 	
 	var money: Int = 0
 	var purchasedLottos = [Lotto]()
@@ -33,7 +34,6 @@ final class Buyer {
 	}
 	
 	private func checkWinningStatistics() throws {
-		var winningStatistics = WinningStatistics()
 		try self.inputView.read { winningLotto in
 			winningStatistics.checkLottoWinningResults(by: winningLotto, purchasedLottos: self.purchasedLottos)
 		}
