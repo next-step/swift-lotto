@@ -8,18 +8,14 @@
 import Foundation
 
 protocol Presentable {
-	func printOut(numberOfPurchasedLottos: Int)
 	func printOut(purchasedLottos: [Lotto])
 	func printOut(winningStatistics: WinningStatistics)
 	func printOut(rateOfReturn: Double)
 }
 
 struct ResultView: Presentable {
-	func printOut(numberOfPurchasedLottos: Int) {
-		print("\(numberOfPurchasedLottos)개를 구매했습니다.")
-	}
-	
 	func printOut(purchasedLottos: [Lotto]) {
+		printOut(numberOfPurchasedLottos: purchasedLottos.count)
 		purchasedLottos.forEach { lotto in
 			print("[\(convertToPresentableString(from: lotto))]")
 		}
@@ -37,7 +33,11 @@ struct ResultView: Presentable {
 		print("총 수익률은 0.35입니다.")
 	}
 	
-	private func convertToPresentableString(from lotto: Lotto) {
+	private func printOut(numberOfPurchasedLottos: Int) {
+		print("\(numberOfPurchasedLottos)개를 구매했습니다.")
+	}
+	
+	private func convertToPresentableString(from lotto: Lotto) -> String {
 		lotto.numbers
 			.map(String.init)
 			.joined(separator: ", ")
