@@ -18,10 +18,11 @@ struct ResultView: Presentable {
 		purchasedLottos.forEach { lotto in
 			print("[\(convertToPresentableString(from: lotto))]")
 		}
+		printNewLine()
 	}
 
 	func printOut(winningStatistics: WinningStatistics) {
-		print("당첨통계\n---------")
+		print("\n당첨통계\n---------")
 		self.printOutMatchingNumber(of: Winnings.fourthPlace, winningStatistics: winningStatistics)
 		self.printOutMatchingNumber(of: Winnings.thirdPlace, winningStatistics: winningStatistics)
 		self.printOutMatchingNumber(of: Winnings.secondPlace, winningStatistics: winningStatistics)
@@ -31,6 +32,10 @@ struct ResultView: Presentable {
 	
 	private func printOut(numberOfPurchasedLottos: Int) {
 		print("\(numberOfPurchasedLottos)개를 구매했습니다.")
+	}
+	
+	private func printNewLine() {
+		print("")
 	}
 	
 	private func convertToPresentableString(from lotto: Lotto) -> String {
@@ -43,7 +48,7 @@ struct ResultView: Presentable {
 		let matchingNumber = winnigs.rawValue
 		let prize = winnigs.prize()
 		let numberOfMatchingNumbers = winningStatistics.numberOfWinnings(by: winnigs)
-		print("\(matchingNumber)개 일치 (\(prize)- \(numberOfMatchingNumbers)개")
+		print("\(matchingNumber)개 일치 (\(prize))- \(numberOfMatchingNumbers)개")
 	}
 	
 	private func printOut(rateOfReturn: Double) {
