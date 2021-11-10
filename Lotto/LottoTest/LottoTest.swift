@@ -105,6 +105,17 @@ class LottoTest: XCTestCase {
 		XCTAssertTrue(StubResultView.Verify.printOutNumberOfPurchasedLottos)
 	}
 	
+	func test_shouldOutputPurchasedLottosWhenBuyerPurchasesLotto() throws {
+		let stubInputView = StubInputView(input: "10000")
+		let stubResultView = StubResultView()
+		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
+		let lottoStore = LottoStore(machine: lottoMachine)
+		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
+		try buyer.buyLotto(at: lottoStore)
+		
+		XCTAssertTrue(StubResultView.Verify.printOutPurchasedLottos)
+	}
+	
 	private func makeRandomNumberGenerator() throws -> RandomNumberGenerator{
 		try RandomNumberGenerator(range: 10...15)
 	}
