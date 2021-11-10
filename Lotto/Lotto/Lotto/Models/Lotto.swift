@@ -21,10 +21,7 @@ extension Lotto {
 	}
 	
 	private func findNumberOfMatchingNumbers(with winningNumbers: Lotto) -> Int {
-		self.numbers
-			.filter { lottoNumber in
-				winningNumbers.numbers.contains(lottoNumber)
-			}.count
+		Set(numbers).intersection(Set(winningNumbers.numbers)).count
 	}
 	
 	private func findWinningRanking(numberOfMatchingNumbers: Int) -> Winnings {
