@@ -8,10 +8,11 @@
 import Foundation
 
 struct WinningStatistics {
-	var numberOfFirstPlace: Int = 0
-	var numberOfSecondPlace: Int = 0
-	var numberOfThirdPlace: Int = 0
-	var numberOfFourthPlace: Int = 0
+	private(set) var numberOfFirstPlace: Int = 0
+	private(set) var numberOfSecondPlace: Int = 0
+	private(set) var numberOfThirdPlace: Int = 0
+	private(set) var numberOfFourthPlace: Int = 0
+	private(set) var rateOfReturn: Double = 0
 	
 	mutating func winning(_ winnings: Winnings) {
 		switch winnings {
@@ -41,5 +42,22 @@ struct WinningStatistics {
 		case .notWinning:
 			return 0
 		}
+	}
+	
+	mutating func checkLottoWinningResults(by winningLotto: WinningLotto, purchasedLottos: [Lotto]) {
+		var prizeMoney: Int = 0
+		purchasedLottos.forEach { lotto in
+			let winnings = lotto.checkWinningRanking(with: winningLotto)
+			self.winning(winnings)
+			prizeMoney += winnings.prize()
+		}
+		
+		self.rateOfReturn = calculateRateOfReturn(by: purchasedLottos.count, prizeMoney: prizeMoney)
+	}
+	
+	private func calculateRateOfReturn(by numberOfLotto: Int, prizeMoney: Int) -> Double {
+		let purchasedAmount = Double(numberOfLotto * LottoOption.lottoAmount)
+		let prize = Double(prizeMoney)
+		return (prize / purchasedAmount).floorTwoDecimalPlaces
 	}
 }

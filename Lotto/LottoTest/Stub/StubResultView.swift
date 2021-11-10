@@ -11,7 +11,6 @@ struct StubResultView: Presentable {
 	enum Verify {
 		static var printOutPurchasedLottos = false
 		static var printOutWinningStatistics = false
-		static var printOutRateOfReturn = false
 	}
 	
 	func printOut(purchasedLottos: [Lotto]) {
@@ -20,9 +19,5 @@ struct StubResultView: Presentable {
 	
 	func printOut(winningStatistics: WinningStatistics) {
 		Verify.printOutWinningStatistics = true
-	}
-	
-	func printOut(rateOfReturn: Double) {
-		Verify.printOutRateOfReturn = true
 	}
 }

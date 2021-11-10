@@ -10,7 +10,6 @@ import Foundation
 protocol Presentable {
 	func printOut(purchasedLottos: [Lotto])
 	func printOut(winningStatistics: WinningStatistics)
-	func printOut(rateOfReturn: Double)
 }
 
 struct ResultView: Presentable {
@@ -27,10 +26,7 @@ struct ResultView: Presentable {
 		self.printOutMatchingNumber(of: Winnings.thirdPlace, winningStatistics: winningStatistics)
 		self.printOutMatchingNumber(of: Winnings.secondPlace, winningStatistics: winningStatistics)
 		self.printOutMatchingNumber(of: Winnings.firstPlace, winningStatistics: winningStatistics)
-	}
-	
-	func printOut(rateOfReturn: Double) {
-		print("총 수익률은 0.35입니다.")
+		self.printOut(rateOfReturn: winningStatistics.rateOfReturn)
 	}
 	
 	private func printOut(numberOfPurchasedLottos: Int) {
@@ -48,5 +44,9 @@ struct ResultView: Presentable {
 		let prize = winnigs.prize()
 		let numberOfMatchingNumbers = winningStatistics.numberOfWinnings(by: winnigs)
 		print("\(matchingNumber)개 일치 (\(prize)- \(numberOfMatchingNumbers)개")
+	}
+	
+	private func printOut(rateOfReturn: Double) {
+		print("총 수익률은 \(rateOfReturn)입니다.")
 	}
 }
