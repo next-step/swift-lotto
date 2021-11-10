@@ -9,7 +9,11 @@ import Foundation
 
 struct Lotto: Equatable, Hashable {
 	let numbers: [Int]
-	init(numbers: [Int]) {
+	init?(numbers: [Int], numberRange: ClosedRange<Int>) {
+		guard numbers.filter({ numberRange.contains($0) }).count == LottoOption.numberOfLottoNumbers else {
+			return nil
+		}
+					
 		self.numbers = numbers
 	}
 }
