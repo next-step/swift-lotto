@@ -16,11 +16,13 @@ protocol Inputable {
 
 extension Inputable {
 	func read(completion: (AmountInputable) -> Void) throws {
+		print("구입금액을 입력해 주세요.")
 		let amount = try makeAmount()
 		completion(amount)
 	}
 	
 	func read(completion: (WinningLotto) -> Void) throws {
+		print("지난 주 당첨 번호를 입력해 주세요.")
 		guard let lotto = makeWinningLotto() else {
 			throw InputError.invalid
 		}
