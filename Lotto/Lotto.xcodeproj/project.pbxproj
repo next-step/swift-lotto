@@ -42,6 +42,8 @@
 		5180DF922737DFCD00F7382C /* LottoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF902737DA7600F7382C /* LottoStore.swift */; };
 		5180DF942738091400F7382C /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF932738091400F7382C /* Lotto.swift */; };
 		5180DF952738097800F7382C /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DF932738091400F7382C /* Lotto.swift */; };
+		51B7C619273C089200F0355A /* StubResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B7C618273C089200F0355A /* StubResultView.swift */; };
+		51B7C61A273C08AC00F0355A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180DD9E273AC709007553C2 /* ResultView.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +80,7 @@
 		5180DF8C2737B6FF00F7382C /* LottoOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoOption.swift; sourceTree = "<group>"; };
 		5180DF902737DA7600F7382C /* LottoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoStore.swift; sourceTree = "<group>"; };
 		5180DF932738091400F7382C /* Lotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto.swift; sourceTree = "<group>"; };
+		51B7C618273C089200F0355A /* StubResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubResultView.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				5180DD99273AB003007553C2 /* StubInputView.swift */,
+				51B7C618273C089200F0355A /* StubResultView.swift */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -302,6 +306,7 @@
 				517A0CC227368EB50055018B /* main.swift in Sources */,
 				5180DD9A273AB003007553C2 /* StubInputView.swift in Sources */,
 				517A0CC72736AA8B0055018B /* Calculator.swift in Sources */,
+				51B7C61A273C08AC00F0355A /* ResultView.swift in Sources */,
 				517A0CCB2736BBE90055018B /* String+Extension.swift in Sources */,
 				5180DD97273AAD4B007553C2 /* InputView.swift in Sources */,
 				517A0CCE2736BC440055018B /* ValueError.swift in Sources */,
@@ -316,6 +321,7 @@
 				5180DF892737B00400F7382C /* LottoNumberGenerator.swift in Sources */,
 				5180DF8E2737B7F100F7382C /* LottoOption.swift in Sources */,
 				5146524B2738238D00C155B8 /* Buyer.swift in Sources */,
+				51B7C619273C089200F0355A /* StubResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
