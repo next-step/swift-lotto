@@ -18,7 +18,7 @@ struct Amount: AmountInputable {
 	init(input: String?) throws {
 		guard let validInput = input,
 					let amount = Int(validInput)
-		else { throw PaymentError.invalid }
+		else { throw InputError.invalid }
 		
 		self.amount = amount
 	}

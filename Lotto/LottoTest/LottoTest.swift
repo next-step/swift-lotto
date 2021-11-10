@@ -42,11 +42,11 @@ class LottoTest: XCTestCase {
 		let lottoStore = LottoStore(machine: lottoMachine)
 		
 		XCTAssertThrowsError(try lottoStore.sell(for: -100)) { error in
-			XCTAssertEqual(error as! PaymentError, .invalid)
+			XCTAssertEqual(error as! InputError, .invalid)
 		}
 		
 		XCTAssertThrowsError(try lottoStore.sell(for: -10000)) { error in
-			XCTAssertEqual(error as! PaymentError, .invalid)
+			XCTAssertEqual(error as! InputError, .invalid)
 		}
 	}
 	
@@ -90,7 +90,7 @@ class LottoTest: XCTestCase {
 		let stubInputView: Inputable = StubInputView(input: "abcd")
 	
 		XCTAssertThrowsError(try Buyer(inputView: stubInputView, resultView: stubResultView)) { error in
-			XCTAssertEqual(error as! PaymentError, .invalid)
+			XCTAssertEqual(error as! InputError, .invalid)
 		}
 	}
 	

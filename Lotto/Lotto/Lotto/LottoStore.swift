@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PaymentError: Error {
+enum InputError: Error {
 	case invalid
 	case unableToPurchase
 }
@@ -27,8 +27,8 @@ struct LottoStore {
 	}
 	
 	private func isValid(money: Int) throws {
-		if money < 0 { throw PaymentError.invalid }
-		if money < 1000 { throw PaymentError.unableToPurchase }
+		if money < 0 { throw InputError.invalid }
+		if money < 1000 { throw InputError.unableToPurchase }
 	}
 	
 	private func changeToBuyableQuantity(fromMoney money: Int) -> Int {
