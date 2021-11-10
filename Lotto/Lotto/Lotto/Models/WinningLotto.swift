@@ -9,7 +9,7 @@ import Foundation
 
 protocol WinningLottoInputable {
 	var lotto: Lotto { get }
-	init(input: String?) throws
+	init?(input: String?, numberRange: ClosedRange<Int>) throws
 }
 
 struct WinningLotto: WinningLottoInputable {
@@ -17,10 +17,19 @@ struct WinningLotto: WinningLottoInputable {
 	
 	init?(input: String?, numberRange: ClosedRange<Int>) {
 		guard let validInput = input,
-					let splitedNumber = validInput.split(separator: ",").map(Int.init)
-					let lotto = Lotto(numbers: splitedNumber, numberRange: numberRange)
+					let lotto = try? Lotto(numbers: validInput.splitToIntByComma(), numberRange: numberRange)
 		else { return nil }
 		
 		self.lotto = lotto
+	}
+}
+
+fileprivate extension String {
+	func splitToIntByComma() throws -> [Int] {
+		try self.replacingOccurrences(of: " ", with: "")
+			.components(separatedBy: ",")
+			.map {
+				try $0.toPositiveInt()
+			}
 	}
 }

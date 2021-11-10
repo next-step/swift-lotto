@@ -9,6 +9,7 @@ import Foundation
 
 final class Buyer {
 	private let resultView: Presentable
+	private let inputView: Inputable
 	private(set) var prizeMoney: Int = 0
 	private(set) var rateOfReturn: Double = 0
 	
@@ -17,29 +18,41 @@ final class Buyer {
 	
 	init(inputView: Inputable, resultView: Presentable) throws {
 		self.resultView = resultView
+		self.inputView = inputView
 		try inputView.read { inputtedAmount  in
 			self.money = inputtedAmount.amount
 		}
 	}
 	
-	func buyLotto(at store: LottoStore) throws {
+	func enter(to store: LottoStore) throws {
+		try buyLotto(at: store)
+		try self.checkWinningStatistics()
+	}
+
+	private func buyLotto(at store: LottoStore) throws {
 		self.purchasedLottos = try store.sell(for: money)
-		resultView.printOut(numberOfPurchasedLottos: self.purchasedLottos.count)
-		resultView.printOut(purchasedLottos: self.purchasedLottos)
+		self.resultView.printOut(purchasedLottos: self.purchasedLottos)
 	}
 	
-	func checkLottoWinningResults(winningNumber: Lotto) {
+	private func checkWinningStatistics() throws {
+		try self.inputView.read { winningLotto in
+			checkLottoWinningResults(winningLotto: winningLotto)
+		}
+	}
+	
+	private func checkLottoWinningResults(winningLotto: WinningLotto) {
 		var winningStatistics = WinningStatistics()
 		self.purchasedLottos.forEach { lotto in
-			let winnings = lotto.checkWinningRanking(with: winningNumber)
+			let winnings = lotto.checkWinningRanking(with: winningLotto)
 			winningStatistics.winning(winnings)
 			self.prizeMoney += winnings.prize()
 		}
 		
 		self.rateOfReturn = calculateRateOfReturn()
+		self.resultView.printOut(winningStatistics: winningStatistics)
 	}
 	
-	func calculateRateOfReturn() -> Double {
+	private func calculateRateOfReturn() -> Double {
 		let purchasedAmount = Double(self.purchasedLottos.count * LottoOption.lottoAmount)
 		let prizeMoney = Double(self.prizeMoney)
 		return (prizeMoney / purchasedAmount).floorTwoDecimalPlaces
