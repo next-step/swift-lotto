@@ -72,6 +72,36 @@ class LottoTest: XCTestCase {
 		XCTAssertEqual(buyer.winningStatistics.numberOfFourthPlace, 5)
 	}
 	
+	func test_shouldGetWinningThirdPlaceWhen4NumbersMatchEachLotto() throws {
+		let stubInputView: Inputable = StubInputView(amount: "5000", winningLottos: "10, 11, 12, 13, 30, 40")
+		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
+		let lottoStore = LottoStore(machine: lottoMachine)
+		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
+		try buyer.enter(to: lottoStore)
+
+		XCTAssertEqual(buyer.winningStatistics.numberOfThirdPlace, 5)
+	}
+	
+	func test_shouldGetWinningSecondPlaceWhen5NumbersMatchEachLotto() throws {
+		let stubInputView: Inputable = StubInputView(amount: "5000", winningLottos: "10, 11, 12, 13, 14, 40")
+		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
+		let lottoStore = LottoStore(machine: lottoMachine)
+		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
+		try buyer.enter(to: lottoStore)
+
+		XCTAssertEqual(buyer.winningStatistics.numberOfSecondPlace, 5)
+	}
+	
+	func test_shouldGetWinningFirstPlaceWhen6NumbersMatchEachLotto() throws {
+		let stubInputView: Inputable = StubInputView(amount: "5000", winningLottos: "10, 11, 12, 13, 14, 15")
+		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
+		let lottoStore = LottoStore(machine: lottoMachine)
+		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
+		try buyer.enter(to: lottoStore)
+
+		XCTAssertEqual(buyer.winningStatistics.numberOfFirstPlace, 5)
+	}
+	
 	func test_shouldBeRateOfReturn5WhenBuy14000AndWin70000() throws {
 		let stubInputView: Inputable = StubInputView(amount: "14000", winningLottos: "10, 11, 12, 20, 30, 40")
 		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
