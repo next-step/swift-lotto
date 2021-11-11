@@ -10,6 +10,7 @@ import Foundation
 protocol Presentable {
 	func printOut(purchasedLottos: [Lotto])
 	func printOut(winningStatistics: WinningStatistics)
+	func printOut(error: InputError)
 }
 
 struct ResultView: Presentable {
@@ -28,6 +29,15 @@ struct ResultView: Presentable {
 		self.printOutMatchingNumber(of: Winnings.secondPlace, winningStatistics: winningStatistics)
 		self.printOutMatchingNumber(of: Winnings.firstPlace, winningStatistics: winningStatistics)
 		self.printOut(rateOfReturn: winningStatistics.rateOfReturn)
+	}
+	
+	func printOut(error: InputError) {
+		switch error {
+		case .invalid:
+			print("유효하지 않은 입력입니다.")
+		case .unableToPurchase:
+			print("로또는 1000원부터 구매할 수 있습니다.")
+		}
 	}
 	
 	private func printOut(numberOfPurchasedLottos: Int) {

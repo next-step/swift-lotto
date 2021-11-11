@@ -15,17 +15,29 @@ final class Buyer {
 	var money: Int = 0
 	var purchasedLottos = [Lotto]()
 	
-	init(inputView: Inputable, resultView: Presentable) throws {
+	init(inputView: Inputable, resultView: Presentable) {
 		self.resultView = resultView
 		self.inputView = inputView
-		try inputView.read { inputtedAmount  in
-			self.money = inputtedAmount.amount
+		do {
+			try inputView.read { inputtedAmount  in
+				self.money = inputtedAmount.amount
+			}
+		} catch (let error) {
+			if let inputError = error as? InputError {
+				self.resultView.printOut(error: inputError)
+			}
 		}
 	}
 	
 	func enter(to store: LottoStore) throws {
-		try buyLotto(at: store)
-		try self.checkWinningStatistics()
+		do {
+			try buyLotto(at: store)
+			try self.checkWinningStatistics()
+		} catch (let error) {
+			if let inputError = error as? InputError {
+				self.resultView.printOut(error: inputError)
+			}
+		}
 	}
 
 	private func buyLotto(at store: LottoStore) throws {
