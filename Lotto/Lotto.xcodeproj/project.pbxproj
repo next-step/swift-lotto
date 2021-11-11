@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A19F5289273D66F90016CDFD /* LottoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19F5288273D66F90016CDFD /* LottoTest.swift */; };
+		A19F528E273D6A030016CDFD /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19F528D273D6A030016CDFD /* Calculator.swift */; };
+		A19F528F273D6A210016CDFD /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19F528D273D6A030016CDFD /* Calculator.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,7 @@
 /* Begin PBXFileReference section */
 		A19F5286273D66F90016CDFD /* LottoTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LottoTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19F5288273D66F90016CDFD /* LottoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTest.swift; sourceTree = "<group>"; };
+		A19F528D273D6A030016CDFD /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				C7905FC527311CC6004C3FCC /* main.swift */,
+				A19F528D273D6A030016CDFD /* Calculator.swift */,
 			);
 			path = Lotto;
 			sourceTree = "<group>";
@@ -172,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A19F5289273D66F90016CDFD /* LottoTest.swift in Sources */,
+				A19F528F273D6A210016CDFD /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
+				A19F528E273D6A030016CDFD /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
