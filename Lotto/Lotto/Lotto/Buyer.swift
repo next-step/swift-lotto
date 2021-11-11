@@ -23,9 +23,7 @@ final class Buyer {
 				self.money = inputtedAmount.amount
 			}
 		} catch (let error) {
-			if let inputError = error as? InputError {
-				self.resultView.printOut(error: inputError)
-			}
+			printOut(error: error)
 		}
 	}
 	
@@ -34,9 +32,7 @@ final class Buyer {
 			try buyLotto(at: store)
 			try self.checkWinningStatistics()
 		} catch (let error) {
-			if let inputError = error as? InputError {
-				self.resultView.printOut(error: inputError)
-			}
+			printOut(error: error)
 		}
 	}
 
@@ -50,5 +46,11 @@ final class Buyer {
 			winningStatistics.checkLottoWinningResults(by: winningLotto, purchasedLottos: self.purchasedLottos)
 		}
 		self.resultView.printOut(winningStatistics: winningStatistics)
+	}
+	
+	private func printOut(error: Error) {
+		if let inputError = error as? InputError {
+			self.resultView.printOut(error: inputError)
+		}
 	}
 }
