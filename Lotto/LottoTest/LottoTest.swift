@@ -160,7 +160,7 @@ class LottoTest: XCTestCase {
 	
 	private func makeLottoStore() throws -> LottoStore {
 		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
-		let lottoStore = LottoStore(machine: lottoMachine)
+		return LottoStore(machine: lottoMachine)
 	}
 	
 	private func makeRandomNumberGenerator() throws -> RandomNumberGenerator{
