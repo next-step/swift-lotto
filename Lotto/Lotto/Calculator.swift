@@ -15,4 +15,12 @@ struct Calculator {
     func split(input: String) -> [String] {
         input.components(separatedBy: CharacterSet(charactersIn: StringOption.seperator))
     }
+    
+    func add(input: [String]) -> Int? {
+        input.map { num in
+            Int(num)
+        }.reduce(0) { prev, next in
+            return prev + next!
+        }
+    }
 }

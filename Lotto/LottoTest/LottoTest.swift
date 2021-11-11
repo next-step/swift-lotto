@@ -17,11 +17,11 @@ class LottoTest: XCTestCase {
         XCTAssertEqual(result, ["1", "2", "3"])
     }
     
-//    func test_split된_문자열_더하기() throws {
-//        let input = split(input: "1,2:3")
-//
-//        let result = add(input: input)
-//
-//        XCTAssertEqual(result, 6)
-//    }
+    func test_split된_문자열_더하기() throws {
+        let input = Calculator().split(input: "1,2:3")
+
+        let result = Calculator().add(input: input)
+
+        XCTAssertEqual(result, 6)
+    }
 }
