@@ -27,7 +27,7 @@ final class Buyer {
 		}
 	}
 	
-	func enter(to store: LottoStore) throws {
+	func enter(to store: LottoStore) {
 		do {
 			try buyLotto(at: store)
 			try self.checkWinningStatistics()
