@@ -9,18 +9,24 @@ import Foundation
 
 protocol WinningLottoInputable {
 	var lotto: Lotto { get }
-	init?(input: String?, numberRange: ClosedRange<Int>) throws
+	var bonusNumber: Int { get }
+	init?(input: String?, inputBonusNumber: String?, numberRange: ClosedRange<Int>) throws
 }
 
 struct WinningLotto: WinningLottoInputable {
 	let lotto : Lotto
+	let bonusNumber: Int
 	
-	init?(input: String?, numberRange: ClosedRange<Int>) {
+	init?(input: String?, inputBonusNumber: String?, numberRange: ClosedRange<Int>) {
 		guard let validInput = input,
-					let lotto = try? Lotto(numbers: validInput.splitToIntByComma(), numberRange: numberRange)
+					let lotto = try? Lotto(numbers: validInput.splitToIntByComma(), numberRange: numberRange),
+					let validInputBonusNumber = inputBonusNumber,
+					let bonusNumber = Int(validInputBonusNumber),
+					numberRange.contains(bonusNumber)
 		else { return nil }
 		
 		self.lotto = lotto
+		self.bonusNumber = bonusNumber
 	}
 }
 

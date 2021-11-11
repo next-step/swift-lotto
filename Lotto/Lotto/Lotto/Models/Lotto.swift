@@ -23,14 +23,14 @@ struct Lotto: Equatable, Hashable {
 extension Lotto {
 	func checkWinningRanking(with winningLotto: WinningLotto) -> Winnings {
 		let numberOfMatchingNumbers = findNumberOfMatchingNumbers(with: winningLotto)
-		return findWinningRanking(numberOfMatchingNumbers: numberOfMatchingNumbers)
+		return findWinningRanking(numberOfMatchingNumbers: numberOfMatchingNumbers, bonusNumber: winningLotto.bonusNumber)
 	}
 	
 	private func findNumberOfMatchingNumbers(with winningLotto: WinningLotto) -> Int {
 		Set(numbers).intersection(Set(winningLotto.lotto.numbers)).count
 	}
 	
-	private func findWinningRanking(numberOfMatchingNumbers: Int) -> Winnings {
-		Winnings(rawValue: numberOfMatchingNumbers) ?? .notWinning
+	private func findWinningRanking(numberOfMatchingNumbers: Int, bonusNumber: Int) -> Winnings {
+		Winnings.from(matchingCount: numberOfMatchingNumbers, matchBonus: numbers.contains(bonusNumber))
 	}
 }
