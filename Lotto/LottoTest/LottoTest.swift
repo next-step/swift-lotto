@@ -8,7 +8,7 @@
 import XCTest
 
 class LottoTest: XCTestCase {
-	private var stubResultView = StubResultView()
+	fileprivate var stubResultView = StubResultView()
 	
 	override func tearDownWithError() throws {
 		clearVerify()
@@ -132,32 +132,42 @@ class LottoTest: XCTestCase {
 		clearVerify()
 		XCTAssertTrue(try verifyPrintOutError(amount: "acsdfe", winningLottos: "10, 11, 12, 13, 14, 15"))
 	}
-	
-	private func verifyPrintOutError(amount: String, winningLottos: String) throws -> Bool {
+}
+
+// MARK: - Step3
+extension LottoTest {
+	func test_shouldAwardSecondPlaceWhenTheBonusNumberAnd5NumbersAreTheSameInALotto() {
+		let buyer = makeBuyer(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 6", bonusNumber: "45")
+		XCTAssertEqual(buyer.winningStatistics.numberOfSecondPlace, 1)
+	}
+}
+
+extension LottoTest {
+	fileprivate func verifyPrintOutError(amount: String, winningLottos: String) throws -> Bool {
 		let buyer = try makeBuyer(amount: amount, winningLottos: winningLottos)
 		try buyer.enter(to: try makeLottoStore())
 		return StubResultView.Verify.printOutError
 	}
 	
-	private func clearVerify() {
+	fileprivate func clearVerify() {
 		StubResultView.Verify.printOutPurchasedLottos = false
 		StubResultView.Verify.printOutWinningStatistics = false
 		StubResultView.Verify.printOutError = false
 	}
 	
-	private func makeBuyer(amount: String, winningLottos: String) throws -> Buyer {
+	fileprivate func makeBuyer(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Buyer {
 		let stubInputView = StubInputView(amount: amount, winningLottos: winningLottos)
 		let stubResultView = StubResultView()
 		let buyer = Buyer(inputView: stubInputView, resultView: stubResultView)
 		return buyer
 	}
 	
-	private func makeLottoStore() throws -> LottoStore {
+	fileprivate func makeLottoStore() throws -> LottoStore {
 		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
 		return LottoStore(machine: lottoMachine)
 	}
 	
-	private func makeRandomNumberGenerator() throws -> RandomNumberGenerator{
-		try RandomNumberGenerator(range: 10...15)
+	fileprivate func makeRandomNumberGenerator(range: ClosedRange<Int> = 10...15) throws -> RandomNumberGenerator{
+		try RandomNumberGenerator(range: range)
 	}
 }
