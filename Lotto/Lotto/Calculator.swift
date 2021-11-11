@@ -7,8 +7,12 @@
 
 import Foundation
 
+enum StringOption {
+    static let seperator = ",:"
+}
+
 struct Calculator {
     func split(input: String) -> [String] {
-        input.components(separatedBy: CharacterSet(charactersIn: ",:"))
+        input.components(separatedBy: CharacterSet(charactersIn: StringOption.seperator))
     }
 }
