@@ -8,25 +8,20 @@
 import XCTest
 
 class LottoTest: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    func test_입력받은_문자열_Split_잘되는지() {
+        let input = "1,2:3"
+        
+        let result = split(input: input)
+        
+        XCTAssertEqual(result, ["1", "2", "3"])
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func test_split된_문자열_더하기() throws {
+        let input = split(input: "1,2:3")
+        
+        let result = add(input: input)
+        
+        XCTAssertEqual(result, 6)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
