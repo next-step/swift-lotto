@@ -58,7 +58,7 @@ struct ResultView: Presentable {
 		let matchingNumber = winnigs.rawValue
 		let prize = winnigs.prize()
 		let numberOfMatchingNumbers = winningStatistics.numberOfWinnings(by: winnigs)
-		print("\(matchingNumber)개 일치 (\(prize))- \(numberOfMatchingNumbers)개")
+		print("\(matchingNumber)개 일치 (\(prize)원)- \(numberOfMatchingNumbers)개")
 	}
 	
 	private func printOut(rateOfReturn: Double) {
