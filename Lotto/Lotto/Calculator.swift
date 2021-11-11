@@ -12,6 +12,11 @@ enum StringOption {
 }
 
 struct Calculator {
+    func calculate(input: String) -> Int {
+        let result = split(input: input)
+        return add(input: result)!
+    }
+    
     func split(input: String) -> [String] {
         input.components(separatedBy: CharacterSet(charactersIn: StringOption.seperator))
     }
