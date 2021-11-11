@@ -9,7 +9,7 @@ import XCTest
 
 class LottoTest: XCTestCase {
     
-    func test_입력받은_문자열_Split_잘되는지() {
+    func test_입력받은_문자열이_쉽표와_콜론을_기준으로_Split_잘되는지() {
         let input = "1,2:3"
         
         let result = Calculator().split(input: input)
@@ -19,19 +19,27 @@ class LottoTest: XCTestCase {
     
     func test_문자열_덧셈() {
         let input = ["1", "2", "3"]
-
+        
         let result = Calculator().add(input: input)
-
+        
         XCTAssertEqual(result, 6)
     }
     
     func test_split된_문자열_더하기() {
         let input = "1,2:3"
         
-        let result = Calculator().calculate(input: input)
+        let result = try! Calculator().calculate(input: input)
         
         XCTAssertEqual(result, 6)
     }
     
+    func test_입력값이_음수인경우() {
+        let input = "-1,2:3"
+        
+        XCTAssertThrowsError(try Calculator().calculate(input: input)) { error in
+            XCTAssertEqual(error as! InputError, InputError.valueIsInvalid)
+        }
+        
+    }
     
 }
