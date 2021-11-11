@@ -56,4 +56,4 @@ NEXTSTEP with yagom-academy
 <br>
 - [x] 총 수익률 계산
 <br>
-- [ ] 보너스 번호가 일치하면 2등 부여
+- [x] 보너스 번호가 일치하면 2등 부여
