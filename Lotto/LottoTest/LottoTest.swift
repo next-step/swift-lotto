@@ -142,6 +142,14 @@ class LottoTest: XCTestCase {
 		XCTAssertTrue(StubResultView.Verify.printOutWinningStatistics)
 	}
 	
+	func test_shouldThrowInvalidErrorWhenWinningNumbersAreNotNumber() throws {
+		let stubInputView: Inputable = StubInputView(amount: "10000", winningLottos: "abcde")
+	
+		XCTAssertThrowsError(try Buyer(inputView: stubInputView, resultView: stubResultView)) { error in
+			XCTAssertEqual(error as! InputError, .invalid)
+		}
+	}
+	
 	private func makeRandomNumberGenerator() throws -> RandomNumberGenerator{
 		try RandomNumberGenerator(range: 10...15)
 	}
