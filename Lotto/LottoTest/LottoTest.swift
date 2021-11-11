@@ -17,7 +17,7 @@ class LottoTest: XCTestCase {
         XCTAssertEqual(result, ["1", "2", "3"])
     }
     
-    func test_덧셈() {
+    func test_문자열_덧셈() {
         let input = ["1", "2", "3"]
 
         let result = Calculator().add(input: input)
