@@ -22,13 +22,3 @@ struct WinningLotto: WinningLottoInputable {
 		self.bonusNumber = inputBonusNumber.unwrapped
 	}
 }
-
-fileprivate extension String {
-	func splitToIntByComma() throws -> [Int] {
-		try self.replacingOccurrences(of: " ", with: "")
-			.components(separatedBy: ",")
-			.map {
-				try $0.toPositiveInt()
-			}
-	}
-}
