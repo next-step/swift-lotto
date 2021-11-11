@@ -11,7 +11,7 @@ class LottoTest: XCTestCase {
 	private var stubResultView = StubResultView()
 	
 	override func tearDownWithError() throws {
-		stubResultView = StubResultView()
+		clearVerify()
 	}
 	
 	func test_shouldGet5LottosWhenTheLottoMachineQuickPicks5Tickets() throws {
@@ -102,11 +102,7 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldThrowInvalidErrorWhenAmountIsNotNumber() throws {
-		let stubInputView: Inputable = StubInputView(amount: "abcd", winningLottos: "")
-	
-		XCTAssertThrowsError(try Buyer(inputView: stubInputView, resultView: stubResultView)) { error in
-			XCTAssertEqual(error as! InputError, .invalid)
-		}
+		XCTAssertTrue(try verifyPrintOutError(amount: "abcd", winningLottos: ""))
 	}
 	
 	func test_shouldOutputPurchasedLottosWhenBuyerPurchasesLotto() throws {
@@ -124,25 +120,17 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldThrowInvalidErrorWhenWinningNumbersAreNotNumber() throws {
-		XCTAssertThrowsError(try makeBuyer(amount: "10000", winningLottos: "abcde")) { error in
-			XCTAssertEqual(error as! InputError, .invalid)
-		}
+		XCTAssertTrue(try verifyPrintOutError(amount: "10000", winningLottos: "abcde"))
 	}
 	
 	func test_shouldThrowInvalidErrorWhenWinningNumbersAreContainedNegativeNumber() throws {
-		let buyer = try makeBuyer(amount: "10000", winningLottos: "-100")
-		
-		XCTAssertThrowsError(try buyer.enter(to: try makeLottoStore())) { error in
-			XCTAssertEqual(error as! InputError, .invalid)
-		}
+		XCTAssertTrue(try verifyPrintOutError(amount: "10000", winningLottos: "-100"))
 	}
 	
 	func test_shouldOutputErrorMessageWhenThrowsInvalidError() throws {
-		XCTAssertTrue(try verifyPrintOutError(amount: "10000", winningLottos: "-100"))
-		XCTAssertTrue(try verifyPrintOutError(amount: "10000", winningLottos: "abcde"))
 		XCTAssertTrue(try verifyPrintOutError(amount: "-1000", winningLottos: "10, 11, 12, 13, 14, 15"))
+		clearVerify()
 		XCTAssertTrue(try verifyPrintOutError(amount: "acsdfe", winningLottos: "10, 11, 12, 13, 14, 15"))
-		XCTAssertTrue(try verifyPrintOutError(amount: "acsdfe", winningLottos: "abcdef"))
 	}
 	
 	private func verifyPrintOutError(amount: String, winningLottos: String) throws -> Bool {
@@ -151,10 +139,16 @@ class LottoTest: XCTestCase {
 		return StubResultView.Verify.printOutError
 	}
 	
+	private func clearVerify() {
+		StubResultView.Verify.printOutPurchasedLottos = false
+		StubResultView.Verify.printOutWinningStatistics = false
+		StubResultView.Verify.printOutError = false
+	}
+	
 	private func makeBuyer(amount: String, winningLottos: String) throws -> Buyer {
 		let stubInputView = StubInputView(amount: amount, winningLottos: winningLottos)
 		let stubResultView = StubResultView()
-		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
+		let buyer = Buyer(inputView: stubInputView, resultView: stubResultView)
 		return buyer
 	}
 	
