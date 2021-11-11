@@ -16,7 +16,7 @@ struct Lotto: Equatable, Hashable {
 			return nil
 		}
 					
-		self.numbers = numbers
+		self.numbers = numbers.sorted(by: <)
 	}
 }
 
