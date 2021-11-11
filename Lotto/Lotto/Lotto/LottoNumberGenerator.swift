@@ -19,6 +19,12 @@ struct AutomaticGenerator: LottoNumberGeneratable {
 	}
 	
 	func generate() -> Lotto? {
-		Lotto(numbers: randomNumberGenerator.generateLottoNumbers(), numberRange: LottoOption.lottoNumberRange)
+		Lotto(numbers: generateLottoNumbers(), numberRange: LottoOption.lottoNumberRange)
+	}
+	
+	private func generateLottoNumbers() -> [Int] {
+		var lottoNumbers = [Int]()
+		randomNumberGenerator.appendNonDuplicateNumbers(in: &lottoNumbers)
+		return lottoNumbers
 	}
 }
