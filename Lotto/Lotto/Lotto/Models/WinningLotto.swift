@@ -10,23 +10,16 @@ import Foundation
 protocol WinningLottoInputable {
 	var lotto: Lotto { get }
 	var bonusNumber: Int { get }
-	init?(input: String?, inputBonusNumber: String?, numberRange: ClosedRange<Int>) throws
+	init(inputWinningLotto: InputWinningLotto, inputBonusNumber: BonusNumber)
 }
 
 struct WinningLotto: WinningLottoInputable {
 	let lotto : Lotto
 	let bonusNumber: Int
 	
-	init?(input: String?, inputBonusNumber: String?, numberRange: ClosedRange<Int>) {
-		guard let validInput = input,
-					let lotto = try? Lotto(numbers: validInput.splitToIntByComma(), numberRange: numberRange),
-					let validInputBonusNumber = inputBonusNumber,
-					let bonusNumber = Int(validInputBonusNumber),
-					numberRange.contains(bonusNumber)
-		else { return nil }
-		
-		self.lotto = lotto
-		self.bonusNumber = bonusNumber
+	init(inputWinningLotto: InputWinningLotto, inputBonusNumber: BonusNumber) {
+		self.lotto = inputWinningLotto.lotto
+		self.bonusNumber = inputBonusNumber.unwrapped
 	}
 }
 

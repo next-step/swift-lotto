@@ -136,8 +136,9 @@ class LottoTest: XCTestCase {
 
 // MARK: - Step3
 extension LottoTest {
-	func test_shouldAwardSecondPlaceWhenTheBonusNumberAnd5NumbersAreTheSameInALotto() {
-		let buyer = makeBuyer(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 6", bonusNumber: "45")
+	func test_shouldAwardSecondPlaceWhenTheBonusNumberAnd5NumbersAreTheSameInALotto() throws {
+		let buyer = try makeBuyer(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 6", bonusNumber: "45")
+		buyer.enter(to: try makeLottoStore())
 		XCTAssertEqual(buyer.winningStatistics.numberOfSecondPlace, 1)
 	}
 }
@@ -156,7 +157,7 @@ extension LottoTest {
 	}
 	
 	fileprivate func makeBuyer(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Buyer {
-		let stubInputView = StubInputView(amount: amount, winningLottos: winningLottos, bonusNumber: bonusNumber)
+		let stubInputView = StubInputView(amount: amount, winningLottos: winningLottos)
 		let stubResultView = StubResultView()
 		let buyer = Buyer(inputView: stubInputView, resultView: stubResultView)
 		return buyer
