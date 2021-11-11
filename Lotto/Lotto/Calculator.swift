@@ -17,11 +17,11 @@ enum InputError: Error {
 
 struct Calculator {
     func calculate(input: String) throws -> Int {
-        let result = split(input: input)
+        let splitInput = split(input: input)
         
-        try checkInputValid(input: result)
+        try checkInputValid(input: splitInput)
         
-        return add(input: result)
+        return add(input: splitInput)
     }
     
     func split(input: String) -> [String] {
@@ -29,7 +29,9 @@ struct Calculator {
     }
     
     func add(input: [String]) -> Int {
-        input.compactMap { num in
+        guard !input.isEmpty, input != [""] else { return 0 }
+        
+        return input.compactMap { num in
             Int(num)
         }.reduce(0) { prev, next in
             return prev + next
@@ -37,10 +39,12 @@ struct Calculator {
     }
     
     func checkInputValid(input: [String]) throws {
-        let convertInputToInt = input.compactMap { Int($0) }
-        
-        try convertInputToInt.forEach { num in
+        try convertInputToInt(input: input).forEach { num in
             guard num > 0 else { throw InputError.valueIsInvalid }
         }
+    }
+    
+    func convertInputToInt(input: [String]) -> [Int] {
+        input.compactMap { Int($0) }
     }
 }

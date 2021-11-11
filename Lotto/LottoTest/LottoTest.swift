@@ -28,7 +28,7 @@ class LottoTest: XCTestCase {
     func test_split된_문자열_더하기() {
         let input = "1,2:3"
         
-        let result = try! Calculator().calculate(input: input)
+        let result = try? Calculator().calculate(input: input)
         
         XCTAssertEqual(result, 6)
     }
@@ -39,7 +39,22 @@ class LottoTest: XCTestCase {
         XCTAssertThrowsError(try Calculator().calculate(input: input)) { error in
             XCTAssertEqual(error as! InputError, InputError.valueIsInvalid)
         }
+    }
+    
+    func test_입력값이_특수문자인경우() {
+        let input = "-1,#:3"
         
+        XCTAssertThrowsError(try Calculator().calculate(input: input)) { error in
+            XCTAssertEqual(error as! InputError, InputError.valueIsInvalid)
+        }
+    }
+    
+    func test_입력값이_공백인경우() {
+        let input = ""
+        
+        let result = try? Calculator().calculate(input: input)
+        
+        XCTAssertEqual(result, 0)
     }
     
 }
