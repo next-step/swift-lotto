@@ -143,9 +143,25 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldThrowInvalidErrorWhenWinningNumbersAreNotNumber() throws {
-		let stubInputView: Inputable = StubInputView(amount: "10000", winningLottos: "abcde")
+		let stubInputView = StubInputView(amount: "10000", winningLottos: "abcde")
+		let stubResultView = StubResultView()
+		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
+		let lottoStore = LottoStore(machine: lottoMachine)
+		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
+		
+		XCTAssertThrowsError(try buyer.enter(to: lottoStore)) { error in
+			XCTAssertEqual(error as! InputError, .invalid)
+		}
+	}
 	
-		XCTAssertThrowsError(try Buyer(inputView: stubInputView, resultView: stubResultView)) { error in
+	func test_shouldThrowInvalidErrorWhenWinningNumbersAreContainedNegativeNumber() throws {
+		let stubInputView = StubInputView(amount: "10000", winningLottos: "-100")
+		let stubResultView = StubResultView()
+		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
+		let lottoStore = LottoStore(machine: lottoMachine)
+		let buyer = try Buyer(inputView: stubInputView, resultView: stubResultView)
+		
+		XCTAssertThrowsError(try buyer.enter(to: lottoStore)) { error in
 			XCTAssertEqual(error as! InputError, .invalid)
 		}
 	}
