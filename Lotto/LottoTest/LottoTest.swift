@@ -156,7 +156,7 @@ extension LottoTest {
 	}
 	
 	fileprivate func makeBuyer(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Buyer {
-		let stubInputView = StubInputView(amount: amount, winningLottos: winningLottos)
+		let stubInputView = StubInputView(amount: amount, winningLottos: winningLottos, bonusNumber: bonusNumber)
 		let stubResultView = StubResultView()
 		let buyer = Buyer(inputView: stubInputView, resultView: stubResultView)
 		return buyer
