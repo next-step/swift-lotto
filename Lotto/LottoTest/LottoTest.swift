@@ -17,10 +17,34 @@ class LottoTest: XCTestCase {
         XCTAssertEqual(result, ["1", "2", "3"])
     }
     
+    func test_입력받은_문자열이_쉼표를_기준으로_Split_잘되는지() {
+        let input = "1,2"
+        
+        let result = Calculator().split(input: input)
+        
+        XCTAssertEqual(result, ["1", "2"])
+    }
+    
+    func test_입력받은_문자열이_콜론을_기준으로_Split_잘되는지() {
+        let input = "1:2"
+        
+        let result = Calculator().split(input: input)
+        
+        XCTAssertEqual(result, ["1", "2"])
+    }
+    
+    func test_입력받은_문자열이_하나일경우_Split_잘되는지() {
+        let input = "1"
+        
+        let result = Calculator().split(input: input)
+        
+        XCTAssertEqual(result, ["1"])
+    }
+    
     func test_문자열_덧셈() {
         let input = ["1", "2", "3"]
         
-        let result = Calculator().add(input: input)
+        let result = try? Calculator().add(input: input)
         
         XCTAssertEqual(result, 6)
     }
@@ -56,5 +80,5 @@ class LottoTest: XCTestCase {
         
         XCTAssertEqual(result, 0)
     }
-    
+
 }
