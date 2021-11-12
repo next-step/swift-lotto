@@ -67,35 +67,35 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldGetWinningFourthPlaceWhen3NumbersMatchEachLotto() throws {
-		let buyer = try makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 20, 30, 40")
+		let buyer = makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 20, 30, 40")
 		buyer.enter(to: try makeLottoStore())
 
 		XCTAssertEqual(buyer.winningStatistics.numberOfFifthPlace, 5)
 	}
 	
 	func test_shouldGetWinningThirdPlaceWhen4NumbersMatchEachLotto() throws {
-		let buyer = try makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 30, 40")
+		let buyer = makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 30, 40")
 		buyer.enter(to: try makeLottoStore())
 
 		XCTAssertEqual(buyer.winningStatistics.numberOfFourthPlace, 5)
 	}
 	
 	func test_shouldGetWinningSecondPlaceWhen5NumbersMatchEachLotto() throws {
-		let buyer = try makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 14, 40")
+		let buyer = makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 14, 40")
 		buyer.enter(to: try makeLottoStore())
 
 		XCTAssertEqual(buyer.winningStatistics.numberOfThirdPlace, 5)
 	}
 	
 	func test_shouldGetWinningFirstPlaceWhen6NumbersMatchEachLotto() throws {
-		let buyer = try makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 14, 15")
+		let buyer = makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 14, 15")
 		buyer.enter(to: try makeLottoStore())
 
 		XCTAssertEqual(buyer.winningStatistics.numberOfFirstPlace, 5)
 	}
 	
 	func test_shouldBeRateOfReturn5WhenBuy14000AndWin70000() throws {
-		let buyer = try makeBuyer(amount: "14000", winningLottos: "10, 11, 12, 20, 30, 40")
+		let buyer = makeBuyer(amount: "14000", winningLottos: "10, 11, 12, 20, 30, 40")
 		buyer.enter(to: try makeLottoStore())
 
 		XCTAssertEqual(buyer.winningStatistics.rateOfReturn, 5.0)
@@ -106,14 +106,14 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldOutputPurchasedLottosWhenBuyerPurchasesLotto() throws {
-		let buyer = try makeBuyer(amount: "10000", winningLottos: "10, 11, 12, 13, 14, 15")
+		let buyer = makeBuyer(amount: "10000", winningLottos: "10, 11, 12, 13, 14, 15")
 		buyer.enter(to: try makeLottoStore())
 		
 		XCTAssertTrue(StubResultView.Verify.printOutPurchasedLottos)
 	}
 	
 	func test_shouldOutputWinningStatisticsWhenInputWinningNumbers() throws {
-		let buyer = try makeBuyer(amount: "10000", winningLottos: "10, 11, 12, 13, 14, 15")
+		let buyer = makeBuyer(amount: "10000", winningLottos: "10, 11, 12, 13, 14, 15")
 		buyer.enter(to: try makeLottoStore())
 		
 		XCTAssertTrue(StubResultView.Verify.printOutWinningStatistics)
@@ -137,15 +137,20 @@ class LottoTest: XCTestCase {
 // MARK: - Step3
 extension LottoTest {
 	func test_shouldAwardSecondPlaceWhenTheBonusNumberAnd5NumbersAreTheSameInALotto() throws {
-		let buyer = try makeBuyer(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 6", bonusNumber: "15")
+		let buyer = makeBuyer(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 6", bonusNumber: "15")
 		buyer.enter(to: try makeLottoStore())
 		XCTAssertEqual(buyer.winningStatistics.numberOfSecondPlace, 1)
+	}
+	
+	func test_shouldOutputInvalidErrorWhenBonusNumberIsOutOfRanges() throws {
+		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 6", bonusNumber: "-1"))
+		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 6", bonusNumber: "46"))
 	}
 }
 
 extension LottoTest {
-	fileprivate func verifyPrintOutError(amount: String, winningLottos: String) throws -> Bool {
-		let buyer = try makeBuyer(amount: amount, winningLottos: winningLottos)
+	fileprivate func verifyPrintOutError(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Bool {
+		let buyer = makeBuyer(amount: amount, winningLottos: winningLottos, bonusNumber: bonusNumber)
 		buyer.enter(to: try makeLottoStore())
 		return StubResultView.Verify.printOutError
 	}
@@ -156,7 +161,7 @@ extension LottoTest {
 		StubResultView.Verify.printOutError = false
 	}
 	
-	fileprivate func makeBuyer(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Buyer {
+	fileprivate func makeBuyer(amount: String, winningLottos: String, bonusNumber: String = "45") -> Buyer {
 		let stubInputView = StubInputView(amount: amount, winningLottos: winningLottos, bonusNumber: bonusNumber)
 		let stubResultView = StubResultView()
 		let buyer = Buyer(inputView: stubInputView, resultView: stubResultView)
