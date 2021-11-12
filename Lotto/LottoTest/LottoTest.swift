@@ -146,6 +146,11 @@ extension LottoTest {
 		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 6", bonusNumber: "-1"))
 		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 6", bonusNumber: "46"))
 	}
+	
+	func test_shouldOutputInvalidErrorWhenBonusNumberIsNotNumber() throws {
+		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 6", bonusNumber: "abcd"))
+		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 6", bonusNumber: "!#"))
+	}
 }
 
 extension LottoTest {
