@@ -7,8 +7,13 @@
 
 import Foundation
 
-enum StringOption {
-    static let seperator = ",:"
+enum SplitOption: String, CaseIterable {
+    case comma = ","
+    case colon = ":"
+    
+    static func combineSplitOption() -> String {
+        allCases.map { ($0.rawValue) }.joined()
+    }
 }
 
 enum InputError: Error {
@@ -25,7 +30,7 @@ struct Calculator {
     }
     
     func split(input: String) -> [String] {
-        input.components(separatedBy: CharacterSet(charactersIn: StringOption.seperator))
+        input.components(separatedBy: CharacterSet(charactersIn: SplitOption.combineSplitOption()))
     }
     
     func add(input: [String]) -> Int {
