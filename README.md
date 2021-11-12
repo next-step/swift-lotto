@@ -21,14 +21,14 @@ NEXTSTEP with yagom-academy
 - InputView
     - [x] 구매 금액 입력
     - [x] 당첨 번호 입력
-    - [ ] 보너스 번호 입력
+    - [x] 보너스 번호 입력
 <br>
 - ResultView
     - [x] 구매한 로또 개수 출력
     - [x] 자동 생성된 로또 번호 출력
     - [x] 당첨 통계 출력
     - [x] 수익률 출력
-    - [ ] 보너스 번호가 일치하는 2등 출력
+    - [x] 보너스 번호가 일치하는 2등 출력
 <br>
 ### Business Logic
 - 입력된 금액 유효성 검사
