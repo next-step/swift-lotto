@@ -24,32 +24,41 @@ struct Calculator {
     func calculate(input: String) throws -> Int {
         let splitInput = split(input: input)
         
-        try checkInputValid(input: splitInput)
-        
-        return add(input: splitInput)
+        return try add(input: splitInput)
     }
     
     func split(input: String) -> [String] {
         input.components(separatedBy: CharacterSet(charactersIn: SplitOption.combineSplitOption()))
     }
     
-    func add(input: [String]) -> Int {
-        guard !input.isEmpty, input != [""] else { return 0 }
+    func add(input: [String]) throws -> Int {
+        let convertedValue = convertInputToInt(input: input)
         
-        return input.compactMap { num in
+        try convertedValue.forEach { num in
+            try checkInputValid(input: num)
+        }
+        
+        let result = convertedValue.reduce(0) { prev, next in
+            prev + next
+        }
+        
+        return result
+    }
+    
+    private func checkInputValid(input: Int) throws {
+        guard input > 0 else { throw InputError.valueIsInvalid }
+    }
+    
+    private func convertInputToInt(input: [String]) -> [Int] {
+        input.compactMap { num in
             Int(num)
-        }.reduce(0) { prev, next in
-            return prev + next
         }
     }
-    
-    func checkInputValid(input: [String]) throws {
-        try convertInputToInt(input: input).forEach { num in
-            guard num > 0 else { throw InputError.valueIsInvalid }
-        }
-    }
-    
-    func convertInputToInt(input: [String]) -> [Int] {
-        input.compactMap { Int($0) }
+}
+
+fileprivate extension Collection {
+    /// 현재 쓰지 않지만 리뷰어님의 피드백을 듣고 만들어 보았습니다!
+    var isNotEmpty: Bool {
+        return !self.isEmpty
     }
 }
