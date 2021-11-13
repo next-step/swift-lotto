@@ -14,35 +14,41 @@ enum CalcalatorInputError: Error {
 
 class StringCalculator {
     func plus(input: String?) throws -> Int {
+        if let number = try checkEmptyAndInteger(input) {
+            return number
+        }
+        
+        let components = (input ?? "").components(separatedBy: [",", ":"])
+        let integers = components.compactMap { Int($0) }
+        
+        try checkNotIntegerAndMinus(integers: integers, stringComponents: components)
+        return integers.reduce(0) { result, integer in
+            result + integer
+        }
+    }
+    
+    private func checkEmptyAndInteger(_ input: String?) throws -> Int? {
         guard let input = input,
               !input.isEmpty
         else {
             return 0
         }
         
-        if let number = Int(input) {
-            if number < 0 {
-                throw CalcalatorInputError.minusInteger
-            }
-            return number
-        }
+        guard let number = Int(input) else { return nil }
+        guard number > 0 else { throw CalcalatorInputError.minusInteger }
         
-        let components = input.components(separatedBy: [",", ":"])
-        let integers = components.compactMap { Int($0) }
-        
-        guard integers.count == components.count else {
+        return number
+    }
+    
+    private func checkNotIntegerAndMinus(integers: [Int], stringComponents: [String]) throws {
+        guard integers.count == stringComponents.count else {
             throw CalcalatorInputError.notInteger
         }
         
         guard !integers.contains(where: { $0 < 0 }) else {
             throw CalcalatorInputError.minusInteger
         }
-        
-        return integers.reduce(0) { result, integer in
-            result + integer
-        }
     }
-    
 }
 
 extension String {
