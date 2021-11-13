@@ -30,4 +30,10 @@ class StringCalculatorTest: XCTestCase {
         let result = calculator.plus(input: inputString)
         XCTAssertEqual(result, 0)
     }
+    
+    func test_input_string_validation_when_integer_count_1() {
+        let inputString = "123"
+        let result = calculator.plus(input: inputString)
+        XCTAssertEqual(result, 123)
+    }
 }
