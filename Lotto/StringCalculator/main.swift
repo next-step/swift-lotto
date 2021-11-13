@@ -21,6 +21,9 @@ class StringCalculator {
         }
         
         if let number = Int(input) {
+            if number < 0 {
+                throw CalcalatorInputError.minusInteger
+            }
             return number
         }
         
