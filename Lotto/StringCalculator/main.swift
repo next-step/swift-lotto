@@ -7,8 +7,12 @@
 
 import Foundation
 
+enum CalcalatorInputError: Error {
+    case notInteger
+}
+
 class StringCalculator {
-    func plus(input: String?) -> Int {
+    func plus(input: String?) throws -> Int {
         guard let input = input,
               !input.isEmpty
         else {
@@ -19,7 +23,23 @@ class StringCalculator {
             return number
         }
         
+        let components = input.components(separatedBy: [",", ":"])
+        let integers = components.compactMap { Int($0) }
+        guard integers.count == components.count else {
+            throw CalcalatorInputError.notInteger
+        }
+        
         return 1
     }
     
+}
+
+extension String {
+    func components(separatedBy separators: [String]) -> [String] {
+        var output: [String] = [self]
+        for separator in separators {
+            output = output.flatMap { $0.components(separatedBy: separator) }
+        }
+        return output
+    }
 }
