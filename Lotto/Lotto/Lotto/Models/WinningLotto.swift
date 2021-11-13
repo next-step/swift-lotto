@@ -9,27 +9,15 @@ import Foundation
 
 protocol WinningLottoInputable {
 	var lotto: Lotto { get }
-	init?(input: String?, numberRange: ClosedRange<Int>) throws
+	init(input: String?, numberRange: ClosedRange<Int>) throws
 }
 
 struct WinningLotto: WinningLottoInputable {
 	let lotto : Lotto
 	
-	init?(input: String?, numberRange: ClosedRange<Int>) {
-		guard let validInput = input,
-					let lotto = try? Lotto(numbers: validInput.splitToIntByComma(), numberRange: numberRange)
-		else { return nil }
-		
-		self.lotto = lotto
-	}
-}
+	init(input: String?, numberRange: ClosedRange<Int>) throws {
+		guard let validInput = input else { throw InputError.invalid }
 
-fileprivate extension String {
-	func splitToIntByComma() throws -> [Int] {
-		try self.replacingOccurrences(of: " ", with: "")
-			.components(separatedBy: ",")
-			.map {
-				try $0.toPositiveInt()
-			}
+		self.lotto = try Lotto(numbers: validInput, numberRange: numberRange)
 	}
 }

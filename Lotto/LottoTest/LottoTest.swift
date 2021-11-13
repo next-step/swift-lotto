@@ -15,22 +15,22 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldGet5LottosWhenTheLottoMachineQuickPicks5Tickets() throws {
-		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
-		let lotto = lottoMachine.quickPicks(for: 5)
+		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
+		let lotto = try lottoMachine.quickPicks(for: 5)
 		XCTAssertEqual(lotto.count, 5)
 	}
 	
 	func test_shouldGetNumbersWhenContainedInTheRangeOfRandomNumbers() throws {
-		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
-		let lotto = lottoMachine.quickPicks(for: 2)
+		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
+		let lotto = try lottoMachine.quickPicks(for: 2)
 		
-		let results = [Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.numberRange), Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.numberRange)]
+		let results = [try Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.numberRange), try Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.numberRange)]
 		
 		XCTAssertEqual(lotto, results)
 	}
 	
 	func test_shouldGet5TicketsWhenInputIs5200Won() throws {
-		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
+		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
 		let lottoStore = LottoStore(machine: lottoMachine)
 		
 		let purchasedLottos = try lottoStore.sell(for: 5200)
@@ -39,20 +39,20 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldThrowInvalidErrorWhenAmountIsNotPositiveNumber() throws {
-		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
+		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
 		let lottoStore = LottoStore(machine: lottoMachine)
 		
 		XCTAssertThrowsError(try lottoStore.sell(for: -100)) { error in
-			XCTAssertEqual(error as! InputError, .invalid)
+			XCTAssertEqual(error as! InputError, .unableToPurchase)
 		}
 		
 		XCTAssertThrowsError(try lottoStore.sell(for: -10000)) { error in
-			XCTAssertEqual(error as! InputError, .invalid)
+			XCTAssertEqual(error as! InputError, .unableToPurchase)
 		}
 	}
 	
 	func test_shouldBeDifferentNumbersWhenLottoIsGenerated() throws {
-		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
+		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
 		let lottoStore = LottoStore(machine: lottoMachine)
 		
 		let purchasedLottos = try lottoStore.sell(for: 100000)
@@ -65,35 +65,35 @@ class LottoTest: XCTestCase {
 	
 	func test_shouldGetWinningFourthPlaceWhen3NumbersMatchEachLotto() throws {
 		let buyer = try makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 20, 30, 40")
-		try buyer.enter(to: try makeLottoStore())
+		buyer.enter(to: try makeLottoStore())
 
 		XCTAssertEqual(buyer.winningStatistics.numberOfFourthPlace, 5)
 	}
 	
 	func test_shouldGetWinningThirdPlaceWhen4NumbersMatchEachLotto() throws {
 		let buyer = try makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 30, 40")
-		try buyer.enter(to: try makeLottoStore())
+		buyer.enter(to: try makeLottoStore())
 
 		XCTAssertEqual(buyer.winningStatistics.numberOfThirdPlace, 5)
 	}
 	
 	func test_shouldGetWinningSecondPlaceWhen5NumbersMatchEachLotto() throws {
 		let buyer = try makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 14, 40")
-		try buyer.enter(to: try makeLottoStore())
+		buyer.enter(to: try makeLottoStore())
 
 		XCTAssertEqual(buyer.winningStatistics.numberOfSecondPlace, 5)
 	}
 	
 	func test_shouldGetWinningFirstPlaceWhen6NumbersMatchEachLotto() throws {
 		let buyer = try makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 14, 15")
-		try buyer.enter(to: try makeLottoStore())
+		buyer.enter(to: try makeLottoStore())
 
 		XCTAssertEqual(buyer.winningStatistics.numberOfFirstPlace, 5)
 	}
 	
 	func test_shouldBeRateOfReturn5WhenBuy14000AndWin70000() throws {
 		let buyer = try makeBuyer(amount: "14000", winningLottos: "10, 11, 12, 20, 30, 40")
-		try buyer.enter(to: try makeLottoStore())
+		buyer.enter(to: try makeLottoStore())
 
 		XCTAssertEqual(buyer.winningStatistics.rateOfReturn, 5.0)
 	}
@@ -104,14 +104,14 @@ class LottoTest: XCTestCase {
 	
 	func test_shouldOutputPurchasedLottosWhenBuyerPurchasesLotto() throws {
 		let buyer = try makeBuyer(amount: "10000", winningLottos: "10, 11, 12, 13, 14, 15")
-		try buyer.enter(to: try makeLottoStore())
+		buyer.enter(to: try makeLottoStore())
 		
 		XCTAssertTrue(StubResultView.Verify.printOutPurchasedLottos)
 	}
 	
 	func test_shouldOutputWinningStatisticsWhenInputWinningNumbers() throws {
 		let buyer = try makeBuyer(amount: "10000", winningLottos: "10, 11, 12, 13, 14, 15")
-		try buyer.enter(to: try makeLottoStore())
+		buyer.enter(to: try makeLottoStore())
 		
 		XCTAssertTrue(StubResultView.Verify.printOutWinningStatistics)
 	}
@@ -132,7 +132,7 @@ class LottoTest: XCTestCase {
 	
 	private func verifyPrintOutError(amount: String, winningLottos: String) throws -> Bool {
 		let buyer = try makeBuyer(amount: amount, winningLottos: winningLottos)
-		try buyer.enter(to: try makeLottoStore())
+		buyer.enter(to: try makeLottoStore())
 		return StubResultView.Verify.printOutError
 	}
 	
@@ -150,11 +150,11 @@ class LottoTest: XCTestCase {
 	}
 	
 	private func makeLottoStore() throws -> LottoStore {
-		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
+		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
 		return LottoStore(machine: lottoMachine)
 	}
 	
-	private func makeRandomNumberGenerator() throws -> RandomNumberGenerator{
-		try RandomNumberGenerator(range: 10...15)
+	private func makeRandomNumberGenerator() -> RandomNumberGenerator{
+		RandomNumberGenerator(range: 10...15)
 	}
 }

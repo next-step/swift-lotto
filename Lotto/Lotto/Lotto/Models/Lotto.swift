@@ -9,14 +9,24 @@ import Foundation
 
 struct Lotto: Equatable, Hashable {
 	let numbers: [Int]
-	init?(numbers: [Int], numberRange: ClosedRange<Int>) {
-		guard numbers.filter({ numberRange.contains($0) }).count == LottoOption.numberOfNumbers,
-					Set(numbers).count == LottoOption.numberOfNumbers
-		else {
-			return nil
+	init(numbers: [Int], numberRange: ClosedRange<Int>) throws {
+		guard numbers.filter({ numberRange.contains($0) }).count == LottoOption.numberOfNumbers else {
+			throw InputError.mismatchedNumber
+		}
+		
+		guard Set(numbers).count == LottoOption.numberOfNumbers else {
+			throw InputError.duplicatedNumber
 		}
 					
 		self.numbers = numbers.sorted(by: <)
+	}
+	
+	init(numbers: String, numberRange: ClosedRange<Int>) throws {
+		guard let validNumbers = try? numbers.splitToIntByComma() else {
+			throw InputError.invalid
+		}
+		
+		try self.init(numbers: validNumbers, numberRange: numberRange)
 	}
 }
 
@@ -32,5 +42,16 @@ extension Lotto {
 	
 	private func findWinningRanking(numberOfMatchingNumbers: Int) -> Winnings {
 		Winnings(rawValue: numberOfMatchingNumbers) ?? .notWinning
+	}
+}
+
+
+fileprivate extension String {
+	func splitToIntByComma() throws -> [Int] {
+		try self.replacingOccurrences(of: " ", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
+			.components(separatedBy: ",")
+			.map {
+				try $0.toPositiveInt()
+			}
 	}
 }

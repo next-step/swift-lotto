@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LottoNumberGeneratable {
-	func generate() -> Lotto?
+	func generate() throws -> Lotto
 }
 
 struct AutomaticGenerator: LottoNumberGeneratable {
@@ -18,8 +18,8 @@ struct AutomaticGenerator: LottoNumberGeneratable {
 		self.randomNumberGenerator = randomNumberGenerator
 	}
 	
-	func generate() -> Lotto? {
-		Lotto(numbers: generateLottoNumbers(), numberRange: LottoOption.numberRange)
+	func generate() throws -> Lotto {
+		try Lotto(numbers: generateLottoNumbers(), numberRange: LottoOption.numberRange)
 	}
 	
 	private func generateLottoNumbers() -> [Int] {

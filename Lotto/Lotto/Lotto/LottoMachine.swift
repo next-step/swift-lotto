@@ -14,13 +14,13 @@ struct LottoMachine {
 		self.randomNumberGenerator = randomNumberGenerator
 	}
 	
-	func quickPicks(for tickets: Int) -> [Lotto] {
+	func quickPicks(for tickets: Int) throws -> [Lotto] {
+		guard tickets > 0 else { throw InputError.unableToPurchase }
 		let lottoNumberGenerator = AutomaticGenerator(randomNumberGenerator: randomNumberGenerator)
 		var lottos = [Lotto]()
-		(0..<tickets).forEach { _ in
-			if let lotto = lottoNumberGenerator.generate() {
-				lottos.append(lotto)
-			}
+		try (0..<tickets).forEach { _ in
+			let lotto = try lottoNumberGenerator.generate()
+			lottos.append(lotto)
 		}
 		return lottos
 	}

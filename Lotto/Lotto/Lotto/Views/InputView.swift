@@ -11,7 +11,7 @@ protocol Inputable {
 	func readAmount(completion: (AmountInputable) -> Void) throws
 	func readWinningNumber(completion: (WinningLotto) -> Void) throws
 	func makeAmount() throws -> Amount
- 	func makeWinningLotto() -> WinningLotto?
+ 	func makeWinningLotto() throws -> WinningLotto
 }
 
 extension Inputable {
@@ -21,9 +21,7 @@ extension Inputable {
 	}
 	
 	func readWinningNumber(completion: (WinningLotto) -> Void) throws {
-		guard let lotto = makeWinningLotto() else {
-			throw InputError.invalid
-		}
+		let lotto = try makeWinningLotto()
 		completion(lotto)
 	}
 }
@@ -34,8 +32,8 @@ struct InputView: Inputable {
 		return try Amount(input: readLine())
 	}
 	
-	func makeWinningLotto() -> WinningLotto? {
+	func makeWinningLotto() throws -> WinningLotto {
 		print("지난 주 당첨 번호를 입력해 주세요.")
-		return WinningLotto(input: readLine(), numberRange: LottoOption.numberRange)
+		return try WinningLotto(input: readLine(), numberRange: LottoOption.numberRange)
 	}
 }

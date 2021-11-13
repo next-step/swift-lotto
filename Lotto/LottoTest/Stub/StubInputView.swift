@@ -20,7 +20,7 @@ struct StubInputView: Inputable {
 		try Amount(input: inputtedAmount)
 	}
 	
-	func makeWinningLotto() -> WinningLotto? {
-		WinningLotto(input: inputtedWinningLottos, numberRange: LottoOption.numberRange)
+	func makeWinningLotto() throws -> WinningLotto {
+		try WinningLotto(input: inputtedWinningLottos, numberRange: LottoOption.numberRange)
 	}
 }
