@@ -47,4 +47,15 @@ class StringCalculatorTest: XCTestCase {
             XCTAssertEqual(error, .notInteger)
         }
     }
+    
+    func test_input_string_validation_when_minus_integer() {
+        let inputString = "-1:-2"
+        XCTAssertThrowsError(try calculator.plus(input: inputString)) { error in
+            guard let error = error as? CalcalatorInputError else {
+                return
+            }
+            
+            XCTAssertEqual(error, .minusInteger)
+        }
+    }
 }
