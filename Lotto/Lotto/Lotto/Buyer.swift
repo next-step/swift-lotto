@@ -19,7 +19,7 @@ final class Buyer {
 		self.resultView = resultView
 		self.inputView = inputView
 		do {
-			try inputView.read { inputtedAmount  in
+			try inputView.readAmount { inputtedAmount  in
 				self.money = inputtedAmount.amount
 			}
 		} catch (let error) {
@@ -42,7 +42,7 @@ final class Buyer {
 	}
 	
 	private func checkWinningStatistics() throws {
-		try self.inputView.read { winningLotto in
+		try self.inputView.readWinningNumber { winningLotto in
 			winningStatistics.checkLottoWinningResults(by: winningLotto, purchasedLottos: self.purchasedLottos)
 		}
 		self.resultView.printOut(winningStatistics: winningStatistics)
