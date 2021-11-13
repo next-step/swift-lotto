@@ -18,7 +18,11 @@ class StringCalculatorTest: XCTestCase {
     override func tearDownWithError() throws {
         calculator = nil
     }
-    
+}
+
+// MARK: - input validation test
+
+extension StringCalculatorTest {
     func test_input_string_validation_when_empty_return_0() {
         let inputString: String? = ""
         let result = try? calculator.plus(input: inputString)
