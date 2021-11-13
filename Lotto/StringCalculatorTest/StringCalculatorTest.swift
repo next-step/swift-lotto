@@ -21,19 +21,19 @@ class StringCalculatorTest: XCTestCase {
     
     func test_input_string_validation_when_empty_return_0() {
         let inputString: String? = ""
-        let result = calculator.plus(input: inputString)
+        let result = try? calculator.plus(input: inputString)
         XCTAssertEqual(result, 0)
     }
     
     func test_input_string_validation_when_nil_return_0() {
         let inputString: String? = nil
-        let result = calculator.plus(input: inputString)
+        let result = try? calculator.plus(input: inputString)
         XCTAssertEqual(result, 0)
     }
     
     func test_input_string_validation_when_integer_count_1() {
         let inputString = "123"
-        let result = calculator.plus(input: inputString)
+        let result = try? calculator.plus(input: inputString)
         XCTAssertEqual(result, 123)
     }
     
