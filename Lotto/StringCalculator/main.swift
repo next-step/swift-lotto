@@ -9,6 +9,7 @@ import Foundation
 
 enum CalcalatorInputError: Error {
     case notInteger
+    case minusInteger
 }
 
 class StringCalculator {
@@ -25,8 +26,13 @@ class StringCalculator {
         
         let components = input.components(separatedBy: [",", ":"])
         let integers = components.compactMap { Int($0) }
+        
         guard integers.count == components.count else {
             throw CalcalatorInputError.notInteger
+        }
+        
+        guard !integers.contains(where: { $0 < 0 }) else {
+            throw CalcalatorInputError.minusInteger
         }
         
         return 1
