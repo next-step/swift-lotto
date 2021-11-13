@@ -15,6 +15,10 @@ class StringCalculator {
             return 0
         }
         
+        if let number = Int(input) {
+            return number
+        }
+        
         return 1
     }
     
