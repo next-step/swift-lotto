@@ -74,3 +74,13 @@ extension StringCalculatorTest {
         }
     }
 }
+
+// MARK: - calculate plus test
+
+extension StringCalculatorTest {
+    func test_calculate_plus_integer() {
+        let inputString = "1,2:3"
+        let result = try? calculator.plus(input: inputString)
+        XCTAssertEqual(result, 6)
+    }
+}

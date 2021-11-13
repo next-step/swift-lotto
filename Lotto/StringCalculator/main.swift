@@ -38,7 +38,9 @@ class StringCalculator {
             throw CalcalatorInputError.minusInteger
         }
         
-        return 1
+        return integers.reduce(0) { result, integer in
+            result + integer
+        }
     }
     
 }
