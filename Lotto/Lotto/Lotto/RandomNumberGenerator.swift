@@ -28,6 +28,6 @@ struct RandomNumberGenerator {
 	}
 	
 	private func isNonDuplicate(_ numberOfCheck: Int, in numbers: [Int]) -> Bool {
-		!numbers.contains(numberOfCheck)
+		numbers.contains(numberOfCheck) == false
 	}
 }
