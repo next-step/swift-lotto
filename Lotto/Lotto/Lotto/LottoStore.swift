@@ -32,6 +32,6 @@ struct LottoStore {
 	}
 	
 	private func changeToBuyableQuantity(fromMoney money: Int) -> Int {
-		money / LottoOption.lottoAmount
+		money / LottoOption.amount
 	}
 }

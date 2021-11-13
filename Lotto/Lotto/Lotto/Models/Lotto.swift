@@ -10,8 +10,8 @@ import Foundation
 struct Lotto: Equatable, Hashable {
 	let numbers: [Int]
 	init?(numbers: [Int], numberRange: ClosedRange<Int>) {
-		guard numbers.filter({ numberRange.contains($0) }).count == LottoOption.numberOfLottoNumbers,
-					Set(numbers).count == LottoOption.numberOfLottoNumbers
+		guard numbers.filter({ numberRange.contains($0) }).count == LottoOption.numberOfNumbers,
+					Set(numbers).count == LottoOption.numberOfNumbers
 		else {
 			return nil
 		}

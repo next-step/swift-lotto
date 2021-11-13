@@ -8,7 +8,7 @@
 import Foundation
 
 enum LottoOption {
-	static let lottoNumberRange: ClosedRange = 1...45
-	static let numberOfLottoNumbers: Int = 6
-	static let lottoAmount: Int = 1000
+	static let numberRange: ClosedRange = 1...45
+	static let numberOfNumbers: Int = 6
+	static let amount: Int = 1000
 }

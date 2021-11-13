@@ -15,7 +15,7 @@ struct RandomNumberGenerator {
 	}
 	
 	func appendNonDuplicateNumbers(in numbers: inout [Int]) {
-		if numbers.count == LottoOption.numberOfLottoNumbers { return }
+		if numbers.count == LottoOption.numberOfNumbers { return }
 		let lottoNumber = generateNumber()
 		if isNonDuplicate(lottoNumber, in: numbers) {
 			numbers.append(lottoNumber)

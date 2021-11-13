@@ -8,7 +8,7 @@ import Foundation
 
 let inputView = InputView()
 let resultView = ResultView()
-let randomGenerator = RandomNumberGenerator(range: LottoOption.lottoNumberRange)
+let randomGenerator = RandomNumberGenerator(range: LottoOption.numberRange)
 let lottoMachine = LottoMachine(randomNumberGenerator: randomGenerator)
 let lottoStore = LottoStore(machine: lottoMachine)
 let buyer = Buyer(inputView: inputView, resultView: resultView)

@@ -19,7 +19,7 @@ struct AutomaticGenerator: LottoNumberGeneratable {
 	}
 	
 	func generate() -> Lotto? {
-		Lotto(numbers: generateLottoNumbers(), numberRange: LottoOption.lottoNumberRange)
+		Lotto(numbers: generateLottoNumbers(), numberRange: LottoOption.numberRange)
 	}
 	
 	private func generateLottoNumbers() -> [Int] {
