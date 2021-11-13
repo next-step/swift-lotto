@@ -36,4 +36,15 @@ class StringCalculatorTest: XCTestCase {
         let result = calculator.plus(input: inputString)
         XCTAssertEqual(result, 123)
     }
+    
+    func test_input_string_validation_when_not_integer() {
+        let inputString = "#1:2"
+        XCTAssertThrowsError(try calculator.plus(input: inputString)) { error in
+            guard let error = error as? CalcalatorInputError else {
+                return
+            }
+            
+            XCTAssertEqual(error, .notInteger)
+        }
+    }
 }
