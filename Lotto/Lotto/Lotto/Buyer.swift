@@ -28,6 +28,7 @@ final class Buyer {
 	}
 	
 	func enter(to store: LottoStore) {
+		guard hasMoney() else { return }
 		do {
 			try buyLotto(at: store)
 			try self.checkWinningStatistics()
@@ -52,5 +53,9 @@ final class Buyer {
 		if let inputError = error as? InputError {
 			self.resultView.printOut(error: inputError)
 		}
+	}
+	
+	private func hasMoney() -> Bool {
+		self.money > 0
 	}
 }
