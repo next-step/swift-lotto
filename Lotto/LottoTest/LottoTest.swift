@@ -16,20 +16,17 @@ class LottoTest: XCTestCase {
 	
 	func test_shouldGet5LottosWhenTheLottoMachineQuickPicks5Tickets() throws {
 		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
-		let lotteryTickets = lottoMachine.quickPicks(for: 5)
-		XCTAssertEqual(lotteryTickets.count, 5)
+		let lotto = lottoMachine.quickPicks(for: 5)
+		XCTAssertEqual(lotto.count, 5)
 	}
 	
 	func test_shouldGetNumbersWhenContainedInTheRangeOfRandomNumbers() throws {
 		let lottoMachine = LottoMachine(randomNumberGenerator: try makeRandomNumberGenerator())
-		let lotteryTickes = lottoMachine
-			.quickPicks(for: 2)
-			.map { $0.numbers.sorted { $0 < $1 } }
-			.map { Lotto(numbers: $0, numberRange: LottoOption.lottoNumberRange) }
+		let lotto = lottoMachine.quickPicks(for: 2)
 		
-		let results = [Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.lottoNumberRange), Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.lottoNumberRange)]
+		let results = [Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.numberRange), Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.numberRange)]
 		
-		XCTAssertEqual(lotteryTickes, results)
+		XCTAssertEqual(lotto, results)
 	}
 	
 	func test_shouldGet5TicketsWhenInputIs5200Won() throws {
