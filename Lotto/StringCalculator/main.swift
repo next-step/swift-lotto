@@ -7,4 +7,15 @@
 
 import Foundation
 
-
+class StringCalculator {
+    func plus(input: String?) -> Int {
+        guard let input = input,
+              !input.isEmpty
+        else {
+            return 0
+        }
+        
+        return 1
+    }
+    
+}
