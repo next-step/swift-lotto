@@ -41,6 +41,15 @@ class LottoTest: XCTestCase {
         XCTAssertEqual(result, ["1"])
     }
     
+    func test_각각의_구분자를_결합했을때_결합이_잘되는지() {
+        let result = SplitOption.combineSplitOption()
+        
+        let expected = SplitOption.comma.rawValue + SplitOption.colon.rawValue
+        
+        XCTAssertEqual(result, expected)
+        
+    }
+    
     func test_문자열_덧셈() {
         let input = ["1", "2", "3"]
         
