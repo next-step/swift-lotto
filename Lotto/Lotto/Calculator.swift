@@ -17,12 +17,18 @@ enum SplitOption: String, CaseIterable {
 }
 
 enum InputError: Error {
-    case valueIsInvalid
+    case valueIsNegativeOrNotInteger
 }
 
 struct Calculator {
-    func calculate(input: String) throws -> Int {
-        let splitInput = split(input: input)
+    private let defaultNumber: Int = 1
+    
+    func calculate(input: String?) throws -> Int {
+        guard checkInputValueIsNilOrEmpty(input: input) == defaultNumber else {
+            return 0
+        }
+        
+        let splitInput = split(input: input ?? "")
         
         return try add(input: splitInput)
     }
@@ -35,7 +41,7 @@ struct Calculator {
         let convertedValue = convertInputToInt(input: input)
         
         try convertedValue.forEach { num in
-            try checkInputValid(input: num)
+            try checkInputValueIsMinusOrNotInteger(input: num)
         }
         
         let result = convertedValue.reduce(0) { prev, next in
@@ -45,8 +51,20 @@ struct Calculator {
         return result
     }
     
-    private func checkInputValid(input: Int) throws {
-        guard input > 0 else { throw InputError.valueIsInvalid }
+    private func checkInputValueIsNilOrEmpty(input: String?) -> Int {
+        guard let input = input else {
+            return 0
+        }
+
+        guard input.isNotEmpty else {
+            return 0
+        }
+        
+        return defaultNumber
+    }
+    
+    private func checkInputValueIsMinusOrNotInteger(input: Int) throws {
+        guard input > 0 else { throw InputError.valueIsNegativeOrNotInteger }
     }
     
     private func convertInputToInt(input: [String]) -> [Int] {

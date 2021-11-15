@@ -70,7 +70,7 @@ class LottoTest: XCTestCase {
         let input = "-1,2:3"
         
         XCTAssertThrowsError(try Calculator().calculate(input: input)) { error in
-            XCTAssertEqual(error as! InputError, InputError.valueIsInvalid)
+            XCTAssertEqual(error as! InputError, InputError.valueIsNegativeOrNotInteger)
         }
     }
     
@@ -78,12 +78,20 @@ class LottoTest: XCTestCase {
         let input = "-1,#:3"
         
         XCTAssertThrowsError(try Calculator().calculate(input: input)) { error in
-            XCTAssertEqual(error as! InputError, InputError.valueIsInvalid)
+            XCTAssertEqual(error as! InputError, InputError.valueIsNegativeOrNotInteger)
         }
     }
     
     func test_입력값이_공백인경우() {
         let input = ""
+        
+        let result = try? Calculator().calculate(input: input)
+        
+        XCTAssertEqual(result, 0)
+    }
+    
+    func test_입력값이_nil인경우() {
+        let input: String? = nil
         
         let result = try? Calculator().calculate(input: input)
         
