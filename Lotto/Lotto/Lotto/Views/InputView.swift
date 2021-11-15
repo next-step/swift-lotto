@@ -24,7 +24,6 @@ extension Inputable {
 	func readWinningNumber(completion: (WinningLotto) -> Void) throws {
 		let inputWinningLotto = try makeInputWinningLotto()
 		let inputBonusNumber = try makeBonusNumber()
-		
 		let winningLotto = WinningLotto(inputWinningLotto: inputWinningLotto, inputBonusNumber: inputBonusNumber)
 		completion(winningLotto)
 	}

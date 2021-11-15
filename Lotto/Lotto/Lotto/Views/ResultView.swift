@@ -43,7 +43,7 @@ struct ResultView: Presentable {
 			print("중복되는 숫자는 입력하실 수 없습니다.")
 		case .mismatchedNumber:
 			print("로또 숫자는 6자리만 입력 가능합니다.")
-		case .outOfRange:
+		case .outOfRangeInLotto:
 			print("로또 숫자는 1~45 사이의 숫자만 입력 가능합니다.")
 		}
 	}

@@ -142,10 +142,10 @@ class LottoTest: XCTestCase {
 	
 	func test_shouldOutputOutOfRangeErrorWhenInputNumberIsOutOfTheLottoNumberRange() throws {
 		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 46"))
-		XCTAssertEqual(stubResultView.error, InputError.outOfRange)
+		XCTAssertEqual(stubResultView.error, InputError.outOfRangeInLotto)
 		clearStub()
 		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 15", bonusNumber: "46"))
-		XCTAssertEqual(stubResultView.error, InputError.outOfRange)
+		XCTAssertEqual(stubResultView.error, InputError.outOfRangeInLotto)
 	}
 	
 	func test_shouldOutputMismatchErrorWhenInputNumberIsDeifferentFromTheLottoDigits() throws {
