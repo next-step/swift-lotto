@@ -9,6 +9,7 @@ import Foundation
 
 protocol WinningLottoInputable {
 	var lotto: Lotto { get }
+
 	var bonusNumber: Int { get }
 	init(inputWinningLotto: InputWinningLotto, inputBonusNumber: BonusNumber)
 }

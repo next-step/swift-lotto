@@ -8,26 +8,24 @@
 import Foundation
 
 protocol Inputable {
-	func read(completion: (AmountInputable) -> Void) throws
-	func read(completion: (WinningLotto) -> Void) throws
+	func readAmount(completion: (AmountInputable) -> Void) throws
+	func readWinningNumber(completion: (WinningLotto) -> Void) throws
 	func makeAmount() throws -> Amount
-	func makeInputWinningLotto() -> InputWinningLotto?
-	func makeBonusNumber() -> BonusNumber?
+ 	func makeInputWinningLotto() throws -> InputWinningLotto
+	func makeBonusNumber() throws -> BonusNumber
 }
 
 extension Inputable {
-	func read(completion: (AmountInputable) -> Void) throws {
+	func readAmount(completion: (AmountInputable) -> Void) throws {
 		let amount = try makeAmount()
 		completion(amount)
 	}
 	
-	func read(completion: (WinningLotto) -> Void) throws {
-		guard let inputWinningLotto = makeInputWinningLotto(),
-					let bonusNumber = makeBonusNumber()
-		else {
-			throw InputError.invalid
-		}
-		let winningLotto = WinningLotto(inputWinningLotto: inputWinningLotto, inputBonusNumber: bonusNumber)
+	func readWinningNumber(completion: (WinningLotto) -> Void) throws {
+		let inputWinningLotto = try makeInputWinningLotto()
+		let inputBonusNumber = try makeBonusNumber()
+		
+		let winningLotto = WinningLotto(inputWinningLotto: inputWinningLotto, inputBonusNumber: inputBonusNumber)
 		completion(winningLotto)
 	}
 }
@@ -38,13 +36,13 @@ struct InputView: Inputable {
 		return try Amount(input: readLine())
 	}
 	
-	func makeInputWinningLotto() -> InputWinningLotto? {
+	func makeInputWinningLotto() throws -> InputWinningLotto {
 		print("지난 주 당첨 번호를 입력해 주세요.")
-		return InputWinningLotto(input: readLine(), numberRange: LottoOption.lottoNumberRange)
+		return try InputWinningLotto(input: readLine(), numberRange: LottoOption.numberRange)
 	}
 	
-	func makeBonusNumber() -> BonusNumber? {
+	func makeBonusNumber() throws -> BonusNumber {
 		print("보너스 번호를 입력해 주세요.")
-		return BonusNumber(input: readLine(), numberRange: LottoOption.lottoNumberRange)
+		return try BonusNumber(input: readLine(), numberRange: LottoOption.numberRange)
 	}
 }

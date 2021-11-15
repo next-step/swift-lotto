@@ -9,22 +9,8 @@ import Foundation
 
 struct InputWinningLotto {
 	let lotto: Lotto
-	init?(input: String?, numberRange: ClosedRange<Int>) {
-		guard let validInput = input,
-					let lotto = try? Lotto(numbers: validInput.splitToIntByComma(), numberRange: numberRange)
-		else { return nil }
-		
-		self.lotto = lotto
-	}
-}
-
-
-fileprivate extension String {
-	func splitToIntByComma() throws -> [Int] {
-		try self.replacingOccurrences(of: " ", with: "")
-			.components(separatedBy: ",")
-			.map {
-				try $0.toPositiveInt()
-			}
+	init(input: String?, numberRange: ClosedRange<Int>) throws {
+		guard let validInput = input else { throw InputError.invalid }
+		self.lotto = try Lotto(numbers: validInput, numberRange: numberRange)
 	}
 }

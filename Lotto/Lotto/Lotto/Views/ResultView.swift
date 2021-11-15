@@ -37,6 +37,14 @@ struct ResultView: Presentable {
 			print("유효하지 않은 입력입니다.")
 		case .unableToPurchase:
 			print("로또는 1000원부터 구매할 수 있습니다.")
+		case .negativeNumber:
+			print("음수는 입력하실 수 없습니다.")
+		case .duplicatedNumber:
+			print("중복되는 숫자는 입력하실 수 없습니다.")
+		case .mismatchedNumber:
+			print("로또 숫자는 6자리만 입력 가능합니다.")
+		case .outOfRange:
+			print("로또 숫자는 1~45 사이의 숫자만 입력 가능합니다.")
 		}
 	}
 	

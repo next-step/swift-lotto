@@ -55,7 +55,7 @@ struct WinningStatistics {
 	}
 	
 	private func calculateRateOfReturn(by numberOfLotto: Int, prizeMoney: Int) -> Double {
-		let purchasedAmount = Double(numberOfLotto * LottoOption.lottoAmount)
+		let purchasedAmount = Double(numberOfLotto * LottoOption.amount)
 		let prize = Double(prizeMoney)
 		return (prize / purchasedAmount).floorTwoDecimalPlaces
 	}

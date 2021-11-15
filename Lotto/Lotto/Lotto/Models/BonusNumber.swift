@@ -10,11 +10,12 @@ import Foundation
 struct BonusNumber {
 	let unwrapped: Int
 	
-	init?(input: String?, numberRange: ClosedRange<Int>) {
+	init(input: String?, numberRange: ClosedRange<Int>) throws {
 		guard let validInput = input,
-					let bonusNumber = Int(validInput),
-				 numberRange.contains(bonusNumber)
-		else { return nil }
+					let bonusNumber = Int(validInput)
+		else { throw InputError.invalid }
+		
+		guard numberRange.contains(bonusNumber) else { throw InputError.outOfRange }
 		
 		self.unwrapped = bonusNumber
 	}

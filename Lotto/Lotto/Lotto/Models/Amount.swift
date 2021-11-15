@@ -20,6 +20,9 @@ struct Amount: AmountInputable {
 					let amount = Int(validInput)
 		else { throw InputError.invalid }
 		
+		if amount < 0 { throw InputError.negativeNumber }
+		if amount < 1000 { throw InputError.unableToPurchase }
+		
 		self.amount = amount
 	}
 }
