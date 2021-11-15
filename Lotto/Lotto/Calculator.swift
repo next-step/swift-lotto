@@ -33,11 +33,11 @@ struct Calculator {
         return try add(input: splitInput)
     }
     
-    func split(input: String) -> [String] {
+    private func split(input: String) -> [String] {
         input.components(separatedBy: CharacterSet(charactersIn: SplitOption.combineSplitOption()))
     }
     
-    func add(input: [String]) throws -> Int {
+    private func add(input: [String]) throws -> Int {
         let convertedValue = convertInputToInt(input: input)
         
         try convertedValue.forEach { num in
