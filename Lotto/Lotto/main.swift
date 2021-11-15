@@ -6,5 +6,10 @@
 
 import Foundation
 
-print("Hello, World!")
-
+let inputView = InputView()
+let resultView = ResultView()
+let randomGenerator = RandomNumberGenerator(range: LottoOption.numberRange)
+let lottoMachine = LottoMachine(randomNumberGenerator: randomGenerator)
+let lottoStore = LottoStore(machine: lottoMachine)
+let buyer = Buyer(inputView: inputView, resultView: resultView)
+buyer.enter(to: lottoStore)
