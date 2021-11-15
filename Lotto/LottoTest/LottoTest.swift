@@ -11,7 +11,7 @@ class LottoTest: XCTestCase {
 	fileprivate var stubResultView = StubResultView()
 	
 	override func tearDownWithError() throws {
-		clearVerify()
+		clearStub()
 	}
 	
 	func test_shouldGet5LottosWhenTheLottoMachineQuickPicks5Tickets() throws {
@@ -119,37 +119,63 @@ class LottoTest: XCTestCase {
 		buyer.enter(to: makeLottoStore())
 		
 		XCTAssertTrue(StubResultView.Verify.printOutWinningStatistics)
+		XCTAssertEqual(stubResultView.winningStatistics?.numberOfFirstPlace, 10)
 	}
 	
 	func test_shouldThrowInvalidErrorWhenWinningNumbersAreNotNumber() throws {
 		XCTAssertTrue(try verifyPrintOutError(amount: "10000", winningLottos: "abcde"))
+		XCTAssertEqual(stubResultView.error!, InputError.invalid)
 	}
 	
 	func test_shouldThrowInvalidErrorWhenWinningNumbersAreContainedNegativeNumber() throws {
 		XCTAssertTrue(try verifyPrintOutError(amount: "10000", winningLottos: "-100"))
+		XCTAssertEqual(stubResultView.error, InputError.invalid)
 	}
 	
 	func test_shouldOutputErrorMessageWhenThrowsInvalidError() throws {
 		XCTAssertTrue(try verifyPrintOutError(amount: "-1000", winningLottos: "10, 11, 12, 13, 14, 15"))
-		clearVerify()
+		XCTAssertEqual(stubResultView.error, InputError.negativeNumber)
+		clearStub()
 		XCTAssertTrue(try verifyPrintOutError(amount: "acsdfe", winningLottos: "10, 11, 12, 13, 14, 15"))
+		XCTAssertEqual(stubResultView.error, InputError.invalid)
 	}
 	
-	private func verifyPrintOutError(amount: String, winningLottos: String) throws -> Bool {
-		let buyer = makeBuyer(amount: amount, winningLottos: winningLottos)
+	func test_shouldOutputOutOfRangeErrorWhenInputNumberIsOutOfTheLottoNumberRange() throws {
+		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 46"))
+		XCTAssertEqual(stubResultView.error, InputError.outOfRange)
+		clearStub()
+		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 15", bonusNumber: "46"))
+		XCTAssertEqual(stubResultView.error, InputError.outOfRange)
+	}
+	
+	func test_shouldOutputMismatchErrorWhenInputNumberIsDeifferentFromTheLottoDigits() throws {
+		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 46, 47"))
+		XCTAssertEqual(stubResultView.error, InputError.mismatchedNumber)
+		clearStub()
+		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13", bonusNumber: "46"))
+		XCTAssertEqual(stubResultView.error, InputError.mismatchedNumber)
+	}
+	
+	func test_shouldOutputDuplicateErrorWhenInputNumberIsDuplicated() throws {
+		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 14, 10"))
+		XCTAssertEqual(stubResultView.error, InputError.duplicatedNumber)
+		clearStub()
+		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 11, 10", bonusNumber: "46"))
+		XCTAssertEqual(stubResultView.error, InputError.duplicatedNumber)
+	}
+	
+	private func verifyPrintOutError(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Bool {
+		let buyer = makeBuyer(amount: amount, winningLottos: winningLottos, bonusNumber: bonusNumber)
 		buyer.enter(to: makeLottoStore())
 		return StubResultView.Verify.printOutError
 	}
 	
-	fileprivate func clearVerify() {
-		StubResultView.Verify.printOutPurchasedLottos = false
-		StubResultView.Verify.printOutWinningStatistics = false
-		StubResultView.Verify.printOutError = false
+	private func clearStub() {
+		stubResultView.clear()
 	}
 	
 	fileprivate func makeBuyer(amount: String, winningLottos: String, bonusNumber: String = "45") -> Buyer {
 		let stubInputView = StubInputView(amount: amount, winningLottos: winningLottos, bonusNumber: bonusNumber)
-		let stubResultView = StubResultView()
 		let buyer = Buyer(inputView: stubInputView, resultView: stubResultView)
 		return buyer
 	}
