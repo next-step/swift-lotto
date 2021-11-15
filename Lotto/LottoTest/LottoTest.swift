@@ -157,49 +157,4 @@ class LottoTest: XCTestCase {
 	private func makeRandomNumberGenerator() -> RandomNumberGenerator{
 		RandomNumberGenerator(range: 10...15)
 	}
-	
-	func test_shouldGetNumbersWhenContainedInTheRangeOfRandomNumbers() throws {
-		let randomNumberGenerator = RandomNumberGenerator(range: 10...10)
-		let lottoMachine = LottoMachine()
-		let lotteryTickes = lottoMachine.quickPicks(for: 2)
-		
-		XCTAssertEqual(lotteryTickes, [Lotto(numbers: [10, 10, 10, 10, 10, 10]), Lotto(numbers: [10, 10, 10, 10, 10, 10])])
-	}
-	
-	func test_shouldGet5TicketsWhenInputIs5200Won() throws {
-		let randomNumberGenerator = RandomNumberGenerator(range: 10...10)
-		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
-		let lottoStore = LottoStore(machine: lottoMachine)
-		
-		let purchasedLottos = try lottoStore.sell(for: 5200)
-		
-		XCTAssertEqual(purchasedLottos.count, 5)
-	}
-	
-	func test_shouldThrowInvalidErrorWhenAmountIsNotPositiveNumber() throws {
-		let randomNumberGenerator = RandomNumberGenerator(range: 10...10)
-		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
-		let lottoStore = LottoStore(machine: lottoMachine)
-		
-		XCTAssertThrowsError(try lottoStore.sell(for: -100)) { error in
-			XCTAssertEqual(error as! PaymentError, .invalid)
-		}
-		
-		XCTAssertThrowsError(try lottoStore.sell(for: -10000)) { error in
-			XCTAssertEqual(error as! PaymentError, .invalid)
-		}
-	}
-	
-	func test_shouldBeDifferentNumbersWhenLottoIsGenerated() throws {
-		let randomNumberGenerator = RandomNumberGenerator(range: 10...15)
-		let lottoMachine = LottoMachine(randomNumberGenerator: randomNumberGenerator)
-		let lottoStore = LottoStore(machine: lottoMachine)
-		
-		let purchasedLottos = try lottoStore.sell(for: 100000)
-		
-		let result = Set(purchasedLottos)
-		result.forEach { lotto in
-			XCTAssertEqual(lotto.numbers.count , 6)
-		}
-	}
 }
