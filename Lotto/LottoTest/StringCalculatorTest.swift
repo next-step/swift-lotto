@@ -32,4 +32,10 @@ class StringCalculatorTest: XCTestCase {
         let result = calculator.processingString(by: "1,2")
         XCTAssertEqual(result, 3)
     }
+    
+    func test_구분자를_컴마_이외에_콜론도_사용가능하다() {
+        let calculator = StringCalculator()
+        let result = calculator.processingString(by: "1:2")
+        XCTAssertEqual(result, 3)
+    }
 }
