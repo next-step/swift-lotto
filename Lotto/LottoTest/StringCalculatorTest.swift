@@ -26,4 +26,10 @@ class StringCalculatorTest: XCTestCase {
         let result1 = calculator.processingString(by: "2")
         XCTAssertEqual(result1, 2)
     }
+    
+    func test_두개의_숫자를_입력하면_두_숫자의_합을_리턴한다() {
+        let calculator = StringCalculator()
+        let result = calculator.processingString(by: "1,2")
+        XCTAssertEqual(result, 3)
+    }
 }
