@@ -5,8 +5,3 @@
 // 
 
 import Foundation
-
-print("Hello, World!")
-
-let c = StringCalculator()
-c.run()
