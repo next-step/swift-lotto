@@ -7,12 +7,21 @@
 
 import Foundation
 
+enum StringCalculatorError: Error {
+    case negativeInputs
+}
+
 class StringCalculator {
 
     /// 사용자로부터 입력받은 문자열을 가공한다
-    func processingString(by inputs: String?) -> Int {
+    func processingString(by inputs: String?) throws -> Int {
         guard let inputs = inputs, inputs.isEmpty == false else { return 0 }
         let numbers = inputs.components(separatedBy: [",", ":"]).compactMap { Int($0) }
+        try numbers.forEach {
+            if $0 < 0 {
+                throw StringCalculatorError.negativeInputs
+            }
+        }
         let sum = numbers.reduce(0) { $0 + $1 }
         return sum
     }
