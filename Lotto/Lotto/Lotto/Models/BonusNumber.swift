@@ -15,7 +15,7 @@ struct BonusNumber {
 					let bonusNumber = Int(validInput)
 		else { throw InputError.invalid }
 		
-		guard numberRange.contains(bonusNumber) else { throw InputError.outOfRangeInLotto }
+		guard numberRange.contains(bonusNumber) else { throw InputError.outOfRange }
 		
 		self.unwrapped = bonusNumber
 	}

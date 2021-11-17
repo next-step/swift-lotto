@@ -57,7 +57,7 @@ fileprivate extension Array where Element == Int {
 		}
 		
 		guard self.filter({ numberRange.contains($0) }).count == LottoOption.numberOfNumbers else {
-			throw InputError.outOfRangeInLotto
+			throw InputError.outOfRange
 		}
 		
 		guard Set(self).count == LottoOption.numberOfNumbers else {

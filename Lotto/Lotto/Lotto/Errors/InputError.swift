@@ -13,5 +13,5 @@ enum InputError: Error {
 	case unableToPurchase
 	case duplicatedNumber
 	case mismatchedNumber
-	case outOfRangeInLotto
+	case outOfRange
 }
