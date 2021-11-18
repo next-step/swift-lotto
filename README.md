@@ -77,7 +77,7 @@ NEXTSTEP with yagom-academy
 
 - 로또 번호 생성
     - [x] 로또 번호 자동 생성
-    - [ ] 로또 수동 번호 생성
+    - [x] 로또 수동 번호 생성
 
 <br>
 
