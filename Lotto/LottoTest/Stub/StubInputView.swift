@@ -8,19 +8,26 @@
 import Foundation
 
 struct StubInputView: Inputable {
-	private let inputtedAmount: String?
-	private let inputtedWinningLottos: String?
 	
-	init(amount: String?, winningLottos: String?) {
-		self.inputtedAmount = amount
-		self.inputtedWinningLottos = winningLottos
+	private let amount: String?
+	private let winningLottos: String?
+	private let bonusNumber: String?
+	
+	init(amount: String?, winningLottos: String?, bonusNumber: String?) {
+		self.amount = amount
+		self.winningLottos = winningLottos
+		self.bonusNumber = bonusNumber
 	}
 	
 	func makeAmount() throws -> Amount {
-		try Amount(input: inputtedAmount)
+		try Amount(input: amount)
 	}
 	
-	func makeWinningLotto() throws -> WinningLotto {
-		try WinningLotto(input: inputtedWinningLottos, numberRange: LottoOption.numberRange)
+	func makeInputWinningLotto() throws -> InputWinningLotto {
+		try InputWinningLotto(input: winningLottos, numberRange: LottoOption.numberRange)
+	}
+	
+	func makeBonusNumber() throws -> BonusNumber {
+		try BonusNumber(input: bonusNumber, numberRange: LottoOption.numberRange)
 	}
 }

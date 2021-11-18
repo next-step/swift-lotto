@@ -17,7 +17,7 @@ struct AutomaticGenerator: LottoNumberGeneratable {
 	init(randomNumberGenerator: RandomNumberGenerator) {
 		self.randomNumberGenerator = randomNumberGenerator
 	}
-	
+
 	func generate() throws -> Lotto {
 		try Lotto(numbers: generateLottoNumbers(), numberRange: LottoOption.numberRange)
 	}

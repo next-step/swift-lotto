@@ -43,6 +43,8 @@ struct ResultView: Presentable {
 			print("중복되는 숫자는 입력하실 수 없습니다.")
 		case .mismatchedNumber:
 			print("로또 숫자는 6자리만 입력 가능합니다.")
+		case .outOfRange:
+			print("로또 숫자는 1~45 사이의 숫자만 입력 가능합니다.")
 		}
 	}
 	
@@ -61,10 +63,11 @@ struct ResultView: Presentable {
 	}
 	
 	private func printOutMatchingNumber(of winnigs: Winnings, winningStatistics: WinningStatistics) {
-		let matchingNumber = winnigs.rawValue
+		let matchingNumber = winnigs.matchCount()
+		let matchingBonusNumberText = winnigs.isMatchingBonusNumber() ? ", 보너스 번호 일치" : " "
 		let prize = winnigs.prize()
 		let numberOfMatchingNumbers = winningStatistics.numberOfWinnings(by: winnigs)
-		print("\(matchingNumber)개 일치 (\(prize)원)- \(numberOfMatchingNumbers)개")
+		print("\(matchingNumber)개 일치\(matchingBonusNumberText)(\(prize)원)- \(numberOfMatchingNumbers)개")
 	}
 	
 	private func printOut(rateOfReturn: Double) {

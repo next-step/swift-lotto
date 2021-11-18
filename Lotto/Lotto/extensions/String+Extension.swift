@@ -11,9 +11,7 @@ extension String {
 	func toPositiveInt() throws -> Int {
 		guard let unwrappedInt = Int(self),
 					unwrappedInt > 0
-		else {
-			throw ValueError.invalid
-		}
+		else { throw ValueError.invalid }
 		return unwrappedInt
 	}
 }

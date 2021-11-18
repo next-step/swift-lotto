@@ -12,6 +12,7 @@ struct WinningStatistics {
 	private(set) var numberOfSecondPlace: Int = 0
 	private(set) var numberOfThirdPlace: Int = 0
 	private(set) var numberOfFourthPlace: Int = 0
+	private(set) var numberOfFifthPlace: Int = 0
 	private(set) var rateOfReturn: Double = 0
 	
 	mutating func winning(_ winnings: Winnings) {
@@ -24,6 +25,8 @@ struct WinningStatistics {
 			numberOfThirdPlace += 1
 		case .fourthPlace:
 			numberOfFourthPlace += 1
+		case .fifthPlace:
+			numberOfFifthPlace += 1
 		default:
 			break
 		}
@@ -31,16 +34,12 @@ struct WinningStatistics {
 	
 	func numberOfWinnings(by winnings: Winnings) -> Int {
 		switch winnings {
-		case .firstPlace:
-			return numberOfFirstPlace
-		case .secondPlace:
-			return numberOfSecondPlace
-		case .thirdPlace:
-			return numberOfThirdPlace
-		case .fourthPlace:
-			return numberOfFourthPlace
-		case .notWinning:
-			return 0
+		case .firstPlace: return numberOfFirstPlace
+		case .secondPlace: return numberOfSecondPlace
+		case .thirdPlace: return numberOfThirdPlace
+		case .fourthPlace: return numberOfFourthPlace
+		case .fifthPlace: return numberOfFifthPlace
+		case .notWinning: return 0
 		}
 	}
 	

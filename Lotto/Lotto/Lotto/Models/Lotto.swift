@@ -9,15 +9,9 @@ import Foundation
 
 struct Lotto: Equatable, Hashable {
 	let numbers: [Int]
+
 	init(numbers: [Int], numberRange: ClosedRange<Int>) throws {
-		guard numbers.filter({ numberRange.contains($0) }).count == LottoOption.numberOfNumbers else {
-			throw InputError.mismatchedNumber
-		}
-		
-		guard Set(numbers).count == LottoOption.numberOfNumbers else {
-			throw InputError.duplicatedNumber
-		}
-					
+		try numbers.checkValidNumber(in: numberRange)
 		self.numbers = numbers.sorted(by: <)
 	}
 	
@@ -25,7 +19,7 @@ struct Lotto: Equatable, Hashable {
 		guard let validNumbers = try? numbers.splitToIntByComma() else {
 			throw InputError.invalid
 		}
-		
+		try validNumbers.checkValidNumber(in: numberRange)
 		try self.init(numbers: validNumbers, numberRange: numberRange)
 	}
 }
@@ -33,15 +27,15 @@ struct Lotto: Equatable, Hashable {
 extension Lotto {
 	func checkWinningRanking(with winningLotto: WinningLotto) -> Winnings {
 		let numberOfMatchingNumbers = findNumberOfMatchingNumbers(with: winningLotto)
-		return findWinningRanking(numberOfMatchingNumbers: numberOfMatchingNumbers)
+		return findWinningRanking(numberOfMatchingNumbers: numberOfMatchingNumbers, bonusNumber: winningLotto.bonusNumber)
 	}
 	
 	private func findNumberOfMatchingNumbers(with winningLotto: WinningLotto) -> Int {
 		Set(numbers).intersection(Set(winningLotto.lotto.numbers)).count
 	}
 	
-	private func findWinningRanking(numberOfMatchingNumbers: Int) -> Winnings {
-		Winnings(rawValue: numberOfMatchingNumbers) ?? .notWinning
+	private func findWinningRanking(numberOfMatchingNumbers: Int, bonusNumber: Int) -> Winnings {
+		Winnings.from(matchingCount: numberOfMatchingNumbers, matchBonus: numbers.contains(bonusNumber))
 	}
 }
 
@@ -53,5 +47,21 @@ fileprivate extension String {
 			.map {
 				try $0.toPositiveInt()
 			}
+	}
+}
+
+fileprivate extension Array where Element == Int {
+	func checkValidNumber(in numberRange: ClosedRange<Int>) throws {
+		guard self.count == LottoOption.numberOfNumbers else {
+			throw InputError.mismatchedNumber
+		}
+		
+		guard self.filter({ numberRange.contains($0) }).count == LottoOption.numberOfNumbers else {
+			throw InputError.outOfRange
+		}
+		
+		guard Set(self).count == LottoOption.numberOfNumbers else {
+			throw InputError.duplicatedNumber
+		}
 	}
 }

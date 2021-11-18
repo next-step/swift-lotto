@@ -7,25 +7,50 @@
 
 import Foundation
 
-enum Winnings: Int {
-	case firstPlace = 6
-	case secondPlace = 5
-	case thirdPlace = 4
-	case fourthPlace = 3
-	case notWinning = 0
+enum Winnings {
+	case firstPlace
+	case secondPlace
+	case thirdPlace
+	case fourthPlace
+	case fifthPlace
+	case notWinning
+	
+	static func from(matchingCount: Int,
+									 matchBonus: Bool = false) -> Self {
+		switch matchingCount {
+		case 6: return .firstPlace
+		case 5 where matchBonus: return .secondPlace
+		case 5: return .thirdPlace
+		case 4: return .fourthPlace
+		case 3: return .fifthPlace
+		default: return .notWinning
+		}
+	}
 	
 	func prize() -> Int {
 		switch self {
-		case .firstPlace:
-			return 2000000000
-		case .secondPlace:
-			return  1500000
-		case .thirdPlace:
-			return 50000
-		case .fourthPlace:
-			return  5000
-		case .notWinning:
-			return 0
+		case .firstPlace: return 2000000000
+		case .secondPlace: return 3000000
+		case .thirdPlace: return 1500000
+		case .fourthPlace: return 50000
+		case .fifthPlace: return 5000
+		case .notWinning: return 0
 		}
+	}
+	
+	func matchCount() -> Int {
+		switch self {
+		case .firstPlace: return 6
+		case .secondPlace: return 5
+		case .thirdPlace: return 5
+		case .fourthPlace: return 4
+		case .fifthPlace: return 3
+		default: return 0
+		}
+	}
+	
+	func isMatchingBonusNumber() -> Bool {
+		if self == .secondPlace { return true }
+		return false
 	}
 }
