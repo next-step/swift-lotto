@@ -64,42 +64,42 @@ class LottoTest: XCTestCase {
 	func test_shouldGetWinningFifthPlaceWhen3NumbersMatchEachLotto() throws {
 		let buyer = makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 20, 30, 40")
 		buyer.enter(to: makeLottoStore())
-
+		
 		XCTAssertEqual(buyer.winningStatistics.numberOfFifthPlace, 5)
 	}
 	
 	func test_shouldGetWinningFourthPlaceWhen4NumbersMatchEachLotto() throws {
 		let buyer = makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 30, 40")
 		buyer.enter(to: makeLottoStore())
-
+		
 		XCTAssertEqual(buyer.winningStatistics.numberOfFourthPlace, 5)
 	}
 	
 	func test_shouldGetWinningThirdPlaceWhen5NumbersMatchEachLotto() throws {
 		let buyer = makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 14, 40")
 		buyer.enter(to: makeLottoStore())
-
+		
 		XCTAssertEqual(buyer.winningStatistics.numberOfThirdPlace, 5)
 	}
 	
 	func test_shouldGetWinningSecondPlaceWhen5NumbersMatchEachLottoAndBonusNumber() throws {
 		let buyer = makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 14, 40", bonusNumber: "15")
 		buyer.enter(to: makeLottoStore())
-
+		
 		XCTAssertEqual(buyer.winningStatistics.numberOfSecondPlace, 5)
 	}
 	
 	func test_shouldGetWinningFirstPlaceWhen6NumbersMatchEachLotto() throws {
 		let buyer = makeBuyer(amount: "5000", winningLottos: "10, 11, 12, 13, 14, 15")
 		buyer.enter(to: makeLottoStore())
-
+		
 		XCTAssertEqual(buyer.winningStatistics.numberOfFirstPlace, 5)
 	}
 	
 	func test_shouldBeRateOfReturn5WhenBuy14000AndWin70000() throws {
 		let buyer = makeBuyer(amount: "14000", winningLottos: "10, 11, 12, 20, 30, 40")
 		buyer.enter(to: makeLottoStore())
-
+		
 		XCTAssertEqual(buyer.winningStatistics.rateOfReturn, 5.0)
 	}
 	
@@ -162,6 +162,13 @@ class LottoTest: XCTestCase {
 		clearStub()
 		XCTAssertTrue(try verifyPrintOutError(amount: "1000", winningLottos: "10, 11, 12, 13, 11, 10", bonusNumber: "46"))
 		XCTAssertEqual(stubResultView.error, InputError.duplicatedNumber)
+	}
+	
+	func test_shouldGetLottoWhenUsingHandOperatedMachine() throws {
+		let handOperatedMachine = HandOperatedNumberGenerator(["10, 11, 12, 13, 14, 15"])
+		let lottoNumberGenerator = LottoNumberGenerator(numberGenerator: handOperatedMachine)
+		let lotto = lottoNumberGenerator.generate()
+		XCTAssertEqual(lotto.numbers, [10, 11, 12, 13, 14, 15])
 	}
 	
 	private func verifyPrintOutError(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Bool {
