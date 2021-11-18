@@ -171,6 +171,14 @@ class LottoTest: XCTestCase {
 		XCTAssertEqual(lotto.numbers, [10, 11, 12, 13, 14, 15])
 	}
 	
+	func test_shouldGetLottoWhenInputtingHandOperatedNumber() throws {
+		let handOperatedLottos = ["1,2,3,4,5,6"]
+		let stubInputView = StubInputView(amount: "10000", winningLottos: "1,2,3,4,5,6", bonusNumber: "45", handOperatedNumber: "1", handOperatedLottos: handOperatedLottos)
+		let buyer = Buyer(inputView: stubInputView, resultView: stubResultView)
+		try buyer.buyLotto(at: makeLottoStore())
+		XCTAssertTrue(buyer.purchasedLottos.first{ $0.numbers == [1,2,3,4,5,6] }?.count == 1)
+	}
+	
 	private func verifyPrintOutError(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Bool {
 		let buyer = makeBuyer(amount: amount, winningLottos: winningLottos, bonusNumber: bonusNumber)
 		buyer.enter(to: makeLottoStore())
