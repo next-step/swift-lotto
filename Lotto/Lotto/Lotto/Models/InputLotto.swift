@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct InputWinningLotto {
+struct InputLotto: InputLotto {
 	let lotto: Lotto
 	init(input: String?, numberRange: ClosedRange<Int>) throws {
 		guard let validInput = input else { throw InputError.invalid }

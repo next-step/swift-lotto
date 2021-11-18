@@ -11,20 +11,18 @@ protocol LottoNumberGeneratable {
 	func generate() throws -> Lotto
 }
 
-struct AutomaticGenerator: LottoNumberGeneratable {
-	let randomNumberGenerator: RandomNumberGenerator
+protocol NumberGenerator {
+	func generateLottoNumbers() -> [Int]
+}
+
+struct LottoNumberGenerator: LottoNumberGeneratable {
+	let numberGenerator: NumberGenerator
 	
-	init(randomNumberGenerator: RandomNumberGenerator) {
-		self.randomNumberGenerator = randomNumberGenerator
+	init(numberGenerator: NumberGenerator) {
+		self.numberGenerator = numberGenerator
 	}
 
 	func generate() throws -> Lotto {
-		try Lotto(numbers: generateLottoNumbers(), numberRange: LottoOption.numberRange)
-	}
-	
-	private func generateLottoNumbers() -> [Int] {
-		var lottoNumbers = [Int]()
-		randomNumberGenerator.appendNonDuplicateNumbers(in: &lottoNumbers)
-		return lottoNumbers
+		try Lotto(numbers: numberGenerator.generateLottoNumbers(), numberRange: LottoOption.numberRange)
 	}
 }

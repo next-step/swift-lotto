@@ -7,14 +7,20 @@
 
 import Foundation
 
-struct RandomNumberGenerator {
+struct RandomNumberGenerator: NumberGenerator {
 	let randomNumberRange: ClosedRange<Int>
 	
 	init(range: ClosedRange<Int>) {
 		self.randomNumberRange = range
 	}
 	
-	func appendNonDuplicateNumbers(in numbers: inout [Int]) {
+	func generateLottoNumbers() -> [Int] {
+		var lottoNumbers = [Int]()
+		appendNonDuplicateNumbers(in: &lottoNumbers)
+		return lottoNumbers
+	}
+	
+	private func appendNonDuplicateNumbers(in numbers: inout [Int]) {
 		if numbers.count == LottoOption.numberOfNumbers { return }
 		let lottoNumber = generateNumber()
 		if isNonDuplicate(lottoNumber, in: numbers) {

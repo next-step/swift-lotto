@@ -165,9 +165,9 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldGetLottoWhenUsingHandOperatedMachine() throws {
-		let handOperatedMachine = HandOperatedNumberGenerator(["10, 11, 12, 13, 14, 15"])
+		let handOperatedMachine = HandOperatedNumberGenerator(input: "10, 11, 12, 13, 14, 15", range: LottoOption.numberRange)
 		let lottoNumberGenerator = LottoNumberGenerator(numberGenerator: handOperatedMachine)
-		let lotto = lottoNumberGenerator.generate()
+		let lotto = try lottoNumberGenerator.generate()
 		XCTAssertEqual(lotto.numbers, [10, 11, 12, 13, 14, 15])
 	}
 	
