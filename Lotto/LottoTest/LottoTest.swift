@@ -183,6 +183,12 @@ class LottoTest: XCTestCase {
 		XCTAssertTrue(buyer.purchasedLottos.count == 10)
 	}
 	
+	func test_shouldBuyLottosThatMatchesTheAmountWhenBuyingHandOperatedAndQuickPickLottos() throws {
+		let buyer = makeBuyer(amount: "10000", winningLottos: "1,2,3,4,5,6", bonusNumber: "45", handOperatedNumber: "1", handOperatedLottos: ["10,11,12,13,14,15", "20,21,22,23,24,25"])
+		buyer.enter(to: makeLottoStore())
+		XCTAssertTrue(buyer.purchasedLottos.count == 10)
+	}
+	
 	private func verifyPrintOutError(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Bool {
 		let buyer = makeBuyer(amount: amount, winningLottos: winningLottos, bonusNumber: bonusNumber)
 		buyer.enter(to: makeLottoStore())
