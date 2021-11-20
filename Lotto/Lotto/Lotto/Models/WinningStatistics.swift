@@ -46,12 +46,25 @@ struct WinningStatistics {
 	mutating func checkLottoWinningResults(by winningLotto: WinningLotto, purchasedLottos: [Lotto]) {
 		var prizeMoney: Int = 0
 		purchasedLottos.forEach { lotto in
-			let winnings = lotto.checkWinningRanking(with: winningLotto)
+			let winnings = checkWinningRanking(with: winningLotto, lotto: lotto)
 			self.winning(winnings)
 			prizeMoney += winnings.prize()
 		}
 		
 		self.rateOfReturn = calculateRateOfReturn(by: purchasedLottos.count, prizeMoney: prizeMoney)
+	}
+	
+	private func checkWinningRanking(with winningLotto: WinningLotto, lotto: Lotto) -> Winnings {
+		let numberOfMatchingNumbers = findNumberOfMatchingNumbers(with: winningLotto, lotto: lotto)
+		return findWinningRanking(numberOfMatchingNumbers: numberOfMatchingNumbers, bonusNumber: winningLotto.bonusNumber, lotto: lotto)
+	}
+	
+	private func findNumberOfMatchingNumbers(with winningLotto: WinningLotto, lotto: Lotto) -> Int {
+		Set(lotto.numbers).intersection(Set(winningLotto.lotto.numbers)).count
+	}
+	
+	private func findWinningRanking(numberOfMatchingNumbers: Int, bonusNumber: Int, lotto: Lotto) -> Winnings {
+		Winnings.from(matchingCount: numberOfMatchingNumbers, matchBonus: lotto.numbers.contains(bonusNumber))
 	}
 	
 	private func calculateRateOfReturn(by numberOfLotto: Int, prizeMoney: Int) -> Double {
