@@ -38,7 +38,7 @@ final class Buyer {
 	}
 	
 	private func buyLotto(at store: LottoStore) throws {
-		let handOperatedNumbers = try inputView.readHandOperatedNumbers()
+		let handOperatedNumbers = try inputView.readHandOperatedNumbers(withinAmount: money)
 		self.purchasedLottos = try store.sell(for: money, handOperatedNumbers: handOperatedNumbers)
 		self.resultView.printOut(purchasedLottos: self.purchasedLottos)
 	}

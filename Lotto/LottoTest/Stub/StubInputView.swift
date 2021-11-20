@@ -34,8 +34,8 @@ struct StubInputView: Inputable {
 		try BonusNumber(input: bonusNumber, numberRange: LottoOption.numberRange)
 	}
 	
-	func makeNumberOfHandOperatedLotto() throws -> PurchaseNumber {
-		try PurchaseNumber(input: handOperatedNumber)
+	func makeNumberOfHandOperatedLotto(withinAmount amount: Int) throws -> PurchaseNumber {
+		try PurchaseNumber(input: handOperatedNumber, amount: amount)
 	}
 	
 	func makeHandOperatedLottos(ofNumber number: PurchaseNumber) throws -> HandOperatedLotto {

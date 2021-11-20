@@ -10,11 +10,11 @@ import Foundation
 protocol Inputable {
 	func readAmount(completion: (AmountInputable) -> Void) throws
 	func readWinningNumber(completion: (WinningLotto) -> Void) throws
-	func readHandOperatedNumbers() throws -> HandOperatedLotto?
+	func readHandOperatedNumbers(withinAmount amount: Int) throws -> HandOperatedLotto?
 	func makeAmount() throws -> Amount
  	func makeInputWinningLotto() throws -> InputLotto
 	func makeBonusNumber() throws -> BonusNumber
-	func makeNumberOfHandOperatedLotto() throws -> PurchaseNumber
+	func makeNumberOfHandOperatedLotto(withinAmount amount: Int) throws -> PurchaseNumber
 	func makeHandOperatedLottos(ofNumber number: PurchaseNumber) throws -> HandOperatedLotto
 }
 
@@ -31,8 +31,8 @@ extension Inputable {
 		completion(winningLotto)
 	}
 	
-	func readHandOperatedNumbers() throws -> HandOperatedLotto? {
-		let numberOfHandOperatedLotto = try makeNumberOfHandOperatedLotto()
+	func readHandOperatedNumbers(withinAmount amount: Int) throws -> HandOperatedLotto? {
+		let numberOfHandOperatedLotto = try makeNumberOfHandOperatedLotto(withinAmount: amount)
 		if willBuyHandOperatedLottos(numberOf: numberOfHandOperatedLotto) {
 			return try makeHandOperatedLottos(ofNumber: numberOfHandOperatedLotto)
 		}
@@ -60,9 +60,9 @@ struct InputView: Inputable {
 		return try BonusNumber(input: readLine(), numberRange: LottoOption.numberRange)
 	}
 	
-	func makeNumberOfHandOperatedLotto() throws -> PurchaseNumber {
+	func makeNumberOfHandOperatedLotto(withinAmount amount: Int) throws -> PurchaseNumber {
 		print("수동으로 구매할 로또 수를 입력해 주세요.")
-		return try PurchaseNumber(input: readLine())
+		return try PurchaseNumber(input: readLine(), amount: amount)
 	}
 	
 	func makeHandOperatedLottos(ofNumber number: PurchaseNumber) throws -> HandOperatedLotto {
