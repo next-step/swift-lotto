@@ -8,14 +8,14 @@
 import Foundation
 
 struct LottoMachine {
-	let randomNumberGenerator: RandomNumberGenerator
+	let numberGenerator: NumberGenerator
 	
-	init(randomNumberGenerator: RandomNumberGenerator) {
-		self.randomNumberGenerator = randomNumberGenerator
+	init(numberGenerator: NumberGenerator) {
+		self.numberGenerator = numberGenerator
 	}
 	
 	func quickPicks(for tickets: Int) throws -> [Lotto] {
-		let randomNumberGenerator = LottoNumberGenerator(numberGenerator: randomNumberGenerator)
+		let randomNumberGenerator = LottoNumberGenerator(numberGenerator: numberGenerator)
 		return try picks(for: tickets, by: randomNumberGenerator)
 	}
 	

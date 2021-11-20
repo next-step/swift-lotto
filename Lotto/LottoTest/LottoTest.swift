@@ -15,13 +15,13 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldGet5LottosWhenTheLottoMachineQuickPicks5Tickets() throws {
-		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
+		let lottoMachine = LottoMachine(numberGenerator: makeRandomNumberGenerator())
 		let lotto = try lottoMachine.quickPicks(for: 5)
 		XCTAssertEqual(lotto.count, 5)
 	}
 	
 	func test_shouldGetNumbersWhenContainedInTheRangeOfRandomNumbers() throws {
-		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
+		let lottoMachine = LottoMachine(numberGenerator: makeRandomNumberGenerator())
 		let lotto = try lottoMachine.quickPicks(for: 2)
 		let results = [try Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.numberRange), try Lotto(numbers: [10, 11, 12, 13, 14, 15], numberRange: LottoOption.numberRange)]
 		
@@ -29,7 +29,7 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldGet5TicketsWhenInputIs5200Won() throws {
-		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
+		let lottoMachine = LottoMachine(numberGenerator: makeRandomNumberGenerator())
 		let lottoStore = LottoStore(machine: lottoMachine)
 		let purchasedLottos = try lottoStore.sell(for: 5200)
 		
@@ -37,7 +37,7 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldThrowInvalidErrorWhenAmountIsNotPositiveNumber() throws {
-		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
+		let lottoMachine = LottoMachine(numberGenerator: makeRandomNumberGenerator())
 		let lottoStore = LottoStore(machine: lottoMachine)
 		
 		XCTAssertThrowsError(try lottoStore.sell(for: -100)) { error in
@@ -50,7 +50,7 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldBeDifferentNumbersWhenLottoIsGenerated() throws {
-		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
+		let lottoMachine = LottoMachine(numberGenerator: makeRandomNumberGenerator())
 		let lottoStore = LottoStore(machine: lottoMachine)
 		
 		let purchasedLottos = try lottoStore.sell(for: 100000)
@@ -211,7 +211,7 @@ class LottoTest: XCTestCase {
 	}
 	
 	private func makeLottoStore() -> LottoStore {
-		let lottoMachine = LottoMachine(randomNumberGenerator: makeRandomNumberGenerator())
+		let lottoMachine = LottoMachine(numberGenerator: makeRandomNumberGenerator())
 		return LottoStore(machine: lottoMachine)
 	}
 	
