@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct LottoStore {
 	private let lottoMachine: LottoMachine
 	
@@ -17,12 +16,7 @@ struct LottoStore {
 	
 	func sell(for money: Int, handOperatedNumbers: HandOperatedLotto? = nil) throws -> [Lotto] {
 		let handOperatedLotto = handOperatedNumbers?.lottos ?? []
-		let buyableQuantity = changeToBuyableQuantity(fromMoney: money, numberAlreadyPurchased: handOperatedLotto.count)
-		
-		guard money >= LottoOption.amount,
-					buyableQuantity >= 0
-		else { throw InputError.unableToPurchase }
-		
+		let buyableQuantity = try changeToBuyableQuantity(fromMoney: money, numberAlreadyPurchased: handOperatedLotto.count)
 		let quickPickLottos = try quickPicks(for: buyableQuantity)
 		return handOperatedLotto + quickPickLottos
 	}
@@ -32,8 +26,12 @@ struct LottoStore {
 		return try lottoMachine.quickPicks(for: buyableQuantity)
 	}
 	
-	private func changeToBuyableQuantity(fromMoney money: Int, numberAlreadyPurchased: Int) -> Int {
-		let buyableQuantity = money / LottoOption.amount
-		return buyableQuantity - numberAlreadyPurchased
+	private func changeToBuyableQuantity(fromMoney money: Int, numberAlreadyPurchased: Int) throws -> Int {
+		let buyableQuantity = money / LottoOption.amount - numberAlreadyPurchased
+		guard money >= LottoOption.amount,
+					buyableQuantity >= 0
+		else { throw InputError.unableToPurchase }
+		
+		return buyableQuantity
 	}
 }
