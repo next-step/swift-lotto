@@ -7,15 +7,11 @@
 
 import Foundation
 
-protocol LottoNumberGeneratable {
-	func generate() throws -> Lotto
-}
-
 protocol NumberGenerator {
 	func generateLottoNumbers() -> [Int]
 }
 
-struct LottoNumberGenerator: LottoNumberGeneratable {
+struct LottoNumberGenerator {
 	let numberGenerator: NumberGenerator
 	
 	init(numberGenerator: NumberGenerator) {
