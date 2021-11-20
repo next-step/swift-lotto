@@ -14,37 +14,45 @@ enum CalcalatorInputError: Error {
 
 class StringCalculator {
     func plus(input: String?) throws -> Int {
-        if let number = try checkEmptyAndInteger(input) {
-            return number
-        }
+        guard !isEmpty(input) else { return 0 }
+        if let number = try isInteger(input) { return number }
         
         let components = (input ?? "").components(separatedBy: [",", ":"])
         let integers = components.compactMap { Int($0) }
         
-        try checkNotIntegerAndMinus(integers: integers, stringComponents: components)
+        try checkInArrayNotInteger(integers: integers, stringComponents: components)
+        try checkInArrayMinus(integers: integers, stringComponents: components)
         return integers.reduce(0) { result, integer in
             result + integer
         }
     }
     
-    private func checkEmptyAndInteger(_ input: String?) throws -> Int? {
+    private func isEmpty(_ input: String?) -> Bool {
         guard let input = input,
               !input.isEmpty
         else {
-            return 0
+            return true
         }
         
-        guard let number = Int(input) else { return nil }
+        return false
+    }
+    
+    private func isInteger(_ input: String?) throws -> Int? {
+        guard let input = input,
+              let number = Int(input)
+        else { return nil }
         guard number > 0 else { throw CalcalatorInputError.minusInteger }
         
         return number
     }
     
-    private func checkNotIntegerAndMinus(integers: [Int], stringComponents: [String]) throws {
+    private func checkInArrayNotInteger(integers: [Int], stringComponents: [String]) throws {
         guard integers.count == stringComponents.count else {
             throw CalcalatorInputError.notInteger
         }
-        
+    }
+    
+    private func checkInArrayMinus(integers: [Int], stringComponents: [String]) throws {
         guard !integers.contains(where: { $0 < 0 }) else {
             throw CalcalatorInputError.minusInteger
         }
