@@ -175,8 +175,8 @@ class LottoTest: XCTestCase {
 		let handOperatedLottos = ["1,2,3,4,5,6"]
 		let stubInputView = StubInputView(amount: "10000", winningLottos: "1,2,3,4,5,6", bonusNumber: "45", handOperatedNumber: "1", handOperatedLottos: handOperatedLottos)
 		let buyer = Buyer(inputView: stubInputView, resultView: stubResultView)
-		try buyer.buyLotto(at: makeLottoStore())
-		XCTAssertTrue(buyer.purchasedLottos.first{ $0.numbers == [1,2,3,4,5,6] }?.count == 1)
+		buyer.enter(to: makeLottoStore())
+		XCTAssertTrue(buyer.purchasedLottos.filter{ $0.numbers == [1,2,3,4,5,6] }.count == 1)
 	}
 	
 	private func verifyPrintOutError(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Bool {
@@ -189,8 +189,8 @@ class LottoTest: XCTestCase {
 		stubResultView.clear()
 	}
 	
-	private func makeBuyer(amount: String, winningLottos: String, bonusNumber: String = "45") -> Buyer {
-		let stubInputView = StubInputView(amount: amount, winningLottos: winningLottos, bonusNumber: bonusNumber)
+	private func makeBuyer(amount: String, winningLottos: String, bonusNumber: String = "45", handOperatedNumber: String = "0", handOperatedLottos: [String] = []) -> Buyer {
+		let stubInputView = StubInputView(amount: amount, winningLottos: winningLottos, bonusNumber: bonusNumber, handOperatedNumber: handOperatedNumber, handOperatedLottos: handOperatedLottos)
 		let buyer = Buyer(inputView: stubInputView, resultView: stubResultView)
 		return buyer
 	}

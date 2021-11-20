@@ -15,10 +15,11 @@ struct LottoStore {
 		self.lottoMachine = machine
 	}
 	
-	func sell(for money: Int) throws -> [Lotto] {
+	func sell(for money: Int, handOperatedNumbers: HandOperatedLotto? = nil) throws -> [Lotto] {
 		let buyableQuantity = changeToBuyableQuantity(fromMoney: money)
-		let lottos = try lottoMachine.quickPicks(for: buyableQuantity)
-		return lottos
+		let quickPickLottos = try lottoMachine.quickPicks(for: buyableQuantity)
+		let handOperatedLotto = handOperatedNumbers?.lottos ?? []
+		return quickPickLottos + handOperatedLotto
 	}
 	
 	private func changeToBuyableQuantity(fromMoney money: Int) -> Int {

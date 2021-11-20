@@ -11,14 +11,14 @@ protocol WinningLottoInputable {
 	var lotto: Lotto { get }
 
 	var bonusNumber: Int { get }
-	init(inputWinningLotto: InputWinningLotto, inputBonusNumber: BonusNumber)
+	init(inputWinningLotto: InputLotto, inputBonusNumber: BonusNumber)
 }
 
 struct WinningLotto: WinningLottoInputable {
 	let lotto : Lotto
 	let bonusNumber: Int
 	
-	init(inputWinningLotto: InputWinningLotto, inputBonusNumber: BonusNumber) {
+	init(inputWinningLotto: InputLotto, inputBonusNumber: BonusNumber) {
 		self.lotto = inputWinningLotto.lotto
 		self.bonusNumber = inputBonusNumber.unwrapped
 	}

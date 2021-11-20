@@ -10,9 +10,12 @@ import Foundation
 protocol Inputable {
 	func readAmount(completion: (AmountInputable) -> Void) throws
 	func readWinningNumber(completion: (WinningLotto) -> Void) throws
+	func readHandOperatedNumbers() throws -> HandOperatedLotto
 	func makeAmount() throws -> Amount
- 	func makeInputWinningLotto() throws -> InputWinningLotto
+ 	func makeInputWinningLotto() throws -> InputLotto
 	func makeBonusNumber() throws -> BonusNumber
+	func makeNumberOfHandOperatedLotto() throws -> PurchaseNumber
+	func makeHandOperatedLottos(ofNumber number: PurchaseNumber) throws -> HandOperatedLotto
 }
 
 extension Inputable {
@@ -27,6 +30,12 @@ extension Inputable {
 		let winningLotto = WinningLotto(inputWinningLotto: inputWinningLotto, inputBonusNumber: inputBonusNumber)
 		completion(winningLotto)
 	}
+	
+	func readHandOperatedNumbers() throws -> HandOperatedLotto {
+		let numberOfHandOperatedLotto = try makeNumberOfHandOperatedLotto()
+		let handOperatedLottos = try makeHandOperatedLottos(ofNumber: numberOfHandOperatedLotto)
+		return handOperatedLottos
+	}
 }
 
 struct InputView: Inputable {
@@ -35,13 +44,25 @@ struct InputView: Inputable {
 		return try Amount(input: readLine())
 	}
 	
-	func makeInputWinningLotto() throws -> InputWinningLotto {
+	func makeInputWinningLotto() throws -> InputLotto {
 		print("지난 주 당첨 번호를 입력해 주세요.")
-		return try InputWinningLotto(input: readLine(), numberRange: LottoOption.numberRange)
+		return try InputLotto(input: readLine(), numberRange: LottoOption.numberRange)
 	}
 	
 	func makeBonusNumber() throws -> BonusNumber {
 		print("보너스 번호를 입력해 주세요.")
 		return try BonusNumber(input: readLine(), numberRange: LottoOption.numberRange)
+	}
+	
+	func makeNumberOfHandOperatedLotto() throws -> PurchaseNumber {
+		print("수동으로 구매할 로또 수를 입력해 주세요.")
+		return try PurchaseNumber(input: readLine())
+	}
+	
+	func makeHandOperatedLottos(ofNumber number: PurchaseNumber) throws -> HandOperatedLotto {
+		print("수동으로 구매할 번호를 입력해 주세요.")
+		let inputLottos = try (0...number.validNumber - 1)
+			.map { _ in try InputLotto(input: readLine(), numberRange: LottoOption.numberRange) }
+		return HandOperatedLotto(inputLotto: inputLottos)
 	}
 }

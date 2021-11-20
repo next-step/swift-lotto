@@ -31,14 +31,15 @@ final class Buyer {
 		guard hasMoney() else { return }
 		do {
 			try buyLotto(at: store)
-			try self.checkWinningStatistics()
+			try checkWinningStatistics()
 		} catch (let error) {
 			printOut(error: error)
 		}
 	}
-
+	
 	private func buyLotto(at store: LottoStore) throws {
-		self.purchasedLottos = try store.sell(for: money)
+		let handOperatedNumbers = try inputView.readHandOperatedNumbers()
+		self.purchasedLottos = try store.sell(for: money, handOperatedNumbers: handOperatedNumbers)
 		self.resultView.printOut(purchasedLottos: self.purchasedLottos)
 	}
 	
