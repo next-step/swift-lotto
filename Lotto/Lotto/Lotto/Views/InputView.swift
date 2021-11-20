@@ -60,12 +60,12 @@ struct InputView: Inputable {
 	}
 	
 	func makeNumberOfHandOperatedLotto(withinAmount amount: Int) throws -> PurchaseNumber {
-		print("수동으로 구매할 로또 수를 입력해 주세요.")
+		print("\n수동으로 구매할 로또 수를 입력해 주세요.")
 		return try PurchaseNumber(input: readLine(), amount: amount)
 	}
 	
 	func makeHandOperatedLottos(ofNumber number: PurchaseNumber) throws -> HandOperatedLotto {
-		print("수동으로 구매할 번호를 입력해 주세요.")
+		print("\n수동으로 구매할 번호를 입력해 주세요.")
 		let inputLottos = try (0...number.validNumber - 1)
 			.map { _ in try InputLotto(input: readLine(), numberRange: LottoOption.numberRange) }
 		return HandOperatedLotto(inputLotto: inputLottos)

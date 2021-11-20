@@ -39,7 +39,9 @@ final class Buyer {
 	private func buyLotto(at store: LottoStore) throws {
 		let handOperatedNumbers = try inputView.readHandOperatedNumbers(withinAmount: money)
 		self.purchasedLottos = try store.sell(for: money, handOperatedNumbers: handOperatedNumbers)
-		self.resultView.printOut(purchasedLottos: self.purchasedLottos)
+		let numberOfHandOperated = handOperatedNumbers?.lottos.count ?? 0
+		let numberOfAutoPicks = self.purchasedLottos.count - numberOfHandOperated
+		self.resultView.printOut(purchasedLottos: self.purchasedLottos, numberOfHandOperated: numberOfHandOperated, numberOfAutoPicks: numberOfAutoPicks)
 	}
 	
 	private func checkWinningStatistics() throws {

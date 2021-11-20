@@ -24,7 +24,7 @@ struct LottoStore {
 		else { throw InputError.unableToPurchase }
 		
 		let quickPickLottos = try quickPicks(for: buyableQuantity)
-		return quickPickLottos + handOperatedLotto
+		return handOperatedLotto + quickPickLottos
 	}
 	
 	private func quickPicks(for buyableQuantity: Int) throws -> [Lotto] {

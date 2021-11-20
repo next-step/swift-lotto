@@ -8,14 +8,14 @@
 import Foundation
 
 protocol Presentable {
-	func printOut(purchasedLottos: [Lotto])
+	func printOut(purchasedLottos: [Lotto], numberOfHandOperated: Int, numberOfAutoPicks: Int)
 	func printOut(winningStatistics: WinningStatistics)
 	func printOut(error: InputError)
 }
 
 struct ResultView: Presentable {
-	func printOut(purchasedLottos: [Lotto]) {
-		printOut(numberOfPurchasedLottos: purchasedLottos.count)
+	func printOut(purchasedLottos: [Lotto], numberOfHandOperated: Int, numberOfAutoPicks: Int) {
+		printOut(numberOfHandOperated: numberOfHandOperated, numberOfAutoPicks: numberOfAutoPicks)
 		purchasedLottos.forEach { lotto in
 			print("[\(convertToPresentableString(from: lotto))]")
 		}
@@ -36,8 +36,8 @@ struct ResultView: Presentable {
 		print(errorMessage)
 	}
 	
-	private func printOut(numberOfPurchasedLottos: Int) {
-		print("\(numberOfPurchasedLottos)개를 구매했습니다.")
+	private func printOut(numberOfHandOperated: Int, numberOfAutoPicks: Int) {
+		print("\n수동으로 \(numberOfHandOperated)장, 자동으로 \(numberOfAutoPicks)장을 구매했습니다.")
 	}
 	
 	private func printNewLine() {
