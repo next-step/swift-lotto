@@ -12,8 +12,10 @@ struct PurchaseNumber {
 	
 	init(input: String?) throws {
 		guard let validInput = input else { throw InputError.invalid }
+		guard let number = Int(validInput),
+					number >= 0
+		else { throw InputError.negativeNumber }
 		
-		let number = try validInput.toPositiveInt()
 		self.validNumber = number
 	}
 }

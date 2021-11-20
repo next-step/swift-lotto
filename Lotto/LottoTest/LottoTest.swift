@@ -172,7 +172,7 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldGetLottoWhenInputtingHandOperatedNumber() throws {
-		let buyer = makeBuyer(amount: "10000", winningLottos: "1,2,3,4,5,6", bonusNumber: "45", handOperatedNumber: "1", handOperatedLottos: ["1,2,3,4,5,6"])
+		let buyer = makeBuyer(amount: "10000", winningLottos: "1,2,3,4,5,6", bonusNumber: "45", handOperatedNumber: "1", handOperatedLottos: ["7,8,9,14,15,16"])
 		buyer.enter(to: makeLottoStore())
 		XCTAssertTrue(buyer.purchasedLottos.filter{ $0.numbers == [1,2,3,4,5,6] }.count == 1)
 	}
