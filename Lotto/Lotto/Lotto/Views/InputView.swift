@@ -8,8 +8,8 @@
 import Foundation
 
 protocol Inputable {
-	func readAmount(completion: (AmountInputable) -> Void) throws
-	func readWinningNumber(completion: (WinningLotto) -> Void) throws
+	func readAmount() throws -> AmountInputable
+	func readWinningNumber() throws -> WinningLotto
 	func readHandOperatedNumbers(withinAmount amount: Int) throws -> HandOperatedLotto?
 	func makeAmount() throws -> Amount
  	func makeInputWinningLotto() throws -> InputLotto
@@ -19,16 +19,15 @@ protocol Inputable {
 }
 
 extension Inputable {
-	func readAmount(completion: (AmountInputable) -> Void) throws {
-		let amount = try makeAmount()
-		completion(amount)
+	func readAmount() throws -> AmountInputable {
+		return try makeAmount()
 	}
 	
-	func readWinningNumber(completion: (WinningLotto) -> Void) throws {
+	func readWinningNumber() throws -> WinningLotto{
 		let inputWinningLotto = try makeInputWinningLotto()
 		let inputBonusNumber = try makeBonusNumber()
 		let winningLotto = WinningLotto(inputWinningLotto: inputWinningLotto, inputBonusNumber: inputBonusNumber)
-		completion(winningLotto)
+		return winningLotto
 	}
 	
 	func readHandOperatedNumbers(withinAmount amount: Int) throws -> HandOperatedLotto? {
