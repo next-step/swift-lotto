@@ -172,11 +172,15 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldGetLottoWhenInputtingHandOperatedNumber() throws {
-		let handOperatedLottos = ["1,2,3,4,5,6"]
-		let stubInputView = StubInputView(amount: "10000", winningLottos: "1,2,3,4,5,6", bonusNumber: "45", handOperatedNumber: "1", handOperatedLottos: handOperatedLottos)
-		let buyer = Buyer(inputView: stubInputView, resultView: stubResultView)
+		let buyer = makeBuyer(amount: "10000", winningLottos: "1,2,3,4,5,6", bonusNumber: "45", handOperatedNumber: "1", handOperatedLottos: ["1,2,3,4,5,6"])
 		buyer.enter(to: makeLottoStore())
 		XCTAssertTrue(buyer.purchasedLottos.filter{ $0.numbers == [1,2,3,4,5,6] }.count == 1)
+	}
+	
+	func test_shouldGetQuickPickLottosForTheRestWhenTheInputNumberIs0HandOperated() throws {
+		let buyer = makeBuyer(amount: "10000", winningLottos: "1,2,3,4,5,6", bonusNumber: "45", handOperatedNumber: "0", handOperatedLottos: [])
+		buyer.enter(to: makeLottoStore())
+		XCTAssertTrue(buyer.purchasedLottos.count == 10)
 	}
 	
 	private func verifyPrintOutError(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Bool {
