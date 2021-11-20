@@ -17,7 +17,7 @@ struct PurchaseNumber {
 		else { throw InputError.negativeNumber }
 		
 		if number > 0, number * LottoOption.amount > amount {
-			throw InputError.unableToPurchase
+			throw InputError.moreThanTheAmount
 		}
 		
 		self.validNumber = number
