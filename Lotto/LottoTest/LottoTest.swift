@@ -189,11 +189,10 @@ class LottoTest: XCTestCase {
 		XCTAssertTrue(buyer.purchasedLottos.count == 10)
 	}
 	
-	func test_shouldThrowUnableToPurchaseErrorWhenNumberOfHandOperatedLottosAreOverTheAmount() {
+	func test_shouldOutputUnableToPurchaseErrorWhenNumberOfHandOperatedLottosAreOverTheAmount() {
 		let buyer = makeBuyer(amount: "1000", winningLottos: "1,2,3,4,5,6", bonusNumber: "45", handOperatedNumber: "2", handOperatedLottos: ["10,11,12,13,14,15", "20,21,22,23,24,25"])
-		XCTAssertThrowsError(buyer.enter(to: makeLottoStore())) { error in
-			XCTAssertEqual(error as! InputError, InputError.unableToPurchase)
-		}
+		buyer.enter(to: makeLottoStore())
+		XCTAssertEqual(stubResultView.error, InputError.unableToPurchase)
 	}
 	
 	private func verifyPrintOutError(amount: String, winningLottos: String, bonusNumber: String = "45") throws -> Bool {
