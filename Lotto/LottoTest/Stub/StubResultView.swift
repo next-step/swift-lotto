@@ -17,7 +17,7 @@ final class StubResultView: Presentable {
 	var winningStatistics: WinningStatistics? = nil
 	var error: InputError? = nil
 	
-	func printOut(purchasedLottos: [Lotto]) {
+	func printOut(purchasedLottos: [Lotto], numberOfHandOperated: Int, numberOfAutoPicks: Int) {
 		Verify.printOutPurchasedLottos = true
 	}
 	

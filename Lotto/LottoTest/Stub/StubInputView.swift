@@ -44,6 +44,6 @@ struct StubInputView: Inputable {
 	}
 	
 	private func makeInputLotto(input: String?) throws -> InputLotto  {
-		try InputLotto(input: winningLottos, numberRange: LottoOption.numberRange)
+		try InputLotto(input: input, numberRange: LottoOption.numberRange)
 	}
 }

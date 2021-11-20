@@ -165,16 +165,15 @@ class LottoTest: XCTestCase {
 	}
 	
 	func test_shouldGetLottoWhenUsingHandOperatedMachine() throws {
-		let handOperatedMachine = HandOperatedNumberGenerator(input: "10, 11, 12, 13, 14, 15", range: LottoOption.numberRange)
-		let lottoNumberGenerator = LottoNumberGenerator(numberGenerator: handOperatedMachine)
-		let lotto = try lottoNumberGenerator.generate()
-		XCTAssertEqual(lotto.numbers, [10, 11, 12, 13, 14, 15])
+		let buyer = makeBuyer(amount: "1000", winningLottos: "1,2,3,4,5,6", bonusNumber: "45", handOperatedNumber: "1", handOperatedLottos: ["10,11,12,13,14,15"])
+		buyer.enter(to: makeLottoStore())
+		XCTAssertEqual(buyer.purchasedLottos.flatMap { $0.numbers }, [10, 11, 12, 13, 14, 15])
 	}
 	
 	func test_shouldGetLottoWhenInputtingHandOperatedNumber() throws {
 		let buyer = makeBuyer(amount: "10000", winningLottos: "1,2,3,4,5,6", bonusNumber: "45", handOperatedNumber: "1", handOperatedLottos: ["7,8,9,14,15,16"])
 		buyer.enter(to: makeLottoStore())
-		XCTAssertTrue(buyer.purchasedLottos.filter{ $0.numbers == [1,2,3,4,5,6] }.count == 1)
+		XCTAssertTrue(buyer.purchasedLottos.filter{ $0.numbers == [7,8,9,14,15,16] }.count == 1)
 	}
 	
 	func test_shouldGetQuickPickLottosForTheRestWhenTheInputNumberIs0HandOperated() throws {
