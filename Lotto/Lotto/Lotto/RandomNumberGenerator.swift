@@ -10,6 +10,10 @@ import Foundation
 struct RandomNumberGenerator: NumberGenerator {
 	let randomNumberRange: ClosedRange<Int>
 	
+	private var generateNumber: Int {
+		Int.random(in: randomNumberRange)
+	}
+	
 	init(range: ClosedRange<Int>) {
 		self.randomNumberRange = range
 	}
@@ -22,15 +26,11 @@ struct RandomNumberGenerator: NumberGenerator {
 	
 	private func appendNonDuplicateNumbers(in numbers: inout [Int]) {
 		if numbers.count == LottoOption.numberOfNumbers { return }
-		let lottoNumber = generateNumber()
+		let lottoNumber = generateNumber
 		if isNonDuplicate(lottoNumber, in: numbers) {
 			numbers.append(lottoNumber)
 		}
 		appendNonDuplicateNumbers(in: &numbers)
-	}
-	
-	private func generateNumber() -> Int {
-		Int.random(in: randomNumberRange)
 	}
 	
 	private func isNonDuplicate(_ numberOfCheck: Int, in numbers: [Int]) -> Bool {

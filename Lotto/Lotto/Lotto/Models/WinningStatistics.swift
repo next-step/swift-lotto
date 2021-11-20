@@ -48,7 +48,7 @@ struct WinningStatistics {
 		purchasedLottos.forEach { lotto in
 			let winnings = checkWinningRanking(with: winningLotto, lotto: lotto)
 			self.winning(winnings)
-			prizeMoney += winnings.prize()
+			prizeMoney += winnings.prize
 		}
 		
 		self.rateOfReturn = calculateRateOfReturn(by: purchasedLottos.count, prizeMoney: prizeMoney)

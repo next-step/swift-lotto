@@ -51,9 +51,9 @@ struct ResultView: Presentable {
 	}
 	
 	private func printOutMatchingNumber(of winnigs: Winnings, winningStatistics: WinningStatistics) {
-		let matchingNumber = winnigs.matchCount()
-		let matchingBonusNumberText = winnigs.isMatchingBonusNumber() ? ", 보너스 번호 일치" : " "
-		let prize = winnigs.prize()
+		let matchingNumber = winnigs.matchCount
+		let matchingBonusNumberText = winnigs.isMatchingBonusNumber ? ", 보너스 번호 일치" : " "
+		let prize = winnigs.prize
 		let numberOfMatchingNumbers = winningStatistics.numberOfWinnings(by: winnigs)
 		print("\(matchingNumber)개 일치\(matchingBonusNumberText)(\(prize)원)- \(numberOfMatchingNumbers)개")
 	}

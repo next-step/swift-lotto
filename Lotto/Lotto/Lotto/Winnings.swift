@@ -27,7 +27,7 @@ enum Winnings {
 		}
 	}
 	
-	func prize() -> Int {
+	var prize: Int {
 		switch self {
 		case .firstPlace: return 2000000000
 		case .secondPlace: return 3000000
@@ -38,7 +38,7 @@ enum Winnings {
 		}
 	}
 	
-	func matchCount() -> Int {
+	var matchCount: Int {
 		switch self {
 		case .firstPlace: return 6
 		case .secondPlace: return 5
@@ -49,7 +49,7 @@ enum Winnings {
 		}
 	}
 	
-	func isMatchingBonusNumber() -> Bool {
+	var isMatchingBonusNumber: Bool {
 		if self == .secondPlace { return true }
 		return false
 	}
