@@ -17,16 +17,11 @@ struct WinningStatistics {
 	
 	mutating func winning(_ winnings: Winnings) {
 		switch winnings {
-		case .firstPlace:
-			numberOfFirstPlace += 1
-		case .secondPlace:
-			numberOfSecondPlace += 1
-		case .thirdPlace:
-			numberOfThirdPlace += 1
-		case .fourthPlace:
-			numberOfFourthPlace += 1
-		case .fifthPlace:
-			numberOfFifthPlace += 1
+		case .firstPlace: numberOfFirstPlace += 1
+		case .secondPlace: numberOfSecondPlace += 1
+		case .thirdPlace: numberOfThirdPlace += 1
+		case .fourthPlace: numberOfFourthPlace += 1
+		case .fifthPlace: numberOfFifthPlace += 1
 		default:
 			break
 		}
