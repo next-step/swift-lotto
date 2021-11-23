@@ -19,10 +19,10 @@ struct LottoMachine {
 		return try picks(for: tickets, by: randomNumberGenerator)
 	}
 	
-	private func picks(for tickets: Int, by generator: LottoNumberGenerator) throws -> [Lotto] {
+	private func picks(for tickets: Int, by lottoNumberGenerator: LottoNumberGenerator) throws -> [Lotto] {
 		var lottos = [Lotto]()
 		try (0..<tickets).forEach { _ in
-			let lotto = try generator.generate()
+			let lotto = try lottoNumberGenerator.generate()
 			lottos.append(lotto)
 		}
 		return lottos
