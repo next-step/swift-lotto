@@ -6,5 +6,11 @@
 
 import Foundation
 
-print("Hello, World!")
+do {
+    ResultView.printOperand(try Calculator.calculate(to: InputView.readExpression()))
+}
+catch {
+    print(CalculatorError.unSupportedNegativeNumber.message)
+}
+
 
