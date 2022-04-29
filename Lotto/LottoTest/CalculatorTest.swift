@@ -8,15 +8,6 @@
 import XCTest
 
 class CalculatorTest: XCTestCase {
-    
-    override func setUpWithError() throws {
-        
-    }
-    
-    override func tearDownWithError() throws {
-        
-    }
-    
     func testUnsplitableExpresstion() {
         let inputExpresstion = "1,2:3"
         
@@ -50,5 +41,38 @@ class CalculatorTest: XCTestCase {
         if input == nil { result = 0 }
         
         XCTAssertEqual(result, 0)
+    }
+    
+    func testConvertSeparator() {
+        let input: String = "4:5,6"
+        let convertedSeparator = StringUtiltity.convertSeparator(to: input)
+        
+        XCTAssertEqual(convertedSeparator, "4,5,6")
+    }
+    
+    func testSplitExpression() {
+        let input: String = "4,5,6"
+        let splitedExpression = StringUtiltity.splitExpression(to: input)
+        
+        XCTAssertEqual(splitedExpression, [4, 5, 6])
+    }
+    
+    func testValidateContainsNagativeNumbers() {
+        let target: [Int] = [4, -5, 6]
+        XCTAssertThrowsError(try CalculatorInputChecker.validateContainsNagativeNumbers(to: target)) { error in
+            XCTAssertEqual(error as? CalculatorError, CalculatorError.unSupportedNegativeNumber)
+        }
+    }
+    
+    func testAddOperand() {
+        let target: [Int] = [4, 5, 6]
+        let result: Int = Calculator.addOperand(target: target)
+        
+        XCTAssertEqual(result, 15)
+    }
+    
+    func testCalculate() {
+        let input: String = "4:5,6"
+        XCTAssertNoThrow(try Calculator.calculate(to: input))
     }
 }
