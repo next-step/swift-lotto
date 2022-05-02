@@ -19,25 +19,31 @@ struct LottoCenter: LottoCenterPort {
     }
     
     func match(userLotto: UserLotto) -> [Rank] {
-        let matchCountResult = matchCount(userLotto)
-        return matchRank(matchCountResult: matchCountResult)
+        let lotteryReports = matchLotteryReport(userLotto)
+        return matchRank(lotteryReports: lotteryReports)
     }
     
-    private func matchCount(_ userLotto: UserLotto) -> [Int] {
-        var result: [Int] = []
+    private func matchLotteryReport(_ userLotto: UserLotto) -> [LotteryReport] {
+        var lotteryReports: [LotteryReport] = []
         
         for lotto in userLotto.purchasedLottos {
-            result.append(winningLotto.matchCount(numberToMatch: lotto))
+            let matchCount = winningLotto.matchCount(numberToMatch: lotto)
+            let isMatch = winningLotto.isMatchBunusNumber(numberToMatch: lotto)
+            let lotteryReport = LotteryReport(matchCount: matchCount, isMatch: isMatch)
+            lotteryReports.append(lotteryReport)
         }
         
-        return result
+        return lotteryReports
     }
     
-    private func matchRank(matchCountResult: [Int]) -> [Rank] {
+    
+    
+    private func matchRank(lotteryReports: [LotteryReport]) -> [Rank] {
         var result: [Rank] = []
         
-        for matchCount in matchCountResult {
-            result.append(Rank.from(matchingCount: matchCount))
+        for lotteryReport in lotteryReports {
+            result.append(Rank.from(matchingCount: lotteryReport.matchCount,
+                                    matchBonus: lotteryReport.isMatch))
         }
         
         return result
