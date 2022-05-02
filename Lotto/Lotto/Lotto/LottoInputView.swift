@@ -21,4 +21,8 @@ struct LottoInputView {
     static func readLastWeakWinningNumber() -> String {
         return read(with: "지난 주 당첨 번호를 입력해 주세요.")
     }
+    
+    static func readBonushNumber() -> Int {
+        return Int(read(with: "보너스 번호를 입력해 주세요.")) ?? 0
+    }
 }
