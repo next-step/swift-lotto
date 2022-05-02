@@ -8,11 +8,12 @@
 import Foundation
 
 enum Rank {
-    case first, third, fourth, fifth, miss
+    case first, second, third, fourth, fifth, miss
     
-    static func from(matchingCount: Int) -> Self {
+    static func from(matchingCount: Int, matchBonus: Bool = false) -> Self {
         switch matchingCount {
         case 6: return .first
+        case 5 where matchBonus: return .second
         case 5: return .third
         case 4: return .fourth
         case 3: return .fifth
@@ -23,6 +24,7 @@ enum Rank {
     var reward: Int {
         switch self {
         case .first: return 2_000_000_000
+        case .second: return 30_000_000
         case .third: return 1_500_000
         case .fourth: return 50_000
         case .fifth: return 5_000

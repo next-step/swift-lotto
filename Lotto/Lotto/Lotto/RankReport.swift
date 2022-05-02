@@ -9,6 +9,7 @@ import Foundation
 
 struct Report: Equatable {
     private(set) var first: Int
+    private(set) var second: Int
     private(set) var third: Int
     private(set) var fourth: Int
     private(set) var fifth: Int
@@ -16,6 +17,7 @@ struct Report: Equatable {
     mutating func update(rank: Rank) {
         switch rank {
         case .first: self.first += 1
+        case .second: self.second += 1
         case .third: self.third += 1
         case .fourth: self.fourth += 1
         case .fifth: self.fifth += 1
@@ -32,7 +34,7 @@ struct RankReport {
     }
     
     func report() -> Report {
-        var report: Report = Report(first: 0, third: 0, fourth: 0, fifth: 0)
+        var report: Report = Report(first: 0, second: 0, third: 0, fourth: 0, fifth: 0)
         
         for rank in winning {
             report = reporting(rank: rank, report: report)
