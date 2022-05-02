@@ -11,7 +11,10 @@ func main() {
                              lottoMaker: LottoRandomNumberMaker())
     LottoResultView.printPurchasedLotto(seller.purchasedNumber())
     LottoResultView.printLottos(seller.sellLotto())
-    let winningLotto = WinningLottoMaker(lastWeekWinningNumber: LottoInputView.readLastWeakWinningNumber()).makeWinningLotto()
+    let winningLotto = WinningLottoMaker(lastWeekWinningNumber:
+                                            LottoInputView.readLastWeakWinningNumber(),
+                                         bonusNumber:
+                                            LottoInputView.readBonushNumber()).makeWinningLotto()
     let cener = LottoCenter(winningLotto: winningLotto)
     let user = User(userLotto: seller.sellLotto(), center: cener)
     let rankReport = RankReport(winning: user.winning())
