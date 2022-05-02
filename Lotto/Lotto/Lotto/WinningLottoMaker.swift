@@ -13,13 +13,15 @@ protocol WinningLottoMakable {
 
 struct WinningLottoMaker: WinningLottoMakable {
     private let lastWeekWinningNumber: String
+    private let bonusNumber: Int
     
-    init(lastWeekWinningNumber: String) {
+    init(lastWeekWinningNumber: String, bonusNumber: Int) {
         self.lastWeekWinningNumber = lastWeekWinningNumber
+        self.bonusNumber = bonusNumber
     }
     
     func makeWinningLotto() -> WinningLotto {
         let lottoNumbers = StringUtiltity.splitLottoNumbers(to: lastWeekWinningNumber).map { LottoNumber(number: $0) }
-        return WinningLotto(numbers: lottoNumbers)
+        return WinningLotto(numbers: lottoNumbers, bonusNumber: bonusNumber)
     }
 }
