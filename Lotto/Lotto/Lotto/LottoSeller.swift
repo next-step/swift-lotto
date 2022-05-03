@@ -16,15 +16,36 @@ struct LottoSeller: LottoSellable {
         self.lottoMaker = lottoMaker
     }
     
-    func sellLotto() -> UserLotto {
+    func sellLotto(manualNumber: Int, manualUserLotto: [String]) -> UserLotto {
+        var result: [Lotto] = []
+        let autoNumber: Int = purchasedNumber()-manualNumber
+        
+        result += makeAutoLotto(autoNumber: autoNumber)
+        result += makeManualLotto(manualUserLotto: manualUserLotto)
+        
+        return UserLotto(purchasedLottos: result)
+    }
+    
+    private func makeAutoLotto(autoNumber: Int) -> [Lotto] {
         var result: [Lotto] = []
         
-        for _ in 0..<purchasedNumber() {
+        for _ in 0..<autoNumber {
             let lotto = Lotto(numbers: lottoMaker.make())
             result.append(lotto)
         }
         
-        return UserLotto(purchasedLottos: result)
+        return result
+    }
+    
+    private func makeManualLotto(manualUserLotto: [String]) -> [Lotto] {
+        var result: [Lotto] = []
+        
+        manualUserLotto.forEach { lotto in
+            let lottoNumbers = StringUtiltity.splitLottoNumbers(to: lotto).map { LottoNumber(number: $0) }
+            result.append(Lotto(numbers: lottoNumbers))
+        }
+        
+        return result
     }
     
     func purchasedNumber() -> Int {
