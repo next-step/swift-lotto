@@ -9,14 +9,19 @@ import Foundation
 func main() {
     let seller = LottoSeller(purchaseAmount: LottoInputView.readPurchaseAmount(),
                              lottoMaker: LottoRandomNumberMaker())
-    LottoResultView.printPurchasedLotto(seller.purchasedNumber())
-    LottoResultView.printLottos(seller.sellLotto())
+    let manualNumber = LottoInputView.readManualNumber()
+    let manualUserLotto = LottoInputView.readManualLotto(manualNumber: manualNumber)
+    let autoNumber = seller.purchasedNumber() - manualNumber
+    LottoResultView.printPurchasedLotto(manualNumber: manualNumber,
+                                        autoNumber: autoNumber)
+    let userLotto = seller.sellLotto(manualNumber: manualNumber, manualUserLotto: manualUserLotto)
+    LottoResultView.printLottos(userLotto)
     let winningLotto = WinningLottoMaker(lastWeekWinningNumber:
                                             LottoInputView.readLastWeakWinningNumber(),
                                          bonusNumber:
                                             LottoInputView.readBonushNumber()).makeWinningLotto()
     let cener = LottoCenter(winningLotto: winningLotto)
-    let user = User(userLotto: seller.sellLotto(), center: cener)
+    let user = User(userLotto: userLotto, center: cener)
     let rankReport = RankReport(winning: user.winning())
 
     LottoResultView.printReport(rankReport.report())
