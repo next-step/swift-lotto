@@ -9,6 +9,9 @@ import Foundation
 
 struct StringCalculatorInputValidator {
     func isValid(of input: String?) -> Bool {
+        guard let input = input else {
+            return false
+        }
         return true
     }
 }
