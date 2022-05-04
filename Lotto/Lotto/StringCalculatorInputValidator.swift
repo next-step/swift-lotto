@@ -8,7 +8,7 @@
 import Foundation
 
 struct StringCalculatorInputValidator {
-    func isValid(of input: String) -> Bool {
+    func isValid(of input: String?) -> Bool {
         return true
     }
 }
