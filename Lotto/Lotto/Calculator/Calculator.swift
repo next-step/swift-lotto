@@ -8,12 +8,15 @@
 import Foundation
 
 struct Calculator {
-    static func calculate(to inputExpression: String) throws -> Int {
+    static func calculate(to inputExpression: String?) throws -> Int {
+        guard let inputExpression = inputExpression else { return 0 }
+        guard !inputExpression.isEmpty else { return 0 }
         let convertedExpression = StringUtiltity.convertSeparator(to: inputExpression)
         let splitedExpression = StringUtiltity.splitExpression(to: convertedExpression)
-        try CalculatorInputChecker.validateContainsNagativeNumbers(to: splitedExpression)
+        let convertedOperand = try CalculatorInputChecker.validateContainsUnSupportedSeparator(to: splitedExpression)
+        try CalculatorInputChecker.validateContainsNagativeNumbers(to: convertedOperand)
         
-        return addOperand(target: splitedExpression)
+        return addOperand(target: convertedOperand)
     }
     
     static func addOperand(target splitedExpression: [Int]) -> Int {
