@@ -23,11 +23,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B8A28EF282282A600CF84C6 /* LottoTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LottoTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3B8A28EC282282A600CF84C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7905FBF27311CC6004C3FCC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +46,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B8A28F0282282A600CF84C6 /* LottoTest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LottoTest;
+			sourceTree = "<group>";
+		};
 		C7905FB927311CC6004C3FCC = {
 			isa = PBXGroup;
 			children = (
 				C7905FC427311CC6004C3FCC /* Lotto */,
+				3B8A28F0282282A600CF84C6 /* LottoTest */,
 				C7905FC327311CC6004C3FCC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				C7905FC227311CC6004C3FCC /* Lotto */,
+				3B8A28EF282282A600CF84C6 /* LottoTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,6 +82,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3B8A28EE282282A600CF84C6 /* LottoTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B8A28F5282282A600CF84C6 /* Build configuration list for PBXNativeTarget "LottoTest" */;
+			buildPhases = (
+				3B8A28EB282282A600CF84C6 /* Sources */,
+				3B8A28EC282282A600CF84C6 /* Frameworks */,
+				3B8A28ED282282A600CF84C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LottoTest;
+			productName = LottoTest;
+			productReference = 3B8A28EF282282A600CF84C6 /* LottoTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C7905FC127311CC6004C3FCC /* Lotto */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7905FC927311CC6004C3FCC /* Build configuration list for PBXNativeTarget "Lotto" */;
@@ -89,9 +123,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					3B8A28EE282282A600CF84C6 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					C7905FC127311CC6004C3FCC = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -111,11 +148,29 @@
 			projectRoot = "";
 			targets = (
 				C7905FC127311CC6004C3FCC /* Lotto */,
+				3B8A28EE282282A600CF84C6 /* LottoTest */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		3B8A28ED282282A600CF84C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		3B8A28EB282282A600CF84C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7905FBE27311CC6004C3FCC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -127,6 +182,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		3B8A28F3282282A600CF84C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y4XABUQ539;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sujinnaljin.LottoTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3B8A28F4282282A600CF84C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y4XABUQ539;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sujinnaljin.LottoTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		C7905FC727311CC6004C3FCC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -263,6 +350,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3B8A28F5282282A600CF84C6 /* Build configuration list for PBXNativeTarget "LottoTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B8A28F3282282A600CF84C6 /* Debug */,
+				3B8A28F4282282A600CF84C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C7905FBD27311CC6004C3FCC /* Build configuration list for PBXProject "Lotto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
