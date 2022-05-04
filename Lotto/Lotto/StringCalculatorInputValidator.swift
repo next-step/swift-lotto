@@ -8,11 +8,17 @@
 import Foundation
 
 struct StringCalculatorInputValidator {
+    
+    private let stringCalculatorInputSplitter = StringCalculatorInputSplitter()
+    
     func isValid(of input: String?) -> Bool {
         guard let input = input else {
             return false
         }
-        let isValidInput: Bool = isPositiveInt(of: input)
+        let inputComponents: [String] = stringCalculatorInputSplitter.split(input)
+        let isValidInput: Bool = inputComponents.allSatisfy { inputComponent in
+            isPositiveInt(of: inputComponent)
+        }
         return isValidInput
     }
 
