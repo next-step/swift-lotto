@@ -91,7 +91,7 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
     
-    func test_isValidInput_whenInputIsSpace_throwInvalidInput() throws {
+    func test_isValidInput_whenInputIsSpace_throwError() throws {
         //given
         let input: String = " "
         
@@ -100,7 +100,7 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertThrowsError(try sut.calculate(of: input))
     }
     
-    func test_isValidInput_whenInputIsSingleNegativeInt_throwInvalidInput() throws {
+    func test_isValidInput_whenInputIsSingleNegativeInt_throwError() throws {
         //given
         let input: String = "-3"
         
@@ -109,7 +109,7 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertThrowsError(try sut.calculate(of: input))
     }
     
-    func test_isValidInput_whenInputIsDouble_throwInvalidInput() throws {
+    func test_isValidInput_whenInputIsDouble_throwError() throws {
         //given
         let input: String = "3.2"
         
@@ -118,7 +118,7 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertThrowsError(try sut.calculate(of: input))
     }
     
-    func test_isValidInput_whenInputHasSameSuccessivieSeparators_throwInvalidInput() throws {
+    func test_isValidInput_whenInputHasSameSuccessivieSeparators_throwError() throws {
         //given
         let input: String = "1,2,,3"
         
@@ -127,7 +127,7 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertThrowsError(try sut.calculate(of: input))
     }
     
-    func test_isValidInput_whenInputHasDifferentSuccessivieSeparators_throwInvalidInput() throws {
+    func test_isValidInput_whenInputHasDifferentSuccessivieSeparators_throwError() throws {
         //given
         let input: String = "1,2,:3"
         
@@ -136,7 +136,7 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertThrowsError(try sut.calculate(of: input))
     }
     
-    func test_isValidInput_whenInputContainsNegativeInt_throwInvalidInput() throws {
+    func test_isValidInput_whenInputContainsNegativeInt_throwError() throws {
         //given
         let input: String = "1,2,-3"
         
@@ -145,7 +145,7 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertThrowsError(try sut.calculate(of: input))
     }
     
-    func test_isValidInput_whenInputContainsNeitherIntNorSeparator_throwInvalidInput() throws {
+    func test_isValidInput_whenInputContainsNeitherIntNorSeparator_throwError() throws {
         //given
         let input: String = "1,2#3"
         
@@ -154,7 +154,7 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertThrowsError(try sut.calculate(of: input))
     }
     
-    func test_isValidInput_whenInputDoesNotEndWithInt_throwInvalidInput() throws {
+    func test_isValidInput_whenInputDoesNotEndWithInt_throwError() throws {
         //given
         let input: String = "1,2,"
         
@@ -163,7 +163,7 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertThrowsError(try sut.calculate(of: input))
     }
     
-    func test_isValidInput_whenInputEndsWithSpace_throwInvalidInput() throws {
+    func test_isValidInput_whenInputEndsWithSpace_throwError() throws {
         //given
         let input: String = "1,2 "
         
@@ -172,7 +172,7 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertThrowsError(try sut.calculate(of: input))
     }
     
-    func test_isValidInput_whenInputContainsSpace_throwInvalidInput() throws {
+    func test_isValidInput_whenInputContainsSpace_throwError() throws {
         //given
         let input: String = "1, 2"
         
