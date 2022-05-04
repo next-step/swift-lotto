@@ -9,6 +9,8 @@ import Foundation
 
 struct StringSplitter {
     func split(_ input: String, by separator: Character) -> [String] {
-        return ["1", "2", "3"]
+        let splitComponents = input.split(separator: separator)
+            .map(String.init)
+        return splitComponents
     }
 }
