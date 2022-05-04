@@ -8,7 +8,7 @@
 import Foundation
 
 struct StringConverter {
-    enum StringConverterError: Error {
+    private enum StringConverterError: Error {
         case convertToIntFail
     }
     

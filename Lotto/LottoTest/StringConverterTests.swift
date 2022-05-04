@@ -19,7 +19,7 @@ class StringConverterTests: XCTestCase {
         sut = nil
     }
     
-    func test_intStringIsGiven_returnInInt() throws {
+    func test_convertToInt_whenInputIsIntString_equalToOriginalInputAsInt() throws {
         // given
         let input = "1"
         
@@ -31,28 +31,22 @@ class StringConverterTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
     
-    func test_doubleStringIsGiven_throwConvertToIntFail() throws {
+    func test_convertToInt_whenInputIsDoubleString_throwError() throws {
         // given
         let input = "1.1"
 
         // when
         // then
-        let expectation = StringConverter.StringConverterError.convertToIntFail
-        XCTAssertThrowsError(try sut.convertToInt(from: input)) { error in
-            XCTAssertEqual(error as! StringConverter.StringConverterError, expectation)
-        }
+        XCTAssertThrowsError(try sut.convertToInt(from: input))
     }
     
-    func test_notIntStringIsGiven_throwConvertToIntFail() throws {
+    func test_convertToInt_inputIsNotNumberString_throwError() throws {
         // given
         let input = "+"
 
         // when
         // then
-        let expectation = StringConverter.StringConverterError.convertToIntFail
-        XCTAssertThrowsError(try sut.convertToInt(from: input)) { error in
-            XCTAssertEqual(error as! StringConverter.StringConverterError, expectation)
-        }
+        XCTAssertThrowsError(try sut.convertToInt(from: input))
     }
 }
 
