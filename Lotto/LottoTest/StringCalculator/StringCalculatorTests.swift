@@ -67,27 +67,33 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
     
-    func test_calculate_whenInputIsEmpty_throwInvalidInput() throws {
+    func test_calculate_whenInputIsEmpty_equalToZero() throws {
         //given
         let input: String = ""
         
         // when
+        let result: Int = try sut.calculate(of: input)
+        
         // then
-        XCTAssertThrowsError(try sut.calculate(of: input))
+        let expectation: Int = 0
+        XCTAssertEqual(result, expectation)
+    }
+    
+    func test_calculate_whenInputIsNil_equalToZero() throws {
+        //given
+        let input: String? = nil
+        
+        // when
+        let result: Int = try sut.calculate(of: input)
+        
+        // then
+        let expectation: Int = 0
+        XCTAssertEqual(result, expectation)
     }
     
     func test_isValidInput_whenInputIsSpace_throwInvalidInput() throws {
         //given
         let input: String = " "
-        
-        // when
-        // then
-        XCTAssertThrowsError(try sut.calculate(of: input))
-    }
-    
-    func test_calculate_whenInputIsNil_throwInvalidInput() throws {
-        //given
-        let input: String? = nil
         
         // when
         // then
