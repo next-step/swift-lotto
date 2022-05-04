@@ -15,7 +15,7 @@ enum CalculatorError: Error {
     var message: String {
         switch self {
         case .unSupportedOperand:
-            return "숫자 이외의 값은 입력할 수 없습니다."
+            return "지원하지 않는 피연산자입니다.(숫자만 입력가능)."
         case .unSupportedNegativeNumber:
             return "음수는 지원하지 않습니다."
         case .unSupportedSeparator:
