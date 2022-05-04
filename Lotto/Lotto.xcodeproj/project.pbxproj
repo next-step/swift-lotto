@@ -66,13 +66,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3B8A28F0282282A600CF84C6 /* LottoTest */ = {
+		3B25402E2822E50D00841024 /* StringCalculator */ = {
 			isa = PBXGroup;
 			children = (
 				3B2540262822C49D00841024 /* StringCalculatorTests.swift */,
 				3B8A28F62822833E00CF84C6 /* OperandValidatorTests.swift */,
 				3B8A28FB2822866800CF84C6 /* OperandFilterTests.swift */,
 				3B25402B2822CDA200841024 /* StringConverterTests.swift */,
+			);
+			path = StringCalculator;
+			sourceTree = "<group>";
+		};
+		3B25402F2822E51700841024 /* StringCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				3B2540242822C49300841024 /* StringCalculator.swift */,
+				3B8A28F82822834A00CF84C6 /* OperandValidator.swift */,
+				3B8A28FD2822868200CF84C6 /* OperandFilter.swift */,
+				3B2540292822CD8D00841024 /* StringConverter.swift */,
+			);
+			path = StringCalculator;
+			sourceTree = "<group>";
+		};
+		3B8A28F0282282A600CF84C6 /* LottoTest */ = {
+			isa = PBXGroup;
+			children = (
+				3B25402E2822E50D00841024 /* StringCalculator */,
 			);
 			path = LottoTest;
 			sourceTree = "<group>";
@@ -99,10 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				C7905FC527311CC6004C3FCC /* main.swift */,
-				3B2540242822C49300841024 /* StringCalculator.swift */,
-				3B8A28F82822834A00CF84C6 /* OperandValidator.swift */,
-				3B8A28FD2822868200CF84C6 /* OperandFilter.swift */,
-				3B2540292822CD8D00841024 /* StringConverter.swift */,
+				3B25402F2822E51700841024 /* StringCalculator */,
 			);
 			path = Lotto;
 			sourceTree = "<group>";
