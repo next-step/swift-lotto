@@ -16,9 +16,9 @@
 		3B8A28F72822833E00CF84C6 /* OperandValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28F62822833E00CF84C6 /* OperandValidatorTests.swift */; };
 		3B8A28F92822834A00CF84C6 /* OperandValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28F82822834A00CF84C6 /* OperandValidator.swift */; };
 		3B8A28FA282283A000CF84C6 /* OperandValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28F82822834A00CF84C6 /* OperandValidator.swift */; };
-		3B8A28FC2822866800CF84C6 /* StringCalculatorInputSplitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28FB2822866800CF84C6 /* StringCalculatorInputSplitterTests.swift */; };
-		3B8A28FE2822868200CF84C6 /* StringCalculatorInputSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28FD2822868200CF84C6 /* StringCalculatorInputSplitter.swift */; };
-		3B8A28FF2822868D00CF84C6 /* StringCalculatorInputSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28FD2822868200CF84C6 /* StringCalculatorInputSplitter.swift */; };
+		3B8A28FC2822866800CF84C6 /* SplitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28FB2822866800CF84C6 /* SplitterTests.swift */; };
+		3B8A28FE2822868200CF84C6 /* Splitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28FD2822868200CF84C6 /* Splitter.swift */; };
+		3B8A28FF2822868D00CF84C6 /* Splitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28FD2822868200CF84C6 /* Splitter.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,8 +42,8 @@
 		3B8A28EF282282A600CF84C6 /* LottoTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LottoTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B8A28F62822833E00CF84C6 /* OperandValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperandValidatorTests.swift; sourceTree = "<group>"; };
 		3B8A28F82822834A00CF84C6 /* OperandValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperandValidator.swift; sourceTree = "<group>"; };
-		3B8A28FB2822866800CF84C6 /* StringCalculatorInputSplitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCalculatorInputSplitterTests.swift; sourceTree = "<group>"; };
-		3B8A28FD2822868200CF84C6 /* StringCalculatorInputSplitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCalculatorInputSplitter.swift; sourceTree = "<group>"; };
+		3B8A28FB2822866800CF84C6 /* SplitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitterTests.swift; sourceTree = "<group>"; };
+		3B8A28FD2822868200CF84C6 /* Splitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splitter.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,7 +71,7 @@
 			children = (
 				3B2540262822C49D00841024 /* StringCalculatorTests.swift */,
 				3B8A28F62822833E00CF84C6 /* OperandValidatorTests.swift */,
-				3B8A28FB2822866800CF84C6 /* StringCalculatorInputSplitterTests.swift */,
+				3B8A28FB2822866800CF84C6 /* SplitterTests.swift */,
 				3B25402B2822CDA200841024 /* StringConverterTests.swift */,
 			);
 			path = LottoTest;
@@ -101,7 +101,7 @@
 				C7905FC527311CC6004C3FCC /* main.swift */,
 				3B2540242822C49300841024 /* StringCalculator.swift */,
 				3B8A28F82822834A00CF84C6 /* OperandValidator.swift */,
-				3B8A28FD2822868200CF84C6 /* StringCalculatorInputSplitter.swift */,
+				3B8A28FD2822868200CF84C6 /* Splitter.swift */,
 				3B2540292822CD8D00841024 /* StringConverter.swift */,
 			);
 			path = Lotto;
@@ -199,9 +199,9 @@
 			files = (
 				3B2540282822C4B300841024 /* StringCalculator.swift in Sources */,
 				3B25402C2822CDA200841024 /* StringConverterTests.swift in Sources */,
-				3B8A28FC2822866800CF84C6 /* StringCalculatorInputSplitterTests.swift in Sources */,
+				3B8A28FC2822866800CF84C6 /* SplitterTests.swift in Sources */,
 				3B2540272822C49D00841024 /* StringCalculatorTests.swift in Sources */,
-				3B8A28FF2822868D00CF84C6 /* StringCalculatorInputSplitter.swift in Sources */,
+				3B8A28FF2822868D00CF84C6 /* Splitter.swift in Sources */,
 				3B8A28FA282283A000CF84C6 /* OperandValidator.swift in Sources */,
 				3B8A28F72822833E00CF84C6 /* OperandValidatorTests.swift in Sources */,
 				3B25402D2822CDB000841024 /* StringConverter.swift in Sources */,
@@ -214,7 +214,7 @@
 			files = (
 				3B25402A2822CD8D00841024 /* StringConverter.swift in Sources */,
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
-				3B8A28FE2822868200CF84C6 /* StringCalculatorInputSplitter.swift in Sources */,
+				3B8A28FE2822868200CF84C6 /* Splitter.swift in Sources */,
 				3B2540252822C49300841024 /* StringCalculator.swift in Sources */,
 				3B8A28F92822834A00CF84C6 /* OperandValidator.swift in Sources */,
 			);
