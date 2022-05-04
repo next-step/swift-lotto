@@ -31,4 +31,43 @@ class StringSplitterTests: XCTestCase {
         let expectation: [String] = ["1", "2", "3"]
         XCTAssertEqual(result, expectation)
     }
+    
+    func test_splitComponents_whenInputDoesNotContainSeparator_equalToOriginalInput() throws {
+        //given
+        let input: String = "1,2,3"
+        let separator: Character = ":"
+        
+        // when
+        let result: [String] = sut.split(input, by: separator)
+        
+        // then
+        let expectation: [String] = ["1,2,3"]
+        XCTAssertEqual(result, expectation)
+    }
+    
+    func test_splitComponents_whenSeparatorsAreSuccessive_removeSeperators() throws {
+        //given
+        let input: String = "1,2,,3,,"
+        let separator: Character = ","
+        
+        // when
+        let result: [String] = sut.split(input, by: separator)
+        
+        // then
+        let expectation: [String] = ["1", "2", "3"]
+        XCTAssertEqual(result, expectation)
+    }
+    
+    func test_splitComponents_whenInputIsEmpty_toBeEmpty() throws {
+        //given
+        let input: String = ""
+        let separator: Character = ","
+        
+        // when
+        let result: [String] = sut.split(input, by: separator)
+        
+        // then
+        let expectation: [String] = []
+        XCTAssertEqual(result, expectation)
+    }
 }
