@@ -12,7 +12,7 @@ struct StringUtiltity {
         inputExpression.replacingOccurrences(of: ":", with: ",")
     }
     
-    static func splitExpression(to convertedExpression: String) -> [Int] {
-        convertedExpression.components(separatedBy: ",").map { Int($0) ?? 0 }
+    static func splitExpression(to convertedExpression: String) -> [String] {
+        convertedExpression.components(separatedBy: ",")
     }
 }
