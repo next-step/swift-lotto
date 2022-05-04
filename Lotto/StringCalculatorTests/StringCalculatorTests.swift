@@ -31,4 +31,12 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertEqual(result, 0)
     }
     
+    func test_숫자_아닌값_검증() throws {
+        // given
+        let input: String? = "A"
+        
+        // when, then
+        let _: Int = try Validator.validNumber(from: input)
+    }
+    
 }
