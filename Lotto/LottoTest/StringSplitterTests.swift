@@ -19,13 +19,13 @@ class StringSplitterTests: XCTestCase {
         sut = nil
     }
     
-    func test_splitComponents() throws {
+    func test_splitComponents_whenHasSingleSeparator() throws {
         //given
         let input: String = "1,2,3"
-        let separator: Character = ","
+        let separators: CharacterSet = [","]
         
         // when
-        let result: [String] = sut.split(input, by: separator)
+        let result: [String] = sut.split(input, by: separators)
         
         // then
         let expectation: [String] = ["1", "2", "3"]
@@ -35,39 +35,39 @@ class StringSplitterTests: XCTestCase {
     func test_splitComponents_whenInputDoesNotContainSeparator_equalToOriginalInput() throws {
         //given
         let input: String = "1,2,3"
-        let separator: Character = ":"
+        let separators: CharacterSet = [":"]
         
         // when
-        let result: [String] = sut.split(input, by: separator)
+        let result: [String] = sut.split(input, by: separators)
         
         // then
         let expectation: [String] = ["1,2,3"]
         XCTAssertEqual(result, expectation)
     }
     
-    func test_splitComponents_whenSeparatorsAreSuccessive_removeSeperators() throws {
+    func test_splitComponents_whenSeparatorsAreSuccessive_appendEmptyStringBetweenSeparators() throws {
         //given
-        let input: String = "1,2,,3,,"
-        let separator: Character = ","
+        let input: String = "1,2,,3"
+        let separators: CharacterSet = [","]
         
         // when
-        let result: [String] = sut.split(input, by: separator)
+        let result: [String] = sut.split(input, by: separators)
         
         // then
-        let expectation: [String] = ["1", "2", "3"]
+        let expectation: [String] = ["1", "2", "", "3"]
         XCTAssertEqual(result, expectation)
     }
     
-    func test_splitComponents_whenInputIsEmpty_toBeEmpty() throws {
+    func test_splitComponents_whenInputIsEmpty_equalToOriginalInput() throws {
         //given
         let input: String = ""
-        let separator: Character = ","
+        let separators: CharacterSet = [","]
         
         // when
-        let result: [String] = sut.split(input, by: separator)
+        let result: [String] = sut.split(input, by: separators)
         
         // then
-        let expectation: [String] = []
+        let expectation: [String] = [""]
         XCTAssertEqual(result, expectation)
     }
 }

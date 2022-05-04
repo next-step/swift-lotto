@@ -8,9 +8,8 @@
 import Foundation
 
 struct StringSplitter {
-    func split(_ input: String, by separator: Character) -> [String] {
-        let splitComponents = input.split(separator: separator)
-            .map(String.init)
+    func split(_ input: String, by separators: CharacterSet) -> [String] {
+        let splitComponents = input.components(separatedBy: separators)
         return splitComponents
     }
 }
