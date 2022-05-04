@@ -39,4 +39,12 @@ class StringCalculatorTests: XCTestCase {
         let _: Int = try Validator.validNumber(from: input)
     }
     
+    func test_음수_입력_에러_검증() throws {
+        // given
+        let input: String? = "-1"
+        
+        // when, then
+        let _: Int = try Validator.validNumber(from: input)
+    }
+    
 }
