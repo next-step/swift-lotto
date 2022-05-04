@@ -14,11 +14,9 @@ struct CalculatorInputChecker {
         }
     }
     
-    static func validateContainsUnSupportedSeparator(to splitedExpression: [String]) throws -> [Int] {
+    static func validateContainsUnSupportedSeparator(to splitedExpression: [String]) throws {
         try splitedExpression.forEach { operand in
             guard Int(operand) != nil else { throw CalculatorError.unSupportedSeparator }
         }
-        
-        return splitedExpression.map { Int($0) ?? 0 }
     }
 }

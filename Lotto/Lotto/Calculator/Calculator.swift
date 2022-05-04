@@ -13,7 +13,8 @@ struct Calculator {
         guard !inputExpression.isEmpty else { return 0 }
         let convertedExpression = StringUtiltity.convertSeparator(to: inputExpression)
         let splitedExpression = StringUtiltity.splitExpression(to: convertedExpression)
-        let convertedOperand = try CalculatorInputChecker.validateContainsUnSupportedSeparator(to: splitedExpression)
+        try CalculatorInputChecker.validateContainsUnSupportedSeparator(to: splitedExpression)
+        let convertedOperand = StringUtiltity.convertStringArrayToIntArray(to: splitedExpression)
         try CalculatorInputChecker.validateContainsNagativeNumbers(to: convertedOperand)
         
         return addOperand(target: convertedOperand)
