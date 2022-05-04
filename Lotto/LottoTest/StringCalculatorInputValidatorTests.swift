@@ -151,7 +151,7 @@ class StringCalculatorInputValidatorTests: XCTestCase {
         XCTAssertFalse(result)
     }
     
-    func test_isValidInput_whenInputContainsNeitherNumberNorSeparator_toBeFalse() throws {
+    func test_isValidInput_whenInputContainsNeitherIntNorSeparator_toBeFalse() throws {
         //given
         let input: String = "1,2#3"
         
@@ -162,7 +162,7 @@ class StringCalculatorInputValidatorTests: XCTestCase {
         XCTAssertFalse(result)
     }
     
-    func test_isValidInput_whenInputDoesNotEndWithNumber_toBeFalse() throws {
+    func test_isValidInput_whenInputDoesNotEndWithInt_toBeFalse() throws {
         //given
         let input: String = "1,2,"
         
