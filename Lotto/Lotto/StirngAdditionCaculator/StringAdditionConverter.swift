@@ -7,10 +7,10 @@
 
 import Foundation
 
-
 final class StringAdditionConverter {
     
-    func convertToInteger(from string: String) -> Int? {
+    func convertToInteger(from string: String?) -> Int? {
+        guard let string = string else { return nil}
         return  Int(string)
     }
 }

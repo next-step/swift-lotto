@@ -31,5 +31,13 @@ class StringAdditionCaculatorTests: XCTestCase {
     func test_given문자내에허용되지않는구분자_when더하기_then에러발생() throws {
         
     }
+    
+    func test_given문자열_when구분자를기준으로나누기_then나뉜문자열배열반환() {
+        
+        let given = "1,3,5"
+        
+        sut.add(string: given)
+//        let expectaion: [String] = ["1", "2", "3"]
+    }
 
 }

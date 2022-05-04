@@ -19,6 +19,8 @@
 		F13CBBC62822C90A0056D81B /* StringAdditionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CBBC12822C8E80056D81B /* StringAdditionConverter.swift */; };
 		F13CBBC82822CBD50056D81B /* StringAdditionPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CBBC72822CBD50056D81B /* StringAdditionPrinter.swift */; };
 		F13CBBCA2822CC1F0056D81B /* StringAdditionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CBBC92822CC1F0056D81B /* StringAdditionError.swift */; };
+		F13CBBCB2822D1D80056D81B /* StringAdditionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CBBC92822CC1F0056D81B /* StringAdditionError.swift */; };
+		F142C4812822DA61001F1CAD /* StringAdditionPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CBBC72822CBD50056D81B /* StringAdditionPrinter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -87,11 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				C7905FC527311CC6004C3FCC /* main.swift */,
-				F13CBBBA2822C7FA0056D81B /* StringAddtionCaculator.swift */,
-				F13CBBC12822C8E80056D81B /* StringAdditionConverter.swift */,
-				F13CBBC32822C9030056D81B /* StringAdditionValidator.swift */,
-				F13CBBC72822CBD50056D81B /* StringAdditionPrinter.swift */,
-				F13CBBC92822CC1F0056D81B /* StringAdditionError.swift */,
+				F142C4822822E64B001F1CAD /* StirngAdditionCaculator */,
 			);
 			path = Lotto;
 			sourceTree = "<group>";
@@ -104,6 +102,18 @@
 				F13CBBBF2822C8CC0056D81B /* StringAddtionConverterTests.swift */,
 			);
 			path = StringAddtionCaculatorTests;
+			sourceTree = "<group>";
+		};
+		F142C4822822E64B001F1CAD /* StirngAdditionCaculator */ = {
+			isa = PBXGroup;
+			children = (
+				F13CBBBA2822C7FA0056D81B /* StringAddtionCaculator.swift */,
+				F13CBBC12822C8E80056D81B /* StringAdditionConverter.swift */,
+				F13CBBC32822C9030056D81B /* StringAdditionValidator.swift */,
+				F13CBBC72822CBD50056D81B /* StringAdditionPrinter.swift */,
+				F13CBBC92822CC1F0056D81B /* StringAdditionError.swift */,
+			);
+			path = StirngAdditionCaculator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,9 +219,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F13CBBC52822C9070056D81B /* StringAdditionValidator.swift in Sources */,
+				F13CBBCB2822D1D80056D81B /* StringAdditionError.swift in Sources */,
 				F13CBBC62822C90A0056D81B /* StringAdditionConverter.swift in Sources */,
 				F13CBBB62822C7D50056D81B /* StringAddtionCaculatorTests.swift in Sources */,
 				F13CBBBC2822C7FA0056D81B /* StringAddtionCaculator.swift in Sources */,
+				F142C4812822DA61001F1CAD /* StringAdditionPrinter.swift in Sources */,
 				F13CBBBE2822C8950056D81B /* StringAdditionValidatorTests.swift in Sources */,
 				F13CBBC02822C8CC0056D81B /* StringAddtionConverterTests.swift in Sources */,
 			);
