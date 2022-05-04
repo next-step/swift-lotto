@@ -10,11 +10,11 @@ import Foundation
 struct OperandValidator {
     
     func isValid(of operand: Int) -> Bool {
-        return isPositiveInt(of: operand)
+        return !isNegativeInt(of: operand)
     }
 
-    private func isPositiveInt(of input: Int) -> Bool {
-        let isPositiveInt = input >= 0
-        return isPositiveInt
+    private func isNegativeInt(of input: Int) -> Bool {
+        let isNegativeInt = input < 0
+        return isNegativeInt
     }
 }
