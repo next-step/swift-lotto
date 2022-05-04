@@ -47,4 +47,15 @@ class StringCalculatorTests: XCTestCase {
         let _: Int = try Validator.validNumber(from: input)
     }
     
+    func test_더하기() throws {
+        //given
+        let arr: Array<Int> = [1, 2, 3]
+        
+        // when
+        let result = try arr.sum()
+        
+        // then
+        XCTAssertEqual(result, 6)
+    }
+    
 }
