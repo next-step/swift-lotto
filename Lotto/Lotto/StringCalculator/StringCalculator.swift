@@ -9,17 +9,13 @@ import Foundation
 
 struct StringCalculator {
     
-    private enum StringCalculatorError: Error {
-        case invalidInput
-    }
-    
-    private enum Separator: String, CaseIterable {
+    private enum InputSeparator: String, CaseIterable {
         case colon = ":"
         case comma = ","
     }
     
-    private let operandFilter = OperandFilter()
-    private let operandValidator = OperandValidator()
+    private let inputSplitter = Splitter(separators: InputSeparator.allCases.map { $0.rawValue } )
+    private let validOperandMaker = ValidOperandMaker()
     
     func calculate(of input: String?) throws -> Int {
         guard let input = input,
@@ -27,34 +23,13 @@ struct StringCalculator {
                   return 0
               }
         
-        let operands = try operands(from: input)
-        
-        guard isAllOperandsValid(operands: operands) else {
-            throw StringCalculatorError.invalidInput
-        }
-        
-        return sum(of: operands)
+        let validOperands: [Int] = try validOperands(from: input)
+        return sum(of: validOperands)
     }
-    
-    private func operands(from input: String) throws -> [Int] {
-        let separators: CharacterSet = {
-            let joinedSeparators: String = Separator.allCases
-                .map { separator in
-                    separator.rawValue
-                }
-                .joined()
-            return CharacterSet(charactersIn: joinedSeparators)
-        }()
-        let operands: [Int] = try operandFilter.filter(from: input,
-                                                       separatedBy: separators)
-        return operands
-    }
-    
-    private func isAllOperandsValid(operands: [Int]) -> Bool {
-        let isAllOperandsValid = operands.allSatisfy { operand in
-            operandValidator.isValid(of: operand)
-        }
-        return isAllOperandsValid
+   
+    private func validOperands(from input: String) throws -> [Int] {
+        let components: [String] = inputSplitter.components(of: input)
+        return try components.map(validOperandMaker.operand)
     }
     
     private func sum(of operands: [Int]) -> Int {
