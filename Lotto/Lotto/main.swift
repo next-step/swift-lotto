@@ -9,8 +9,11 @@ import Foundation
 do {
     ResultView.printOperand(try Calculator.calculate(to: InputView.readExpression()))
 }
-catch {
-    print(CalculatorError.unSupportedNegativeNumber.message)
+catch CalculatorError.unSupportedSeparator {
+    ResultView.printError(CalculatorError.unSupportedSeparator.message)
+}
+catch CalculatorError.unSupportedNegativeNumber {
+    ResultView.printError(CalculatorError.unSupportedNegativeNumber.message)
 }
 
 
