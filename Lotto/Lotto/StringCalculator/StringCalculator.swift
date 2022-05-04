@@ -22,9 +22,10 @@ struct StringCalculator {
     private let operandValidator = OperandValidator()
     
     func calculate(of input: String?) throws -> Int {
-        guard let input = input else {
-            throw StringCalculatorError.invalidInput
-        }
+        guard let input = input,
+              !input.isEmpty else {
+                  return 0
+              }
         
         let operands = try operands(from: input)
         
