@@ -74,6 +74,17 @@ class StringCalculatorInputValidatorTests: XCTestCase {
         XCTAssertFalse(result)
     }
     
+    func test_isValidInput_whenInputIsSpace_toBeFalse() throws {
+        //given
+        let input: String = " "
+        
+        // when
+        let result: Bool = sut.isValid(of: input)
+        
+        // then
+        XCTAssertFalse(result)
+    }
+    
     func test_isValidInput_whenInputIsNil_toBeFalse() throws {
         //given
         let input: String? = nil
@@ -154,6 +165,17 @@ class StringCalculatorInputValidatorTests: XCTestCase {
     func test_isValidInput_whenInputDoesNotEndWithNumber_toBeFalse() throws {
         //given
         let input: String = "1,2,"
+        
+        // when
+        let result: Bool = sut.isValid(of: input)
+        
+        // then
+        XCTAssertFalse(result)
+    }
+    
+    func test_isValidInput_whenInputEndsWithSpace_toBeFalse() throws {
+        //given
+        let input: String = "1,2 "
         
         // when
         let result: Bool = sut.isValid(of: input)
