@@ -1,5 +1,5 @@
 //
-//  Splitter.swift
+//  OperandFilter.swift
 //  Lotto
 //
 //  Created by 강수진 on 2022/05/04.
