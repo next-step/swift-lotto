@@ -9,7 +9,7 @@ import Foundation
 
 struct StringCalculator {
     
-    enum StringCalculatorError: Error {
+    private enum StringCalculatorError: Error {
         case invalidInput
     }
     
