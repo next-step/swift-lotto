@@ -20,4 +20,15 @@ class StringCalculatorTests: XCTestCase {
         XCTAssertEqual(result, 0)
     }
     
+    func test_빈값이_0을_리턴하는지_검증() throws {
+        // given
+        let input: String? = ""
+        
+        // when
+        let result: Int = try Validator.validNumber(from: input)
+        
+        // then
+        XCTAssertEqual(result, 0)
+    }
+    
 }
