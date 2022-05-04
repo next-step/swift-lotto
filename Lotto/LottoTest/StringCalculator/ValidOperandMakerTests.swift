@@ -19,7 +19,7 @@ class ValidOperandMakerTests: XCTestCase {
         sut = nil
     }
     
-    func test_filteredOperands_whenHasSingleSeparator() throws {
+    func test_validOperand_whenInputIsPositiveIntString_equalToOriginalInputAsInt() throws {
         //given
         let input: String = "1"
         
@@ -31,7 +31,7 @@ class ValidOperandMakerTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
     
-    func test_filteredOperands_whenHasSingleSeparator2() throws {
+    func test_validOperand_whenInputIsZeroString_equalToOriginalInputAsInt() throws {
         //given
         let input: String = "0"
         
@@ -43,7 +43,7 @@ class ValidOperandMakerTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
     
-    func test_filteredOperands_whenHasSingleSeparator1() throws {
+    func test_validOperand_whenInputIsNegativeIntString_throwError() throws {
         //given
         let input: String = "-1"
         
@@ -52,7 +52,7 @@ class ValidOperandMakerTests: XCTestCase {
         XCTAssertThrowsError(try sut.operand(from: input))
     }
     
-    func test_filteredOperands_whenHasSingleSeparator12() throws {
+    func test_validOperand_whenInputIsEmpty_throwError() throws {
         //given
         let input: String = ""
         
@@ -61,7 +61,7 @@ class ValidOperandMakerTests: XCTestCase {
         XCTAssertThrowsError(try sut.operand(from: input))
     }
     
-    func test_filteredOperands_whenHasSingleSeparator31() throws {
+    func test_validOperand_whenInputIsNotIntString_throwError() throws {
         //given
         let input: String = "+"
         
