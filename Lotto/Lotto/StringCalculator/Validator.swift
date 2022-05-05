@@ -5,7 +5,7 @@
 //  Created by ycsong on 2022/05/04.
 //
 
-class Validator {
+struct Validator {
     static func validNumber(from value: String?) throws -> Int {
         guard let value = value, value.isEmpty == false else {
             return 0
