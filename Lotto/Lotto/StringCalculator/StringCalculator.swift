@@ -8,12 +8,12 @@
 import Foundation
 
 protocol Summable {
-    func sum() throws -> Int
+    static func sum(of values: [Int]) throws -> Int
 }
 
-extension Array: Summable where Element == Int {
-    func sum() throws -> Int {
-        return self.reduce(0, +)
+struct StringCalculator: Summable {
+    static func sum(of values: [Int]) throws -> Int {
+        return values.reduce(0, +)
     }
 }
 
