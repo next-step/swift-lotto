@@ -8,11 +8,11 @@
 import Foundation
 
 protocol Summable {
-    static func sum(of values: [Int]) throws -> Int
+    static func sum(of values: [Int]) -> Int
 }
 
 struct StringCalculator: Summable {
-    static func sum(of values: [Int]) throws -> Int {
+    static func sum(of values: [Int]) -> Int {
         return values.reduce(0, +)
     }
 }
