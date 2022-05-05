@@ -17,7 +17,7 @@ struct StringCalculator: Summable {
     }
 }
 
-enum StringCalculatorError: Error, LocalizedError {
+enum StringCalculatorError: LocalizedError {
     case notNumber
     case nagativeNumber
     
