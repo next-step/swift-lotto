@@ -48,11 +48,11 @@ class StringCalculatorTests: XCTestCase {
     }
     
     func test_더하기() throws {
-        //given
+        // given
         let arr: Array<Int> = [1, 2, 3]
         
         // when
-        let result = try arr.sum()
+        let result = StringCalculator.sum(of: arr)
         
         // then
         XCTAssertEqual(result, 6)
