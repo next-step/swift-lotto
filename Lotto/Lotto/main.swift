@@ -13,7 +13,7 @@ do {
         return try Validator.validNumber(from: value)
     }
 
-    let result = try integerArray.sum()
+    let result = try StringCalculator.sum(of: integerArray)
     print("결과: \(result)")
 } catch let error as StringCalculatorError {
     print(error.localizedDescription)
