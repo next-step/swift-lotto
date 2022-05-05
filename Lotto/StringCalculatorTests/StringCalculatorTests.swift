@@ -22,7 +22,7 @@ class StringCalculatorTests: XCTestCase {
     
     func test_빈값이_0을_리턴하는지_검증() throws {
         // given
-        let input: String? = ""
+        let input: String = ""
         
         // when
         let result: Int = try Validator.validNumber(from: input)
@@ -36,7 +36,7 @@ class StringCalculatorTests: XCTestCase {
         let input: String? = "A"
         
         // when, then
-        let _: Int = try Validator.validNumber(from: input)
+        XCTAssertThrowsError(try Validator.validNumber(from: input))
     }
     
     func test_음수_입력_에러_검증() throws {
@@ -44,7 +44,7 @@ class StringCalculatorTests: XCTestCase {
         let input: String? = "-1"
         
         // when, then
-        let _: Int = try Validator.validNumber(from: input)
+        XCTAssertThrowsError(try Validator.validNumber(from: input))
     }
     
     func test_더하기() throws {
