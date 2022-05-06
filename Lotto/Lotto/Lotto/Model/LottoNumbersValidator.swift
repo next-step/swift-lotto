@@ -9,10 +9,21 @@ import Foundation
 
 struct LottoNumbersValidator {
     
-    enum LottoNumbersValidatorError: Error {
+    enum LottoNumbersValidatorError: Error, UserInformable {
         case invalidNumberCount
         case containOutOfRange
         case hasDuplicate
+        
+        var guideDescription: String {
+            switch self {
+            case .invalidNumberCount:
+                return "로또 번호 개수가 6개가 아닙니다"
+            case .containOutOfRange:
+                return "1과 45 사이에 포함되지 않는 번호가 있습니다"
+            case .hasDuplicate:
+                return "중복되는 번호가 있습니다"
+            }
+        }
     }
     
     enum Constants {

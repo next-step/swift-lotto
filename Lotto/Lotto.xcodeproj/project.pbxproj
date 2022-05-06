@@ -44,6 +44,8 @@
 		3BDF15432825B29E00F03D3C /* UserGuider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15422825B29E00F03D3C /* UserGuider.swift */; };
 		3BDF15452825B30E00F03D3C /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15442825B30E00F03D3C /* ResultView.swift */; };
 		3BDF15462825B5EE00F03D3C /* UserInputConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF152B2825665000F03D3C /* UserInputConverter.swift */; };
+		3BDF154A2825C15700F03D3C /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15492825C15700F03D3C /* ErrorView.swift */; };
+		3BDF154D2825C84300F03D3C /* UserGuider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15422825B29E00F03D3C /* UserGuider.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +88,7 @@
 		3BDF15402825B11B00F03D3C /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		3BDF15422825B29E00F03D3C /* UserGuider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGuider.swift; sourceTree = "<group>"; };
 		3BDF15442825B30E00F03D3C /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		3BDF15492825C15700F03D3C /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +184,7 @@
 				3BDF15422825B29E00F03D3C /* UserGuider.swift */,
 				3BDF15402825B11B00F03D3C /* InputView.swift */,
 				3BDF15442825B30E00F03D3C /* ResultView.swift */,
+				3BDF15492825C15700F03D3C /* ErrorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BDF154D2825C84300F03D3C /* UserGuider.swift in Sources */,
 				3BDF153D28259F9500F03D3C /* LottoResult.swift in Sources */,
 				3BDF153F2825A23F00F03D3C /* LottoResultTests.swift in Sources */,
 				3BDF15322825915800F03D3C /* PurchaseMoneyValidatorTests.swift in Sources */,
@@ -345,6 +350,7 @@
 				3BDF15412825B11B00F03D3C /* InputView.swift in Sources */,
 				3BDF15392825982C00F03D3C /* Lotto.swift in Sources */,
 				3BDF15342825916000F03D3C /* PurchaseMoneyValidator.swift in Sources */,
+				3BDF154A2825C15700F03D3C /* ErrorView.swift in Sources */,
 				3BDF151D282559F100F03D3C /* LottoRank.swift in Sources */,
 				3BDF15452825B30E00F03D3C /* ResultView.swift in Sources */,
 				3B25402A2822CD8D00841024 /* StringConverter.swift in Sources */,

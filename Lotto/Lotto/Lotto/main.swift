@@ -21,8 +21,9 @@ do {
     let winningNumbers: [Int] = try inputView.recieveWinningNumbers()
     let lottoResult: LottoResult = try lottoResult(lottos: lottos, winningNumbers: winningNumbers)
     resultView.drawWinningStatistics(with: lottoResult)
-} catch {
-    print(error)
+} catch let error as UserInformable {
+    let errorView = ErrorView()
+    errorView.guideInputError(error: error)
 }
 
 private func validPurchaseMoney(from purchaseMoney: Int) throws -> Int {

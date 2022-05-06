@@ -10,14 +10,32 @@ import Foundation
 struct UserInputConverter {
     
     enum UserInputConverterError {
-        enum PurchaseMoney: Error {
+        enum PurchaseMoney: Error, UserInformable {
             case empty
             case notInt
+            
+            var guideDescription: String {
+                switch self {
+                case .empty:
+                    return "빈 값이 들어왔습니다"
+                case .notInt:
+                    return "Int 값이 아닙니다"
+                }
+            }
         }
         
-        enum WinningNumbers: Error {
+        enum WinningNumbers: Error, UserInformable {
             case empty
             case extraInputs
+            
+            var guideDescription: String {
+                switch self {
+                case .empty:
+                    return "빈 값이 들어왔습니다"
+                case .extraInputs:
+                    return "숫자와 구분자를 위한 하나의 , 만 입력해주세요"
+                }
+            }
         }
     }
     

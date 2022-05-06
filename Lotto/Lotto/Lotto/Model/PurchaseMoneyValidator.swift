@@ -9,9 +9,18 @@ import Foundation
 
 struct PurchaseMoneyValidator {
     
-    enum PurchaseMoneyValidatorError: Error {
+    enum PurchaseMoneyValidatorError: Error, UserInformable {
         case underMinimumMoney
         case notUnitOfLotto
+        
+        var guideDescription: String {
+            switch self {
+            case .underMinimumMoney:
+                return "로또를 구입하기 위해서는 1000원 이상이 필요합니다"
+            case .notUnitOfLotto:
+                return "금액이 로또 금액인 1000원 단위로 나뉘어지지 않습니다"
+            }
+        }
     }
     
     func validate(of money: Int) throws {
