@@ -26,18 +26,13 @@ struct LottoNumbersValidator {
         }
     }
     
-    enum Constants {
-        static let count: Int = 6
-        static let range: ClosedRange<Int> = 1...45
-    }
-    
     func validate(of numbers: [Int]) throws {
-        guard numbers.count == Constants.count else {
+        guard numbers.count == Lotto.Constants.numbersCount else {
             throw LottoNumbersValidatorError.invalidNumberCount
         }
         
         let isAllNumbersInRange = numbers.allSatisfy { number in
-            Constants.range ~= number
+            Lotto.Constants.numberRange ~= number
         }
         guard isAllNumbersInRange else {
             throw LottoNumbersValidatorError.containOutOfRange

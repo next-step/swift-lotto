@@ -11,6 +11,8 @@ struct Lotto {
     
     enum Constants {
         static let price: Int = 1000
+        static let numbersCount: Int = 6
+        static let numberRange: ClosedRange<Int> = 1...45
     }
     
     let numbers: [Int]
