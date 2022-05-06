@@ -11,7 +11,7 @@ class LottoGenerator {
         return Int.random(in: Constants.defaultLottoRange)
     }
     
-    private func autoNumbers() -> Lotto {
+    public func autoNumbers() -> Lotto {
         var numbers: Set<Int> = []
         
         repeat {
