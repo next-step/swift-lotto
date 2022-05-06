@@ -6,5 +6,14 @@
 
 import Foundation
 
-print("Hello, World!")
+do {
+    ResultView.printOperand(try Calculator.calculate(to: InputView.readExpression()))
+}
+catch CalculatorError.unSupportedSeparator {
+    ResultView.printError(CalculatorError.unSupportedSeparator.message)
+}
+catch CalculatorError.unSupportedNegativeNumber {
+    ResultView.printError(CalculatorError.unSupportedNegativeNumber.message)
+}
+
 
