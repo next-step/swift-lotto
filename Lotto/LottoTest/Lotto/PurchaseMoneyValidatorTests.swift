@@ -51,4 +51,32 @@ class PurchaseMoneyValidatorTests: XCTestCase {
             XCTAssertEqual(error as? PurchaseMoneyValidator.PurchaseMoneyValidatorError, expectation)
         }
     }
+    
+    // MARK: - guideDescription
+
+    func test_guideDescription_whenInputIsUnderThousand() {
+        //given
+        let input = 900
+        
+        // when
+        // then
+        XCTAssertThrowsError(try sut.validate(of: input)) { error in
+            let result = (error as? PurchaseMoneyValidator.PurchaseMoneyValidatorError)?.guideDescription
+            let expectation = "로또를 구입하기 위해서는 1000원 이상이 필요합니다"
+            XCTAssertEqual(result, expectation)
+        }
+    }
+    
+    func test_guideDescription_whenInputIsNotDivisibleByThousand() {
+        //given
+        let input = 1100
+        
+        // when
+        // then
+        XCTAssertThrowsError(try sut.validate(of: input)) { error in
+            let result = (error as? PurchaseMoneyValidator.PurchaseMoneyValidatorError)?.guideDescription
+            let expectation = "금액이 로또 금액인 1000원 단위로 나뉘어지지 않습니다"
+            XCTAssertEqual(result, expectation)
+        }
+    }
 }

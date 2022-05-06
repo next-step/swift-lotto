@@ -86,4 +86,44 @@ class LottoNumbersValidatorTests: XCTestCase {
             XCTAssertEqual(error as? LottoNumbersValidator.LottoNumbersValidatorError, expectation)
         }
     }
+    
+    // MARK: - guideDescription
+    func test_guideDescription_whenNumbersCountIsUnderSix() {
+        //given
+        let numbers = [1,2,3,4,5]
+        
+        // when
+        // then
+        XCTAssertThrowsError(try sut.validate(of: numbers)) { error in
+            let result = (error as? LottoNumbersValidator.LottoNumbersValidatorError)?.guideDescription
+            let expectation = "로또 번호 개수가 6개가 아닙니다"
+            XCTAssertEqual(result, expectation)
+        }
+    }
+    
+    func test_guideDescription_wheNumbersContainOverRanged() throws {
+        //given
+        let numbers = [1,2,3,4,5,46]
+        
+        // when
+        // then
+        XCTAssertThrowsError(try sut.validate(of: numbers)) { error in
+            let result = (error as? LottoNumbersValidator.LottoNumbersValidatorError)?.guideDescription
+            let expectation = "1과 45 사이에 포함되지 않는 번호가 있습니다"
+            XCTAssertEqual(result, expectation)
+        }
+    }
+    
+    func test_guideDescription_whenNumbersAreDuplicated() throws {
+        //given
+        let numbers = [1,2,3,4,5,5]
+        
+        // when
+        // then
+        XCTAssertThrowsError(try sut.validate(of: numbers)) { error in
+            let result = (error as? LottoNumbersValidator.LottoNumbersValidatorError)?.guideDescription
+            let expectation = "중복되는 번호가 있습니다"
+            XCTAssertEqual(result, expectation)
+        }
+    }
 }
