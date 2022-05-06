@@ -12,23 +12,27 @@ final class StringAdditionCaculator {
     
     let validator: StringAdditionValidator = StringAdditionValidator()
     let printer: StringAdditionPrinter = StringAdditionPrinter()
-    func add(string: String) {
+    
+    func caculate(input: String) {
         do {
-            let strings = separate(input: string)
-            let positiveNumbers: [Int] = try strings.map { try validator.checkValidationIncorrectString(string: $0)}
-            let totalSum = sum(nums: positiveNumbers)
-            printer.printResult(sum: totalSum)
+            let separatedStringArray: [String] = separate(input: input)
+            let numbers: [Int] = try separatedStringArray.map { try validator.validNumber(from: $0)}
+            let total: Int = sum(of: numbers)
+            printer.printResult(total: total)
+        } catch let error as StringAdditionError {
+            printer.printError(error: error)
         } catch let error {
-            printer.printError(error: error as! StringAdditionError)
+            printer.printError(error: error)
         }
     }
     
-    private func sum(nums: [Int]) -> Int {
-        return nums.reduce(0, +)
+    private func sum(of numbers: [Int]) -> Int {
+        return numbers.reduce(0, +)
     }
     
     private func separate(input: String) -> [String] {
-        let numbers = input.components(separatedBy: ",")
-        return numbers
+        let separatedStringArray = input.components(separatedBy: CharacterSet(charactersIn: ",:"))
+        return separatedStringArray
     }
 }
+

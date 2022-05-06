@@ -11,24 +11,19 @@ import Foundation
 final class StringAdditionValidator {
     
     let converter: StringAdditionConverter = StringAdditionConverter()
-    
-    func checkEmptyString(_ input: String?) -> Int {
-        return converter.convertToInteger(from: input) ?? 0
-        
-    }
-    
-    func checkValidationIncorrectString(string: String) throws -> Int {
-        guard let number = converter.convertToInteger(from: string) else {
-            throw StringAdditionError.notNumberString
+
+    func validNumber(from value: String?) throws -> Int {
+        guard !(value?.isEmpty ?? true) else { return 0 }
+        guard let number = converter.convertToInteger(from: value) else {
+            throw StringAdditionError.notNumber
         }
-        try validationNegative(number: number)
+        try checkValidationNegative(number: number)
         return number
     }
     
-    func validationNegative(number: Int) throws {
+    func checkValidationNegative(number: Int) throws {
         if number < 0 {
             throw StringAdditionError.negativeNumber
         }
     }
-
 }

@@ -9,7 +9,7 @@ import Foundation
 
 
 enum StringAdditionError: Error {
-    case notNumberString
+    case notNumber
     case negativeNumber
     case unallowedDelimiters
 }
@@ -17,7 +17,7 @@ enum StringAdditionError: Error {
 extension StringAdditionError: LocalizedError {
     var errorDescription: String? {
         switch self {
-        case .notNumberString:
+        case .notNumber:
             return "숫자로 변환되지 않는 입력값입니다."
         case .negativeNumber:
             return "음수값이 포함되어있습니다."
