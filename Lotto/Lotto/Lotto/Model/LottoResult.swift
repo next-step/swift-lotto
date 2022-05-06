@@ -28,13 +28,13 @@ struct LottoResult {
     }
     
     func winningCount(for rank: LottoRank) -> Int {
-        do {
-            return try lottos.filter { lotto in
-                try lottoRankChecker.rank(of: lotto.numbers) == rank
+        lottos.filter { lotto in
+            do {
+                return try lottoRankChecker.rank(of: lotto.numbers) == rank
+            } catch {
+                return false
             }
-            .count
-        } catch {
-            return 0
         }
+        .count
     }
 }
