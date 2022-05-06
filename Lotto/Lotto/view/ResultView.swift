@@ -7,7 +7,7 @@
 
 struct ResultView {
     static func printResult(of lottos: [Lotto]) {
-        print("당첨 통계\n---------")
+        print("\n당첨 통계\n---------")
         
         let profit = CalculateProfit(from: lottos)
         print("3개 일치 (5,000원)- \(profit.fourth)개")
