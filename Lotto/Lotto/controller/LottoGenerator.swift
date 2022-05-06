@@ -22,10 +22,13 @@ class LottoGenerator {
     }
     
     public func auto(n: Int) -> [Lotto] {
+        print("\n\(n)개를 구매했습니다.")
         var lottos: [Lotto] = []
         
         for _ in 0..<n {
-            lottos.append(autoNumbers())
+            let newLotto = autoNumbers()
+            lottos.append(newLotto)
+            print(newLotto.numbers)
         }
         
         return lottos
