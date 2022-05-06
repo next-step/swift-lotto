@@ -24,7 +24,7 @@ class LottoGenerator {
     public func auto(n: Int) -> [Lotto] {
         var lottos: [Lotto] = []
         
-        for _ in 0...n {
+        for _ in 0..<n {
             lottos.append(autoNumbers())
         }
         
