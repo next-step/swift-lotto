@@ -19,6 +19,15 @@ class LottoNumbersValidatorTests: XCTestCase {
         sut = nil
     }
     
+    func test_validate() throws {
+        //given
+        let input = [1,2,3,4,5,6]
+        
+        // when
+        // then
+        XCTAssertNoThrow(try sut.validate(of: input))
+    }
+    
     func test_validate_whenNumbersCountIsUnderSix_throwInvalidNumberCount() {
         //given
         let numbers = [1,2,3,4,5]
