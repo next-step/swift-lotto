@@ -24,8 +24,8 @@ enum LottoRank: Int {
     case second     = 5
     case third      = 4
     case fourth     = 3
-    case unknown    = 0
-    case bang       = -1
+    case bang       = 0
+    case unknown     = -1
 }
 
 enum LottoReward: Int {
