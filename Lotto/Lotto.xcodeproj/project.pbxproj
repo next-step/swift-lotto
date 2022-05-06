@@ -91,9 +91,25 @@
 		3B8A28F0282282A600CF84C6 /* LottoTest */ = {
 			isa = PBXGroup;
 			children = (
+				3BDF15112825498100F03D3C /* Lotto */,
 				3B25402E2822E50D00841024 /* StringCalculator */,
 			);
 			path = LottoTest;
+			sourceTree = "<group>";
+		};
+		3BDF15112825498100F03D3C /* Lotto */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lotto;
+			sourceTree = "<group>";
+		};
+		3BDF15122825498800F03D3C /* Lotto */ = {
+			isa = PBXGroup;
+			children = (
+				C7905FC527311CC6004C3FCC /* main.swift */,
+			);
+			path = Lotto;
 			sourceTree = "<group>";
 		};
 		C7905FB927311CC6004C3FCC = {
@@ -117,7 +133,7 @@
 		C7905FC427311CC6004C3FCC /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
-				C7905FC527311CC6004C3FCC /* main.swift */,
+				3BDF15122825498800F03D3C /* Lotto */,
 				3B25402F2822E51700841024 /* StringCalculator */,
 			);
 			path = Lotto;
