@@ -9,12 +9,15 @@ import Foundation
 
 final class StringAdditionPrinter {
     
-    func printError(error: StringAdditionError) {
+    func printError(error: Error) {
+        guard let error = error as? StringAdditionError else {
+            print(error.localizedDescription)
+            return
+        }
         print("\(error.errorDescription ?? "") ")
     }
     
-    func printResult(sum: Int) {
-        print("입력값에 대한 합은 \(sum)입니다.")
+    func printResult(total: Int) {
+        print("입력값에 대한 합은 \(total)입니다.")
     }
-    
 }
