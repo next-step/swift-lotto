@@ -57,6 +57,7 @@
 		C7905FB927311CC6004C3FCC = {
 			isa = PBXGroup;
 			children = (
+				CBBB1BA12822154700123805 /* StringCalculator */,
 				C7905FC427311CC6004C3FCC /* Lotto */,
 				CBBB1BAB2822199300123805 /* StringCalculatorTests */,
 				C7905FC327311CC6004C3FCC /* Products */,
@@ -75,7 +76,6 @@
 		C7905FC427311CC6004C3FCC /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
-				CBBB1BA12822154700123805 /* StringCalculator */,
 				C7905FC527311CC6004C3FCC /* main.swift */,
 			);
 			path = Lotto;
