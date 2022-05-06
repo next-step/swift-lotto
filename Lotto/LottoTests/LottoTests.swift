@@ -9,8 +9,19 @@ import XCTest
 
 class LottoTests: XCTestCase {
 
-    func test<#Name#>() {
-        <#statements#>
+    func test_로또_여섯자리_중복없이_자동생성() {
+        // given
+        let lottoCount = Constants.defaultLottoCount
+        
+        // when
+        let generator = LottoGenerator()
+        let lotto = generator.autoNumbers()
+        
+        let validNumbers: Set<Int> = Set(lotto.numbers)
+        let count = validNumbers.count
+        
+        // then
+        XCTAssertEqual(lottoCount, count)
     }
 
 }
