@@ -34,7 +34,6 @@ class LottoNumberGeneratorTests: XCTestCase {
         //given
         
         // when
-        //todo_ 변인 통제가 안돼.
         let lottoNumbers: [Int] = sut.generate()
         
         // then

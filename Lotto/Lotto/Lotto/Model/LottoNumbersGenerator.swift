@@ -7,23 +7,17 @@
 
 import Foundation
 
-class LottoNumbersGenerator {
-    
-    private var numbers: [Int] = []
-    
+struct LottoNumbersGenerator {
     func generate() -> [Int] {
+        var numbers: [Int] = []
         while (numbers.count < LottoNumbersValidator.Constants.count) {
-            appendUniqueRandomNumber()
+            let numberCandidate = Int.random(in: LottoNumbersValidator.Constants.range)
+            let isNumberUnique = !numbers.contains(numberCandidate)
+            guard isNumberUnique else {
+                continue
+            }
+            numbers.append(numberCandidate)
         }
         return numbers
-    }
-    
-    private func appendUniqueRandomNumber() {
-        let numberCandidate = Int.random(in: LottoNumbersValidator.Constants.range)
-        let isNumberUnique = !numbers.contains(numberCandidate)
-        guard isNumberUnique else {
-            return
-        }
-        numbers.append(numberCandidate)
     }
 }
