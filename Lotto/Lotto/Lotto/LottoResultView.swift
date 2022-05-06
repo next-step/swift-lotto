@@ -40,6 +40,6 @@ struct LottoResultView {
     }
     
     static func printTotalYield(_ totalYield: Double) {
-        print("총 수익률은 \(totalYield)입니다.")
+        print("총 수익률은 \(totalYield.floorTwoDecimalPlaces)입니다.")
     }
 }
