@@ -9,13 +9,27 @@ import Foundation
 
 struct LottoRankChecker {
     
-    let winningNumbers: [Int]
+    private let winningNumbers: [Int]
+    private let lottoNumbersValidator = LottoNumbersValidator()
     
     init(winningNumbers: [Int]) throws {
+        try lottoNumbersValidator.validate(of: winningNumbers)
         self.winningNumbers = winningNumbers
     }
     
     func rank(of numbers: [Int]) throws -> LottoRank {
-        return .first
+        try lottoNumbersValidator.validate(of: numbers)
+        
+        let matchNumberCount = matchNumberCount(of: numbers)
+        let lottoRank = LottoRank.rank(matchNumberCount: matchNumberCount)
+        return lottoRank
+    }
+    
+    private func matchNumberCount(of numbers: [Int]) -> Int {
+        let matchNumberCount = numbers.filter { number in
+            winningNumbers.contains(number)
+        }
+        .count
+        return matchNumberCount
     }
 }

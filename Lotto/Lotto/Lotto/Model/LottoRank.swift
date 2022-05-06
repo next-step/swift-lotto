@@ -13,4 +13,19 @@ enum LottoRank {
     case third
     case forth
     case none
+    
+    static func rank(matchNumberCount: Int) -> LottoRank {
+        switch matchNumberCount {
+        case 6:
+            return .first
+        case 5:
+            return .second
+        case 4:
+            return .third
+        case 3:
+            return .forth
+        default:
+            return .none
+        }
+    }
 }
