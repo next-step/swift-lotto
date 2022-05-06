@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LottoRank {
+enum LottoRank: CaseIterable {
     case first
     case second
     case third
@@ -26,6 +26,21 @@ enum LottoRank {
             return .forth
         default:
             return .none
+        }
+    }
+    
+    var prizeMoney: Int {
+        switch self {
+        case .first:
+            return 2000000000
+        case .second:
+            return 1500000
+        case .third:
+            return 50000
+        case .forth:
+            return 5000
+        case .none:
+            return 0
         }
     }
 }

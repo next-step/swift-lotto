@@ -14,17 +14,13 @@ struct PurchaseMoneyValidator {
         case notUnitOfLotto
     }
     
-    private enum Constants {
-        static let lottoPrice: Int = 1000
-    }
-    
     func validate(of money: Int) throws {
-        let isEnoughMoneyToBuyLotto: Bool = money >= Constants.lottoPrice
+        let isEnoughMoneyToBuyLotto: Bool = money >= Lotto.Constants.price
         guard isEnoughMoneyToBuyLotto else {
             throw PurchaseMoneyValidatorError.underMinimumMoney
         }
         
-        let isUnitOfLotto: Bool = money % Constants.lottoPrice == 0
+        let isUnitOfLotto: Bool = money % Lotto.Constants.price == 0
         guard isUnitOfLotto else {
             throw PurchaseMoneyValidatorError.notUnitOfLotto
         }
