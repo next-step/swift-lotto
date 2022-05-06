@@ -9,22 +9,17 @@ import Foundation
 
 class LottoNumbersGenerator {
     
-    private enum Constants {
-        static let count: Int = 6
-        static let range: ClosedRange<Int> = 1...45
-    }
-    
     private var numbers: [Int] = []
     
     func generate() -> [Int] {
-        while (numbers.count < Constants.count) {
+        while (numbers.count < LottoNumbersValidator.Constants.count) {
             appendUniqueRandomNumber()
         }
         return numbers
     }
     
     private func appendUniqueRandomNumber() {
-        let numberCandidate = Int.random(in: Constants.range)
+        let numberCandidate = Int.random(in: LottoNumbersValidator.Constants.range)
         let isNumberUnique = !numbers.contains(numberCandidate)
         guard isNumberUnique else {
             return
