@@ -33,6 +33,9 @@
 		3BDF152A2825664300F03D3C /* UserInputConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15292825664300F03D3C /* UserInputConverterTests.swift */; };
 		3BDF152C2825665000F03D3C /* UserInputConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF152B2825665000F03D3C /* UserInputConverter.swift */; };
 		3BDF152D2825666800F03D3C /* UserInputConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF152B2825665000F03D3C /* UserInputConverter.swift */; };
+		3BDF15322825915800F03D3C /* PurchaseMoneyValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15312825915800F03D3C /* PurchaseMoneyValidatorTests.swift */; };
+		3BDF15342825916000F03D3C /* PurchaseMoneyValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15332825916000F03D3C /* PurchaseMoneyValidator.swift */; };
+		3BDF15352825916B00F03D3C /* PurchaseMoneyValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15332825916000F03D3C /* PurchaseMoneyValidator.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,8 @@
 		3BDF15242825629300F03D3C /* LottoNumbersValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumbersValidatorTests.swift; sourceTree = "<group>"; };
 		3BDF15292825664300F03D3C /* UserInputConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputConverterTests.swift; sourceTree = "<group>"; };
 		3BDF152B2825665000F03D3C /* UserInputConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputConverter.swift; sourceTree = "<group>"; };
+		3BDF15312825915800F03D3C /* PurchaseMoneyValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMoneyValidatorTests.swift; sourceTree = "<group>"; };
+		3BDF15332825916000F03D3C /* PurchaseMoneyValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMoneyValidator.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +130,7 @@
 				3BDF15182825536A00F03D3C /* LottoRankCheckerTests.swift */,
 				3BDF15242825629300F03D3C /* LottoNumbersValidatorTests.swift */,
 				3BDF15292825664300F03D3C /* UserInputConverterTests.swift */,
+				3BDF15312825915800F03D3C /* PurchaseMoneyValidatorTests.swift */,
 			);
 			path = Lotto;
 			sourceTree = "<group>";
@@ -147,6 +153,7 @@
 				3BDF151A282559E600F03D3C /* LottoRankChecker.swift */,
 				3BDF151C282559F100F03D3C /* LottoRank.swift */,
 				3BDF15212825619100F03D3C /* LottoNumbersValidator.swift */,
+				3BDF15332825916000F03D3C /* PurchaseMoneyValidator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BDF15322825915800F03D3C /* PurchaseMoneyValidatorTests.swift in Sources */,
 				3BDF15192825536A00F03D3C /* LottoRankCheckerTests.swift in Sources */,
 				3B2540282822C4B300841024 /* StringCalculator.swift in Sources */,
 				3B25402C2822CDA200841024 /* StringConverterTests.swift in Sources */,
@@ -296,6 +304,7 @@
 				3B8A28FF2822868D00CF84C6 /* ValidOperandMaker.swift in Sources */,
 				3B2540342823060C00841024 /* Splitter.swift in Sources */,
 				3BDF15232825619B00F03D3C /* LottoNumbersValidator.swift in Sources */,
+				3BDF15352825916B00F03D3C /* PurchaseMoneyValidator.swift in Sources */,
 				3BDF15252825629300F03D3C /* LottoNumbersValidatorTests.swift in Sources */,
 				3BDF151728254C2000F03D3C /* LottoNumbersGenerator.swift in Sources */,
 				3BDF152A2825664300F03D3C /* UserInputConverterTests.swift in Sources */,
@@ -310,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BDF15222825619100F03D3C /* LottoNumbersValidator.swift in Sources */,
+				3BDF15342825916000F03D3C /* PurchaseMoneyValidator.swift in Sources */,
 				3BDF151D282559F100F03D3C /* LottoRank.swift in Sources */,
 				3B25402A2822CD8D00841024 /* StringConverter.swift in Sources */,
 				3BDF151B282559E600F03D3C /* LottoRankChecker.swift in Sources */,
