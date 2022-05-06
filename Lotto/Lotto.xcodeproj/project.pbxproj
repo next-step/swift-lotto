@@ -29,6 +29,7 @@
 		3BDF151F28255A0400F03D3C /* LottoRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF151C282559F100F03D3C /* LottoRank.swift */; };
 		3BDF15222825619100F03D3C /* LottoNumbersValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15212825619100F03D3C /* LottoNumbersValidator.swift */; };
 		3BDF15232825619B00F03D3C /* LottoNumbersValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15212825619100F03D3C /* LottoNumbersValidator.swift */; };
+		3BDF15252825629300F03D3C /* LottoNumbersValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15242825629300F03D3C /* LottoNumbersValidatorTests.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		3BDF151A282559E600F03D3C /* LottoRankChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoRankChecker.swift; sourceTree = "<group>"; };
 		3BDF151C282559F100F03D3C /* LottoRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoRank.swift; sourceTree = "<group>"; };
 		3BDF15212825619100F03D3C /* LottoNumbersValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumbersValidator.swift; sourceTree = "<group>"; };
+		3BDF15242825629300F03D3C /* LottoNumbersValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumbersValidatorTests.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +120,7 @@
 			children = (
 				3BDF151328254BFC00F03D3C /* LottoNumbersGeneratorTests.swift */,
 				3BDF15182825536A00F03D3C /* LottoRankCheckerTests.swift */,
+				3BDF15242825629300F03D3C /* LottoNumbersValidatorTests.swift */,
 			);
 			path = Lotto;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				3B8A28FF2822868D00CF84C6 /* ValidOperandMaker.swift in Sources */,
 				3B2540342823060C00841024 /* Splitter.swift in Sources */,
 				3BDF15232825619B00F03D3C /* LottoNumbersValidator.swift in Sources */,
+				3BDF15252825629300F03D3C /* LottoNumbersValidatorTests.swift in Sources */,
 				3BDF151728254C2000F03D3C /* LottoNumbersGenerator.swift in Sources */,
 				3B2540362823087E00841024 /* SplitterTests.swift in Sources */,
 				3B25402D2822CDB000841024 /* StringConverter.swift in Sources */,
