@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B2540252822C49300841024 /* StringCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2540242822C49300841024 /* StringCalculator.swift */; };
+		3B2540272822C49D00841024 /* StringCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2540262822C49D00841024 /* StringCalculatorTests.swift */; };
+		3B2540282822C4B300841024 /* StringCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2540242822C49300841024 /* StringCalculator.swift */; };
+		3B25402A2822CD8D00841024 /* StringConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2540292822CD8D00841024 /* StringConverter.swift */; };
+		3B25402C2822CDA200841024 /* StringConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B25402B2822CDA200841024 /* StringConverterTests.swift */; };
+		3B25402D2822CDB000841024 /* StringConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2540292822CD8D00841024 /* StringConverter.swift */; };
+		3B2540312823053600841024 /* Splitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2540302823053600841024 /* Splitter.swift */; };
+		3B2540342823060C00841024 /* Splitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2540302823053600841024 /* Splitter.swift */; };
+		3B2540362823087E00841024 /* SplitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2540352823087E00841024 /* SplitterTests.swift */; };
+		3B8A28FC2822866800CF84C6 /* ValidOperandMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28FB2822866800CF84C6 /* ValidOperandMakerTests.swift */; };
+		3B8A28FE2822868200CF84C6 /* ValidOperandMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28FD2822868200CF84C6 /* ValidOperandMaker.swift */; };
+		3B8A28FF2822868D00CF84C6 /* ValidOperandMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A28FD2822868200CF84C6 /* ValidOperandMaker.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,11 +35,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B2540242822C49300841024 /* StringCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCalculator.swift; sourceTree = "<group>"; };
+		3B2540262822C49D00841024 /* StringCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCalculatorTests.swift; sourceTree = "<group>"; };
+		3B2540292822CD8D00841024 /* StringConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConverter.swift; sourceTree = "<group>"; };
+		3B25402B2822CDA200841024 /* StringConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConverterTests.swift; sourceTree = "<group>"; };
+		3B2540302823053600841024 /* Splitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splitter.swift; sourceTree = "<group>"; };
+		3B2540352823087E00841024 /* SplitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitterTests.swift; sourceTree = "<group>"; };
+		3B8A28EF282282A600CF84C6 /* LottoTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LottoTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B8A28FB2822866800CF84C6 /* ValidOperandMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidOperandMakerTests.swift; sourceTree = "<group>"; };
+		3B8A28FD2822868200CF84C6 /* ValidOperandMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidOperandMaker.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3B8A28EC282282A600CF84C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7905FBF27311CC6004C3FCC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +66,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B25402E2822E50D00841024 /* StringCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				3B2540262822C49D00841024 /* StringCalculatorTests.swift */,
+				3B2540352823087E00841024 /* SplitterTests.swift */,
+				3B8A28FB2822866800CF84C6 /* ValidOperandMakerTests.swift */,
+				3B25402B2822CDA200841024 /* StringConverterTests.swift */,
+			);
+			path = StringCalculator;
+			sourceTree = "<group>";
+		};
+		3B25402F2822E51700841024 /* StringCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				3B2540242822C49300841024 /* StringCalculator.swift */,
+				3B2540302823053600841024 /* Splitter.swift */,
+				3B8A28FD2822868200CF84C6 /* ValidOperandMaker.swift */,
+				3B2540292822CD8D00841024 /* StringConverter.swift */,
+			);
+			path = StringCalculator;
+			sourceTree = "<group>";
+		};
+		3B8A28F0282282A600CF84C6 /* LottoTest */ = {
+			isa = PBXGroup;
+			children = (
+				3B25402E2822E50D00841024 /* StringCalculator */,
+			);
+			path = LottoTest;
+			sourceTree = "<group>";
+		};
 		C7905FB927311CC6004C3FCC = {
 			isa = PBXGroup;
 			children = (
 				C7905FC427311CC6004C3FCC /* Lotto */,
+				3B8A28F0282282A600CF84C6 /* LottoTest */,
 				C7905FC327311CC6004C3FCC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				C7905FC227311CC6004C3FCC /* Lotto */,
+				3B8A28EF282282A600CF84C6 /* LottoTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				C7905FC527311CC6004C3FCC /* main.swift */,
+				3B25402F2822E51700841024 /* StringCalculator */,
 			);
 			path = Lotto;
 			sourceTree = "<group>";
@@ -65,6 +126,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3B8A28EE282282A600CF84C6 /* LottoTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B8A28F5282282A600CF84C6 /* Build configuration list for PBXNativeTarget "LottoTest" */;
+			buildPhases = (
+				3B8A28EB282282A600CF84C6 /* Sources */,
+				3B8A28EC282282A600CF84C6 /* Frameworks */,
+				3B8A28ED282282A600CF84C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LottoTest;
+			productName = LottoTest;
+			productReference = 3B8A28EF282282A600CF84C6 /* LottoTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C7905FC127311CC6004C3FCC /* Lotto */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7905FC927311CC6004C3FCC /* Build configuration list for PBXNativeTarget "Lotto" */;
@@ -89,9 +167,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					3B8A28EE282282A600CF84C6 = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+					};
 					C7905FC127311CC6004C3FCC = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -111,22 +193,97 @@
 			projectRoot = "";
 			targets = (
 				C7905FC127311CC6004C3FCC /* Lotto */,
+				3B8A28EE282282A600CF84C6 /* LottoTest */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		3B8A28ED282282A600CF84C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		3B8A28EB282282A600CF84C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B2540282822C4B300841024 /* StringCalculator.swift in Sources */,
+				3B25402C2822CDA200841024 /* StringConverterTests.swift in Sources */,
+				3B8A28FC2822866800CF84C6 /* ValidOperandMakerTests.swift in Sources */,
+				3B2540272822C49D00841024 /* StringCalculatorTests.swift in Sources */,
+				3B8A28FF2822868D00CF84C6 /* ValidOperandMaker.swift in Sources */,
+				3B2540342823060C00841024 /* Splitter.swift in Sources */,
+				3B2540362823087E00841024 /* SplitterTests.swift in Sources */,
+				3B25402D2822CDB000841024 /* StringConverter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7905FBE27311CC6004C3FCC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B25402A2822CD8D00841024 /* StringConverter.swift in Sources */,
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
+				3B8A28FE2822868200CF84C6 /* ValidOperandMaker.swift in Sources */,
+				3B2540252822C49300841024 /* StringCalculator.swift in Sources */,
+				3B2540312823053600841024 /* Splitter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		3B8A28F3282282A600CF84C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y4XABUQ539;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sujinnaljin.LottoTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3B8A28F4282282A600CF84C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y4XABUQ539;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sujinnaljin.LottoTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		C7905FC727311CC6004C3FCC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -263,6 +420,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3B8A28F5282282A600CF84C6 /* Build configuration list for PBXNativeTarget "LottoTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B8A28F3282282A600CF84C6 /* Debug */,
+				3B8A28F4282282A600CF84C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C7905FBD27311CC6004C3FCC /* Build configuration list for PBXProject "Lotto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
