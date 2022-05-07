@@ -11,19 +11,13 @@ import Foundation
 final class StringAdditionCaculator {
     
     let validator: StringAdditionValidator = StringAdditionValidator()
-    let printer: StringAdditionPrinter = StringAdditionPrinter()
     
-    func caculate(input: String) {
-        do {
-            let separatedStringArray: [String] = separate(input: input)
-            let numbers: [Int] = try separatedStringArray.map { try validator.validNumber(from: $0)}
-            let total: Int = sum(of: numbers)
-            printer.printResult(total: total)
-        } catch let error as StringAdditionError {
-            printer.printError(error: error)
-        } catch let error {
-            printer.printError(error: error)
-        }
+    func caculate(input: String) throws -> Int {
+        
+        let separatedStringArray: [String] = separate(input: input)
+        let numbers: [Int] = try separatedStringArray.map { try validator.validNumber(from: $0)}
+        let total: Int = sum(of: numbers)
+        return total
     }
     
     private func sum(of numbers: [Int]) -> Int {

@@ -17,7 +17,7 @@ class StringAdditionValidatorTests: XCTestCase {
         let given: String? = nil
         
         //when
-        let result = sut.checkEmptyString(given)
+        let result = try? sut.validNumber(from: given)
         
         //then
         let expectation: Int = 0
@@ -29,36 +29,48 @@ class StringAdditionValidatorTests: XCTestCase {
         let given: String? = "12345"
         
         //when
-        let result = sut.checkEmptyString(given)
+        let result = try? sut.validNumber(from: given)
         
         //then
         let expectation: Int = 12345
         XCTAssertEqual(result, expectation)
+    }
+    
+    func test_given문자열_when유효성검사_then에러반환() throws {
+        //given
+        let given: String = "MOOYAHO"
         
+        //when && then
+        let expectation: StringAdditionError = StringAdditionError.notNumber
+        
+        XCTAssertThrowsError(try sut.validNumber(from: given)) { error in
+            XCTAssertEqual(error as? StringAdditionError, expectation)
+        }
+    }
+    
+    
+    func test_given음수_when유효성검사_then에러반환() throws {
+        //given
+        let given: Int = -1
+        
+        //when && then
+        let expectation: StringAdditionError = StringAdditionError.negativeNumber
+        
+        XCTAssertThrowsError(try sut.checkValidationNegative(number: given)) { error in
+            XCTAssertEqual(error as? StringAdditionError, expectation)
+        }
     }
     
     func test_given음수문자열_when유효성검사_then에러반환() throws {
         //given
-        let given: Int = -1
-        
-        
-        //when && then
-        let expectation: StringAdditionError = StringAdditionError.negativeNumber
-        
-        XCTAssertThrowsError(try sut.validationNegative(number: given)) { error in
-            XCTAssertEqual(error as? StringAdditionError, expectation)
-        }
-    }
-    func test_given문자열_when유효성검사_then에러반환() throws {
-        //given
-        let given: Int = -1
-        
+        let given: String = "-1"
         
         //when && then
         let expectation: StringAdditionError = StringAdditionError.negativeNumber
         
-        XCTAssertThrowsError(try sut.validationNegative(number: given)) { error in
+        XCTAssertThrowsError(try sut.validNumber(from: given)) { error in
             XCTAssertEqual(error as? StringAdditionError, expectation)
         }
     }
+   
 }
