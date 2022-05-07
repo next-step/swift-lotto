@@ -28,8 +28,8 @@ struct InputView {
             let splited: [String] = input.components(separatedBy: ",")
             
             let prevNumbers: [Int] = try splited.map {
-                if let v = Int($0.trimmingCharacters(in: .whitespaces)) {
-                    return v
+                if let number = Int($0.trimmingCharacters(in: .whitespaces)) {
+                    return number
                 }
                 throw LottoError.invalidInput
             }
