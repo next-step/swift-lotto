@@ -24,7 +24,7 @@ class LottoTests: XCTestCase {
         XCTAssertEqual(defaultlottoCount, lottoCount)
     }
     
-    func test_로또_n번_자동생성() {
+    func test_로또_세번_자동생성() {
         // given
         let n = 3
         
