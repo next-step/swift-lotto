@@ -20,12 +20,14 @@ enum LottoRank: CaseIterable {
         switch matchNumberCount {
         case 6:
             return .first
-        case 5:
+        case 5 where isMatchBonus:
             return .second
-        case 4:
+        case 5:
             return .third
-        case 3:
+        case 4:
             return .forth
+        case 3:
+            return .fifth
         default:
             return .none
         }
@@ -34,15 +36,15 @@ enum LottoRank: CaseIterable {
     var prizeMoney: Int {
         switch self {
         case .first:
-            return 2000000000
+            return 2_000_000_000
         case .second:
-            return 1500000
+            return 30_000_000
         case .third:
-            return 50000
+            return 1_500_000
         case .forth:
-            return 5000
+            return 50_000
         case .fifth:
-            return 0
+            return 5_000
         case .none:
             return 0
         }

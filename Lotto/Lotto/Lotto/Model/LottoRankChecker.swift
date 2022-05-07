@@ -26,7 +26,7 @@ struct LottoRankChecker {
         
         let matchNumberCount = matchNumberCount(of: numbers)
         let lottoRank = LottoRank.rank(matchNumberCount: matchNumberCount,
-                                       isMatchBonus: false)
+                                       isMatchBonus: numbers.contains(bonusNumber))
         return lottoRank
     }
     
