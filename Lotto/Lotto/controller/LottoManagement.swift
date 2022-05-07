@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CalculateProfit {
+class LottoManagement {
     
     let fourth: Int
     let third: Int
