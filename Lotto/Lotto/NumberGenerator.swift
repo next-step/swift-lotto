@@ -8,27 +8,10 @@
 import Foundation
 
 protocol NumberGenerator {
-    static func from(_ input: String?) throws -> Int
+    static func from(_ input: String) throws -> Int
 }
 
 struct PositiveNumberGenerator: NumberGenerator {
-    static func from(_ input: String?) throws -> Int {
-        guard let input: String = input,
-            input.isEmpty == false else {
-            return 0
-        }
-        
-        guard let number = Int(input) else {
-            throw Self.Error.isNotNumber(input)
-        }
-        
-        if number < 0 {
-            throw Self.Error.isNegativeNumber(number)
-        }
-        
-        return number
-    }
-    
     enum Error: LocalizedError {
         case isNotNumber(String)
         case isNegativeNumber(Int)
@@ -41,5 +24,17 @@ struct PositiveNumberGenerator: NumberGenerator {
                 return "\(value)는 음수입니다."
             }
         }
+    }
+    
+    static func from(_ input: String) throws -> Int {
+        guard let number = Int(input) else {
+            throw Self.Error.isNotNumber(input)
+        }
+        
+        if number < 0 {
+            throw Self.Error.isNegativeNumber(number)
+        }
+        
+        return number
     }
 }

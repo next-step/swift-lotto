@@ -44,26 +44,4 @@ class NumberGeneratorTest: XCTestCase {
                 Int(negativeNumber)!).errorDescription)
         }
     }
-    
-    func test_PositiveNumberGenerator_빈문자열은_0으로_변환한다() {
-        // given
-        let emptyString = ""
-        
-        // when
-        let result = try! PositiveNumberGenerator.from(emptyString)
-        
-        // then
-        XCTAssertEqual(result, 0)
-    }
-    
-    func test_PositiveNumberGenerator_nil은_0으로_변환한다() {
-        // given
-        let nilString: String? = nil
-        
-        // when
-        let result = try! PositiveNumberGenerator.from(nilString)
-        
-        // then
-        XCTAssertEqual(result, 0)
-    }
 }
