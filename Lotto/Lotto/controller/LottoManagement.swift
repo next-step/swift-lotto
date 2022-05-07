@@ -9,22 +9,22 @@ import Foundation
 
 class LottoManagement {
     
-    let fourth: Int
-    let third: Int
-    let second: Int
-    let first: Int
+    let fourthPlace: Int
+    let thirdPlace: Int
+    let secondPlace: Int
+    let firstPlace: Int
     let rate: String
     
     init(from lottos: [Lotto]) {
-        self.fourth = lottos.filter { $0.rank == .fourth }.count
-        self.third = lottos.filter { $0.rank == .third }.count
-        self.second = lottos.filter { $0.rank == .second }.count
-        self.first = lottos.filter { $0.rank == .first }.count
+        self.fourthPlace = lottos.filter { $0.rank == .fourth }.count
+        self.thirdPlace = lottos.filter { $0.rank == .third }.count
+        self.secondPlace = lottos.filter { $0.rank == .second }.count
+        self.firstPlace = lottos.filter { $0.rank == .first }.count
         
-        let amount: Double = Double (fourth * LottoReward.fourth.rawValue
-                                        + third * LottoReward.third.rawValue
-                                        + second * LottoReward.second.rawValue
-                                        + first * LottoReward.first.rawValue)
+        let amount: Double = Double (fourthPlace * LottoReward.fourth.rawValue
+                                        + thirdPlace * LottoReward.third.rawValue
+                                        + secondPlace * LottoReward.second.rawValue
+                                        + firstPlace * LottoReward.first.rawValue)
 
         self.rate = String(format: "%.2lf",
                            amount / Double(Constants.lottoPrice * lottos.count))
