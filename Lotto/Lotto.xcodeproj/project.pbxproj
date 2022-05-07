@@ -11,6 +11,7 @@
 		1FD669202826815D003E16F7 /* StringCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6691F2826815D003E16F7 /* StringCalculator.swift */; };
 		1FD669212826822E003E16F7 /* StringCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6691F2826815D003E16F7 /* StringCalculator.swift */; };
 		1FD66924282686E5003E16F7 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD66923282686E5003E16F7 /* InputError.swift */; };
+		1FD66926282687FC003E16F7 /* StringCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD66925282687FC003E16F7 /* StringCalculatorTest.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		1FD6691928267FB6003E16F7 /* LottoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTest.swift; sourceTree = "<group>"; };
 		1FD6691F2826815D003E16F7 /* StringCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCalculator.swift; sourceTree = "<group>"; };
 		1FD66923282686E5003E16F7 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
+		1FD66925282687FC003E16F7 /* StringCalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCalculatorTest.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				1FD6691928267FB6003E16F7 /* LottoTest.swift */,
+				1FD66925282687FC003E16F7 /* StringCalculatorTest.swift */,
 			);
 			path = LottoTest;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD66926282687FC003E16F7 /* StringCalculatorTest.swift in Sources */,
 				1FD669212826822E003E16F7 /* StringCalculator.swift in Sources */,
 				1FD6691A28267FB6003E16F7 /* LottoTest.swift in Sources */,
 			);
