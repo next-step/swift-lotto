@@ -9,10 +9,9 @@ import Foundation
 do {
     let inputView = InputView()
     let purchaseMoney: Int = try inputView.recievePurchaseMoney()
-    let validPurchaseMoney = try validPurchaseMoney(from: purchaseMoney)
 
     let resultView = ResultView()
-    let purchaseCount = validPurchaseMoney / Lotto.Constants.price
+    let purchaseCount = purchaseMoney / Lotto.Constants.price
     resultView.printPurchaseCount(with: purchaseCount)
 
     let lottos: [Lotto] = buyLottos(for: purchaseCount)
@@ -24,12 +23,6 @@ do {
 } catch let error as UserInformable {
     let errorView = ErrorView()
     errorView.guideInputError(error: error)
-}
-
-private func validPurchaseMoney(from purchaseMoney: Int) throws -> Int {
-    let purchaseMoneyValidator = PurchaseMoneyValidator()
-    try purchaseMoneyValidator.validate(of: purchaseMoney)
-    return purchaseMoney
 }
 
 private func buyLottos(for purchaseCount: Int) -> [Lotto] {

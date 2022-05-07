@@ -25,18 +25,24 @@ struct InputView {
     
     private let userGuider = UserGuider()
     private let userInputConverter = UserInputConverter()
+    private let purchaseMoneyValidator = PurchaseMoneyValidator()
+    private let lottoNumbersValidator = LottoNumbersValidator()
     
     func recievePurchaseMoney() throws -> Int {
         userGuider.printGuide(for: Question.purchaseMoney)
         
         let userInput: String? = readLine()
-        return try userInputConverter.convertToMoney(from: userInput)
+        let purchaseMoney = try userInputConverter.convertToMoney(from: userInput)
+        try purchaseMoneyValidator.validate(of: purchaseMoney)
+        return purchaseMoney
     }
     
     func recieveWinningNumbers() throws -> [Int] {
         userGuider.printGuide(for: Question.winningNumbers)
         
         let userInput: String? = readLine()
-        return try userInputConverter.convertToWinningNumbers(from: userInput)
+        let winningNumbers = try userInputConverter.convertToWinningNumbers(from: userInput)
+        try lottoNumbersValidator.validate(of: winningNumbers)
+        return winningNumbers
     }
 }
