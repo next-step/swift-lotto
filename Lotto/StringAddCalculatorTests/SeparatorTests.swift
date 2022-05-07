@@ -9,6 +9,12 @@ import XCTest
 
 class SeparatorTests: XCTestCase {
     
+    func test_빈_문자가_입력이_되면_0을_반환한다() throws {
+        XCTAssertEqual(Separator.separate(nil),
+                       ["0"],
+                       "0이 반환되지 않았습니다.")
+    }
+    
     func test_컴마_혹은_콜론이_구분자로_입력됐을_때_잘_분리가_된다1() throws {
         XCTAssertEqual(Separator.separate("1,2,3"),
                        ["1", "2", "3"],
