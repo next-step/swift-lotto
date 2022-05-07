@@ -26,13 +26,14 @@ struct PositiveNumberGenerator {
         }
     }
     
-    static func from(_ value: String?) throws -> Int {
-        guard let value = value else { return 0 }
+    static func from(_ input: String?) throws -> Int {
+        guard let input: String = input,
+            input.isEmpty == false else {
+            return 0
+        }
         
-        if value.isEmpty == true { return 0 }
-        
-        guard let number = Int(value) else {
-            throw Self.Error.isNotNumber(value)
+        guard let number = Int(input) else {
+            throw Self.Error.isNotNumber(input)
         }
         
         if number < 0 {
