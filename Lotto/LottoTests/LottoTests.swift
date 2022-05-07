@@ -26,15 +26,15 @@ class LottoTests: XCTestCase {
     
     func test_로또_세번_자동생성() {
         // given
-        let n = 3
+        let targetCount = 3
+        let generator = LottoGenerator()
+        let lottos = generator.auto(n: targetCount)
         
         // when
-        let generator = LottoGenerator()
-        let lottos = generator.auto(n: n)
         let count = lottos.count
         
         // then
-        XCTAssertEqual(n, count)
+        XCTAssertEqual(targetCount, count)
     }
 
 }
