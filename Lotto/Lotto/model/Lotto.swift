@@ -36,7 +36,7 @@ enum LottoReward: Int {
 }
 
 class Lotto {
-    var numbers: [Int]
+    let numbers: [Int]
     var rank: LottoRank
 
     init(numbers: [Int], rank: LottoRank = .unknown) {
