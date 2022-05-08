@@ -21,4 +21,3 @@ struct Splitter {
             .filter { $0 != Self.emptyString }
     }
 }
-

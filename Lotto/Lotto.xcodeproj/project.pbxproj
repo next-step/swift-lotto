@@ -23,6 +23,9 @@
 		2ED9C3F0282675A600BC60E7 /* InputParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3EF282675A600BC60E7 /* InputParserTest.swift */; };
 		2ED9C3F2282675AE00BC60E7 /* InputParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3F1282675AE00BC60E7 /* InputParser.swift */; };
 		2ED9C3F3282675AE00BC60E7 /* InputParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3F1282675AE00BC60E7 /* InputParser.swift */; };
+		2ED9C3F528267E1600BC60E7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3F428267E1600BC60E7 /* Calculator.swift */; };
+		2ED9C3F628267E1600BC60E7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3F428267E1600BC60E7 /* Calculator.swift */; };
+		2ED9C3F828267E2A00BC60E7 /* CalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3F728267E2A00BC60E7 /* CalculatorTest.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +53,8 @@
 		2ED9C3ED2826700D00BC60E7 /* NumberGeneratorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberGeneratorTest.swift; sourceTree = "<group>"; };
 		2ED9C3EF282675A600BC60E7 /* InputParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputParserTest.swift; sourceTree = "<group>"; };
 		2ED9C3F1282675AE00BC60E7 /* InputParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputParser.swift; sourceTree = "<group>"; };
+		2ED9C3F428267E1600BC60E7 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		2ED9C3F728267E2A00BC60E7 /* CalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTest.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +85,7 @@
 				2ED9C3E228266D2300BC60E7 /* OperatorTest.swift */,
 				2ED9C3ED2826700D00BC60E7 /* NumberGeneratorTest.swift */,
 				2ED9C3EF282675A600BC60E7 /* InputParserTest.swift */,
+				2ED9C3F728267E2A00BC60E7 /* CalculatorTest.swift */,
 			);
 			path = LottoTest;
 			sourceTree = "<group>";
@@ -111,6 +117,7 @@
 				2ED9C3E428266D6700BC60E7 /* Operator.swift */,
 				2ED9C3E728266EEA00BC60E7 /* NumberGenerator.swift */,
 				2ED9C3F1282675AE00BC60E7 /* InputParser.swift */,
+				2ED9C3F428267E1600BC60E7 /* Calculator.swift */,
 			);
 			path = Lotto;
 			sourceTree = "<group>";
@@ -209,9 +216,11 @@
 				2ED9C3DC28265DE800BC60E7 /* SplitterTest.swift in Sources */,
 				2ED9C3F0282675A600BC60E7 /* InputParserTest.swift in Sources */,
 				2ED9C3D52826559900BC60E7 /* Splitter.swift in Sources */,
+				2ED9C3F628267E1600BC60E7 /* Calculator.swift in Sources */,
 				2ED9C3CF2826536A00BC60E7 /* main.swift in Sources */,
 				2ED9C3F3282675AE00BC60E7 /* InputParser.swift in Sources */,
 				2ED9C3E628266D6700BC60E7 /* Operator.swift in Sources */,
+				2ED9C3F828267E2A00BC60E7 /* CalculatorTest.swift in Sources */,
 				2ED9C3EE2826700D00BC60E7 /* NumberGeneratorTest.swift in Sources */,
 				2ED9C3CB2826534800BC60E7 /* LottoTest.swift in Sources */,
 				2ED9C3E328266D2300BC60E7 /* OperatorTest.swift in Sources */,
@@ -224,6 +233,7 @@
 			files = (
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
 				2ED9C3E528266D6700BC60E7 /* Operator.swift in Sources */,
+				2ED9C3F528267E1600BC60E7 /* Calculator.swift in Sources */,
 				2ED9C3E828266EEA00BC60E7 /* NumberGenerator.swift in Sources */,
 				2ED9C3DF2826646900BC60E7 /* Separators.swift in Sources */,
 				2ED9C3D42826559900BC60E7 /* Splitter.swift in Sources */,
