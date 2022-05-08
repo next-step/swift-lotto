@@ -22,5 +22,9 @@ class CalculatorTest: XCTestCase {
     func test_숫자가_하나뿐일때_그_수를_반환() {
         XCTAssertEqual(sut.calculate(with: "9"), 9)
     }
+    
+    func test_숫자_사이를_컴마로_입력하면_수의_합을_반환() {
+        XCTAssertEqual(sut.calculate(with: "1,9"), 10)
+    }
 
 }
