@@ -9,27 +9,21 @@ import XCTest
 
 class LottoTest: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func test_init_Lotto를_구성하는_번호개수가_6개가_아니면_에러를_발생시킨다() {
+        // given
+        let lottoNumbers = [try! LottoNumber(value: 1),
+                            try! LottoNumber(value: 2),
+                            try! LottoNumber(value: 3),
+                            try! LottoNumber(value: 4),
+                            try! LottoNumber(value: 5),
+                            try! LottoNumber(value: 6),
+                            try! LottoNumber(value: 7)]
+        
+        // when
+        // then
+        XCTAssertThrowsError(try Lotto(numbers: lottoNumbers), "Lotto를 구성하는 번호 개수가 6개가 아니라면 에러를 발생시킨다.") { error in
+            XCTAssert(error is Lotto.Error)
+            XCTAssert(error.localizedDescription == Lotto.Error.invalidNumberCount(lottoNumbers.count).localizedDescription)
         }
     }
-
 }
