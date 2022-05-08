@@ -19,6 +19,8 @@ class LottoNumbersValidatorTests: XCTestCase {
         sut = nil
     }
     
+    // MARK: - validate
+    
     func test_validate() throws {
         //given
         let input = [1,2,3,4,5,6]
@@ -87,7 +89,44 @@ class LottoNumbersValidatorTests: XCTestCase {
         }
     }
     
+    // MARK: - validateBonusNumber
+    
+    func test_validateBonusNumber() throws {
+        //given
+        let bonusNumber = 45
+        let winningNumbers = [1,2,3,4,5,6]
+        
+        // when
+        // then
+        XCTAssertNoThrow(try sut.validateBonusNumber(bonusNumber, in: winningNumbers))
+    }
+    
+    func test_validateBonusNumber_whenBonusNumbersIsDuplicated_throwHasDuplicate() throws {
+        //given
+        let bonusNumber = 1
+        let winningNumbers = [1,2,3,4,5,6]
+        
+        // then
+        let expectation = LottoNumbersValidator.LottoNumbersValidatorError.hasDuplicate
+        XCTAssertThrowsError(try sut.validateBonusNumber(bonusNumber, in: winningNumbers)) { error in
+            XCTAssertEqual(error as? LottoNumbersValidator.LottoNumbersValidatorError, expectation)
+        }
+    }
+    
+    func test_validateBonusNumber_whenBonusNumbersIsOverRanged_throwContainOutOfRange() throws {
+        //given
+        let bonusNumber = 46
+        let winningNumbers = [1,2,3,4,5,6]
+        
+        // then
+        let expectation = LottoNumbersValidator.LottoNumbersValidatorError.containOutOfRange
+        XCTAssertThrowsError(try sut.validateBonusNumber(bonusNumber, in: winningNumbers)) { error in
+            XCTAssertEqual(error as? LottoNumbersValidator.LottoNumbersValidatorError, expectation)
+        }
+    }
+    
     // MARK: - guideDescription
+    
     func test_guideDescription_whenNumbersCountIsUnderSix() {
         //given
         let numbers = [1,2,3,4,5]
