@@ -27,6 +27,7 @@
 		2ED9C3F628267E1600BC60E7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3F428267E1600BC60E7 /* Calculator.swift */; };
 		2ED9C3F828267E2A00BC60E7 /* CalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3F728267E2A00BC60E7 /* CalculatorTest.swift */; };
 		2ED9C3FB2827872800BC60E7 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3FA2827872800BC60E7 /* InputView.swift */; };
+		2ED9C3FD28278B5E00BC60E7 /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3FC28278B5E00BC60E7 /* OutputView.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		2ED9C3F428267E1600BC60E7 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		2ED9C3F728267E2A00BC60E7 /* CalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTest.swift; sourceTree = "<group>"; };
 		2ED9C3FA2827872800BC60E7 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		2ED9C3FC28278B5E00BC60E7 /* OutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputView.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				2ED9C3FA2827872800BC60E7 /* InputView.swift */,
+				2ED9C3FC28278B5E00BC60E7 /* OutputView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				2ED9C3FB2827872800BC60E7 /* InputView.swift in Sources */,
 				2ED9C3D42826559900BC60E7 /* Splitter.swift in Sources */,
 				2ED9C3F2282675AE00BC60E7 /* InputParser.swift in Sources */,
+				2ED9C3FD28278B5E00BC60E7 /* OutputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
