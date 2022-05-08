@@ -11,13 +11,10 @@ struct UserInputConverter {
     
     enum UserInputConverterError {
         enum PurchaseMoney: Error, UserInformable {
-            case empty
             case notInt
             
             var guideDescription: String {
                 switch self {
-                case .empty:
-                    return "빈 값이 들어왔습니다"
                 case .notInt:
                     return "Int 값이 아닙니다"
                 }
@@ -25,13 +22,10 @@ struct UserInputConverter {
         }
         
         enum WinningNumbers: Error, UserInformable {
-            case empty
             case extraInputs
             
             var guideDescription: String {
                 switch self {
-                case .empty:
-                    return "빈 값이 들어왔습니다"
                 case .extraInputs:
                     return "숫자와 구분자를 위한 하나의 , 만 입력해주세요"
                 }
@@ -42,12 +36,7 @@ struct UserInputConverter {
     private let stringConverter = StringConverter()
     private let splitter = Splitter(separators: [","])
     
-    func convertToMoney(from input: String?) throws -> Int {
-        guard let input = input,
-              !input.isEmpty else {
-            throw UserInputConverterError.PurchaseMoney.empty
-        }
-        
+    func convertToMoney(from input: String) throws -> Int {
         do {
             let money = try stringConverter.convertToInt(from: input)
             return money
@@ -56,12 +45,7 @@ struct UserInputConverter {
         }
     }
     
-    func convertToWinningNumbers(from input: String?) throws -> [Int] {
-        guard let input = input,
-              !input.isEmpty else {
-            throw UserInputConverterError.WinningNumbers.empty
-        }
-        
+    func convertToWinningNumbers(from input: String) throws -> [Int] {        
         do {
             let components = splitter.components(of: removeSpace(of: input))
             let winningNumbers = try components.map(stringConverter.convertToInt)

@@ -117,7 +117,6 @@
 				3B2540262822C49D00841024 /* StringCalculatorTests.swift */,
 				3B2540352823087E00841024 /* SplitterTests.swift */,
 				3B8A28FB2822866800CF84C6 /* ValidOperandMakerTests.swift */,
-				3B25402B2822CDA200841024 /* StringConverterTests.swift */,
 			);
 			path = StringCalculator;
 			sourceTree = "<group>";
@@ -143,6 +142,7 @@
 		3BDF15112825498100F03D3C /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
+				3B25402B2822CDA200841024 /* StringConverterTests.swift */,
 				3BDF15292825664300F03D3C /* UserInputConverterTests.swift */,
 				3BDF15182825536A00F03D3C /* LottoRankCheckerTests.swift */,
 				3BDF153E2825A23F00F03D3C /* LottoResultTests.swift */,

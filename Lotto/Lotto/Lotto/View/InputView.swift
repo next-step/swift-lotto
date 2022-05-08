@@ -24,6 +24,7 @@ struct InputView {
     }
     
     private let userGuider = UserGuider()
+    private let stringConverter = StringConverter()
     private let userInputConverter = UserInputConverter()
     private let purchaseMoneyValidator = PurchaseMoneyValidator()
     private let lottoNumbersValidator = LottoNumbersValidator()
@@ -32,7 +33,8 @@ struct InputView {
         userGuider.printGuide(for: Question.purchaseMoney)
         
         let userInput: String? = readLine()
-        let purchaseMoney = try userInputConverter.convertToMoney(from: userInput)
+        let unwrappedUserInput: String = try stringConverter.unwrapOptional(from: userInput)
+        let purchaseMoney = try userInputConverter.convertToMoney(from: unwrappedUserInput)
         try purchaseMoneyValidator.validate(of: purchaseMoney)
         return purchaseMoney
     }
@@ -41,7 +43,8 @@ struct InputView {
         userGuider.printGuide(for: Question.winningNumbers)
         
         let userInput: String? = readLine()
-        let winningNumbers = try userInputConverter.convertToWinningNumbers(from: userInput)
+        let unwrappedUserInput: String = try stringConverter.unwrapOptional(from: userInput)
+        let winningNumbers = try userInputConverter.convertToWinningNumbers(from: unwrappedUserInput)
         try lottoNumbersValidator.validate(of: winningNumbers)
         return winningNumbers
     }

@@ -45,30 +45,6 @@ class UserInputConverterTests: XCTestCase {
         }
     }
     
-    func test_convertToMoney_whenInputIsNil_throwEmpty() throws {
-        //given
-        let input: String? = nil
-        
-        // when
-        // then
-        let expectation = UserInputConverter.UserInputConverterError.PurchaseMoney.empty
-        XCTAssertThrowsError(try sut.convertToMoney(from: input)) { error in
-            XCTAssertEqual(error as? UserInputConverter.UserInputConverterError.PurchaseMoney, expectation)
-        }
-    }
-    
-    func test_convertToMoney_whenInputIsEmptyString_throwEmpty() throws {
-        //given
-        let input = ""
-        
-        // when
-        // then
-        let expectation = UserInputConverter.UserInputConverterError.PurchaseMoney.empty
-        XCTAssertThrowsError(try sut.convertToMoney(from: input)) { error in
-            XCTAssertEqual(error as? UserInputConverter.UserInputConverterError.PurchaseMoney, expectation)
-        }
-    }
-    
     // MARK: - convertToWinningNumbers
     
     func test_convertToWinningNumbers_whenNumbersAreSeparatedByComma() throws {
@@ -118,44 +94,7 @@ class UserInputConverterTests: XCTestCase {
         }
     }
     
-    func test_convertToWinningNumbers_whenInputIsNil_throwEmpty() throws {
-        //given
-        let input: String? = nil
-        
-        // when
-        // then
-        let expectation = UserInputConverter.UserInputConverterError.WinningNumbers.empty
-        XCTAssertThrowsError(try sut.convertToWinningNumbers(from: input)) { error in
-            XCTAssertEqual(error as? UserInputConverter.UserInputConverterError.WinningNumbers, expectation)
-        }
-    }
-    
-    func test_convertToWinningNumbers_whenInputIsEmptyString_throwEmpty() throws {
-        //given
-        let input = ""
-        
-        // when
-        // then
-        let expectation = UserInputConverter.UserInputConverterError.WinningNumbers.empty
-        XCTAssertThrowsError(try sut.convertToWinningNumbers(from: input)) { error in
-            XCTAssertEqual(error as? UserInputConverter.UserInputConverterError.WinningNumbers, expectation)
-        }
-    }
-    
     // MARK: - guideDescription
-    
-    func test_guideDescription_whenConvertToMoneyInputIsNil() throws {
-        //given
-        let input: String? = nil
-        
-        // when
-        // then
-        XCTAssertThrowsError(try sut.convertToMoney(from: input)) { error in
-            let result = (error as? UserInputConverter.UserInputConverterError.PurchaseMoney)?.guideDescription
-            let expectation = "빈 값이 들어왔습니다"
-            XCTAssertEqual(result, expectation)
-        }
-    }
     
     func test_guideDescription_whenConvertToMoneyInputIsNotIntString() throws {
         //given
@@ -166,19 +105,6 @@ class UserInputConverterTests: XCTestCase {
         XCTAssertThrowsError(try sut.convertToMoney(from: input)) { error in
             let result = (error as? UserInputConverter.UserInputConverterError.PurchaseMoney)?.guideDescription
             let expectation = "Int 값이 아닙니다"
-            XCTAssertEqual(result, expectation)
-        }
-    }
-    
-    func test_guideDescription_whenConvertToWinningNumbersInputIsNil() throws {
-        //given
-        let input: String? = nil
-        
-        // when
-        // then
-        XCTAssertThrowsError(try sut.convertToWinningNumbers(from: input)) { error in
-            let result = (error as? UserInputConverter.UserInputConverterError.WinningNumbers)?.guideDescription
-            let expectation = "빈 값이 들어왔습니다"
             XCTAssertEqual(result, expectation)
         }
     }
