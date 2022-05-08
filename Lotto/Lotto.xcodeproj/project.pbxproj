@@ -26,6 +26,7 @@
 		2ED9C3F528267E1600BC60E7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3F428267E1600BC60E7 /* Calculator.swift */; };
 		2ED9C3F628267E1600BC60E7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3F428267E1600BC60E7 /* Calculator.swift */; };
 		2ED9C3F828267E2A00BC60E7 /* CalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3F728267E2A00BC60E7 /* CalculatorTest.swift */; };
+		2ED9C3FB2827872800BC60E7 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3FA2827872800BC60E7 /* InputView.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		2ED9C3F1282675AE00BC60E7 /* InputParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputParser.swift; sourceTree = "<group>"; };
 		2ED9C3F428267E1600BC60E7 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		2ED9C3F728267E2A00BC60E7 /* CalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTest.swift; sourceTree = "<group>"; };
+		2ED9C3FA2827872800BC60E7 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,14 @@
 			path = LottoTest;
 			sourceTree = "<group>";
 		};
+		2ED9C3F92827872000BC60E7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2ED9C3FA2827872800BC60E7 /* InputView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C7905FB927311CC6004C3FCC = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 		C7905FC427311CC6004C3FCC /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
+				2ED9C3F92827872000BC60E7 /* View */,
 				C7905FC527311CC6004C3FCC /* main.swift */,
 				2ED9C3D32826559900BC60E7 /* Splitter.swift */,
 				2ED9C3DE2826646900BC60E7 /* Separators.swift */,
@@ -236,6 +247,7 @@
 				2ED9C3F528267E1600BC60E7 /* Calculator.swift in Sources */,
 				2ED9C3E828266EEA00BC60E7 /* NumberGenerator.swift in Sources */,
 				2ED9C3DF2826646900BC60E7 /* Separators.swift in Sources */,
+				2ED9C3FB2827872800BC60E7 /* InputView.swift in Sources */,
 				2ED9C3D42826559900BC60E7 /* Splitter.swift in Sources */,
 				2ED9C3F2282675AE00BC60E7 /* InputParser.swift in Sources */,
 			);
