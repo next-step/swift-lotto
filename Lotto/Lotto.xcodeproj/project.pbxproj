@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A547C1822827E761000D392E /* CalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547C1812827E761000D392E /* CalculatorTest.swift */; };
+		A547C1882827E867000D392E /* StringCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547C1872827E867000D392E /* StringCalculator.swift */; };
+		A547C1892827E867000D392E /* StringCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547C1872827E867000D392E /* StringCalculator.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,7 @@
 /* Begin PBXFileReference section */
 		A547C17F2827E761000D392E /* CalculatorTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A547C1812827E761000D392E /* CalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTest.swift; sourceTree = "<group>"; };
+		A547C1872827E867000D392E /* StringCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCalculator.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,6 +59,14 @@
 			path = CalculatorTest;
 			sourceTree = "<group>";
 		};
+		A547C1862827E84C000D392E /* StringCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				A547C1872827E867000D392E /* StringCalculator.swift */,
+			);
+			path = StringCalculator;
+			sourceTree = "<group>";
+		};
 		C7905FB927311CC6004C3FCC = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +88,7 @@
 		C7905FC427311CC6004C3FCC /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
+				A547C1862827E84C000D392E /* StringCalculator */,
 				C7905FC527311CC6004C3FCC /* main.swift */,
 			);
 			path = Lotto;
@@ -171,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A547C1892827E867000D392E /* StringCalculator.swift in Sources */,
 				A547C1822827E761000D392E /* CalculatorTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A547C1882827E867000D392E /* StringCalculator.swift in Sources */,
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

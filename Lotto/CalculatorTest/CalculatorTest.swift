@@ -11,8 +11,7 @@ class CalculatorTest: XCTestCase {
 
     func test_입력값이_빈문자열일때_0을_반환() {
         let sut = StringCalculator()
-        sut.setFormula("")
-        XCTAssertEqual(sut.calculate(), 0)
+        XCTAssertEqual(sut.calculate(with: ""), 0)
     }
 
 }
