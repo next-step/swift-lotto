@@ -9,8 +9,8 @@ import Foundation
 
 struct StringCalculator {
     
-    func calculate(with formula: String) -> Int {
-        guard formula != "" else { return 0 }
+    func calculate(with formula: String?) -> Int {
+        guard let formula = formula, formula != "" else { return 0 }
         return 0
     }
 }
