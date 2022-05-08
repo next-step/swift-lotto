@@ -11,6 +11,6 @@ struct StringCalculator {
     
     func calculate(with formula: String?) -> Int {
         guard let formula = formula, formula != "" else { return 0 }
-        return 0
+        return Int(formula)!
     }
 }
