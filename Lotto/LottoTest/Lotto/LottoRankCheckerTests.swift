@@ -13,7 +13,8 @@ class LottoRankCheckerTests: XCTestCase {
     
     override func setUpWithError() throws {
         let winningNumbers = [1,2,3,4,5,6]
-        sut = try LottoRankChecker(winningNumbers: winningNumbers)
+        let bonusNumber = 45
+        sut = try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber)
     }
     
     override func tearDownWithError() throws {
@@ -22,48 +23,82 @@ class LottoRankCheckerTests: XCTestCase {
     
     // MARK: - init
     
-    func test_lottoRankCheckerInit_whenWinningNumbersCountIsUnderSix_throwError() {
+    func test_lottoRankCheckerInit() throws {
         //given
-        let winningNumbers = [1,2,3,4,5]
+        let winningNumbers = [1,2,3,4,5,6]
+        let bonusNumber = 45
         
         // when
         // then
-        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers))
+        XCTAssertNoThrow(try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber))
+    }
+    
+    func test_lottoRankCheckerInit_whenWinningNumbersCountIsUnderSix_throwError() {
+        //given
+        let winningNumbers = [1,2,3,4,5]
+        let bonusNumber = 45
+        
+        // when
+        // then
+        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber))
     }
     
     func test_lottoRankCheckerInit_whenWinningNumbersCountIsOverSix_throwError() {
         //given
         let winningNumbers = [1,2,3,4,5,6,7]
+        let bonusNumber = 45
         
         // when
         // then
-        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers))
+        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber))
     }
     
     func test_lottoRankCheckerInit_whenWinningNumbersContainOverRanged_throwError() throws {
         //given
         let winningNumbers = [1,2,3,4,5,46]
+        let bonusNumber = 45
         
         // when
         // then
-        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers))
+        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber))
     }
     
     func test_lottoRankCheckerInit_whenWinningNumbersContainUnderRanged_throwError() throws {
         //given
         let winningNumbers = [0,1,2,3,4,5]
+        let bonusNumber = 45
         
         // when
         // then
-        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers))
+        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber))
     }
     
     func test_lottoRankCheckerInit_whenWinningNumbersAreDuplicated_throwError() throws {
         //given
         let winningNumbers = [1,2,3,4,5,5]
+        let bonusNumber = 45
         
         // then
-        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers))
+        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber))
+    }
+    
+    
+    func test_lottoRankCheckerInit_whenbonusNumbersIsDuplicated_throwError() throws {
+        //given
+        let winningNumbers = [1,2,3,4,5,6]
+        let bonusNumber = 1
+        
+        // then
+        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber))
+    }
+    
+    func test_lottoRankCheckerInit_whenbonusNumbersIsOverRanged_throwError() throws {
+        //given
+        let winningNumbers = [1,2,3,4,5,6]
+        let bonusNumber = 47
+        
+        // then
+        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber))
     }
     
     // MARK: - lottoRank
@@ -81,9 +116,9 @@ class LottoRankCheckerTests: XCTestCase {
         XCTAssertEqual(lottoRank, expectation)
     }
     
-    func test_lottoRank_fiveNumberAreEqualToTheWinningNumbers_eqaulToSecond() throws {
+    func test_lottoRank_fiveNumberAreEqualToTheWinningNumbersAndMatchBonusNumber_eqaulToSecond() throws {
         //given
-        let candidateNumbers = [1,2,3,4,5,7]
+        let candidateNumbers = [1,2,3,4,5,45]
         
         // when
         let lottoRank: LottoRank = try sut.rank(of: candidateNumbers)
@@ -93,9 +128,9 @@ class LottoRankCheckerTests: XCTestCase {
         XCTAssertEqual(lottoRank, expectation)
     }
     
-    func test_lottoRank_fourNumberAreEqualToTheWinningNumbers_eqaulToThird() throws {
+    func test_lottoRank_fiveNumberAreEqualToTheWinningNumbersAndNoMatchbonusNumber_eqaulToThird() throws {
         //given
-        let candidateNumbers = [1,2,3,4,7,8]
+        let candidateNumbers = [1,2,3,4,5,7]
         
         // when
         let lottoRank: LottoRank = try sut.rank(of: candidateNumbers)
@@ -105,7 +140,31 @@ class LottoRankCheckerTests: XCTestCase {
         XCTAssertEqual(lottoRank, expectation)
     }
     
-    func test_lottoRank_threeNumberAreEqualToTheWinningNumbers_eqaulToForth() throws {
+    func test_lottoRank_fourNumberAreEqualToTheWinningNumbersAndMatchBonusNumber_eqaulToForth() throws {
+        //given
+        let candidateNumbers = [1,2,3,4,7,45]
+        
+        // when
+        let lottoRank: LottoRank = try sut.rank(of: candidateNumbers)
+        
+        // then
+        let expectation: LottoRank = LottoRank.forth
+        XCTAssertEqual(lottoRank, expectation)
+    }
+    
+    func test_lottoRank_fourNumberAreEqualToTheWinningNumbersAndNoMatchBonusNumber_eqaulToForth() throws {
+        //given
+        let candidateNumbers = [1,2,3,4,7,8]
+        
+        // when
+        let lottoRank: LottoRank = try sut.rank(of: candidateNumbers)
+        
+        // then
+        let expectation: LottoRank = LottoRank.forth
+        XCTAssertEqual(lottoRank, expectation)
+    }
+    
+    func test_lottoRank_threeNumberAreEqualToTheWinningNumbers_eqaulToFifth() throws {
         //given
         let candidateNumbers = [1,2,3,7,8,9]
         
@@ -113,7 +172,7 @@ class LottoRankCheckerTests: XCTestCase {
         let lottoRank: LottoRank = try sut.rank(of: candidateNumbers)
         
         // then
-        let expectation: LottoRank = LottoRank.forth
+        let expectation: LottoRank = LottoRank.fifth
         XCTAssertEqual(lottoRank, expectation)
     }
     

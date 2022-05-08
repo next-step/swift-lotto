@@ -20,7 +20,9 @@ do {
     let winningNumbers: [Int] = try inputView.recieveWinningNumbers()
     let bonusNumber: Int = try inputView.recieveBonusNumber(in: winningNumbers)
     
-    let lottoResult: LottoResult = try lottoResult(lottos: lottos, winningNumbers: winningNumbers)
+    let lottoResult: LottoResult = try lottoResult(lottos: lottos,
+                                                   winningNumbers: winningNumbers,
+                                                   bonusNumber: bonusNumber)
     resultView.printWinningStatistics(with: lottoResult)
 } catch let error as UserInformable {
     let errorView = ErrorView()
@@ -37,9 +39,10 @@ private func buyLottos(for purchaseCount: Int) -> [Lotto] {
 }
 
 private func lottoResult(lottos: [Lotto],
-                         winningNumbers: [Int]) throws -> LottoResult {
+                         winningNumbers: [Int],
+                         bonusNumber: Int) throws -> LottoResult {
     
-    let lottoRankChecker = try LottoRankChecker(winningNumbers: winningNumbers)
+    let lottoRankChecker = try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber)
     let lottoResult = LottoResult(lottos: lottos,
                                   lottoRankChecker: lottoRankChecker)
     return lottoResult

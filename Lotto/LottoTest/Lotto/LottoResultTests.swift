@@ -18,7 +18,8 @@ class LottoResultTests: XCTestCase {
     
     override func setUpWithError() throws {
         let winningNumbers = [1,2,3,4,5,6]
-        lottoRankChecker = try LottoRankChecker(winningNumbers: winningNumbers)
+        let bonusNumber = 45
+        lottoRankChecker = try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber)
         
         firstWinningNumbers = [1,2,3,4,5,6]
         secondWinningNumbers = [1,2,3,4,5,7]

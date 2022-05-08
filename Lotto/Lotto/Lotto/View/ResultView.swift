@@ -51,7 +51,7 @@ struct ResultView {
     private func printCountForEachWinning(with lottoResult: LottoResult) {
         let matchCountForWinningRange: ClosedRange<Int> = (3...6)
         matchCountForWinningRange.forEach { matchCountForWinning in
-            let lottoRank = LottoRank.rank(matchNumberCount: matchCountForWinning)
+            let lottoRank = LottoRank.rank(matchNumberCount: matchCountForWinning, isMatchBonus: true) //todo
             userGuider.printGuide(for: ResultText.winning(matchCountForWinning: matchCountForWinning,
                                                           prizeMoneyForWinning: lottoRank.prizeMoney,
                                                           winningCount: lottoResult.winningCount(for: lottoRank)))

@@ -12,9 +12,11 @@ enum LottoRank: CaseIterable {
     case second
     case third
     case forth
+    case fifth
     case none
     
-    static func rank(matchNumberCount: Int) -> LottoRank {
+    static func rank(matchNumberCount: Int,
+                     isMatchBonus: Bool = false) -> LottoRank {
         switch matchNumberCount {
         case 6:
             return .first
@@ -39,6 +41,8 @@ enum LottoRank: CaseIterable {
             return 50000
         case .forth:
             return 5000
+        case .fifth:
+            return 0
         case .none:
             return 0
         }
