@@ -19,4 +19,13 @@ struct StringUtiltity {
     static func splitExpression(to convertedExpression: String) -> [String] {
         convertedExpression.components(separatedBy: ",")
     }
+    
+    static func convertStringAmountToInt(to input: String) -> Int {
+        let amount: Int = Int(input) ?? 0
+        return amount / 1000
+    }
+    
+    static func splitLottoNumbers(to convertedExpression: String) -> [Int] {
+        convertedExpression.components(separatedBy: ", ").map { Int($0) ?? 0 }
+    }
 }

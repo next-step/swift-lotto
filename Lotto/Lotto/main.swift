@@ -6,14 +6,18 @@
 
 import Foundation
 
-do {
-    ResultView.printOperand(try Calculator.calculate(to: InputView.readExpression()))
-}
-catch CalculatorError.unSupportedSeparator {
-    ResultView.printError(CalculatorError.unSupportedSeparator.message)
-}
-catch CalculatorError.unSupportedNegativeNumber {
-    ResultView.printError(CalculatorError.unSupportedNegativeNumber.message)
+func main() {
+    let seller = LottoSeller(purchaseAmount: LottoInputView.readPurchaseAmount(),
+                             lottoMaker: LottoRandomNumberMaker())
+    LottoResultView.printPurchasedLotto(seller.purchasedNumber())
+    LottoResultView.printLottos(seller.sellLotto())
+    let winningLotto = WinningLottoMaker(lastWeekWinningNumber: LottoInputView.readLastWeakWinningNumber()).makeWinningLotto()
+    let cener = LottoCenter(winningLotto: winningLotto)
+    let user = User(userLotto: seller.sellLotto(), center: cener)
+    let rankReport = RankReport(winning: user.winning())
+
+    LottoResultView.printReport(rankReport.report())
+    LottoResultView.printTotalYield(UserTotalYield.yield(winning: user.winning()))
 }
 
-
+main()
