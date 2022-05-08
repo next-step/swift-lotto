@@ -7,14 +7,18 @@
 import Foundation
 
 do {
-    let inputStr: String = "1,2:3"
-    let inputStrArray: Array<String> = inputStr.components(separatedBy: CharacterSet(charactersIn: ",:"))
-    let integerArray: Array<Int> = try inputStrArray.map { (value) in
-        return try Validator.validNumber(from: value)
+    let count = try InputView.readPurchasePrice()
+
+    let generator = LottoGenerator()
+    let lottos = generator.auto(n: count)
+
+    let prev = try InputView.readPrevWinningNumber()
+    
+    for lotto in lottos {
+        lotto.match(from: prev)
     }
 
-    let result = StringCalculator.sum(of: integerArray)
-    print("결과: \(result)")
-} catch let error as StringCalculatorError {
-    print(error.localizedDescription)
+    ResultView.printResult(of: lottos)
+} catch let error as LottoError {
+    print(error.errorDescription)
 }
