@@ -9,7 +9,7 @@ import Foundation
 
 struct InputView {
     
-    private enum Question: UserInformable {
+    private enum QuestionText: UserInformable {
         case purchaseMoney
         case winningNumbers
         
@@ -30,7 +30,7 @@ struct InputView {
     private let lottoNumbersValidator = LottoNumbersValidator()
     
     func recievePurchaseMoney() throws -> Int {
-        userGuider.printGuide(for: Question.purchaseMoney)
+        userGuider.printGuide(for: QuestionText.purchaseMoney)
         
         let userInput: String? = readLine()
         let unwrappedUserInput: String = try stringConverter.unwrapOptional(from: userInput)
@@ -40,7 +40,7 @@ struct InputView {
     }
     
     func recieveWinningNumbers() throws -> [Int] {
-        userGuider.printGuide(for: Question.winningNumbers)
+        userGuider.printGuide(for: QuestionText.winningNumbers)
         
         let userInput: String? = readLine()
         let unwrappedUserInput: String = try stringConverter.unwrapOptional(from: userInput)

@@ -9,7 +9,7 @@ import Foundation
 
 struct ResultView {
 
-    private enum Result: UserInformable {
+    private enum ResultText: UserInformable {
         case purchaseCount(value: Int)
         case winningStatisticsHeader
         case winning(matchCountForWinning: Int, prizeMoneyForWinning: Int, winningCount: Int)
@@ -33,7 +33,7 @@ struct ResultView {
     private let userGuider = UserGuider()
     
     func printPurchaseCount(with purchaseCount: Int) {
-        userGuider.printGuide(for: Result.purchaseCount(value: purchaseCount))
+        userGuider.printGuide(for: ResultText.purchaseCount(value: purchaseCount))
     }
     
     func printLottos(for lottos: [Lotto]) {
@@ -43,18 +43,18 @@ struct ResultView {
     }
     
     func printWinningStatistics(with lottoResult: LottoResult) {
-        userGuider.printGuide(for: Result.winningStatisticsHeader)
+        userGuider.printGuide(for: ResultText.winningStatisticsHeader)
         printCountForEachWinning(with: lottoResult)
-        userGuider.printGuide(for: Result.earningsRate(value: lottoResult.earningsRate))
+        userGuider.printGuide(for: ResultText.earningsRate(value: lottoResult.earningsRate))
     }
     
     private func printCountForEachWinning(with lottoResult: LottoResult) {
         let matchCountForWinningRange: ClosedRange<Int> = (3...6)
         matchCountForWinningRange.forEach { matchCountForWinning in
             let lottoRank = LottoRank.rank(matchNumberCount: matchCountForWinning)
-            userGuider.printGuide(for: Result.winning(matchCountForWinning: matchCountForWinning,
-                                                 prizeMoneyForWinning: lottoRank.prizeMoney,
-                                                 winningCount: lottoResult.winningCount(for: lottoRank)))
+            userGuider.printGuide(for: ResultText.winning(matchCountForWinning: matchCountForWinning,
+                                                          prizeMoneyForWinning: lottoRank.prizeMoney,
+                                                          winningCount: lottoResult.winningCount(for: lottoRank)))
         }
     }
 }
