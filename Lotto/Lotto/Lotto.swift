@@ -29,7 +29,11 @@ struct Lotto {
         self.numbers = numbers
     }
     
-    func equalNumberCount(with: Lotto) -> Int {
-            return 5
+    func equalNumberCount(with lotto: Lotto) -> Int {
+        let count = lotto.numbers.filter {
+            self.numbers.contains($0)
+        }.count
+        
+        return count
     }
 }
