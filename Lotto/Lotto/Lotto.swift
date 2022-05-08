@@ -7,6 +7,18 @@
 
 import Foundation
 
+struct LottoFactory {
+    let lottoNumberGenerator: LottoNumberGenerator
+    
+    func create() -> Lotto {
+        let lottoNumbers = (0..<Lotto.lottoNumberCount).map { _ in
+            lottoNumberGenerator.generate()
+        }
+        return try! Lotto(numbers: lottoNumbers)
+    }
+}
+
+
 struct Lotto {
     enum Error: LocalizedError {
         case invalidNumberCount(Int)
