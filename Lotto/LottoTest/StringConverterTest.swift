@@ -47,7 +47,7 @@ class StringConverterTest: XCTestCase {
         let value = ["-1","2"]
         let expectedResult = InputError.invalidNumber
         do {
-            let _ = try stringConverter.stringToInt(inputArray: value)
+            let _ = try stringConverter.stringsToInts(input: value)
         } catch {
             if let error = error as? InputError {
                 XCTAssert(expectedResult == error)
@@ -60,7 +60,7 @@ class StringConverterTest: XCTestCase {
         let value = ["f","3"]
         let expectedResult = InputError.invalidNumber
         do {
-            let _ = try stringConverter.stringToInt(inputArray: value)
+            let _ = try stringConverter.stringsToInts(input: value)
         } catch {
             if let error = error as? InputError {
                 XCTAssert(expectedResult == error)

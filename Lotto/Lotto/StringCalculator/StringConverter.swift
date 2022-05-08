@@ -30,9 +30,9 @@ struct StringConverter {
         return input
     }
     
-    func stringToInt(inputArray: [String]) throws -> [Int] {
+    func stringsToInts(input: [String]) throws -> [Int] {
         var intArray: [Int] = []
-        for value in inputArray {
+        for value in input {
             let intValue = try stringToInt(input:value)
             intArray.append(intValue)
         }
