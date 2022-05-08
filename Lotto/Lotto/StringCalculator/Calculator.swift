@@ -7,6 +7,9 @@
 
 import Foundation
 
-struct StringCalculator {
+struct Calculator {
+    func sum(_ input: [Int]) -> Int {
+        return input.reduce(0, +)
+    }
     
 }
