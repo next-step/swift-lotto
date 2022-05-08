@@ -19,8 +19,8 @@ struct LottoNumber {
         }
     }
     
-    private static let minValue = 1
-    private static let maxValue = 45
+    static let minValue = 1
+    static let maxValue = 45
     let value: Int
     
     init(value: Int) throws {
