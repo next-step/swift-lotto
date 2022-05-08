@@ -17,8 +17,11 @@ struct StringCalculator {
     }
     
     private func seperate(formula: String) -> Array<Int> {
-        let numbers = formula.components(separatedBy: ",")
-            .compactMap( Int.init )
+        let validSeperator = [",", ":"]
+        let seperator = CharacterSet(charactersIn: validSeperator.joined())
+        let seperated = formula.components(separatedBy: seperator)
+        
+        let numbers = seperated.compactMap( Int.init )
         
         return numbers
     }
