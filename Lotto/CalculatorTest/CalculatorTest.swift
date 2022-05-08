@@ -13,5 +13,10 @@ class CalculatorTest: XCTestCase {
         let sut = StringCalculator()
         XCTAssertEqual(sut.calculate(with: ""), 0)
     }
+    
+    func test_입력값이_nil일때_0을_반환() {
+        let sut = StringCalculator()
+        XCTAssertEqual(sut.calculate(with: nil), 0)
+    }
 
 }
