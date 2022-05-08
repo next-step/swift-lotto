@@ -28,6 +28,8 @@
 		2ED9C3F828267E2A00BC60E7 /* CalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3F728267E2A00BC60E7 /* CalculatorTest.swift */; };
 		2ED9C3FB2827872800BC60E7 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3FA2827872800BC60E7 /* InputView.swift */; };
 		2ED9C3FD28278B5E00BC60E7 /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3FC28278B5E00BC60E7 /* OutputView.swift */; };
+		2ED9C3FE282797D800BC60E7 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3FA2827872800BC60E7 /* InputView.swift */; };
+		2ED9C3FF282797D900BC60E7 /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3FC28278B5E00BC60E7 /* OutputView.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -226,9 +228,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2ED9C3E928266EEA00BC60E7 /* NumberGenerator.swift in Sources */,
+				2ED9C3FE282797D800BC60E7 /* InputView.swift in Sources */,
 				2ED9C3E02826646900BC60E7 /* Separators.swift in Sources */,
 				2ED9C3DC28265DE800BC60E7 /* SplitterTest.swift in Sources */,
 				2ED9C3F0282675A600BC60E7 /* InputParserTest.swift in Sources */,
+				2ED9C3FF282797D900BC60E7 /* OutputView.swift in Sources */,
 				2ED9C3D52826559900BC60E7 /* Splitter.swift in Sources */,
 				2ED9C3F628267E1600BC60E7 /* Calculator.swift in Sources */,
 				2ED9C3CF2826536A00BC60E7 /* main.swift in Sources */,
