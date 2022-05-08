@@ -12,6 +12,6 @@ struct ErrorView {
     private let userGuider = UserGuider()
     
     func guideInputError(error: UserInformable) {
-        userGuider.guide(for: error)
+        userGuider.printGuide(for: error)
     }
 }

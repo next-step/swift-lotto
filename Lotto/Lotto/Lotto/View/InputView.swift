@@ -27,12 +27,12 @@ struct InputView {
     private let userInputConverter = UserInputConverter()
     
     func recievePurchaseMoney() throws -> Int {
-        userGuider.guide(for: Question.purchaseMoney)
+        userGuider.printGuide(for: Question.purchaseMoney)
         return try userInputConverter.convertToMoney(from: readLine())
     }
     
     func recieveWinningNumbers() throws -> [Int] {
-        userGuider.guide(for: Question.winningNumbers)
+        userGuider.printGuide(for: Question.winningNumbers)
         return try userInputConverter.convertToWinningNumbers(from: readLine())
     }
 }

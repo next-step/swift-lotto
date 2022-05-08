@@ -12,7 +12,7 @@ protocol UserInformable {
 }
 
 struct UserGuider {
-    func guide(for information: UserInformable) {
+    func printGuide(for information: UserInformable) {
         print(information.guideDescription)
     }
 }
