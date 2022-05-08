@@ -13,14 +13,14 @@ do {
 
     let resultView = ResultView()
     let purchaseCount = validPurchaseMoney / Lotto.Constants.price
-    resultView.drawPurchaseCount(with: purchaseCount)
+    resultView.printPurchaseCount(with: purchaseCount)
 
     let lottos: [Lotto] = buyLottos(for: purchaseCount)
-    resultView.drawLottos(for: lottos)
+    resultView.printLottos(for: lottos)
     
     let winningNumbers: [Int] = try inputView.recieveWinningNumbers()
     let lottoResult: LottoResult = try lottoResult(lottos: lottos, winningNumbers: winningNumbers)
-    resultView.drawWinningStatistics(with: lottoResult)
+    resultView.printWinningStatistics(with: lottoResult)
 } catch let error as UserInformable {
     let errorView = ErrorView()
     errorView.guideInputError(error: error)

@@ -32,23 +32,23 @@ struct ResultView {
     
     private let userGuider = UserGuider()
     
-    func drawPurchaseCount(with purchaseCount: Int) {
+    func printPurchaseCount(with purchaseCount: Int) {
         userGuider.printGuide(for: Result.purchaseCount(value: purchaseCount))
     }
     
-    func drawLottos(for lottos: [Lotto]) {
+    func printLottos(for lottos: [Lotto]) {
         lottos.forEach { lotto in
             Swift.print(lotto.numbers.sorted())
         }
     }
     
-    func drawWinningStatistics(with lottoResult: LottoResult) {
+    func printWinningStatistics(with lottoResult: LottoResult) {
         userGuider.printGuide(for: Result.winningStatisticsHeader)
-        drawCountForEachWinning(with: lottoResult)
+        printCountForEachWinning(with: lottoResult)
         userGuider.printGuide(for: Result.earningsRate(value: lottoResult.earningsRate))
     }
     
-    private func drawCountForEachWinning(with lottoResult: LottoResult) {
+    private func printCountForEachWinning(with lottoResult: LottoResult) {
         let matchCountForWinningRange: ClosedRange<Int> = (3...6)
         matchCountForWinningRange.forEach { matchCountForWinning in
             let lottoRank = LottoRank.rank(matchNumberCount: matchCountForWinning)
