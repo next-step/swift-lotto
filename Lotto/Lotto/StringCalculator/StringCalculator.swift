@@ -9,6 +9,8 @@ import Foundation
 
 struct StringCalculator {
     
+    private let splitter = StringSplitter(validSeperators: [",", ":"])
+    
     func calculate(with formula: String?) -> Int {
         guard let formula = formula, formula != "" else { return 0 }
         
@@ -17,12 +19,7 @@ struct StringCalculator {
     }
     
     private func seperate(formula: String) -> Array<Int> {
-        let validSeperator = [",", ":"]
-        let seperator = CharacterSet(charactersIn: validSeperator.joined())
-        let seperated = formula.components(separatedBy: seperator)
-        
-        let numbers = seperated.compactMap( Int.init )
-        
+        let numbers = splitter.split(target: formula).compactMap( Int.init )
         return numbers
     }
 }
