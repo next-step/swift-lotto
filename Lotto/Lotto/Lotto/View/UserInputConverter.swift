@@ -10,17 +10,6 @@ import Foundation
 struct UserInputConverter {
     
     enum UserInputConverterError {
-        enum PurchaseMoney: Error, UserInformable {
-            case notInt
-            
-            var guideDescription: String {
-                switch self {
-                case .notInt:
-                    return "Int 값이 아닙니다"
-                }
-            }
-        }
-        
         enum WinningNumbers: Error, UserInformable {
             case extraInputs
             
@@ -36,13 +25,9 @@ struct UserInputConverter {
     private let stringConverter = StringConverter()
     private let splitter = Splitter(separators: [","])
     
-    func convertToMoney(from input: String) throws -> Int {
-        do {
-            let money = try stringConverter.convertToInt(from: input)
-            return money
-        } catch {
-            throw UserInputConverterError.PurchaseMoney.notInt
-        }
+    func convertToInt(from input: String) throws -> Int {
+        let result = try stringConverter.convertToInt(from: input)
+        return result
     }
     
     func convertToWinningNumbers(from input: String) throws -> [Int] {        

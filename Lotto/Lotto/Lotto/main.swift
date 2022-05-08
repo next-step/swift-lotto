@@ -18,6 +18,8 @@ do {
     resultView.printLottos(for: lottos)
     
     let winningNumbers: [Int] = try inputView.recieveWinningNumbers()
+    let bonusNumber: Int = try inputView.recieveBonusNumber(in: winningNumbers)
+    
     let lottoResult: LottoResult = try lottoResult(lottos: lottos, winningNumbers: winningNumbers)
     resultView.printWinningStatistics(with: lottoResult)
 } catch let error as UserInformable {
