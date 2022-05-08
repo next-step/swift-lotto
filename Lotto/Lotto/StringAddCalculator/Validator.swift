@@ -9,17 +9,16 @@ import Foundation
 
 final class Validator {
     
-    static func check(_ number: String) throws -> Bool {
+    static func check(_ number: String) throws {
         guard let num = Int(number) else {
-            throw ValidatorError.invalidNumber
+            throw Errors.invalidNumber
         }
-        if num > 0 {
-            return true
+        if num < 0 {
+            throw Errors.negativeNumber
         }
-        throw ValidatorError.negativeNumber
     }
     
-    enum ValidatorError: Error, LocalizedError {
+    enum Errors: Error, LocalizedError {
         case negativeNumber
         case invalidNumber
         var errorDescription: String? {

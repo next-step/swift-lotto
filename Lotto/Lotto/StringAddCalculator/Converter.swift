@@ -11,9 +11,7 @@ final class Converter {
     
     static func convert(_ numbers: [String]) throws -> [Int] {
         try numbers.forEach { number in
-            guard try Validator.check(number) else {
-                throw Validator.ValidatorError.negativeNumber
-            }
+            try Validator.check(number)
         }
         
         return numbers.map { return Int($0) ?? 0 }

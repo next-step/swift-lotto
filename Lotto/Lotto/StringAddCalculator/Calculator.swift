@@ -19,6 +19,4 @@ final class Calculator {
         
         return previous
     }
-    
-    
 }
