@@ -12,6 +12,8 @@ protocol NumberGenerator {
 }
 
 struct PositiveNumberGenerator: NumberGenerator {
+    private static let zero = 0
+    
     enum Error: LocalizedError {
         case isNotNumber(String)
         case isNegativeNumber(Int)
@@ -31,7 +33,7 @@ struct PositiveNumberGenerator: NumberGenerator {
             throw Self.Error.isNotNumber(input)
         }
         
-        if number < 0 {
+        if number < zero {
             throw Self.Error.isNegativeNumber(number)
         }
         
