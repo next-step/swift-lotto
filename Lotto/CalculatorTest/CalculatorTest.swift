@@ -34,5 +34,9 @@ class CalculatorTest: XCTestCase {
     func test_숫자_사이를_컴마와_콜론으로_입력하면_수의_합을_반환() {
         XCTAssertEqual(sut.calculate(with: "1,4:5"), 10)
     }
+    
+    func test_주어진_숫자중_음수가_존재하면_오류반환() {
+        XCTAssertThrowsError(try sut.calculate(with: "-1,5,6"))
+    }
 
 }
