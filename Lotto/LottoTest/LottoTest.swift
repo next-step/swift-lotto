@@ -175,4 +175,11 @@ class LottoTest: XCTestCase {
         
         XCTAssertEqual(rank, Rank.second)
     }
+    
+    func testMakeLottoRandomNumber() {
+        let lottoMaker = LottoRandomNumberMaker()
+        let lotto = lottoMaker.make()
+        
+        XCTAssertTrue(lotto.count > 0)
+    }
 }
