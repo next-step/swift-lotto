@@ -37,4 +37,39 @@ class InputParserTest: XCTestCase {
         // then
         XCTAssertEqual(result, [0])
     }
+    
+    func test_parse_콜론과_콤마를_기준으로_입력을_분리한후_Int배열로반환한다() {
+        // given
+        let input = "1,:2,3:4,,,5:::6"
+        // when
+        
+        let result = try! inputParser.parse(input: input)
+        
+        // then
+        XCTAssertEqual(result, [1,2,3,4,5,6])
+    }
+    
+    func test_parse_콜론_콤마_숫자_이외의_값이_입력될경우_error를_throw한다() {
+        // given
+        let input = "1!;2,!3,:!4"
+        
+        // when
+        // then
+        XCTAssertThrowsError(try inputParser.parse(input: input), "콜론,콤마,숫자 이외의 값이 입력될 경우 error를throw한다") { error in
+            XCTAssert(error is PositiveNumberGenerator.Error)
+            XCTAssertEqual(error.localizedDescription, PositiveNumberGenerator.Error.isNotNumber("1!;2").localizedDescription)
+        }
+    }
+    
+    func test_parse_음수가_들어있을경우_error를_throw한다() {
+        // given
+        let input = "1,:-2,3:4,,,5:::6"
+        
+        // when
+        // then
+        XCTAssertThrowsError(try inputParser.parse(input: input), "음수가 들어잇을 경우 error를 throw한다") { error in
+            XCTAssert(error is PositiveNumberGenerator.Error)
+            XCTAssertEqual(error.localizedDescription, PositiveNumberGenerator.Error.isNegativeNumber(-2).localizedDescription)
+        }
+    }
 }

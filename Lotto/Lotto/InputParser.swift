@@ -12,12 +12,12 @@ struct InputParser {
     let numberGenerator: NumberGenerator.Type
     
     func parse(input: String?) throws -> [Int] {
-        let splittedInput = splitter.split(input)
-        
-        guard let splittedInput = splittedInput,
-              splittedInput.isEmpty else {
+        guard let input = input,
+              input.isEmpty == false else {
             return [0]
         }
+        
+        let splittedInput = splitter.split(input)
         
         return try splittedInput.map({
             try numberGenerator.from($0)

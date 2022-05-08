@@ -11,12 +11,7 @@ struct Splitter {
     private static let emptyString = ""
     let separaters: Separators
     
-    func split(_ input: String?) -> [String]? {
-        guard let input = input,
-              input.isEmpty == false else {
-            return nil
-        }
-
+    func split(_ input: String) -> [String] {
         return input.components(separatedBy: separaters.set)
             .filter { $0 != Self.emptyString }
     }

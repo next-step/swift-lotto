@@ -16,7 +16,7 @@ struct Comma: Separator {
 }
 
 struct Colon: Separator {
-    let value = ";"
+    let value = ":"
 }
 
 struct Separators {
