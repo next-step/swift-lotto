@@ -1,5 +1,5 @@
 //
-//  LottoNumbersGeneratorTests.swift
+//  LottoGeneratorTests.swift
 //  LottoTest
 //
 //  Created by 강수진 on 2022/05/06.
@@ -7,12 +7,12 @@
 
 import XCTest
 
-class LottoNumberGeneratorTests: XCTestCase {
+class LottoGeneratorTests: XCTestCase {
 
-    var sut: LottoNumbersGenerator!
+    var sut: LottoGenerator!
     
     override func setUpWithError() throws {
-        sut = LottoNumbersGenerator()
+        sut = LottoGenerator()
     }
     
     override func tearDownWithError() throws {
@@ -23,32 +23,32 @@ class LottoNumberGeneratorTests: XCTestCase {
         //given
         
         // when
-        let lottoNumbers: [Int] = sut.generate()
+        let lotto: Lotto = try sut.generate()
         
         // then
         let expectation: Int = 6
-        XCTAssertEqual(lottoNumbers.count, expectation)
+        XCTAssertEqual(lotto.numbers.count, expectation)
     }
     
     func test_lottoNumbers_hasNoDuplicate() throws {
         //given
         
         // when
-        let lottoNumbers: [Int] = sut.generate()
+        let lotto: Lotto = try sut.generate()
         
         // then
-        XCTAssertEqual(lottoNumbers.count, Set(lottoNumbers).count)
+        XCTAssertEqual(lotto.numbers.count, Set(lotto.numbers).count)
     }
     
     func test_lottoNumbers_isInRange() throws {
         //given
         
         // when
-        let lottoNumbers: [Int] = sut.generate()
+        let lotto: Lotto = try sut.generate()
         
         // then
         let lottoNumberRange = 1...45
-        let isAllNumbersInRange = lottoNumbers.allSatisfy { lottoNumber in
+        let isAllNumbersInRange = lotto.numbers.allSatisfy { lottoNumber in
             lottoNumberRange ~= lottoNumber
         }
         

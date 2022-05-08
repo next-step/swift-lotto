@@ -95,20 +95,22 @@ class LottoNumbersValidatorTests: XCTestCase {
         //given
         let bonusNumber = 45
         let winningNumbers = [1,2,3,4,5,6]
+        let winningLotto = try Lotto(numbers: winningNumbers)
         
         // when
         // then
-        XCTAssertNoThrow(try sut.validateBonusNumber(bonusNumber, in: winningNumbers))
+        XCTAssertNoThrow(try sut.validateBonusNumber(bonusNumber, in: winningLotto))
     }
     
     func test_validateBonusNumber_whenBonusNumbersIsDuplicated_throwHasDuplicate() throws {
         //given
         let bonusNumber = 1
         let winningNumbers = [1,2,3,4,5,6]
+        let winningLotto = try Lotto(numbers: winningNumbers)
         
         // then
         let expectation = LottoNumbersValidator.LottoNumbersValidatorError.hasDuplicate
-        XCTAssertThrowsError(try sut.validateBonusNumber(bonusNumber, in: winningNumbers)) { error in
+        XCTAssertThrowsError(try sut.validateBonusNumber(bonusNumber, in: winningLotto)) { error in
             XCTAssertEqual(error as? LottoNumbersValidator.LottoNumbersValidatorError, expectation)
         }
     }
@@ -117,10 +119,11 @@ class LottoNumbersValidatorTests: XCTestCase {
         //given
         let bonusNumber = 46
         let winningNumbers = [1,2,3,4,5,6]
+        let winningLotto = try Lotto(numbers: winningNumbers)
         
         // then
         let expectation = LottoNumbersValidator.LottoNumbersValidatorError.containOutOfRange
-        XCTAssertThrowsError(try sut.validateBonusNumber(bonusNumber, in: winningNumbers)) { error in
+        XCTAssertThrowsError(try sut.validateBonusNumber(bonusNumber, in: winningLotto)) { error in
             XCTAssertEqual(error as? LottoNumbersValidator.LottoNumbersValidatorError, expectation)
         }
     }

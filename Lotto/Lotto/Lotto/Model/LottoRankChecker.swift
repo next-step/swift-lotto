@@ -9,30 +9,27 @@ import Foundation
 
 struct LottoRankChecker {
     
-    private let winningNumbers: [Int]
+    private let winningLotto: Lotto
     private let bonusNumber: Int
     private let lottoNumbersValidator = LottoNumbersValidator()
     
-    init(winningNumbers: [Int], bonusNumber: Int) throws {
-        try lottoNumbersValidator.validate(of: winningNumbers)
-        try lottoNumbersValidator.validateBonusNumber(bonusNumber, in: winningNumbers)
+    init(winningLotto: Lotto, bonusNumber: Int) throws {
+        try lottoNumbersValidator.validateBonusNumber(bonusNumber, in: winningLotto)
         
-        self.winningNumbers = winningNumbers
+        self.winningLotto = winningLotto
         self.bonusNumber = bonusNumber
     }
     
-    func rank(of numbers: [Int]) throws -> LottoRank {
-        try lottoNumbersValidator.validate(of: numbers)
-        
-        let matchNumberCount = matchNumberCount(of: numbers)
+    func rank(of lotto: Lotto) -> LottoRank {
+        let matchNumberCount = matchNumberCount(of: lotto)
         let lottoRank = LottoRank.rank(matchNumberCount: matchNumberCount,
-                                       isMatchBonus: numbers.contains(bonusNumber))
+                                       isMatchBonus: lotto.numbers.contains(bonusNumber))
         return lottoRank
     }
     
-    private func matchNumberCount(of numbers: [Int]) -> Int {
-        let matchNumberCount = numbers.filter { number in
-            winningNumbers.contains(number)
+    private func matchNumberCount(of lotto: Lotto) -> Int {
+        let matchNumberCount = lotto.numbers.filter { number in
+            winningLotto.numbers.contains(number)
         }
         .count
         return matchNumberCount

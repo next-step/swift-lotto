@@ -39,20 +39,20 @@ struct InputView {
         return purchaseMoney
     }
     
-    func recieveWinningNumbers() throws -> [Int] {
+    func recieveWinningLotto() throws -> Lotto {
         userGuider.printGuide(for: QuestionText.winningNumbers)
         
         let userInput: String? = readLine()
         let unwrappedUserInput: String = try stringConverter.unwrapOptional(from: userInput)
         let winningNumbers = try userInputConverter.convertToWinningNumbers(from: unwrappedUserInput)
-        try lottoNumbersValidator.validate(of: winningNumbers)
-        return winningNumbers
+        let winningLotto = try Lotto(numbers: winningNumbers)
+        return winningLotto
     }
     
-    func recieveBonusNumber(in winningNumbers: [Int]) throws -> Int {
+    func recieveBonusNumber(in winningLotto: Lotto) throws -> Int {
         userGuider.printGuide(for: QuestionText.bonusNumber)
         let bonusNumber = try recieveInt()
-        try lottoNumbersValidator.validateBonusNumber(bonusNumber, in: winningNumbers)
+        try lottoNumbersValidator.validateBonusNumber(bonusNumber, in: winningLotto)
         return bonusNumber
     }
     

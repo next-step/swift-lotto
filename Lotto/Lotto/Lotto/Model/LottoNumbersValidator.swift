@@ -26,10 +26,9 @@ struct LottoNumbersValidator {
         }
     }
     
-    func validateBonusNumber(_ bonusNumber: Int, in winningNumbers: [Int]) throws {
-        try validate(of: winningNumbers)
+    func validateBonusNumber(_ bonusNumber: Int, in winningLotto: Lotto) throws {
         try validateNumberInRange(of: bonusNumber)
-        try validateUniqueNumber(of: bonusNumber, in: winningNumbers)
+        try validateUniqueNumber(of: bonusNumber, in: winningLotto)
     }
     
     func validate(of numbers: [Int]) throws {
@@ -37,11 +36,13 @@ struct LottoNumbersValidator {
         try numbers.forEach(validateNumberInRange)
         try validateAllUniqueNumbers(of: numbers)
     }
+    
     private func validateNumberCount(of numbers: [Int]) throws {
         guard numbers.count == Lotto.Constants.numbersCount else {
             throw LottoNumbersValidatorError.invalidNumberCount
         }
     }
+    
     private func validateNumberInRange(of number: Int) throws {
         let isNumberInRange = Lotto.Constants.numberRange ~= number
         guard isNumberInRange else {
@@ -49,6 +50,7 @@ struct LottoNumbersValidator {
         }
         
     }
+    
     private func validateAllUniqueNumbers(of numbers: [Int]) throws {
         let isAllNumbersUnique = Set(numbers).count == numbers.count
         guard isAllNumbersUnique else {
@@ -56,11 +58,10 @@ struct LottoNumbersValidator {
         }
     }
     
-    private func validateUniqueNumber(of number: Int, in numbers: [Int]) throws {
-        let isUniqueNumber = !numbers.contains(number)
+    private func validateUniqueNumber(of number: Int, in lotto: Lotto) throws {
+        let isUniqueNumber = !lotto.numbers.contains(number)
         guard isUniqueNumber else {
             throw LottoNumbersValidatorError.hasDuplicate
         }
     }
-
 }

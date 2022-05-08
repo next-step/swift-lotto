@@ -15,6 +15,11 @@ struct Lotto {
         static let numberRange: ClosedRange<Int> = 1...45
     }
     
+    private let lottoNumbersValidator = LottoNumbersValidator()
     let numbers: [Int]
+    
+    init(numbers: [Int]) throws {
+        try lottoNumbersValidator.validate(of: numbers)
+        self.numbers = numbers
+    }
 }
-

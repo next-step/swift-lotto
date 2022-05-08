@@ -30,9 +30,9 @@ class LottoResultTests: XCTestCase {
                               winningNumber4,
                               winningNumber5,
                               winningNumber6]
-        
+        let winningLotto = try Lotto(numbers: winningNumbers)
         let bonusNumber = 45
-        lottoRankChecker = try LottoRankChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber)
+        lottoRankChecker = try LottoRankChecker(winningLotto: winningLotto, bonusNumber: bonusNumber)
         
         let noneWinningNumber1 = 7
         let noneWinningNumber2 = 8
@@ -87,11 +87,11 @@ class LottoResultTests: XCTestCase {
     
     func test_winningCount_whenGetEachWinningOnce() throws {
         //given
-        let lottos: [Lotto] = [firstWinningNumbers,
-                               secondWinningNumbers,
-                               thirdWinningNumbers,
-                               forthWinningNumbers,
-                               fifthWinningNumbers]
+        let lottos: [Lotto] = try [firstWinningNumbers,
+                                   secondWinningNumbers,
+                                   thirdWinningNumbers,
+                                   forthWinningNumbers,
+                                   fifthWinningNumbers]
             .map(Lotto.init)
         
         let sut = LottoResult(lottos: lottos,
@@ -109,7 +109,7 @@ class LottoResultTests: XCTestCase {
     func test_winningCount_whenGetOnceFirstWinning() throws {
         //given
         
-        let lottos: [Lotto] = [firstWinningNumbers]
+        let lottos: [Lotto] = try [firstWinningNumbers]
             .map(Lotto.init)
         
         let sut = LottoResult(lottos: lottos,
@@ -124,30 +124,13 @@ class LottoResultTests: XCTestCase {
         XCTAssertEqual(sut.winningCount(for: .fifth), 0)
     }
     
-    func test_winningCount_whenContainsBothValidAndInValidLotto_countValidLotto() throws {
-        //given
-        let invalidLottoNumbers = [46]
-        let lottos: [Lotto] = [firstWinningNumbers,
-                               invalidLottoNumbers]
-            .map(Lotto.init)
-        
-        let sut = LottoResult(lottos: lottos,
-                              lottoRankChecker: lottoRankChecker)
-     
-        // when
-        let firstWinningCount = sut.winningCount(for: .first)
-        
-        // then
-        XCTAssertEqual(firstWinningCount, 1)
-    }
-    
     func test_earningsRate_whenBuyFiveLottosAndGetOnceFifthWinning_eqaulToOne() throws {
         //given
-        let lottos: [Lotto] = [fifthWinningNumbers,
-                               noneWinningNumbers,
-                               noneWinningNumbers,
-                               noneWinningNumbers,
-                               noneWinningNumbers]
+        let lottos: [Lotto] = try [fifthWinningNumbers,
+                                   noneWinningNumbers,
+                                   noneWinningNumbers,
+                                   noneWinningNumbers,
+                                   noneWinningNumbers]
             .map(Lotto.init)
         
         let sut = LottoResult(lottos: lottos,
@@ -158,24 +141,6 @@ class LottoResultTests: XCTestCase {
         
         // then
         let expectation: Double = 1
-        XCTAssertEqual(result, expectation)
-    }
-    
-    func test_earningsRate_whenContainsInvalidLotto_addedToBoughtLotto() throws {
-        //given
-        let invalidLottoNumbers = [46]
-        let lottos: [Lotto] = [forthWinningNumbers,
-                               invalidLottoNumbers]
-            .map(Lotto.init)
-        let sut = LottoResult(lottos: lottos,
-                              lottoRankChecker: lottoRankChecker)
-        // when
-        let result: Double = sut.earningsRate
-        
-        // then
-        let buyLottoMoney: Double = Double(lottos.count * Lotto.Constants.price)
-        let prizeMoney: Double = Double(LottoRank.forth.prizeMoney)
-        let expectation: Double = prizeMoney / buyLottoMoney
         XCTAssertEqual(result, expectation)
     }
 }
