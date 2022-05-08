@@ -26,4 +26,29 @@ class LottoTest: XCTestCase {
             XCTAssert(error.localizedDescription == Lotto.Error.invalidNumberCount(lottoNumbers.count).localizedDescription)
         }
     }
+    
+    func test_equalNumberCount_입력받은_Lotto와_일치하는_번호개수를_반환한다() {
+            // given
+            let lottoNumbers = [try! LottoNumber(value: 2),
+                                try! LottoNumber(value: 3),
+                                try! LottoNumber(value: 4),
+                                try! LottoNumber(value: 5),
+                                try! LottoNumber(value: 6),
+                                try! LottoNumber(value: 7)]
+            let lotto = try! Lotto(numbers: lottoNumbers)
+            
+            let winlottoNumbers = [try! LottoNumber(value: 1),
+                                   try! LottoNumber(value: 2),
+                                   try! LottoNumber(value: 3),
+                                   try! LottoNumber(value: 4),
+                                   try! LottoNumber(value: 5),
+                                   try! LottoNumber(value: 6)]
+            let winLotto = try! Lotto(numbers: winlottoNumbers)
+            
+            // when
+            let equalNumberCount = lotto.equalNumberCount(with: winLotto)
+            
+            // then
+            XCTAssertEqual(equalNumberCount, 5)
+        }
 }

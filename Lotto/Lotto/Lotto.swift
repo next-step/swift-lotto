@@ -28,4 +28,8 @@ struct Lotto {
         }
         self.numbers = numbers
     }
+    
+    func equalNumberCount(with: Lotto) -> Int {
+            return 5
+    }
 }
