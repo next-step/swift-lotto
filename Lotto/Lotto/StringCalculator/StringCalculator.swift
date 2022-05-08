@@ -11,10 +11,15 @@ struct StringCalculator {
     
     private let splitter = StringSplitter(validSeperators: [",", ":"])
     
-    func calculate(with formula: String?) -> Int {
+    func calculate(with formula: String?) throws -> Int {
         guard let formula = formula, formula != "" else { return 0 }
         
         let numbers = seperate(formula: formula)
+        for number in numbers {
+            if number < 0 {
+                throw StringCalculatorError.negativeNumber
+            }
+        }
         return numbers.reduce(0, +)
     }
     
