@@ -30,5 +30,9 @@ class CalculatorTest: XCTestCase {
     func test_숫자_사이를_콜론으로_입력하면_수의_합을_반환() {
         XCTAssertEqual(sut.calculate(with: "1:9"), 10)
     }
+    
+    func test_숫자_사이를_컴마와_콜론으로_입력하면_수의_합을_반환() {
+        XCTAssertEqual(sut.calculate(with: "1,4:5"), 10)
+    }
 
 }
