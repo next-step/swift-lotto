@@ -15,12 +15,14 @@ struct StringCalculator {
         guard let formula = formula, formula != "" else { return 0 }
         
         let numbers = seperate(formula: formula)
-        for number in numbers {
-            if number < 0 {
-                throw StringCalculatorError.negativeNumber
-            }
-        }
+        
+        try catchNegativeError(numbers: numbers)
         return numbers.reduce(0, +)
+    }
+    
+    private func catchNegativeError(numbers: [Int]) throws {
+        let filtered = numbers.filter { $0 < 0 }
+        if !filtered.isEmpty { throw StringCalculatorError.negativeNumber }
     }
     
     private func seperate(formula: String) -> Array<Int> {
