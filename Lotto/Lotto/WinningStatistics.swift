@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WinningRecord {
+struct WinningStatistics {
     let threeMatchingCount: Int
     let fourMatchingCount: Int
     let fiveMatchingCount: Int

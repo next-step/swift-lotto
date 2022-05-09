@@ -18,7 +18,6 @@ struct LottoFactory {
     }
 }
 
-
 struct Lotto {
     enum Error: LocalizedError {
         case invalidNumberCount(Int)

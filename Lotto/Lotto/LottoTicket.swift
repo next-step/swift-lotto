@@ -10,7 +10,7 @@ import Foundation
 struct LottoTicket {
     let lottoList: [Lotto]
     
-    func winningRecord(with winningLotto: Lotto) -> WinningRecord {
+    func winningStatistics(with winningLotto: Lotto) -> WinningStatistics {
         var three = 0
         var four = 0
         var five = 0
@@ -31,6 +31,6 @@ struct LottoTicket {
             }
         }
         
-        return WinningRecord(threeMatchingCount: three, fourMatchingCount: four, fiveMatchingCount: five, sixMatchingCount: six)
+        return WinningStatistics(threeMatchingCount: three, fourMatchingCount: four, fiveMatchingCount: five, sixMatchingCount: six)
     }
 }

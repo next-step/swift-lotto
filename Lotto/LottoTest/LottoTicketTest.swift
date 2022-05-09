@@ -36,7 +36,7 @@ class LottoTicketTest: XCTestCase {
         let lottoTicket = LottoTicket(lottoList: [firstLotto, secondLotto])
 
         // when
-        let winningRecord = lottoTicket.winningRecord(with: winningLotto)
+        let winningRecord = lottoTicket.winningStatistics(with: winningLotto)
         
         // then
         XCTAssertEqual(winningRecord.threeMatchingCount, 0)
