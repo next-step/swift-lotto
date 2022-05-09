@@ -22,7 +22,7 @@ NEXTSTEP with yagom-academy
 2. 음수가 가능해질 수 있다. 
 - 양수, 음수, double, 소숫점 계산도 지원한다면 어떻게 해야하는가?
 - 오른쪽으로 갈 수록 범위가 커지고, 왼쪽의 것을 포함한다. (UInt, Int, Float, Double)  
-- UIntGenerator, IntGEnerator, FloatGenerator, DoubleGenerator 이런식으로 각각의 Generator를 만들면 어떨까?    
+- UIntGenerator, IntGenerator, FloatGenerator, DoubleGenerator 이런식으로 각각의 Generator를 만들면 어떨까?    
     
 3. 덧셈이 아니라 다른 기능도 지원할 수 있다.
 - 게산기에 따라 연산 방식이 달라질 수 있다.
@@ -34,4 +34,3 @@ NEXTSTEP with yagom-academy
     2. `func calculate(numbers: [Int], operator: [Operator])`: numbers와 operator를 받아서 연산을 수행한다.
     
     
-
