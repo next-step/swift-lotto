@@ -11,10 +11,14 @@ struct LottoFactory {
     let lottoNumberGenerator: LottoNumberGenerator
     
     func create() -> Lotto {
-        let lottoNumbers = (0..<Lotto.numberCount).map { _ in
-            lottoNumberGenerator.generate()
-        }
-        return try! Lotto(numbers: lottoNumbers)
+        var lottoNumbers = Set<LottoNumber>()
+        
+        repeat {
+            let lottoNumber = lottoNumberGenerator.generate()
+            lottoNumbers.insert(lottoNumber)
+        } while(lottoNumbers.count < Lotto.numberCount)
+        
+        return try! Lotto(numbers: Array(lottoNumbers))
     }
 }
 

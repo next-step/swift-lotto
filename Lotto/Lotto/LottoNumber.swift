@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LottoNumber: Equatable {
+struct LottoNumber: Hashable {
     enum Error: LocalizedError{
         case invalidValue(Int)
         
