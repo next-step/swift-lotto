@@ -11,8 +11,11 @@ class LottoTest: XCTestCase {
     private let seller = LottoSeller(purchaseAmount: "3000",
                              lottoMaker: LottoSameNumberMaker())
     private lazy var winningLotto = WinningLottoMaker(lastWeekWinningNumber: "1, 2, 3, 4, 5, 6", bonusNumber: 7).makeWinningLotto()
+    let manualUserLotto: [String] = ["11, 12, 13, 14, 15, 16", "17, 18, 19, 20, 21, 22"]
+    private lazy var userLotto = seller.sellLotto(manualNumber: 2,
+                                                  manualUserLotto: manualUserLotto)
     private lazy var cener = LottoCenter(winningLotto: winningLotto)
-    private lazy var user = User(userLotto: seller.sellLotto(), center: cener)
+    private lazy var user = User(userLotto: userLotto, center: cener)
     private lazy var rankReport = RankReport(winning: user.winning())
     
     private let userLottoMockForAllFirst = UserLotto(purchasedLottos: [
@@ -41,6 +44,20 @@ class LottoTest: XCTestCase {
         Lotto(numbers: [LottoNumber(number: 11), LottoNumber(number: 2),
                         LottoNumber(number: 33), LottoNumber(number: 4),
                         LottoNumber(number: 5), LottoNumber(number: 6)])
+    ])
+    
+    private let userLottoMockWithManualLotto = UserLotto(purchasedLottos: [
+        Lotto(numbers: [LottoNumber(number: 1), LottoNumber(number: 2),
+                        LottoNumber(number: 3), LottoNumber(number: 4),
+                        LottoNumber(number: 5), LottoNumber(number: 6)]),
+        
+        Lotto(numbers: [LottoNumber(number: 11), LottoNumber(number: 12),
+                        LottoNumber(number: 13), LottoNumber(number: 14),
+                        LottoNumber(number: 15), LottoNumber(number: 16)]),
+        
+        Lotto(numbers: [LottoNumber(number: 17), LottoNumber(number: 18),
+                        LottoNumber(number: 19), LottoNumber(number: 20),
+                        LottoNumber(number: 21), LottoNumber(number: 22)])
     ])
     
     private let userLottoWithBonusNumberMock = UserLotto(purchasedLottos: [
@@ -78,6 +95,7 @@ class LottoTest: XCTestCase {
                                                           LottoNumber(number: 5), LottoNumber(number: 6)], bonusNumber: 7)
     
     private let reportMock = Report(first: 3, second: 0, third: 0, fourth: 0, fifth: 0)
+    private let reportMockWithManualLotto = Report(first: 1, second: 0, third: 0, fourth: 0, fifth: 0)
     
     func testPurchasedNumber() {
         let number: Int = seller.purchasedNumber()
@@ -85,8 +103,18 @@ class LottoTest: XCTestCase {
         XCTAssertEqual(number, 3)
     }
     
+    func testSellLottoWithManualLotto() {
+        let manualUserLotto: [String] = ["11, 12, 13, 14, 15, 16", "17, 18, 19, 20, 21, 22"]
+        let userLotto = seller.sellLotto(manualNumber: 2,
+                                        manualUserLotto: manualUserLotto)
+        
+        XCTAssertEqual(userLotto, userLottoMockWithManualLotto)
+    }
+    
     func testSellLotto() {
-        let userLotto: UserLotto = seller.sellLotto()
+        let manualUserLotto: [String] = []
+        let userLotto = seller.sellLotto(manualNumber: 0,
+                                        manualUserLotto: manualUserLotto)
         
         XCTAssertEqual(userLotto, userLottoMockForAllFirst)
     }
@@ -112,7 +140,18 @@ class LottoTest: XCTestCase {
     func testRankReport() {
         let report: Report = rankReport.report()
         
-        XCTAssertEqual(report, reportMock)
+        XCTAssertEqual(report, reportMockWithManualLotto)
+    }
+    
+    func testRankReportWithManualLotto() {
+        let manualUserLotto: [String] = []
+        let userLotto = seller.sellLotto(manualNumber: 0,
+                                        manualUserLotto: manualUserLotto)
+        let cener = LottoCenter(winningLotto: winningLotto)
+        let user = User(userLotto: userLotto, center: cener)
+        let rankReport = RankReport(winning: user.winning())
+        
+        XCTAssertEqual(rankReport.report(), reportMock)
     }
     
     func testLottoMatch() {
