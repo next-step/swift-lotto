@@ -16,6 +16,10 @@ class SplitterTest: XCTestCase {
         splitter = Splitter(separaters: separators)
     }
     
+    override func tearDownWithError() throws {
+        splitter = nil
+    }
+    
     func test_split_Splitter가_가진_separator를_기준으로_나누어진다() {
         // given
         let input = "1,,2::3,:4,5:6-7"
