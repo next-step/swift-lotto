@@ -24,8 +24,8 @@ struct LottoNumber: Equatable {
     let value: Int
     
     init(value: Int) throws {
-        if value < Self.minValue || value > Self.maxValue {
-            throw Self.Error.invalidValue(value)
+        if value < LottoNumber.minValue || value > LottoNumber.maxValue {
+            throw Error.invalidValue(value)
         }
         self.value = value
     }
