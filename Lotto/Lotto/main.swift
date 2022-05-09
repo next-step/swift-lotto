@@ -12,9 +12,9 @@ let printer = StringAdditionPrinter()
 
 do  {
     let total = try caculator.caculate(input: "1,3:3,5")
-    printer.printResult(total: total)
+    printer.printResult(total)
 } catch let error {
-    printer.printError(error: error)
+    printer.printError(error)
 }
 
 
