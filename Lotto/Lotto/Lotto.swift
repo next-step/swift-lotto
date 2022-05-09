@@ -38,6 +38,7 @@ struct Lotto {
         if numbers.count != Lotto.numberCount {
             throw Error.invalidNumberCount(numbers.count)
         }
+        
         self.numbers = numbers
     }
     

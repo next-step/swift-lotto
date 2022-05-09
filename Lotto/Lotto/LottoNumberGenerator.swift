@@ -11,7 +11,7 @@ protocol LottoNumberGenerator {
     func generate() -> LottoNumber
 }
 
-struct NormalLottoNumberGenerator: LottoNumberGenerator {
+struct RandomLottoNumberGenerator: LottoNumberGenerator {
     let range = LottoNumber.minValue...LottoNumber.maxValue
     
     func generate() -> LottoNumber {
