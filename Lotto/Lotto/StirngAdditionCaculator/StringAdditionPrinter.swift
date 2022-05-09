@@ -9,7 +9,7 @@ import Foundation
 
 final class StringAdditionPrinter {
     
-    func printError(error: Error) {
+    func printError(_ error: Error) {
         guard let error = error as? StringAdditionError else {
             print(error.localizedDescription)
             return
@@ -17,7 +17,7 @@ final class StringAdditionPrinter {
         print("\(error.errorDescription ?? "") ")
     }
     
-    func printResult(total: Int) {
-        print("입력값에 대한 합은 \(total)입니다.")
+    func printResult(_ result: Int) {
+        print("입력값에 대한 합은 \(result)입니다.")
     }
 }
