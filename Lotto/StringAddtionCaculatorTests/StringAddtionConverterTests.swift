@@ -20,7 +20,6 @@ class StringAdditionConverterTests: XCTestCase {
         //then
         let expectation: Int? = nil
         XCTAssertEqual(result, expectation)
-        
     }
     
     func test_given숫자로_변환되는_문자열_when변환_then숫자반환() {

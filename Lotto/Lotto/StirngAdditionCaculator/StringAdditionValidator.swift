@@ -13,6 +13,7 @@ final class StringAdditionValidator {
 
     func validNumber(from value: String?) throws -> Int {
         guard !(value?.isEmpty ?? true) else { return 0 }
+        
         guard let number = converter.convertToInteger(from: value) else {
             throw StringAdditionError.notNumber
         }
