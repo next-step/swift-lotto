@@ -30,6 +30,7 @@
 		2ED9C3FE282797D800BC60E7 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3FA2827872800BC60E7 /* InputView.swift */; };
 		2ED9C3FF282797D900BC60E7 /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C3FC28278B5E00BC60E7 /* OutputView.swift */; };
 		2ED9C44F2829290C00BC60E7 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C44E2829290C00BC60E7 /* String + Extension.swift */; };
+		2ED9C45028292B4E00BC60E7 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C44E2829290C00BC60E7 /* String + Extension.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -237,6 +238,7 @@
 			files = (
 				2ED9C3E928266EEA00BC60E7 /* NumberGenerator.swift in Sources */,
 				2ED9C3FE282797D800BC60E7 /* InputView.swift in Sources */,
+				2ED9C45028292B4E00BC60E7 /* String + Extension.swift in Sources */,
 				2ED9C3E02826646900BC60E7 /* Separators.swift in Sources */,
 				2ED9C3DC28265DE800BC60E7 /* SplitterTest.swift in Sources */,
 				2ED9C3F0282675A600BC60E7 /* InputParserTest.swift in Sources */,
