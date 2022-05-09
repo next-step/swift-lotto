@@ -50,29 +50,6 @@ class CalculatorTest: XCTestCase {
         XCTAssertEqual(convertedSeparator, "4,5,6")
     }
     
-    func testSplitExpression() {
-        let input: String = "4,5,6"
-        let splitedExpression = StringUtiltity.splitExpression(to: input)
-        
-        XCTAssertEqual(splitedExpression, ["4", "5", "6"])
-    }
-    
-    func testStringArrayToIntArraySuccess() {
-        let input: String = "4,5,6"
-        let splitedExpression = StringUtiltity.splitExpression(to: input)
-        
-        XCTAssertNoThrow(try CalculatorInputChecker.validateContainsUnSupportedSeparator(to: splitedExpression))
-    }
-    
-    func testStringArrayToIntArrayFail() {
-        let input: String = "4%5,6"
-        let splitedExpression = StringUtiltity.splitExpression(to: input)
-        
-        XCTAssertThrowsError(try CalculatorInputChecker.validateContainsUnSupportedSeparator(to: splitedExpression)) { error in
-            XCTAssertEqual(error as? CalculatorError, CalculatorError.unSupportedSeparator)
-        }
-    }
-    
     func testValidateContainsNagativeNumbers() {
         let target: [Int] = [4, -5, 6]
         XCTAssertThrowsError(try CalculatorInputChecker.validateContainsNagativeNumbers(to: target)) { error in
@@ -89,16 +66,6 @@ class CalculatorTest: XCTestCase {
     
     func testCalculate() {
         let input: String = "4:5,6"
-        XCTAssertNoThrow(try Calculator.calculate(to: input))
-    }
-    
-    func testInputEmptyString() {
-        let input: String? = nil
-        XCTAssertNoThrow(try Calculator.calculate(to: input))
-    }
-    
-    func testInput0() {
-        let input: String = "0"
         XCTAssertNoThrow(try Calculator.calculate(to: input))
     }
 }

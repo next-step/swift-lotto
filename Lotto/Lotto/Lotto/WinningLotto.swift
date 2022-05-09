@@ -9,6 +9,7 @@ import Foundation
 
 struct WinningLotto: Equatable {
     private(set) var numbers: [LottoNumber]
+    private(set) var bonusNumber: Int
     
     func matchCount(numberToMatch: Lotto) -> Int {
         var result: Int = 0
@@ -18,6 +19,16 @@ struct WinningLotto: Equatable {
         }
         
         return result
+    }
+    
+    func isMatchBunusNumber(numberToMatch: Lotto) -> Bool {
+        var matchDummy: [Bool] = []
+        
+        for lottoNumber in numberToMatch.numbers {
+            matchDummy.append(bonusNumber == lottoNumber.number)
+        }
+        
+        return matchDummy.contains(true)
     }
     
     private func count(numberToMatch: Lotto, number: LottoNumber) -> Int {
