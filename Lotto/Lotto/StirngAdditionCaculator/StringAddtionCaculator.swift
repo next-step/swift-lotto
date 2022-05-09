@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 final class StringAdditionCaculator {
     
     private let validator: StringAdditionValidator = StringAdditionValidator()

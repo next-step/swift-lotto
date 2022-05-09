@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum StringAdditionError: LocalizedError {
     case notNumber
     case negativeNumber

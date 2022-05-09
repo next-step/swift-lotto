@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 final class StringAdditionValidator {
     
     let converter: StringAdditionConverter = StringAdditionConverter()
