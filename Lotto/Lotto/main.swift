@@ -7,7 +7,7 @@
 import Foundation
 
 do {
-    let input = InputView.input()
+    let input = InputView.readInput()
     
     let separators = Separators(value: [Colon(), Comma()])
     let splitter = Splitter(separaters: separators)
@@ -20,7 +20,7 @@ do {
     }
     
     let result = Calculator().calculate(operands: operands, operators: plusOperator)
-    OutputView.showResult(result)
+    OutputView.print(result)
 } catch(let error) {
     print(error.localizedDescription)
 }
