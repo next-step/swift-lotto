@@ -11,7 +11,7 @@ struct LottoFactory {
     let lottoNumberGenerator: LottoNumberGenerator
     
     func create() -> Lotto {
-        let lottoNumbers = (0..<Lotto.lottoNumberCount).map { _ in
+        let lottoNumbers = (0..<Lotto.numberCount).map { _ in
             lottoNumberGenerator.generate()
         }
         return try! Lotto(numbers: lottoNumbers)
@@ -26,16 +26,16 @@ struct Lotto {
         var errorDescription: String? {
             switch self {
             case .invalidNumberCount(let count):
-                return "로또 번호 개수는 \(Lotto.lottoNumberCount)개입니다. 현재 입력된 로또 번호 개수: \(count)"
+                return "로또 번호 개수는 \(Lotto.numberCount)개입니다. 현재 입력된 로또 번호 개수: \(count)"
             }
         }
     }
     
-    static let lottoNumberCount = 6
+    static let numberCount = 6
     let numbers: [LottoNumber]
     
     init(numbers: [LottoNumber]) throws {
-        if numbers.count != Self.lottoNumberCount {
+        if numbers.count != Lotto.numberCount {
             throw Self.Error.invalidNumberCount(numbers.count)
         }
         self.numbers = numbers
