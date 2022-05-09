@@ -30,11 +30,11 @@ struct PositiveNumberGenerator: NumberGenerator {
     
     static func from(_ input: String) throws -> Int {
         guard let number = Int(input) else {
-            throw Self.Error.isNotNumber(input)
+            throw Error.isNotNumber(input)
         }
         
         if number < zero {
-            throw Self.Error.isNegativeNumber(number)
+            throw Error.isNegativeNumber(number)
         }
         
         return number
