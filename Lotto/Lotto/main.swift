@@ -20,8 +20,8 @@ func main() {
                                             LottoInputView.readLastWeakWinningNumber(),
                                          bonusNumber:
                                             LottoInputView.readBonushNumber()).makeWinningLotto()
-    let cener = LottoCenter(winningLotto: winningLotto)
-    let user = User(userLotto: userLotto, center: cener)
+    let center = LottoCenter(winningLotto: winningLotto)
+    let user = User(userLotto: userLotto, center: center)
     let rankReport = RankReport(winning: user.winning())
 
     LottoResultView.printReport(rankReport.report())
