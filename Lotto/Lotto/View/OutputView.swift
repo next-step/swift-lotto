@@ -8,7 +8,7 @@
 import Foundation
 
 struct OutputView {
-    static func showResult(_ result: Int) {
-        print("결과: \(result)")
+    static func print(_ result: Int) {
+        Swift.print("결과: \(result)")
     }
 }
