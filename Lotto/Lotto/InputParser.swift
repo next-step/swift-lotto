@@ -13,7 +13,7 @@ struct InputParser {
     
     func parse(input: String?) throws -> [Int] {
         guard let input = input,
-              input.isEmpty == false else {
+              input.isNotEmpty else {
             return [0]
         }
         
