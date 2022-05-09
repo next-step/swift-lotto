@@ -45,9 +45,21 @@ class StringAdditionCaculatorTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
     
-    func test_given숫자배열_when더하기_then숫자배열을_모두더한_합반환() throws {
+    func test_given숫자문자열_when더하기_then숫자배열을_모두더한_합반환() throws {
         //given
         let input = "1,3,5"
+        
+        //when
+        let result = try sut.caculate(input: input)
+        
+        //then
+        let expectation: Int = 9
+        XCTAssertEqual(result, expectation)
+    }
+    
+    func test_given구분자가_두개들어간문자열_when더하기_then숫자배열을_모두더한_합반환() throws {
+        //given
+        let input = "1,3:5"
         
         //when
         let result = try sut.caculate(input: input)
