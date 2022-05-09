@@ -15,6 +15,10 @@ class InputParserTest: XCTestCase {
         let splitter = Splitter(separaters: separators)
         inputParser = InputParser(splitter: splitter, numberGenerator: PositiveNumberGenerator.self)
     }
+    
+    override func tearDownWithError() throws {
+        inputParser = nil
+    }
 
     func test_parse_nil이_입력되면_0이담긴배열이_반환된다() {
         // given
