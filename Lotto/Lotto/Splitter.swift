@@ -8,11 +8,14 @@
 import Foundation
 
 struct Splitter {
+    private let separaters = ",:"
+    private var separaterSet: CharacterSet {
+        return CharacterSet(charactersIn: separaters)
+    }
     private let emptyString = ""
-    let separaters: Separators
     
     func split(_ input: String) -> [String] {
-        return input.components(separatedBy: separaters.set)
+        return input.components(separatedBy: separaterSet)
             .filter { $0 != emptyString }
     }
 }

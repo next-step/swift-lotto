@@ -11,8 +11,7 @@ class InputParserTest: XCTestCase {
     var inputParser: InputParser!
     
     override func setUpWithError() throws {
-        let separators = Separators(value: [Comma(), Colon()])
-        let splitter = Splitter(separaters: separators)
+        let splitter = Splitter()
         inputParser = InputParser(splitter: splitter, numberGenerator: PositiveNumberGenerator.self)
     }
     

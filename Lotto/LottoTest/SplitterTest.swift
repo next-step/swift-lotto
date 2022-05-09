@@ -12,8 +12,7 @@ class SplitterTest: XCTestCase {
     var splitter: Splitter!
     
     override func setUpWithError() throws {
-        let separators = Separators(value: [Comma(), Colon()])
-        splitter = Splitter(separaters: separators)
+        splitter = Splitter()
     }
     
     override func tearDownWithError() throws {
