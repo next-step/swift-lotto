@@ -36,7 +36,7 @@ struct Lotto {
     
     init(numbers: [LottoNumber]) throws {
         if numbers.count != Lotto.numberCount {
-            throw Self.Error.invalidNumberCount(numbers.count)
+            throw Error.invalidNumberCount(numbers.count)
         }
         self.numbers = numbers
     }
