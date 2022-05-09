@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430119F52825665F00668FA2 /* StringAddCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430119F42825665F00668FA2 /* StringAddCalculatorTests.swift */; };
+		430119FA2825680700668FA2 /* SeparatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430119F92825680700668FA2 /* SeparatorTests.swift */; };
+		430119FC282568CD00668FA2 /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430119FB282568CD00668FA2 /* ValidatorTests.swift */; };
+		43DAB1272826A719008EAD51 /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DAB1262826A719008EAD51 /* ConverterTests.swift */; };
+		43DAB12A2826A984008EAD51 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DAB1292826A984008EAD51 /* Calculator.swift */; };
+		43DAB12B2826A984008EAD51 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DAB1292826A984008EAD51 /* Calculator.swift */; };
+		43DAB12D2826AACA008EAD51 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DAB12C2826AACA008EAD51 /* Converter.swift */; };
+		43DAB12E2826AACA008EAD51 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DAB12C2826AACA008EAD51 /* Converter.swift */; };
+		43DAB1302826AB07008EAD51 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DAB12F2826AB07008EAD51 /* Validator.swift */; };
+		43DAB1312826AB07008EAD51 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DAB12F2826AB07008EAD51 /* Validator.swift */; };
+		43DAB1332826AB82008EAD51 /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DAB1322826AB82008EAD51 /* Separator.swift */; };
+		43DAB1342826AB82008EAD51 /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DAB1322826AB82008EAD51 /* Separator.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,11 +35,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		430119F22825665F00668FA2 /* StringAddCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StringAddCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		430119F42825665F00668FA2 /* StringAddCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAddCalculatorTests.swift; sourceTree = "<group>"; };
+		430119F92825680700668FA2 /* SeparatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorTests.swift; sourceTree = "<group>"; };
+		430119FB282568CD00668FA2 /* ValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
+		43DAB1262826A719008EAD51 /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
+		43DAB1292826A984008EAD51 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		43DAB12C2826AACA008EAD51 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		43DAB12F2826AB07008EAD51 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		43DAB1322826AB82008EAD51 /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		430119EF2825665F00668FA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7905FBF27311CC6004C3FCC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +66,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430119F32825665F00668FA2 /* StringAddCalculatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				430119F42825665F00668FA2 /* StringAddCalculatorTests.swift */,
+				430119F92825680700668FA2 /* SeparatorTests.swift */,
+				430119FB282568CD00668FA2 /* ValidatorTests.swift */,
+				43DAB1262826A719008EAD51 /* ConverterTests.swift */,
+			);
+			path = StringAddCalculatorTests;
+			sourceTree = "<group>";
+		};
+		43DAB1282826A96C008EAD51 /* StringAddCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				43DAB1292826A984008EAD51 /* Calculator.swift */,
+				43DAB12C2826AACA008EAD51 /* Converter.swift */,
+				43DAB12F2826AB07008EAD51 /* Validator.swift */,
+				43DAB1322826AB82008EAD51 /* Separator.swift */,
+			);
+			path = StringAddCalculator;
+			sourceTree = "<group>";
+		};
 		C7905FB927311CC6004C3FCC = {
 			isa = PBXGroup;
 			children = (
 				C7905FC427311CC6004C3FCC /* Lotto */,
+				430119F32825665F00668FA2 /* StringAddCalculatorTests */,
 				C7905FC327311CC6004C3FCC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				C7905FC227311CC6004C3FCC /* Lotto */,
+				430119F22825665F00668FA2 /* StringAddCalculatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,6 +109,7 @@
 		C7905FC427311CC6004C3FCC /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
+				43DAB1282826A96C008EAD51 /* StringAddCalculator */,
 				C7905FC527311CC6004C3FCC /* main.swift */,
 			);
 			path = Lotto;
@@ -65,6 +118,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		430119F12825665F00668FA2 /* StringAddCalculatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 430119F82825665F00668FA2 /* Build configuration list for PBXNativeTarget "StringAddCalculatorTests" */;
+			buildPhases = (
+				430119EE2825665F00668FA2 /* Sources */,
+				430119EF2825665F00668FA2 /* Frameworks */,
+				430119F02825665F00668FA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StringAddCalculatorTests;
+			productName = StringAddCalculatorTests;
+			productReference = 430119F22825665F00668FA2 /* StringAddCalculatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C7905FC127311CC6004C3FCC /* Lotto */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7905FC927311CC6004C3FCC /* Build configuration list for PBXNativeTarget "Lotto" */;
@@ -89,9 +159,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					430119F12825665F00668FA2 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
 					C7905FC127311CC6004C3FCC = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -111,22 +184,84 @@
 			projectRoot = "";
 			targets = (
 				C7905FC127311CC6004C3FCC /* Lotto */,
+				430119F12825665F00668FA2 /* StringAddCalculatorTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		430119F02825665F00668FA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		430119EE2825665F00668FA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				430119FC282568CD00668FA2 /* ValidatorTests.swift in Sources */,
+				430119F52825665F00668FA2 /* StringAddCalculatorTests.swift in Sources */,
+				43DAB1272826A719008EAD51 /* ConverterTests.swift in Sources */,
+				43DAB1342826AB82008EAD51 /* Separator.swift in Sources */,
+				43DAB12B2826A984008EAD51 /* Calculator.swift in Sources */,
+				43DAB1312826AB07008EAD51 /* Validator.swift in Sources */,
+				43DAB12E2826AACA008EAD51 /* Converter.swift in Sources */,
+				430119FA2825680700668FA2 /* SeparatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7905FBE27311CC6004C3FCC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43DAB1302826AB07008EAD51 /* Validator.swift in Sources */,
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
+				43DAB1332826AB82008EAD51 /* Separator.swift in Sources */,
+				43DAB12D2826AACA008EAD51 /* Converter.swift in Sources */,
+				43DAB12A2826A984008EAD51 /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		430119F62825665F00668FA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6M94RM5DH9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rubin.StringAddCalculatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		430119F72825665F00668FA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6M94RM5DH9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rubin.StringAddCalculatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		C7905FC727311CC6004C3FCC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -263,6 +398,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		430119F82825665F00668FA2 /* Build configuration list for PBXNativeTarget "StringAddCalculatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				430119F62825665F00668FA2 /* Debug */,
+				430119F72825665F00668FA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C7905FBD27311CC6004C3FCC /* Build configuration list for PBXProject "Lotto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

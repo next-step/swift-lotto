@@ -6,5 +6,12 @@
 
 import Foundation
 
-print("Hello, World!")
-
+do {
+    let stringArray = Separator.separate(readLine())
+    let intArray = try Converter.convert(stringArray)
+    let result = Calculator.add(intArray)
+    
+    print(result)
+} catch {
+    dump(error.localizedDescription)
+}
