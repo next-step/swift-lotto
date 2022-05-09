@@ -12,7 +12,7 @@ protocol NumberGenerator {
 }
 
 struct PositiveNumberGenerator: NumberGenerator {
-    private static let zero = 0
+    private let zero = 0
     
     enum Error: LocalizedError {
         case isNotNumber(String)
