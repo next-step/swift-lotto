@@ -10,19 +10,16 @@ NEXTSTEP with yagom-academy
 
 ## 1. 로또(자동) 파일트리
 ```
-RacingCar  
-├── model  
-│   └── Constants.swift  
-│   └── Car.swift  
-└── view  
-├── inputViews  
-│   ├── InputError.swift  
-│   └── InputView.swift  
-└── resultViews  
-│   └── ResultView.swift  
-├── controller  
-│   ├── Game.swift  
-│   └── GameOption.swift  
+Lotto
+├── model
+│   ├── Constants.swift
+│   └── Lotto.swift
+└── view
+    ├── InputView.swift
+    └── ResultView.swift  
+├── controller
+│   ├── LottoGenerator.swift
+│   └── LottoManagement.swift
 ├── main.swift
 ```
 
@@ -34,8 +31,11 @@ RacingCar
     - `defaultLottoCount`: 로또 당첨 번호 갯수
 
 - **Lotto**
-    - `match(winningNumber:)`: 당첨번호와 일치하는 갯수에 따라 랭크 저장
+    - `match(winningNumber:bonusNumber:)`: 당첨 여부에 따라 `rank` `reward` 저장
 
+
+- **LottoNumbers**
+    - 로또번호 리스트 생성을 위한 일급 콜렉션
 
 - **LottoGenerator**
     - `randomNumber()`: 랜덤 숫자 생성
