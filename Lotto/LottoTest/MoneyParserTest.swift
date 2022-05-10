@@ -18,7 +18,7 @@ class MoneyParserTest: XCTestCase {
         
         // then
         XCTAssertEqual(Int(number), money.value)
-g    }
+    }
 
     func test_parse_nil이_입력되면_에러를_발생시킨다() {
         // given

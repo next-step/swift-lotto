@@ -6,11 +6,13 @@
 
 import Foundation
 
-guard let input = InputView.readMoney(),
-      let intInput = Int(input),
-      let money = Money(value: intInput) else {
-          OutputView.printMoneyError()
-          exit(0)
-      }
+do {
+    let moneyInput = InputView.readMoney()
+    let money = try MoneyParser.parse(money: moneyInput)
+    
+} catch(let error) {
+    
+}
+
 
 

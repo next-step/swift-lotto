@@ -7,6 +7,12 @@
 
 import XCTest
 
+extension Lotto: Equatable {
+    static func == (lhs: Lotto, rhs: Lotto) -> Bool {
+        return lhs.numbers == rhs.numbers
+    }
+}
+
 class LottoTest: XCTestCase {
 
     func test_init_Lotto를_구성하는_번호개수가_6개가_아니면_에러를_발생시킨다() {
