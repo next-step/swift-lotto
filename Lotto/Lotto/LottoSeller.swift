@@ -8,9 +8,11 @@
 import Foundation
 
 struct LottoSeller {
+    private static let lottoPrice = Money(value: 1000)
     let lottoMachine: LottoTicketMachine
     
     static func sellLotto(for money: Money) throws -> LottoTicket {
+        
         let lotto = try! Lotto(numbers: [try! LottoNumber(value: 1),
                                     try! LottoNumber(value: 1),
                                     try! LottoNumber(value: 1),

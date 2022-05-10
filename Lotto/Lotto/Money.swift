@@ -15,4 +15,8 @@ struct Money {
         if value < zero { return nil }
         self.value = value
     }
+    
+    static func /(lhs: Money, rhs: Money) -> Int {
+        return lhs.value / rhs.value
+    }
 }
