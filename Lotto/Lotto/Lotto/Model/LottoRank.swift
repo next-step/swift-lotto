@@ -33,6 +33,23 @@ enum LottoRank: CaseIterable {
         }
     }
     
+    var matchNumberCount: Int {
+        switch self {
+        case .first:
+            return 6
+        case .second:
+            return 5
+        case .third:
+            return 5
+        case .forth:
+            return 4
+        case .fifth:
+            return 3
+        default:
+            return 0
+        }
+    }
+    
     var prizeMoney: Int {
         switch self {
         case .first:
