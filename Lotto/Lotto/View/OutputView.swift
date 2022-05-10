@@ -8,10 +8,6 @@
 import Foundation
 
 struct OutputView {
-    static func printMoneyError() {
-        Swift.print("금액은 0이상의 양의 정수여야 합니다.")
-    }
-    
     static func print(lottoCount: Int) {
         Swift.print("\(lottoCount)개를 구매했습니다.")
     }
@@ -23,5 +19,9 @@ struct OutputView {
         Swift.print("당첨 통계")
         Swift.print("---------")
         Swift.print(winningStatsitics)
+    }
+    
+    static func print(error: Error) {
+        Swift.print(error.localizedDescription)
     }
 }
