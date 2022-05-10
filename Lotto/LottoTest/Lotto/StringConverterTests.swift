@@ -66,29 +66,29 @@ class StringConverterTests: XCTestCase {
         XCTAssertThrowsError(try sut.convertToInt(from: input))
     }
     
-    // MARK: -  guideDescription
+    // MARK: -  errorDescription
     
-    func test_guideDescription_whenUnwrapOptionalInputIsNil() throws {
+    func test_errorDescription_whenUnwrapOptionalInputIsNil() throws {
         //given
         let input: String? = nil
         
         // when
         // then
         XCTAssertThrowsError(try sut.unwrapOptional(from: input)) { error in
-            let result = (error as? StringConverter.StringConverterError)?.guideDescription
+            let result = error.localizedDescription
             let expectation = "빈 값이 들어왔습니다"
             XCTAssertEqual(result, expectation)
         }
     }
     
-    func test_guideDescription_whenConvertToIntInputIsEmpty() throws {
+    func test_errorDescription_whenConvertToIntInputIsEmpty() throws {
         //given
         let input: String = ""
         
         // when
         // then
         XCTAssertThrowsError(try sut.convertToInt(from: input)) { error in
-            let result = (error as? StringConverter.StringConverterError)?.guideDescription
+            let result = error.localizedDescription
             let expectation = "Int 로 변환에 실패했습니다. 정수를 입력해주세요"
             XCTAssertEqual(result, expectation)
         }

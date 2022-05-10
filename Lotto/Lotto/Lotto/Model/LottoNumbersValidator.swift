@@ -9,12 +9,12 @@ import Foundation
 
 struct LottoNumbersValidator {
     
-    enum LottoNumbersValidatorError: Error, UserInformable {
+    enum LottoNumbersValidatorError: LocalizedError {
         case invalidNumberCount
         case containOutOfRange
         case hasDuplicate
         
-        var guideDescription: String {
+        var errorDescription: String? {
             switch self {
             case .invalidNumberCount:
                 return "로또 번호 개수가 6개가 아닙니다"

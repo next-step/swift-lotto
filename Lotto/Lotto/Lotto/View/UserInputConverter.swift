@@ -10,10 +10,10 @@ import Foundation
 struct UserInputConverter {
     
     enum UserInputConverterError {
-        enum WinningNumbers: Error, UserInformable {
+        enum WinningNumbers: LocalizedError {
             case extraInputs
             
-            var guideDescription: String {
+            var errorDescription: String? {
                 switch self {
                 case .extraInputs:
                     return "숫자와 구분자를 위한 하나의 , 만 입력해주세요"

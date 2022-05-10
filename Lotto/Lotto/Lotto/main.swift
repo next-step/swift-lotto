@@ -24,9 +24,9 @@ do {
                                                    winningLotto: winningLotto,
                                                    bonusNumber: bonusNumber)
     resultView.printWinningStatistics(with: lottoResult)
-} catch let error as UserInformable {
+} catch {
     let errorView = ErrorView()
-    errorView.guideInputError(error: error)
+    errorView.printError(for: error)
 }
 
 private func buyLottos(for purchaseCount: Int) throws -> [Lotto] {

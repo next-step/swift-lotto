@@ -83,16 +83,16 @@ class UserInputConverterTests: XCTestCase {
         }
     }
     
-    // MARK: - guideDescription
+    // MARK: - errorDescription
     
-    func test_guideDescription_whenConvertToWinningNumbersInputHasExtraSeparators() throws {
+    func test_errorDescription_whenConvertToWinningNumbersInputHasExtraSeparators() throws {
         //given
         let input = ", 1, 2,, 3, 4, 5, 6,"
         
         // when
         // then
         XCTAssertThrowsError(try sut.convertToWinningNumbers(from: input)) { error in
-            let result = (error as? UserInputConverter.UserInputConverterError.WinningNumbers)?.guideDescription
+            let result = error.localizedDescription
             let expectation = "숫자와 구분자를 위한 하나의 , 만 입력해주세요"
             XCTAssertEqual(result, expectation)
         }

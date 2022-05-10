@@ -8,12 +8,12 @@
 import Foundation
 
 struct StringConverter {
-    enum StringConverterError: Error, UserInformable {
+    enum StringConverterError: Error, LocalizedError {
         
         case nilValue
         case convertToIntFail
         
-        var guideDescription: String {
+        var errorDescription: String? {
             switch self {
             case .nilValue:
                 return "빈 값이 들어왔습니다"

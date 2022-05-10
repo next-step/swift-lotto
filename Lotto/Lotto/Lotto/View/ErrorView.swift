@@ -8,10 +8,7 @@
 import Foundation
 
 struct ErrorView {
-    
-    private let userGuider = UserGuider()
-    
-    func guideInputError(error: UserInformable) {
-        userGuider.printGuide(for: error)
+    func printError(for error: Error) {
+        print(error.localizedDescription)
     }
 }
