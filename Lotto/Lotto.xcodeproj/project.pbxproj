@@ -27,6 +27,7 @@
 		2ED9C4392827D5C000BC60E7 /* WinningStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C4372827D5C000BC60E7 /* WinningStatistics.swift */; };
 		2ED9C43E2827D6CB00BC60E7 /* LottoTicketTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C43D2827D6CB00BC60E7 /* LottoTicketTest.swift */; };
 		2ED9C4432827DCA000BC60E7 /* WinningStatisticsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C4422827DCA000BC60E7 /* WinningStatisticsTest.swift */; };
+		2EE19BDC282A8970003D4916 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE19BDB282A8970003D4916 /* InputView.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		2ED9C4372827D5C000BC60E7 /* WinningStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningStatistics.swift; sourceTree = "<group>"; };
 		2ED9C43D2827D6CB00BC60E7 /* LottoTicketTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTicketTest.swift; sourceTree = "<group>"; };
 		2ED9C4422827DCA000BC60E7 /* WinningStatisticsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningStatisticsTest.swift; sourceTree = "<group>"; };
+		2EE19BDB282A8970003D4916 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +94,14 @@
 			path = LottoTest;
 			sourceTree = "<group>";
 		};
+		2EE19BDA282A8966003D4916 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2EE19BDB282A8970003D4916 /* InputView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C7905FB927311CC6004C3FCC = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 		C7905FC427311CC6004C3FCC /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
+				2EE19BDA282A8966003D4916 /* View */,
 				C7905FC527311CC6004C3FCC /* main.swift */,
 				2ED9C40C2827BA5400BC60E7 /* Money.swift */,
 				2ED9C41D2827BD9400BC60E7 /* LottoNumber.swift */,
@@ -240,6 +251,7 @@
 				2ED9C41E2827BD9400BC60E7 /* LottoNumber.swift in Sources */,
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
 				2ED9C4302827CE4700BC60E7 /* LottoTicketMachine.swift in Sources */,
+				2EE19BDC282A8970003D4916 /* InputView.swift in Sources */,
 				2ED9C4232827C13700BC60E7 /* LottoNumberGenerator.swift in Sources */,
 				2ED9C4382827D5C000BC60E7 /* WinningStatistics.swift in Sources */,
 			);
