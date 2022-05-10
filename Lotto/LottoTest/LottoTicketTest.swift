@@ -26,6 +26,8 @@ class LottoTicketTest: XCTestCase {
                                                try! LottoNumber(value: 6),
                                                try! LottoNumber(value: 7)])
         
+        let lottoTicket = LottoTicket(lottoList: [firstLotto, secondLotto])
+        
         let winningLotto = try! Lotto(numbers: [try! LottoNumber(value: 3),
                                                 try! LottoNumber(value: 4),
                                                 try! LottoNumber(value: 5),
@@ -33,10 +35,9 @@ class LottoTicketTest: XCTestCase {
                                                 try! LottoNumber(value: 7),
                                                 try! LottoNumber(value: 8)])
         
+
         let expectedStatistics = WinningStatistics(equalNumberCounts:
         [4, 5])
-        
-        let lottoTicket = LottoTicket(lottoList: [firstLotto, secondLotto])
 
         // when
         let winningRecord = lottoTicket.winningStatistics(with: winningLotto)
