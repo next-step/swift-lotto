@@ -62,4 +62,16 @@ class LottoSellerTest: XCTestCase {
         // then
         XCTAssertEqual(lottoTicket, expectedLottoTicket)
     }
+    
+    func test_sellLotto_금액이_로또를_사기에_부족한_경우_에러를_던진다() {
+        // given
+        let money = Money(value: 0)
+        
+        // when
+        // then
+        XCTAssertThrowsError(try lottoSeller.sellLotto(for: money), "금액이 로또를 사기에 부족한 경우 에러를 던진다") { error in
+            XCTAssert(error is LottoSeller.Error)
+            XCTAssertTrue(error.localizedDescription == lottoSeller.Error.nonEnoughMoney.errorDescription)
+        }
+    }
 }
