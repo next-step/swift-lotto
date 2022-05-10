@@ -18,7 +18,7 @@ struct LottoFactory {
             lottoNumbers.insert(lottoNumber)
         } while(lottoNumbers.count < Lotto.numberCount)
         
-        return try! Lotto(numbers: Array(lottoNumbers))
+        return try! Lotto(numbers: lottoNumbers)
     }
 }
 
@@ -35,9 +35,9 @@ struct Lotto {
     }
     
     static let numberCount = 6
-    let numbers: [LottoNumber]
+    let numbers: Set<LottoNumber>
     
-    init(numbers: [LottoNumber]) throws {
+    init(numbers: Set<LottoNumber>) throws {
         if numbers.count != Lotto.numberCount {
             throw Error.invalidNumberCount(numbers.count)
         }
