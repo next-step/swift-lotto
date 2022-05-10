@@ -9,4 +9,5 @@ import Foundation
 
 enum StringCalculatorError: Error {
     case negativeNumber
+    case invalidFormula
 }

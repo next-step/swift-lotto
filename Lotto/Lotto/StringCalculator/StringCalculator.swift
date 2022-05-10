@@ -14,7 +14,7 @@ struct StringCalculator {
     func calculate(with formula: String?) throws -> Int {
         guard let formula = formula, formula != "" else { return 0 }
         
-        let numbers = seperate(formula: formula)
+        guard let numbers = seperate(formula: formula) else { throw StringCalculatorError.invalidFormula }
         
         try catchNegativeError(numbers: numbers)
         return numbers.reduce(0, +)
@@ -25,8 +25,9 @@ struct StringCalculator {
         if !filtered.isEmpty { throw StringCalculatorError.negativeNumber }
     }
     
-    private func seperate(formula: String) -> Array<Int> {
-        let numbers = splitter.split(target: formula).compactMap( Int.init )
-        return numbers
+    private func seperate(formula: String) -> Array<Int>? {
+        let numbers = splitter.split(target: formula).map( Int.init )
+        if numbers.contains(nil) { return nil }
+        return numbers.compactMap({ $0 })
     }
 }
