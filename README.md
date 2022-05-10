@@ -44,12 +44,14 @@ Lotto
 
 
 - **CalculateProfit**
-    - `init(lotts:)`: 로또 결과 및 수익률 계산
+    - `init(lotts:)`: 등수별 당첨인원 계산
+    - `calculateProfit()`: 사용금액 대비 수익률 계산
 
 
 - **InputView**
     - `readPurchasePrice()`: 구매할 로또 금액 입력받아서 구매 개수(Int) 리턴
     - `readPrevWinningNumber()`: 로또 당첨 번호 입력받아서 [Int] 리턴
+    - `readBonusNumber(winningNumbers:)`: 보너스 번호를 입력받아서 Int 리턴 (당첨 번호와 중복 번호 X)
 
 
 - **ResultView**
