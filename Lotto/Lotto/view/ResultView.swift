@@ -12,9 +12,10 @@ struct ResultView {
         let management = LottoManagement(from: lottos)
         let profit = management.calculateProfit()
         
-        print("3개 일치 (5,000원)- \(management.fourthPlace)개")
-        print("4개 일치 (50,000원)- \(management.thirdPlace)개")
-        print("5개 일치 (1,500,000원)- \(management.secondPlace)개")
+        print("3개 일치 (5,000원)- \(management.fifthPlace)개")
+        print("4개 일치 (50,000원)- \(management.fourthPlace)개")
+        print("5개 일치 (1,500,000원)- \(management.thirdPlace)개")
+        print("5개 일치, 보너스 번호 일치 (3,000,0000원)- \(management.secondPlace)개")
         print("6개 일치 (2,000,000,000원)- \(management.firstPlace)개")
         print("총 수익률은 \(profit)입니다.")
     }
