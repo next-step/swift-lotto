@@ -7,15 +7,43 @@
 
 import Foundation
 
-struct WinningStatistics {
-    let threeMatchingCount: Int
-    let fourMatchingCount: Int
-    let fiveMatchingCount: Int
-    let sixMatchingCount: Int
-    
-    func calculateTheProfitRate(inputMoney: Money) -> Double {
-        let winningPrize = threeMatchingCount * 5000 + fourMatchingCount * 50000 + fiveMatchingCount * 1500000 + sixMatchingCount * 2000000000
+typealias EqualNumberCount = Int
 
-        return Double(winningPrize) / Double(inputMoney.value) * 100
+enum WinningPrize: EqualNumberCount {
+    case forThree = 3
+    case forFour = 4
+    case forFive = 5
+    case forSix = 6
+    
+    var value: Int {
+        switch self {
+        case .forThree: return 5_000
+        case .forFour: return 50_000
+        case .forFive: return 1_500_000
+        case .forSix: return 2_000_000_000
+        }
+    }
+}
+
+struct WinningStatistics {
+    typealias LottoCount =  Int
+    
+    private let hundred: Double = 100
+    
+    var value: [WinningPrize: LottoCount] = [.forThree:0, .forFour: 0, .forFive: 0, .forSix: 0]
+    
+    init(equalNumberCounts: Array<Int>) {
+        equalNumberCounts.compactMap { WinningPrize(rawValue: $0) }
+        .forEach { value[$0]! += 1 }
+    }
+    
+    func calculateProfitRate(inputMoney: Money) -> Double {
+        var profit = 0
+        
+        for (winningPrize, count) in value {
+            profit += (winningPrize.value * count)
+        }
+        
+        return Double(profit) / Double(inputMoney.value) * hundred
     }
 }
