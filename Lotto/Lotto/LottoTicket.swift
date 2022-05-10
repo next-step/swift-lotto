@@ -19,4 +19,6 @@ struct LottoTicket {
     
         return WinningStatistics(equalNumberCounts: equalNumberCounts)
     }
+    
+    func lottoCount() -> Int { return 2 }
 }
