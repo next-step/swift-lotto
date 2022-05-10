@@ -90,7 +90,7 @@ class Lotto {
     let numbers: LottoNumbers
     var result: Match
 
-    init (numbers: LottoNumbers) {
+    init(numbers: LottoNumbers) {
         self.numbers = numbers
         self.result = Match(matchingCount: 0)
     }
