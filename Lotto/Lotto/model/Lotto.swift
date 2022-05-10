@@ -10,11 +10,13 @@ import Foundation
 enum LottoError: LocalizedError {
     case autoGenerateError
     case invalidInput
+    case duplicateNumber
     
     var errorDescription: String {
         switch self {
         case .autoGenerateError: return "로또 번호 자동 생성 오류"
         case .invalidInput: return "사용자 입력 오류"
+        case .duplicateNumber: return "중복 당첨 번호"
         }
     }
 }
