@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Money {
+struct Money: Comparable {
+    static func < (lhs: Money, rhs: Money) -> Bool {
+        return lhs.value < rhs.value
+    }
+    
     private let zero = 0
     let value: Int
     

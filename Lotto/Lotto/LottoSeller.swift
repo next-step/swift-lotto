@@ -23,9 +23,8 @@ struct LottoSeller {
     let lottoTicketMachine: LottoTicketMachine
     
     func sellLotto(for money: Money) throws -> LottoTicket {
-        if money.value < LottoSeller.lottoPrice.value {
-            throw Error.nonEnoughMoney
-        }
+        if money < LottoSeller.lottoPrice  { throw Error.nonEnoughMoney }
+        
         let lottoCount = money / LottoSeller.lottoPrice
         return lottoTicketMachine.printTicket(count: lottoCount)
     }
