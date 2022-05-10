@@ -30,7 +30,7 @@ struct WinningStatistics {
     
     private let hundred: Double = 100
     
-    var value: [WinningPrize: LottoCount] = [.forThree:0, .forFour: 0, .forFive: 0, .forSix: 0]
+    private var value: [WinningPrize: LottoCount] = [.forThree:0, .forFour: 0, .forFive: 0, .forSix: 0]
     
     init(equalNumberCounts: Array<Int>) {
         equalNumberCounts.compactMap { WinningPrize(rawValue: $0) }
