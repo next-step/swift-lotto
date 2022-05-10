@@ -8,17 +8,11 @@
 import Foundation
 
 struct LottoSeller {
-    private static let lottoPrice = Money(value: 1000)
-    let lottoMachine: LottoTicketMachine
+    private static let lottoPrice = Money(value: 1000)!
+    let lottoTicketMachine: LottoTicketMachine
     
-    static func sellLotto(for money: Money) throws -> LottoTicket {
-        
-        let lotto = try! Lotto(numbers: [try! LottoNumber(value: 1),
-                                    try! LottoNumber(value: 1),
-                                    try! LottoNumber(value: 1),
-                                    try! LottoNumber(value: 1),
-                                    try! LottoNumber(value: 1),
-                                    try! LottoNumber(value: 1)])
-        return LottoTicket(lottoList: [lotto, lotto, lotto])
+    func sellLotto(for money: Money) throws -> LottoTicket {
+        let lottoCount = money / LottoSeller.lottoPrice
+        return lottoTicketMachine.printTicket(count: lottoCount)
     }
 }
