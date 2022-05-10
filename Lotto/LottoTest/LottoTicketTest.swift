@@ -44,4 +44,29 @@ class LottoTicketTest: XCTestCase {
         // then
         XCTAssertEqual(winningRecord, expectedStatistics)
     }
+    
+    func test_lottoCount_lottTicket이_갖는_로또의개수를_반환한다() {
+        // given
+        let firstLotto = try! Lotto(numbers: [try! LottoNumber(value: 1),
+                                              try! LottoNumber(value: 2),
+                                              try! LottoNumber(value: 3),
+                                              try! LottoNumber(value: 4),
+                                              try! LottoNumber(value: 5),
+                                              try! LottoNumber(value: 6)])
+        
+        let secondLotto = try! Lotto(numbers: [try! LottoNumber(value: 2),
+                                               try! LottoNumber(value: 3),
+                                               try! LottoNumber(value: 4),
+                                               try! LottoNumber(value: 5),
+                                               try! LottoNumber(value: 6),
+                                               try! LottoNumber(value: 7)])
+        
+        let lottoTicket = LottoTicket(lottoList: [firstLotto, secondLotto])
+        
+        // when
+        let lottoCount = lottoTicket.lottoCount()
+        
+        // then
+        XCTAssertEqual(2, lottoCount)
+    }
 }
