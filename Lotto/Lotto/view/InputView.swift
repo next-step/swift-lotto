@@ -42,4 +42,19 @@ struct InputView {
         }
         throw LottoError.invalidInput
     }
+    
+    static func readBonusNumber(winningNumbers: [Int]) throws -> Int {
+        print("보너스 번호를 입력해 주세요.")
+        
+        guard let input: String = readLine(),
+              let number: Int = Int (input) else {
+            throw LottoError.invalidInput
+        }
+        
+        if winningNumbers.contains(number) {
+            throw LottoError.duplicateNumber
+        }
+        
+        return number
+    }
 }
