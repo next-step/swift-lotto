@@ -33,15 +33,15 @@ class LottoTicketTest: XCTestCase {
                                                 try! LottoNumber(value: 7),
                                                 try! LottoNumber(value: 8)])
         
+        let expectedStatistics = WinningStatistics(equalNumberCounts:
+        [4, 5])
+        
         let lottoTicket = LottoTicket(lottoList: [firstLotto, secondLotto])
 
         // when
         let winningRecord = lottoTicket.winningStatistics(with: winningLotto)
         
         // then
-        XCTAssertEqual(winningRecord.threeMatchingCount, 0)
-        XCTAssertEqual(winningRecord.fourMatchingCount, 1)
-        XCTAssertEqual(winningRecord.fiveMatchingCount, 1)
-        XCTAssertEqual(winningRecord.sixMatchingCount, 0)
+        XCTAssertEqual(winningRecord, expectedStatistics)
     }
 }

@@ -14,7 +14,3 @@ guard let input = InputView.readMoney(),
       }
 
 
-
-
-
-
