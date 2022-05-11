@@ -17,3 +17,9 @@ enum InputError: Error {
         }
     }
 }
+
+extension InputError {
+    func showError() {
+        print(self.errorDescription)
+    }
+}
