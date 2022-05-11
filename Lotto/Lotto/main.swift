@@ -16,8 +16,7 @@ do {
     let lottoSeller = LottoSeller(lottoTicketMachine: lottoTicketMachine)
     
     let lottoTicket = try lottoSeller.sellLotto(for: money)
-    let lottoCount = lottoTicket.lottoCount()
-    OutputView.print(lottoCount: lottoCount)
+    OutputView.print(lottoCount: lottoTicket.lottoCount)
     
     let formattedLottoTicket = LottoTicketFormatter.format(lottoTicket)
     OutputView.print(lottoTicket: formattedLottoTicket)
