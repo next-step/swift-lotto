@@ -38,11 +38,13 @@ struct Lotto {
     let numbers: Set<LottoNumber>
     
     init<LottoNumbers: Collection>(numbers: LottoNumbers) throws where LottoNumbers.Element == LottoNumber  {
-        if numbers.count != Lotto.numberCount {
+        let setNumbers = Set(numbers)
+        
+        guard setNumbers.count == Lotto.numberCount else {
             throw Error.invalidNumberCount(numbers.count)
         }
         
-        self.numbers = Set(numbers)
+        self.numbers = setNumbers
     }
     
     func equalNumberCount(with lotto: Lotto) -> Int {
