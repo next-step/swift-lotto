@@ -6,5 +6,14 @@
 
 import Foundation
 
-print("Hello, World!")
+let lottoController = LottoController()
 
+do {
+    try lottoController.lotterySetting()
+    lottoController.lottoPrinter()
+    try lottoController.winningNumbersSetting()
+    lottoController.statisticResult()
+    
+} catch let error as InputError {
+    error.showError()
+}

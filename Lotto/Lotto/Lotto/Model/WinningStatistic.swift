@@ -39,15 +39,34 @@ final class WinningStatistic {
         }
     }
     
-    func match(numbers: [Int]) -> Winning? {
+    func insertStatistic(_ lotto: Lotto) {
         var count = 0
-        for number in numbers {
+        for number in lotto.numbers {
             count += winningNumbers[number] ?? 0
         }
-        return Winning.rank(count)
+        if let winning = Winning.rank(count) {
+            statistic[winning]! += 1
+        }
+        
     }
     
     func addWinningStatistic(rank: Winning) {
         statistic[rank]! += 1
+    }
+    
+    func winningResultPrint() {
+        for winning in Winning.allCases {
+            let count = statistic[winning] ?? 0
+            print("\(winning.description) \(winning.price)원 - \(count)개")
+        }
+    }
+    
+    func winningTotalPrice() -> Int {
+        var money = 0
+        for winning in Winning.allCases {
+            let count = statistic[winning] ?? 0
+            money += winning.price * count
+        }
+        return money
     }
 }
