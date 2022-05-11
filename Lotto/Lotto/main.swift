@@ -8,7 +8,7 @@ import Foundation
 
 do {
     let moneyInput = InputView.readMoney()
-    let money = try MoneyParser.parse(money: moneyInput)
+    let money = try MoneyParser.parse(moneyInput)
     
     let lottoNumberGenerater = RandomLottoNumberGenerator()
     let lottoFactory = LottoFactory(lottoNumberGenerator: lottoNumberGenerater)

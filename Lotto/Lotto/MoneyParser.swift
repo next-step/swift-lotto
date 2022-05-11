@@ -19,7 +19,7 @@ struct MoneyParser {
         }
     }
     
-    static func parse(money input: String?) throws -> Money {
+    static func parse(_ input: String?) throws -> Money {
         guard let input = input,
               let moneyValue = Int(input),
               let money = Money(value: moneyValue) else {
