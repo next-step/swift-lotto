@@ -36,14 +36,14 @@ class LottoTicketTest: XCTestCase {
                                                 LottoNumber(8)].compactMap({ $0 }))
         
 
-        let expectedStatistics = WinningStatistics(equalNumberCounts:
+        let expectedRecord = WinningRecord(equalNumberCounts:
         [4, 5])
 
         // when
-        let winningRecord = lottoTicket.winningStatistics(with: winningLotto)
+        let winningRecord = lottoTicket.winningRecord(with: winningLotto)
         
         // then
-        XCTAssertEqual(winningRecord, expectedStatistics)
+        XCTAssertEqual(winningRecord, expectedRecord)
     }
     
     func test_lottoCount_lottTicket이_갖는_로또의개수를_반환한다() {
@@ -65,9 +65,7 @@ class LottoTicketTest: XCTestCase {
         let lottoTicket = LottoTicket(lottoList: [firstLotto, secondLotto])
         
         // when
-        let lottoCount = lottoTicket.lottoCount()
-        
         // then
-        XCTAssertEqual(2, lottoCount)
+        XCTAssertEqual(2, lottoTicket.lottoCount)
     }
 }

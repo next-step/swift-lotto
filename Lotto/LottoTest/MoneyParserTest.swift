@@ -14,7 +14,7 @@ class MoneyParserTest: XCTestCase {
         let number = "0"
 
         // when
-        let money = try! MoneyParser.parse(money: number)
+        let money = try! MoneyParser.parse(number)
         
         // then
         XCTAssertEqual(Int(number), money.value)
@@ -26,7 +26,7 @@ class MoneyParserTest: XCTestCase {
 
         // when
         // then
-        XCTAssertThrowsError(try MoneyParser.parse(money: nilInput), "nil이_입력되면_에러를_발생시킨다") { error in
+        XCTAssertThrowsError(try MoneyParser.parse(nilInput), "nil이_입력되면_에러를_발생시킨다") { error in
             XCTAssert(error is MoneyParser.Error)
             XCTAssert(error.localizedDescription ==  MoneyParser.Error.invalidInput(nilInput).errorDescription)
         }
@@ -38,7 +38,7 @@ class MoneyParserTest: XCTestCase {
 
         // when
         // then
-        XCTAssertThrowsError(try MoneyParser.parse(money: negativeNumber), "음의정수가_입력되면_에러를_발생시킨다") { error in
+        XCTAssertThrowsError(try MoneyParser.parse(negativeNumber), "음의정수가_입력되면_에러를_발생시킨다") { error in
             XCTAssert(error is MoneyParser.Error)
             XCTAssert(error.localizedDescription ==  MoneyParser.Error.invalidInput(negativeNumber).errorDescription)
         }
@@ -50,7 +50,7 @@ class MoneyParserTest: XCTestCase {
 
         // when
         // then
-        XCTAssertThrowsError(try MoneyParser.parse(money: nonNumber), "음의정수가_입력되면_에러를_발생시킨다") { error in
+        XCTAssertThrowsError(try MoneyParser.parse(nonNumber), "음의정수가_입력되면_에러를_발생시킨다") { error in
             XCTAssert(error is MoneyParser.Error)
             XCTAssert(error.localizedDescription ==  MoneyParser.Error.invalidInput(nonNumber).errorDescription)
         }

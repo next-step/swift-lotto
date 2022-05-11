@@ -11,7 +11,7 @@ import XCTest
 class WinningStatisticsTest: XCTestCase {
     func test_calculateTheProfitRate_로또구매가격을_입력받아서_수익률을_계산한다(){
         // given
-        let winningStatistics = WinningStatistics(equalNumberCounts: [3])
+        let winningStatistics = WinningRecord(equalNumberCounts: [3])
         let expectedProfitRate = Double(5000) / Double(14000) * 100
         let inputMoney = Money(value: 14000)!
 

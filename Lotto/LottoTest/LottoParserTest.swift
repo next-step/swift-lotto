@@ -20,8 +20,6 @@ class LottoParserTest: XCTestCase {
                                                  LottoNumber(4),
                                                  LottoNumber(5),
                                                  LottoNumber(6)].compactMap({ $0 }))
-        
-      
         // when
         let lotto = try! LottoParser.parse(lottoInput)
         
