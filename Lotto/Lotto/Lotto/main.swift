@@ -8,7 +8,7 @@ import Foundation
 
 do {
     let inputView = InputView()
-    let purchaseMoney: Int = try inputView.recievePurchaseMoney()
+    let purchaseMoney: Int = try inputView.receivePurchaseMoney()
 
     let resultView = ResultView()
     let purchaseCount = purchaseMoney / Lotto.Constants.price
@@ -17,8 +17,8 @@ do {
     let lottos: [Lotto] = try buyLottos(for: purchaseCount)
     resultView.printLottos(for: lottos)
     
-    let winningLotto: Lotto = try inputView.recieveWinningLotto()
-    let bonusNumber: Int = try inputView.recieveBonusNumber(in: winningLotto)
+    let winningLotto: Lotto = try inputView.receiveWinningLotto()
+    let bonusNumber: Int = try inputView.receiveBonusNumber(in: winningLotto)
     
     let lottoResult: LottoResult = try lottoResult(lottos: lottos,
                                                    winningLotto: winningLotto,

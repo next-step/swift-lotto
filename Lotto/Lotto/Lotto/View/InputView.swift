@@ -32,14 +32,14 @@ struct InputView {
     private let purchaseMoneyValidator = PurchaseMoneyValidator()
     private let lottoNumbersValidator = LottoNumbersValidator()
     
-    func recievePurchaseMoney() throws -> Int {
+    func receivePurchaseMoney() throws -> Int {
         userGuider.printGuide(for: QuestionText.purchaseMoney)
-        let purchaseMoney = try recieveInt()
+        let purchaseMoney = try receiveInt()
         try purchaseMoneyValidator.validate(of: purchaseMoney)
         return purchaseMoney
     }
     
-    func recieveWinningLotto() throws -> Lotto {
+    func receiveWinningLotto() throws -> Lotto {
         userGuider.printGuide(for: QuestionText.winningNumbers)
         
         let userInput: String? = readLine()
@@ -49,14 +49,14 @@ struct InputView {
         return winningLotto
     }
     
-    func recieveBonusNumber(in winningLotto: Lotto) throws -> Int {
+    func receiveBonusNumber(in winningLotto: Lotto) throws -> Int {
         userGuider.printGuide(for: QuestionText.bonusNumber)
-        let bonusNumber = try recieveInt()
+        let bonusNumber = try receiveInt()
         try lottoNumbersValidator.validateBonusNumber(bonusNumber, in: winningLotto)
         return bonusNumber
     }
     
-    private func recieveInt() throws ->  Int {
+    private func receiveInt() throws ->  Int {
         let userInput: String? = readLine()
         let unwrappedUserInput: String = try stringConverter.unwrapOptional(from: userInput)
         let userInputInt = try userInputConverter.convertToInt(from: unwrappedUserInput)
