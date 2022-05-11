@@ -11,17 +11,20 @@ struct LottoSeller: LottoSellable {
     private let purchaseAmount: String
     private let lottoMaker: LottoMakable
     
-    init(purchaseAmount: String, lottoMaker: LottoMakable) {
+    init?(purchaseAmount: String, lottoMaker: LottoMakable) throws {
+        let saftyAmount = purchaseAmount.allSatisfy { $0.isNumber }
+        guard saftyAmount else { throw LottoError.invalidAmount }
+        guard StringUtiltity.convertStringAmountToInt(to: purchaseAmount) > 0 else { throw LottoError.lackOfAmount }
         self.purchaseAmount = purchaseAmount
         self.lottoMaker = lottoMaker
     }
     
-    func sellLotto(manualNumber: Int, manualUserLotto: [String]) -> UserLotto {
+    func sellLotto(manualNumber: Int, manualUserLotto: [String]) throws -> UserLotto {
         var result: [Lotto] = []
         let autoNumber: Int = purchasedNumber()-manualNumber
         
         result += makeAutoLotto(autoNumber: autoNumber)
-        result += makeManualLotto(manualUserLotto: manualUserLotto)
+        result += try makeManualLotto(manualUserLotto: manualUserLotto)
         
         return UserLotto(purchasedLottos: result)
     }
@@ -37,11 +40,11 @@ struct LottoSeller: LottoSellable {
         return result
     }
     
-    private func makeManualLotto(manualUserLotto: [String]) -> [Lotto] {
+    private func makeManualLotto(manualUserLotto: [String]) throws -> [Lotto] {
         var result: [Lotto] = []
         
-        manualUserLotto.forEach { lotto in
-            let lottoNumbers = StringUtiltity.splitLottoNumbers(to: lotto).map { LottoNumber(number: $0) }
+        try manualUserLotto.forEach { lotto in
+            let lottoNumbers = try StringUtiltity.splitLottoNumbers(to: lotto).map { LottoNumber(number: $0) }
             result.append(Lotto(numbers: lottoNumbers))
         }
         

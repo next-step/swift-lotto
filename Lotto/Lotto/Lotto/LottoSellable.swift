@@ -6,6 +6,6 @@
 //
 
 protocol LottoSellable {
-    func sellLotto(manualNumber: Int, manualUserLotto: [String]) -> UserLotto
+    func sellLotto(manualNumber: Int, manualUserLotto: [String]) throws -> UserLotto
     func purchasedNumber() -> Int
 }

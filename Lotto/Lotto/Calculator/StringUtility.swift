@@ -25,7 +25,10 @@ struct StringUtiltity {
         return amount / 1000
     }
     
-    static func splitLottoNumbers(to convertedExpression: String) -> [Int] {
-        convertedExpression.components(separatedBy: ", ").map { Int($0) ?? 0 }
+    static func splitLottoNumbers(to convertedExpression: String) throws -> [Int] {
+        let splited = convertedExpression.components(separatedBy: ", ").map { Int($0) ?? 0 }
+        guard splited.count == 6 else { throw LottoError.invalidManualNumber }
+    
+        return splited
     }
 }

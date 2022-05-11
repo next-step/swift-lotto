@@ -7,25 +7,32 @@
 import Foundation
 
 func main() {
-    let seller = LottoSeller(purchaseAmount: LottoInputView.readPurchaseAmount(),
-                             lottoMaker: LottoRandomNumberMaker())
-    let manualNumber = LottoInputView.readManualNumber()
-    let manualUserLotto = LottoInputView.readManualLotto(manualNumber: manualNumber)
-    let autoNumber = seller.purchasedNumber() - manualNumber
-    LottoResultView.printPurchasedLotto(manualNumber: manualNumber,
-                                        autoNumber: autoNumber)
-    let userLotto = seller.sellLotto(manualNumber: manualNumber, manualUserLotto: manualUserLotto)
-    LottoResultView.printLottos(userLotto)
-    let winningLotto = WinningLottoMaker(lastWeekWinningNumber:
-                                            LottoInputView.readLastWeakWinningNumber(),
-                                         bonusNumber:
-                                            LottoInputView.readBonushNumber()).makeWinningLotto()
-    let center = LottoCenter(winningLotto: winningLotto)
-    let user = User(userLotto: userLotto, center: center)
-    let rankReport = RankReport(winning: user.winning())
+    do {
+        guard let seller = try LottoSeller(purchaseAmount: LottoInputView.readPurchaseAmount(),
+                                       lottoMaker: LottoRandomNumberMaker()) else { return }
+        let numberOfManualPurchased = LottoInputView.readNumberOfManualPurchase()
+        let manualUserLotto = LottoInputView.readManualLotto(number: numberOfManualPurchased)
+        let autoNumber = seller.purchasedNumber() - numberOfManualPurchased
+        LottoResultView.printPurchasedLotto(manualNumber: numberOfManualPurchased,
+                                            autoNumber: autoNumber)
+        let userLotto = try seller.sellLotto(manualNumber: numberOfManualPurchased, manualUserLotto: manualUserLotto)
+        LottoResultView.printLottos(userLotto)
+        let winningLotto = try WinningLottoMaker(lastWeekWinningNumber:
+                                                LottoInputView.readLastWeakWinningNumber(),
+                                             bonusNumber:
+                                                LottoInputView.readBonushNumber()).makeWinningLotto()
+        let center = LottoCenter(winningLotto: winningLotto)
+        let user = User(userLotto: userLotto, center: center)
+        let rankReport = RankReport(winning: user.winning())
 
-    LottoResultView.printReport(rankReport.report())
-    LottoResultView.printTotalYield(UserTotalYield.yield(winning: user.winning()))
+        LottoResultView.printReport(rankReport.report())
+        LottoResultView.printTotalYield(UserTotalYield.yield(winning: user.winning()))
+    }
+    catch let error {
+        guard let error = error as? LottoError else { return }
+        LottoResultView.printError(error.message ?? "")
+        main()
+    }
 }
 
 main()

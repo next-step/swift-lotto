@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WinningLottoMakable {
-    func makeWinningLotto() -> WinningLotto
+    func makeWinningLotto() throws -> WinningLotto
 }
 
 struct WinningLottoMaker: WinningLottoMakable {
@@ -20,8 +20,8 @@ struct WinningLottoMaker: WinningLottoMakable {
         self.bonusNumber = bonusNumber
     }
     
-    func makeWinningLotto() -> WinningLotto {
-        let lottoNumbers = StringUtiltity.splitLottoNumbers(to: lastWeekWinningNumber).map { LottoNumber(number: $0) }
+    func makeWinningLotto() throws -> WinningLotto {
+        let lottoNumbers = try StringUtiltity.splitLottoNumbers(to: lastWeekWinningNumber).map { LottoNumber(number: $0) }
         return WinningLotto(numbers: lottoNumbers, bonusNumber: bonusNumber)
     }
 }
