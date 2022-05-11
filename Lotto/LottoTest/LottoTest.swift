@@ -8,14 +8,13 @@
 import XCTest
 
 class LottoTest: XCTestCase {
-    private let seller = LottoSeller(purchaseAmount: "3000",
-                             lottoMaker: LottoSameNumberMaker())
-    private lazy var winningLotto = WinningLottoMaker(lastWeekWinningNumber: "1, 2, 3, 4, 5, 6", bonusNumber: 7).makeWinningLotto()
+    private let seller = try? LottoSeller(purchaseAmount: "3000", lottoMaker: LottoSameNumberMaker())
+    private lazy var winningLotto = try? WinningLottoMaker(lastWeekWinningNumber: "1, 2, 3, 4, 5, 6", bonusNumber: 7).makeWinningLotto()
     let manualUserLotto: [String] = ["11, 12, 13, 14, 15, 16", "17, 18, 19, 20, 21, 22"]
-    private lazy var userLotto = seller.sellLotto(manualNumber: 2,
+    private lazy var userLotto = try? seller!.sellLotto(manualNumber: 2,
                                                   manualUserLotto: manualUserLotto)
-    private lazy var cener = LottoCenter(winningLotto: winningLotto)
-    private lazy var user = User(userLotto: userLotto, center: cener)
+    private lazy var cetner = LottoCenter(winningLotto: winningLotto!)
+    private lazy var user = User(userLotto: userLotto!, center: cetner)
     private lazy var rankReport = RankReport(winning: user.winning())
     
     private let userLottoMockForAllFirst = UserLotto(purchasedLottos: [
@@ -98,14 +97,14 @@ class LottoTest: XCTestCase {
     private let reportMockWithManualLotto = Report(first: 1, second: 0, third: 0, fourth: 0, fifth: 0)
     
     func testPurchasedNumber() {
-        let number: Int = seller.purchasedNumber()
+        let number: Int = (seller?.purchasedNumber())!
         
         XCTAssertEqual(number, 3)
     }
     
     func testSellLottoWithManualLotto() {
         let manualUserLotto: [String] = ["11, 12, 13, 14, 15, 16", "17, 18, 19, 20, 21, 22"]
-        let userLotto = seller.sellLotto(manualNumber: 2,
+        let userLotto = try? seller?.sellLotto(manualNumber: 2,
                                         manualUserLotto: manualUserLotto)
         
         XCTAssertEqual(userLotto, userLottoMockWithManualLotto)
@@ -113,26 +112,26 @@ class LottoTest: XCTestCase {
     
     func testSellLotto() {
         let manualUserLotto: [String] = []
-        let userLotto = seller.sellLotto(manualNumber: 0,
+        let userLotto = try? seller?.sellLotto(manualNumber: 0,
                                         manualUserLotto: manualUserLotto)
         
         XCTAssertEqual(userLotto, userLottoMockForAllFirst)
     }
     
     func testWinningLottoMatchCountIs6() {
-        let matchCount: Int = winningLotto.matchCount(numberToMatch: firstLottoMock)
+        let matchCount: Int = (winningLotto?.matchCount(numberToMatch: firstLottoMock))!
         
         XCTAssertEqual(matchCount, 6)
     }
     
     func testWinningLottoMatchCountIs5() {
-        let matchCount: Int = winningLotto.matchCount(numberToMatch: thirdLottoMock)
+        let matchCount: Int = (winningLotto?.matchCount(numberToMatch: thirdLottoMock))!
         
         XCTAssertEqual(matchCount, 5)
     }
     
     func testWinningLottoMatchCountIs4() {
-        let matchCount: Int = winningLotto.matchCount(numberToMatch: fourthLottoMock)
+        let matchCount: Int = (winningLotto?.matchCount(numberToMatch: fourthLottoMock))!
         
         XCTAssertEqual(matchCount, 4)
     }
@@ -145,23 +144,23 @@ class LottoTest: XCTestCase {
     
     func testRankReportWithManualLotto() {
         let manualUserLotto: [String] = []
-        let userLotto = seller.sellLotto(manualNumber: 0,
-                                        manualUserLotto: manualUserLotto)
-        let cener = LottoCenter(winningLotto: winningLotto)
-        let user = User(userLotto: userLotto, center: cener)
+        let userLotto = (try? (seller?.sellLotto(manualNumber: 0,
+                                                 manualUserLotto: manualUserLotto))!)!
+        let cetner = LottoCenter(winningLotto: winningLotto!)
+        let user = User(userLotto: userLotto, center: cetner)
         let rankReport = RankReport(winning: user.winning())
         
         XCTAssertEqual(rankReport.report(), reportMock)
     }
     
     func testLottoMatch() {
-        let winning: [Rank] = cener.match(userLotto: userLottoMock)
+        let winning: [Rank] = cetner.match(userLotto: userLottoMock)
         
         XCTAssertEqual(winning, [Rank.first, Rank.third, Rank.fourth])
     }
     
     func testLottoMatchWithBonus() {
-        let winning: [Rank] = cener.match(userLotto: userLottoWithBonusNumberMock)
+        let winning: [Rank] = cetner.match(userLotto: userLottoWithBonusNumberMock)
 
         XCTAssertEqual(winning, [Rank.first, Rank.second, Rank.fourth])
     }
@@ -187,7 +186,7 @@ class LottoTest: XCTestCase {
     
     func testSplitLottoNumbers() {
         let input: String = "1, 2, 3, 4, 5, 6"
-        let result: [Int] = StringUtiltity.splitLottoNumbers(to: input)
+        let result: [Int] = try! StringUtiltity.splitLottoNumbers(to: input)
         
         XCTAssertEqual(result, [1, 2, 3, 4, 5, 6])
     }
@@ -196,7 +195,7 @@ class LottoTest: XCTestCase {
         let basicNumbers: String = "1, 2, 3, 4, 5, 6"
         let bonusNumber: Int = 7
         let winningLottoMaker: WinningLottoMaker = WinningLottoMaker(lastWeekWinningNumber: basicNumbers, bonusNumber: bonusNumber)
-        let winningLotto: WinningLotto = winningLottoMaker.makeWinningLotto()
+        let winningLotto: WinningLotto = try! winningLottoMaker.makeWinningLotto()
         
         XCTAssertEqual(winningLotto, winningLottoMock)
     }
