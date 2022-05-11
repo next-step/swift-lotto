@@ -18,10 +18,12 @@ struct LottoParser {
         }
     }
     
+    private static let sepearator = ", "
+    
     static func parse(_ lottoInput: String?) throws -> Lotto {
         guard let lottoInput = lottoInput else { throw Error.nonNumber }
 
-        let lottoNumbers = lottoInput.components(separatedBy: ", ")
+        let lottoNumbers = lottoInput.components(separatedBy: sepearator)
             .compactMap { Int($0) }
             .compactMap { LottoNumber($0) }
         return try Lotto(numbers: lottoNumbers)

@@ -9,7 +9,7 @@ import Foundation
 
 typealias EqualNumberCount = Int
 
-enum WinningPrize: EqualNumberCount {
+enum WinningPrize: EqualNumberCount, CaseIterable {
     case forThree = 3
     case forFour = 4
     case forFive = 5
@@ -30,7 +30,7 @@ struct WinningStatistics: Equatable {
     
     private let hundred: Double = 100
     
-    private var value: [WinningPrize: LottoCount] = [.forThree:0, .forFour: 0, .forFive: 0, .forSix: 0]
+    var value: [WinningPrize: LottoCount] = [.forThree:0, .forFour: 0, .forFive: 0, .forSix: 0]
     
     init(equalNumberCounts: Array<Int>) {
         equalNumberCounts.compactMap { WinningPrize(rawValue: $0) }
