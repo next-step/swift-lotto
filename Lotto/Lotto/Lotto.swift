@@ -14,7 +14,7 @@ struct LottoFactory {
         var lottoNumbers = Set<LottoNumber>()
         
         repeat {
-            let lottoNumber = lottoNumberGenerator.generate()
+            guard let lottoNumber = lottoNumberGenerator.generate() else { continue }
             lottoNumbers.insert(lottoNumber)
         } while(lottoNumbers.count < Lotto.numberCount)
         
@@ -37,12 +37,12 @@ struct Lotto {
     static let numberCount = 6
     let numbers: Set<LottoNumber>
     
-    init(numbers: Set<LottoNumber>) throws {
+    init<Numbers: Collection>(numbers: Numbers) throws where Numbers.Element == LottoNumber  {
         if numbers.count != Lotto.numberCount {
             throw Error.invalidNumberCount(numbers.count)
         }
         
-        self.numbers = numbers
+        self.numbers = Set(numbers)
     }
     
     func equalNumberCount(with lotto: Lotto) -> Int {

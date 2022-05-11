@@ -11,9 +11,9 @@ import XCTest
 class StubLottoNumberGenerator: LottoNumberGenerator {
     var lottoNumber = 0
     
-    func generate() -> LottoNumber {
+    func generate() -> LottoNumber? {
         lottoNumber += 1
-        return try! LottoNumber(value: lottoNumber)
+        return LottoNumber(lottoNumber)
     }
 }
 
@@ -41,18 +41,18 @@ class LottoSellerTest: XCTestCase {
         // given
         let money = Money(value: 2200)!
 
-        let firstLotto = try! Lotto(numbers: [try! LottoNumber(value: 1),
-                                         try! LottoNumber(value: 2),
-                                         try! LottoNumber(value: 3),
-                                         try! LottoNumber(value: 4),
-                                         try! LottoNumber(value: 5),
-                                         try! LottoNumber(value: 6)])
-        let secondLotto = try! Lotto(numbers: [try! LottoNumber(value: 7),
-                                         try! LottoNumber(value: 8),
-                                         try! LottoNumber(value: 9),
-                                         try! LottoNumber(value: 10),
-                                         try! LottoNumber(value: 11),
-                                         try! LottoNumber(value: 12)])
+        let firstLotto = try! Lotto(numbers: [LottoNumber(1),
+                                              LottoNumber(2),
+                                              LottoNumber(3),
+                                              LottoNumber(4),
+                                              LottoNumber(5),
+                                              LottoNumber(6)].compactMap({ $0 }))
+        let secondLotto = try! Lotto(numbers: [LottoNumber(7),
+                                               LottoNumber(8),
+                                               LottoNumber(9),
+                                               LottoNumber(10),
+                                               LottoNumber(11),
+                                               LottoNumber(12)].compactMap({ $0 }))
 
         let expectedLottoTicket = LottoTicket(lottoList: [firstLotto, secondLotto])
 

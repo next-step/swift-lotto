@@ -10,16 +10,22 @@ import XCTest
 
 class LottoParserTest: XCTestCase {
 
-    func parse_사용자로부터_받은_로또문자열입력을_Lotto로_파싱하여_반환한다() {
+    func test_parse_사용자로부터_받은_로또문자열입력을_Lotto로_파싱하여_반환한다() {
         // given
         let lottoInput = "1, 2, 3, 4, 5, 6"
         
-        let expectedLottoNumbers = Set(arrayLiteral: 1, 2, 3, 4, 5, 6)
+        let expectedLotto = try! Lotto(numbers: [LottoNumber(1),
+                                                 LottoNumber(2),
+                                                 LottoNumber(3),
+                                                 LottoNumber(4),
+                                                 LottoNumber(5),
+                                                 LottoNumber(6)].compactMap({ $0 }))
         
+      
         // when
         let lotto = try! LottoParser.parse(lottoInput)
         
         // then
-        XCTAssertEqual(lotto.numbers, expectedLottoNumbers)
+        XCTAssert(lotto == expectedLotto)
     }
 }

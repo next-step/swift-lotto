@@ -10,8 +10,8 @@ import XCTest
 class FakeLottoNumberGenerator: LottoNumberGenerator {
     var count = 1
     
-    func generate() -> LottoNumber {
-        let lottoNumber = try! LottoNumber(value: count)
+    func generate() -> LottoNumber? {
+        let lottoNumber = LottoNumber(count)
         count += 1
         return lottoNumber
     }

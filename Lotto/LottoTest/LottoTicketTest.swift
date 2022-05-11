@@ -12,28 +12,28 @@ class LottoTicketTest: XCTestCase {
 
     func test_winngRecord_당첨번호를_담은_lotto를_받아서_현재LottoTicket의_당첨통계정보를담는_WinningRecord를_반환한다() {
         // given
-        let firstLotto = try! Lotto(numbers: [try! LottoNumber(value: 1),
-                                              try! LottoNumber(value: 2),
-                                              try! LottoNumber(value: 3),
-                                              try! LottoNumber(value: 4),
-                                              try! LottoNumber(value: 5),
-                                              try! LottoNumber(value: 6)])
+        let firstLotto = try! Lotto(numbers: [LottoNumber(1),
+                                              LottoNumber(2),
+                                              LottoNumber(3),
+                                              LottoNumber(4),
+                                              LottoNumber(5),
+                                              LottoNumber(6)].compactMap({ $0 }))
         
-        let secondLotto = try! Lotto(numbers: [try! LottoNumber(value: 2),
-                                               try! LottoNumber(value: 3),
-                                               try! LottoNumber(value: 4),
-                                               try! LottoNumber(value: 5),
-                                               try! LottoNumber(value: 6),
-                                               try! LottoNumber(value: 7)])
+        let secondLotto = try! Lotto(numbers: [LottoNumber(2),
+                                               LottoNumber(3),
+                                               LottoNumber(4),
+                                               LottoNumber(5),
+                                               LottoNumber(6),
+                                               LottoNumber(7)].compactMap({ $0 }))
         
         let lottoTicket = LottoTicket(lottoList: [firstLotto, secondLotto])
         
-        let winningLotto = try! Lotto(numbers: [try! LottoNumber(value: 3),
-                                                try! LottoNumber(value: 4),
-                                                try! LottoNumber(value: 5),
-                                                try! LottoNumber(value: 6),
-                                                try! LottoNumber(value: 7),
-                                                try! LottoNumber(value: 8)])
+        let winningLotto = try! Lotto(numbers: [LottoNumber(3),
+                                                LottoNumber(4),
+                                                LottoNumber(5),
+                                                LottoNumber(6),
+                                                LottoNumber(7),
+                                                LottoNumber(8)].compactMap({ $0 }))
         
 
         let expectedStatistics = WinningStatistics(equalNumberCounts:
@@ -48,19 +48,19 @@ class LottoTicketTest: XCTestCase {
     
     func test_lottoCount_lottTicket이_갖는_로또의개수를_반환한다() {
         // given
-        let firstLotto = try! Lotto(numbers: [try! LottoNumber(value: 1),
-                                              try! LottoNumber(value: 2),
-                                              try! LottoNumber(value: 3),
-                                              try! LottoNumber(value: 4),
-                                              try! LottoNumber(value: 5),
-                                              try! LottoNumber(value: 6)])
+        let firstLotto = try! Lotto(numbers: [LottoNumber(1),
+                                              LottoNumber(2),
+                                              LottoNumber(3),
+                                              LottoNumber(4),
+                                              LottoNumber(5),
+                                              LottoNumber(6)].compactMap({ $0 }))
         
-        let secondLotto = try! Lotto(numbers: [try! LottoNumber(value: 2),
-                                               try! LottoNumber(value: 3),
-                                               try! LottoNumber(value: 4),
-                                               try! LottoNumber(value: 5),
-                                               try! LottoNumber(value: 6),
-                                               try! LottoNumber(value: 7)])
+        let secondLotto = try! Lotto(numbers: [LottoNumber(2),
+                                               LottoNumber(3),
+                                               LottoNumber(4),
+                                               LottoNumber(5),
+                                               LottoNumber(6),
+                                               LottoNumber(7)].compactMap({ $0 }))
         
         let lottoTicket = LottoTicket(lottoList: [firstLotto, secondLotto])
         

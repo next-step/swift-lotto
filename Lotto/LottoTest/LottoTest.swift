@@ -18,13 +18,11 @@ class LottoTest: XCTestCase {
 
     func test_init_Lotto를_구성하는_번호개수가_6개가_아니면_에러를_발생시킨다() {
         // given
-        let lottoNumbers = Set([try! LottoNumber(value: 1),
-                            try! LottoNumber(value: 2),
-                            try! LottoNumber(value: 3),
-                            try! LottoNumber(value: 4),
-                            try! LottoNumber(value: 5),
-                            try! LottoNumber(value: 6),
-                            try! LottoNumber(value: 7)])
+        let lottoNumbers = Set([LottoNumber(1),
+                                LottoNumber(2),
+                                LottoNumber(3),
+                                LottoNumber(4),
+                                LottoNumber].compactMap({ $0 }))
         
         // when
         // then
@@ -36,20 +34,20 @@ class LottoTest: XCTestCase {
     
     func test_equalNumberCount_입력받은_Lotto와_일치하는_번호개수를_반환한다() {
             // given
-            let lottoNumbers = Set([try! LottoNumber(value: 2),
-                                try! LottoNumber(value: 3),
-                                try! LottoNumber(value: 4),
-                                try! LottoNumber(value: 5),
-                                try! LottoNumber(value: 6),
-                                try! LottoNumber(value: 7)])
+            let lottoNumbers = Set([LottoNumber(2),
+                                    LottoNumber(3),
+                                    LottoNumber(4),
+                                    LottoNumber(5),
+                                    LottoNumber(6),
+                                    LottoNumber(7)].compactMap({ $0 }))
             let lotto = try! Lotto(numbers: lottoNumbers)
             
-            let winlottoNumbers = Set([try! LottoNumber(value: 1),
-                                   try! LottoNumber(value: 2),
-                                   try! LottoNumber(value: 3),
-                                   try! LottoNumber(value: 4),
-                                   try! LottoNumber(value: 5),
-                                   try! LottoNumber(value: 6)])
+            let winlottoNumbers = Set([LottoNumber(1),
+                                       LottoNumber(2),
+                                       LottoNumber(3),
+                                       LottoNumber(4),
+                                       LottoNumber(5),
+                                       LottoNumber(6)].compactMap({ $0 }))
             let winLotto = try! Lotto(numbers: winlottoNumbers)
             
             // when
