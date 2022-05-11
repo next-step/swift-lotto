@@ -18,15 +18,15 @@ struct LottoInputView {
         return read(with: "구매금액을 입력해 주세요.")
     }
     
-    static func readManualNumber() -> Int {
+    static func readNumberOfManualPurchase() -> Int {
         return Int(read(with: "수동으로 구매할 로또 수를 입력해 주세요.")) ?? 0
     }
     
-    static func readManualLotto(manualNumber: Int) -> [String] {
+    static func readManualLotto(number: Int) -> [String] {
         print("수동으로 구매할 번호를 입력해 주세요.")
         var result: [String] = []
         
-        for _ in 0..<manualNumber {
+        for _ in 0..<number {
             result.append(read(with: ""))
         }
         
