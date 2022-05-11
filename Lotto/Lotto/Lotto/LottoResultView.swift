@@ -43,4 +43,8 @@ struct LottoResultView {
     static func printTotalYield(_ totalYield: Double) {
         print("총 수익률은 \(totalYield)입니다.")
     }
+    
+    static func printError(_ message: String) {
+        print(message)
+    }
 }
