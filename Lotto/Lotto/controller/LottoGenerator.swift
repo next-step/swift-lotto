@@ -11,24 +11,25 @@ class LottoGenerator {
         return Int.random(in: Constants.defaultLottoRange)
     }
     
-    public func autoNumbers() -> Lotto {
+    private func autoNumbers() throws -> Lotto {
         var numbers: Set<Int> = []
         
         repeat {
             numbers.insert(randomNumber)
         } while numbers.count < Constants.defaultLottoCount
         
-        return Lotto(numbers: numbers.sorted(by: <))
+        let lottoNumber: LottoNumbers = try LottoNumbers(numbers: numbers.sorted(by: <))
+        return Lotto(numbers: lottoNumber)
     }
     
-    public func auto(n: Int) -> [Lotto] {
+    public func auto(n: Int) throws -> [Lotto] {
         print("\n\(n)개를 구매했습니다.")
         var lottos: [Lotto] = []
         
         for _ in 0..<n {
-            let newLotto = autoNumbers()
-            lottos.append(newLotto)
+            let newLotto = try autoNumbers()
             print(newLotto.numbers)
+            lottos.append(newLotto)
         }
         
         return lottos

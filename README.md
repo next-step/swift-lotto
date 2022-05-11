@@ -10,19 +10,16 @@ NEXTSTEP with yagom-academy
 
 ## 1. 로또(자동) 파일트리
 ```
-RacingCar  
-├── model  
-│   └── Constants.swift  
-│   └── Car.swift  
-└── view  
-├── inputViews  
-│   ├── InputError.swift  
-│   └── InputView.swift  
-└── resultViews  
-│   └── ResultView.swift  
-├── controller  
-│   ├── Game.swift  
-│   └── GameOption.swift  
+Lotto
+├── model
+│   ├── Constants.swift
+│   └── Lotto.swift
+└── view
+    ├── InputView.swift
+    └── ResultView.swift  
+├── controller
+│   ├── LottoGenerator.swift
+│   └── LottoManagement.swift
 ├── main.swift
 ```
 
@@ -34,8 +31,11 @@ RacingCar
     - `defaultLottoCount`: 로또 당첨 번호 갯수
 
 - **Lotto**
-    - `match(winningNumber:)`: 당첨번호와 일치하는 갯수에 따라 랭크 저장
+    - `match(winningNumber:bonusNumber:)`: 당첨 여부에 따라 `rank` `reward` 저장
 
+
+- **LottoNumbers**
+    - 로또번호 리스트 생성을 위한 일급 콜렉션
 
 - **LottoGenerator**
     - `randomNumber()`: 랜덤 숫자 생성
@@ -44,12 +44,14 @@ RacingCar
 
 
 - **CalculateProfit**
-    - `init(lotts:)`: 로또 결과 및 수익률 계산
+    - `init(lotts:)`: 등수별 당첨인원 계산
+    - `calculateProfit()`: 사용금액 대비 수익률 계산
 
 
 - **InputView**
     - `readPurchasePrice()`: 구매할 로또 금액 입력받아서 구매 개수(Int) 리턴
     - `readPrevWinningNumber()`: 로또 당첨 번호 입력받아서 [Int] 리턴
+    - `readBonusNumber(winningNumbers:)`: 보너스 번호를 입력받아서 Int 리턴 (당첨 번호와 중복 번호 X)
 
 
 - **ResultView**

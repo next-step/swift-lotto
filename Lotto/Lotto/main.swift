@@ -10,12 +10,13 @@ do {
     let count = try InputView.readPurchasePrice()
 
     let generator = LottoGenerator()
-    let lottos = generator.auto(n: count)
+    let lottos = try generator.auto(n: count)
 
     let prev = try InputView.readPrevWinningNumber()
+    let bonusNumber = try InputView.readBonusNumber(winningNumbers: prev)
     
     for lotto in lottos {
-        lotto.match(from: prev)
+        lotto.match(from: prev, bonusNumber: bonusNumber)
     }
 
     ResultView.printResult(of: lottos)
