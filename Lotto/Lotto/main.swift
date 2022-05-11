@@ -24,9 +24,9 @@ do {
     let winningLottoInput = InputView.readWinningLotto()
     let winningLotto = try LottoParser.parse(winningLottoInput)
     
-    let statistics = lottoTicket.winningStatistics(with: winningLotto)
-    let formattedStatistics = WinningStatisticsFormatter.format(statistics)
-    OutputView.print(winningStatsitics: formattedStatistics)
+    let winningRecord = lottoTicket.winningRecord(with: winningLotto)
+    let formattedRecord = WinningRecordFormatter.format(winningRecord)
+    OutputView.print(winningRecord: formattedRecord)
 } catch(let error) {
     OutputView.print(error: error)
 }

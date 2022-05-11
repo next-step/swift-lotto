@@ -14,11 +14,11 @@ struct LottoTicket {
     
     var lottoCount: Int { return lottoList.count }
     
-    func winningStatistics(with winningLotto: Lotto) -> WinningStatistics {
+    func winningRecord(with winningLotto: Lotto) -> WinningRecord {
         let equalNumberCounts = lottoList.map { lotto in
             lotto.equalNumberCount(with: winningLotto)
         }
     
-        return WinningStatistics(equalNumberCounts: equalNumberCounts)
+        return WinningRecord(equalNumberCounts: equalNumberCounts)
     }    
 }

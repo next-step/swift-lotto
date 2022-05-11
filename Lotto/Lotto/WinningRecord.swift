@@ -25,7 +25,7 @@ enum WinningPrize: EqualNumberCount, CaseIterable {
     }
 }
 
-struct WinningStatistics: Equatable {
+struct WinningRecord: Equatable {
     typealias LottoCount =  Int
     
     private let hundred: Double = 100

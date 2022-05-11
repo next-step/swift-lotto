@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct WinningStatisticsFormatter {
-    static func format(_ statistics: WinningStatistics) -> String {
+struct WinningRecordFormatter {
+    static func format(_ statistics: WinningRecord) -> String {
         
         return WinningPrize.allCases.reduce("") { partialResult, winningPrize in
             partialResult + "\(winningPrize.rawValue)개 일치(\(winningPrize.value))원 - \(statistics.value[winningPrize]!)개" + "\n"

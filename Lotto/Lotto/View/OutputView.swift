@@ -15,10 +15,10 @@ struct OutputView {
         Swift.print(lottoTicket)
     }
     
-    static func print(winningStatsitics: String) {
+    static func print(winningRecord: String) {
         Swift.print("당첨 통계")
         Swift.print("---------")
-        Swift.print(winningStatsitics)
+        Swift.print(winningRecord)
     }
     
     static func print(error: Error) {
