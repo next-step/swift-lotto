@@ -10,7 +10,6 @@ import XCTest
 class LottoRankTests: XCTestCase {
 
     var sut: LottoRank.Type!
-    var instanceSut: LottoRank!
     
     override func setUpWithError() throws {
         sut = LottoRank.self
