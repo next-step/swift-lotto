@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 struct LottoTicket {
     let lottoList: [Lotto]
     

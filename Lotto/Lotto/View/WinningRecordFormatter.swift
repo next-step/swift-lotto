@@ -9,10 +9,8 @@ import Foundation
 
 struct WinningRecordFormatter {
     static func format(_ statistics: WinningRecord) -> String {
-        
-        return WinningPrize.allCases.reduce("") { partialResult, winningPrize in
-            partialResult + "\(winningPrize.rawValue)개 일치(\(winningPrize.value))원 - \(statistics.value[winningPrize]!)개" + "\n"
+        return WinningCount.allCases.reduce("") { partialResult, winningCount in
+            partialResult + "\(winningCount.rawValue)개 일치(\(winningCount.prize))원 - \(statistics.value[winningCount]!)개 \n"
         }
-        
     }
 }

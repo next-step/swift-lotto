@@ -9,18 +9,18 @@ import Foundation
 
 typealias EqualNumberCount = Int
 
-enum WinningPrize: EqualNumberCount, CaseIterable {
-    case forThree = 3
-    case forFour = 4
-    case forFive = 5
-    case forSix = 6
+enum WinningCount: EqualNumberCount, CaseIterable {
+    case three = 3
+    case four = 4
+    case five = 5
+    case six = 6
     
-    var value: Int {
+    var prize: Int {
         switch self {
-        case .forThree: return 5_000
-        case .forFour: return 50_000
-        case .forFive: return 1_500_000
-        case .forSix: return 2_000_000_000
+        case .three: return 5_000
+        case .four: return 50_000
+        case .five: return 1_500_000
+        case .six: return 2_000_000_000
         }
     }
 }
@@ -29,19 +29,18 @@ struct WinningRecord: Equatable {
     typealias LottoCount =  Int
     
     private let hundred: Double = 100
-    
-    var value: [WinningPrize: LottoCount] = [.forThree:0, .forFour: 0, .forFive: 0, .forSix: 0]
+    var value: [WinningCount: LottoCount] = [.three:0, .four: 0, .five: 0, .six: 0]
     
     init(equalNumberCounts: Array<Int>) {
-        equalNumberCounts.compactMap { WinningPrize(rawValue: $0) }
-        .forEach { value[$0]! += 1 }
+        equalNumberCounts.compactMap { WinningCount(rawValue: $0) }
+                        .forEach { value[$0]! += 1 }
     }
     
     func calculateProfitRate(inputMoney: Money) -> Double {
         var profit = 0
         
         for (winningPrize, count) in value {
-            profit += (winningPrize.value * count)
+            profit += (winningPrize.prize * count)
         }
         
         return Double(profit) / Double(inputMoney.value) * hundred
