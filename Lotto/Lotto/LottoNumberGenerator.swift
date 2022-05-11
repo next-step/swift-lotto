@@ -12,7 +12,7 @@ protocol LottoNumberGenerator {
 }
 
 struct RandomLottoNumberGenerator: LottoNumberGenerator {
-    let lottoNumberRange = LottoNumber.minValue...LottoNumber.maxValue
+    private let lottoNumberRange = LottoNumber.minValue...LottoNumber.maxValue
     
     func generate() -> LottoNumber? {
         let lottoNumber = Int.random(in: lottoNumberRange)
