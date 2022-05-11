@@ -39,9 +39,9 @@ final class WinningStatistic {
         }
     }
     
-    func match(lotto: Lotto) -> Winning? {
+    func match(numbers: [Int]) -> Winning? {
         var count = 0
-        for number in lotto.numbers {
+        for number in numbers {
             count += winningNumbers[number] ?? 0
         }
         return Winning.rank(count)

@@ -73,6 +73,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F8C82E9282BEB4C00326A10 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		1FD6691828267FB6003E16F7 /* LottoTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +110,7 @@
 		1FD66930282AB640003E16F7 /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
+				1F8C82E9282BEB4C00326A10 /* Controller */,
 				1FD66932282AB662003E16F7 /* View */,
 				1FD66931282AB659003E16F7 /* Model */,
 			);

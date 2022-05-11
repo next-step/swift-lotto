@@ -13,7 +13,7 @@ class LottoTest: XCTestCase {
     let winningStatistic = WinningStatistic()
     
     func test_1000원미만_300원_입금시_로또0개_생성() {
-        let lottoCount = lottoGenerator.inputMoney(300).count
+        let lottoCount = lottoGenerator.moneyToLottoCount(300)
         let expectedCount = 0
         
         XCTAssert(lottoCount == expectedCount, "로또 1000원 미만 입금시 로또 0개 생성")
@@ -40,10 +40,11 @@ class LottoTest: XCTestCase {
     }
     
     func test_로또번호_3개일치() {
-        let matchingCount = winningStatistic.match(myLotto: [1,2,3,4,5,6], winningLotto: [1,3,5,7,9,11])
-        let expectedCount = 3
+        winningStatistic.registerWinningNumbers([1,3,5,7,9,11])
+        let resultWinning = winningStatistic.match(numbers: [1,2,3,4,5,6])
+        let expectedWinning = Winning.fourth
         
-        XCTAssert(matchingCount == expectedCount, "로또 번호 3개 일치 실패")
+        XCTAssert(resultWinning == expectedWinning, "로또 번호 3개 일치 실패")
 
     }
 }
