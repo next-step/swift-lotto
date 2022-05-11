@@ -8,5 +8,23 @@
 import Foundation
 
 struct LottoParser {
+    enum Error: LocalizedError {
+        case nonNumber
+        
+        var errorDescription: String? {
+            switch self {
+            case .nonNumber: return "로또는 숫자를 갖습니다."
+            }
+        }
+    }
     
+    static func parse(_ lottoInput: String) throws -> Lotto {
+        let lottoNumbers = try lottoInput.components(separatedBy: ", ")
+            .map { input -> Int in
+                guard let number = Int(input) else { throw Error.nonNumber }
+                return number
+            }.map { try LottoNumber(value: $0) }
+        
+        return try Lotto(numbers: lottoNumbers)
+    }
 }
