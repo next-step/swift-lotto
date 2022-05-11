@@ -18,7 +18,9 @@ struct LottoParser {
         }
     }
     
-    static func parse(_ lottoInput: String) throws -> Lotto {
+    static func parse(_ lottoInput: String?) throws -> Lotto {
+        guard let lottoInput = lottoInput else { throw Error.nonNumber }
+
         let lottoNumbers = lottoInput.components(separatedBy: ", ")
             .compactMap { Int($0) }
             .compactMap { LottoNumber($0) }
