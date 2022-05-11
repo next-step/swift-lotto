@@ -8,18 +8,18 @@
 import Foundation
 
 struct LottoTicketFormatter {
-    static func format(_ lottoTicket: LottoTicket) -> String {
-        var result = ""
+    private static let lottoNumberSeparator = ","
     
-        for lotto in lottoTicket.lottoList {
-            let formattedLotto = lotto.numbers.map { $0.value }
-                .sorted()
-                .map { String($0) }
-                .joined(separator: ",")
-            
-            result = result + "[\(formattedLotto)]" + "\n"
+    static func format(_ lottoTicket: LottoTicket) -> String {
+        return lottoTicket.lottoList.reduce("") { partialResult, lotto in
+            partialResult + "[" + format(lotto) + "]" + "\n"
         }
-        
-        return result
+    }
+    
+    private static func format(_ lotto: Lotto) -> String {
+        return lotto.numbers.map { $0.value }
+            .sorted()
+            .map { String($0) }
+            .joined(separator: lottoNumberSeparator)
     }
 }
