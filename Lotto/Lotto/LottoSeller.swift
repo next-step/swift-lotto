@@ -26,6 +26,6 @@ struct LottoSeller {
         if money < LottoSeller.lottoPrice  { throw Error.nonEnoughMoney }
         
         let lottoCount = money / LottoSeller.lottoPrice
-        return lottoTicketMachine.printTicket(count: lottoCount)
+        return try lottoTicketMachine.printTicket(count: lottoCount)
     }
 }

@@ -7,28 +7,18 @@
 
 import XCTest
 
-class FakeLottoNumberGenerator: LottoNumberGenerator {
-    var count = 1
-    
-    func generate() -> LottoNumber? {
-        let lottoNumber = LottoNumber(count)
-        count += 1
-        return lottoNumber
-    }
-}
-
 class LottoTicketMachineTest: XCTestCase {
     func test_printTicket_주어진_개수만큼의_로또를_갖는_로또티켓을_출력한다() {
         // given
-        let lottoFactory = LottoFactory(lottoNumberGenerator: FakeLottoNumberGenerator())
+        let lottoFactory = LottoFactory(lottoNumberGenerator: StubLottoNumberGenerator())
         let lottoTicketMachine = LottoTicketMachine(lottoFactory: lottoFactory)
         
         let lottoCount = 7
         
         // when
-        let lottoTicket = lottoTicketMachine.printTicket(count: lottoCount)
+        let lottoTicket = try? lottoTicketMachine.printTicket(count: lottoCount)
         
         // then
-        XCTAssertEqual(lottoCount, lottoTicket.lottoList.count)
+        XCTAssert(lottoCount == lottoTicket?.lottoList.count)
     }
 }

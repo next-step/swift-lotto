@@ -11,9 +11,9 @@ import XCTest
 class StubLottoNumberGenerator: LottoNumberGenerator {
     var lottoNumber = 0
     
-    func generate() -> LottoNumber? {
+    func generate() throws -> LottoNumber {
         lottoNumber += 1
-        return LottoNumber(lottoNumber)
+        return LottoNumber(lottoNumber)!
     }
 }
 

@@ -8,14 +8,19 @@
 import Foundation
 
 protocol LottoNumberGenerator {
-    func generate() -> LottoNumber?
+    func generate() throws -> LottoNumber
 }
 
 struct RandomLottoNumberGenerator: LottoNumberGenerator {
     private let lottoNumberRange = LottoNumber.minValue...LottoNumber.maxValue
     
-    func generate() -> LottoNumber? {
-        let lottoNumber = Int.random(in: lottoNumberRange)
-        return LottoNumber(lottoNumber)
+    func generate() throws -> LottoNumber {
+        let randomNumber = Int.random(in: lottoNumberRange)
+        
+        guard let lottoNumber = LottoNumber(randomNumber) else {
+            throw LottoNumber.Error.invalidValue
+        }
+        
+        return lottoNumber
     }
 }

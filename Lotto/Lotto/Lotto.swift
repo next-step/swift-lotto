@@ -10,11 +10,11 @@ import Foundation
 struct LottoFactory {
     let lottoNumberGenerator: LottoNumberGenerator
     
-    func create() -> Lotto {
+    func create() throws -> Lotto {
         var lottoNumbers = Set<LottoNumber>()
         
         repeat {
-            guard let lottoNumber = lottoNumberGenerator.generate() else { continue }
+            let lottoNumber = try lottoNumberGenerator.generate()
             lottoNumbers.insert(lottoNumber)
         } while(lottoNumbers.count < Lotto.numberCount)
         
@@ -37,7 +37,7 @@ struct Lotto {
     static let numberCount = 6
     let numbers: Set<LottoNumber>
     
-    init<Numbers: Collection>(numbers: Numbers) throws where Numbers.Element == LottoNumber  {
+    init<LottoNumbers: Collection>(numbers: LottoNumbers) throws where LottoNumbers.Element == LottoNumber  {
         if numbers.count != Lotto.numberCount {
             throw Error.invalidNumberCount(numbers.count)
         }
