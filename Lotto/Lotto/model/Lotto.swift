@@ -21,6 +21,17 @@ enum LottoError: LocalizedError {
     }
 }
 
+class LottoNumber {
+    let value: Int
+    
+    init(_ value: Int) throws {
+        guard Constants.defaultLottoRange.contains(value) else {
+            throw LottoError.autoGenerateError
+        }
+        self.value = value
+    }
+}
+
 class LottoNumbers {
     let numbers: [Int]
     
