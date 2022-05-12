@@ -12,8 +12,7 @@ do {
     
     let lottoNumberGenerater = RandomLottoNumberGenerator()
     let lottoFactory = LottoFactory(lottoNumberGenerator: lottoNumberGenerater)
-    let lottoTicketMachine = LottoTicketMachine(lottoFactory: lottoFactory)
-    let lottoSeller = LottoSeller(lottoTicketMachine: lottoTicketMachine)
+    let lottoSeller = LottoSeller(lottoFactory: lottoFactory)
     
     let lottoTicket = try lottoSeller.sellLotto(for: money)
     OutputView.print(lottoCount: lottoTicket.lottoCount)

@@ -20,12 +20,18 @@ struct LottoSeller {
     }
     
     private static let lottoPrice = Money(value: 1000)!
-    let lottoTicketMachine: LottoTicketMachine
+    let lottoFactory: LottoFactory
     
     func sellLotto(for money: Money) throws -> LottoTicket {
-        if money < LottoSeller.lottoPrice  { throw Error.nonEnoughMoney }
+        let lottoCount = try availableLottoCount(with: money)
+        let lottos = try (0..<lottoCount).map { _ in try lottoFactory.create() }
+            .compactMap { $0 }
         
-        let lottoCount = money / LottoSeller.lottoPrice
-        return try lottoTicketMachine.printTicket(count: lottoCount)
+        return LottoTicket(lottoList: lottos)
+    }
+    
+    private func availableLottoCount(with money: Money) throws -> Int {
+        if money < LottoSeller.lottoPrice  { throw Error.nonEnoughMoney }
+        return money / LottoSeller.lottoPrice
     }
 }

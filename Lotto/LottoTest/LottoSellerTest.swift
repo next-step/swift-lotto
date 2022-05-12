@@ -29,8 +29,7 @@ class LottoSellerTest: XCTestCase {
     override func setUpWithError() throws {
         let lottoNumberGenerator = StubLottoNumberGenerator()
         let lottoFactory = LottoFactory(lottoNumberGenerator: lottoNumberGenerator)
-        let lottoTicketMachine = LottoTicketMachine(lottoFactory: lottoFactory)
-        lottoSeller = LottoSeller(lottoTicketMachine: lottoTicketMachine)
+        lottoSeller = LottoSeller(lottoFactory: lottoFactory)
     }
 
     override func tearDownWithError() throws {
@@ -60,7 +59,7 @@ class LottoSellerTest: XCTestCase {
         let lottoTicket = try! lottoSeller.sellLotto(for: money)
 
         // then
-        XCTAssertEqual(lottoTicket, expectedLottoTicket)
+        XCTAssertEqual(lottoTicket.lottoCount, expectedLottoTicket.lottoCount)
     }
     
     func test_sellLotto_금액이_로또를_사기에_부족한_경우_에러를_던진다() {

@@ -15,7 +15,7 @@ enum WinningCount: EqualNumberCount, CaseIterable {
     case five = 5
     case six = 6
     
-    var prigze: Int {
+    var prize: Int {
         switch self {
         case .three: return 5_000
         case .four: return 50_000
