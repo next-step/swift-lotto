@@ -21,46 +21,6 @@ enum LottoError: LocalizedError {
     }
 }
 
-enum LottoReward: Int {
-    case first = 2_000_000_000
-    case second = 30_000_000
-    case third = 1_500_000
-    case fourth = 50_000
-    case fifth = 5_000
-    case miss = 0
-}
-
-struct Match {
-    enum Rank {
-        case first, second, third, fourth, fifth
-        case miss
-    }
-    
-    let rank: Rank
-    var reward: Int {
-        switch self.rank {
-        case .first: return LottoReward.first.rawValue
-        case .second: return LottoReward.second.rawValue
-        case .third: return LottoReward.third.rawValue
-        case .fourth: return LottoReward.fourth.rawValue
-        case .fifth: return LottoReward.fifth.rawValue
-        case .miss: return LottoReward.miss.rawValue
-        }
-    }
-    
-    init(matchingCount: Int,
-         matchBonus: Bool = false) {
-        switch matchingCount {
-        case 6: self.rank = .first
-        case 5 where matchBonus: self.rank = .second
-        case 5: self.rank = .third
-        case 4: self.rank = .fourth
-        case 3: self.rank = .fifth
-        default: self.rank = .miss
-        }
-    }
-}
-
 class LottoNumbers {
     let numbers: [Int]
     
