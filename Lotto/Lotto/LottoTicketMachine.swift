@@ -12,7 +12,7 @@ struct LottoTicketMachine {
     
     func printTicket(count: Int) throws -> LottoTicket {
         let lottoList = try (0..<count).map { _ in
-            try lottoFactory.create()
+            try lottoFactory.make()
         }
         return LottoTicket(lottoList: lottoList)
     }

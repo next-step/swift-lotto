@@ -24,7 +24,7 @@ struct LottoSeller {
     
     func sellLotto(for money: Money) throws -> LottoTicket {
         let lottoCount = try availableLottoCount(with: money)
-        let lottos = try (0..<lottoCount).map { _ in try lottoFactory.create() }
+        let lottos = try (0..<lottoCount).map { _ in try lottoFactory.make() }
             .compactMap { $0 }
         
         return LottoTicket(lottoList: lottos)
