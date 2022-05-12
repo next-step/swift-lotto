@@ -18,7 +18,7 @@ struct LottoInputView {
         return read(with: "구매금액을 입력해 주세요.")
     }
     
-    static func readNumberOfManualPurchase() -> Int {
+    static func readManualPurchaseCount() -> Int {
         return Int(read(with: "수동으로 구매할 로또 수를 입력해 주세요.")) ?? 0
     }
     
