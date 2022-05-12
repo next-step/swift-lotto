@@ -20,6 +20,8 @@ struct LottoSeller: LottoSellable {
     }
     
     func sellLotto(manualNumber: Int, manualUserLotto: [String]) throws -> UserLotto {
+        guard manualUserLotto.count > 5 else { throw LottoError.duplicateInput }
+        
         var result: [Lotto] = []
         let autoNumber: Int = purchasedNumber()-manualNumber
         
