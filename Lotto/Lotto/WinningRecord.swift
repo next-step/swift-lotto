@@ -37,10 +37,9 @@ struct WinningRecord: Equatable {
     }
     
     func calculateProfitRate(inputMoney: Money) -> Double {
-        var profit = 0
-        
-        for (winningPrize, count) in value {
-            profit += (winningPrize.prize * count)
+        let profit = value.reduce(0) { (partialResult: Int, value) in
+            let (winningCount, lottoCount) = value
+            return partialResult + winningCount.prize * lottoCount
         }
         
         return Double(profit) / Double(inputMoney.value) * hundred

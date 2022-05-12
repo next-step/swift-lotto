@@ -29,7 +29,8 @@ class LottoSellerTest: XCTestCase {
     override func setUpWithError() throws {
         let lottoNumberGenerator = StubLottoNumberGenerator()
         let lottoFactory = LottoFactory(lottoNumberGenerator: lottoNumberGenerator)
-        lottoSeller = LottoSeller(lottoFactory: lottoFactory)
+        let lottoTicketMachine = LottoTicketMachine(lottoFactory: lottoFactory)
+        lottoSeller = LottoSeller(lottoTicketMachine: lottoTicketMachine)
     }
 
     override func tearDownWithError() throws {
