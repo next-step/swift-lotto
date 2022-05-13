@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 enum LottoError: LocalizedError {
     case autoGenerateError
@@ -21,54 +22,80 @@ enum LottoError: LocalizedError {
     }
 }
 
-class LottoNumber {
-    let value: Int
+struct LottoNumber: Hashable, Comparable, CustomStringConvertible {
+    private let wrapped: Int
+    
+    var description: String {
+        return String(describing: wrapped)
+    }
     
     init(_ value: Int) throws {
         guard Constants.defaultLottoRange.contains(value) else {
             throw LottoError.autoGenerateError
         }
+        self.wrapped = value
+    }
+    
+    static func < (lhs: LottoNumber, rhs: LottoNumber) -> Bool {
+        return lhs.wrapped < rhs.wrapped
+    }
+}
+
+struct LottoNumbers: CustomStringConvertible {
+    private let value: [LottoNumber]
+    
+    var description: String {
+        return String(describing: value)
+    }
+    
+    init(numbers: [LottoNumber]) throws {
+        guard Constants.defaultLottoCount == Set(numbers).count else {
+            throw LottoError.duplicateNumber
+        }
+        self.value = numbers
+    }
+    
+    func contains(_ element: LottoNumber) -> Bool {
+        value.contains(element)
+    }
+    
+    func matchCount(from winnerNumbers: LottoNumbers) -> Int {
+        value.filter { winnerNumbers.contains($0) }.count
+    }
+}
+
+struct Lotto: CustomStringConvertible {
+    private let value: LottoNumbers
+//    let rank: Match.Rank
+    
+    var description: String {
+        return String(describing: value)
+    }
+    
+    init(_ value: LottoNumbers, _ rank: Match.Rank = .miss) {
+        self.value = value
+//        self.rank = rank
+    }
+    
+    func getRank(winningNumbers: LottoNumbers) -> Match {
+        Match(matchingCount: value.matchCount(from: winningNumbers))
+    }
+}
+
+struct Lottos {
+    private var value: [Lotto]
+//    private let fifthPlace: Int = 0
+    
+    init(_ value: [Lotto]) {
         self.value = value
     }
-}
-
-class LottoNumbers {
-    let numbers: [Int]
     
-    init(numbers: [Int]) throws {
-        if numbers.count != Constants.defaultLottoCount {
-            throw LottoError.autoGenerateError
-        }
-        self.numbers = numbers
+    mutating func append(_ v: Lotto) {
+        self.value.append(v)
     }
     
-    func matchCount(from winningNumber: [Int]) -> Int {
-        return numbers.filter { winningNumber.contains($0) }.count
+    func place(with rank: Match.Rank, winningNumbers: LottoNumbers) -> Int {
+        value.map { $0.getRank(winningNumbers: winningNumbers)}.filter { $0.rank == rank}.count
     }
-    
-    func hasBonusNumber(for number: Int) -> Bool {
-        return numbers.contains(number)
-    }
-}
-
-extension LottoNumbers: CustomStringConvertible {
-    var description: String {
-        return String(describing: numbers)
-    }
-}
-
-class Lotto {
-    let numbers: LottoNumbers
-    var result: Match
-
-    init(numbers: LottoNumbers) {
-        self.numbers = numbers
-        self.result = Match(matchingCount: 0)
-    }
-    
-    func match(from winningNumber: [Int], bonusNumber: Int) {
-        let matchingCount = numbers.matchCount(from: winningNumber)
-        let hasBonusNumber = numbers.hasBonusNumber(for: bonusNumber)
-        self.result = Match(matchingCount: matchingCount, matchBonus: hasBonusNumber)
-    }
+       
 }

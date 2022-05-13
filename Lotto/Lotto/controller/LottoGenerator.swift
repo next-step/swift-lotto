@@ -7,32 +7,39 @@
 
 class LottoGenerator {
     
-    private var randomNumber: Int {
+    var randomNumber: Int {
         return Int.random(in: Constants.defaultLottoRange)
     }
-    
+
     private func autoNumbers() throws -> Lotto {
-        var numbers: Set<Int> = []
+        var numbers: Set<LottoNumber> = []
+
+//        repeat {
+//            numbers.insert(try LottoNumber(randomNumber))
+//        } while numbers.count < Constants.defaultLottoCount
+
+        numbers.insert(try LottoNumber(1))
+        numbers.insert(try LottoNumber(2))
+        numbers.insert(try LottoNumber(3))
+        numbers.insert(try LottoNumber(4))
+        numbers.insert(try LottoNumber(12))
+        numbers.insert(try LottoNumber(13))
         
-        repeat {
-            numbers.insert(randomNumber)
-        } while numbers.count < Constants.defaultLottoCount
-        
-        let lottoNumber: LottoNumbers = try LottoNumbers(numbers: numbers.sorted(by: <))
-        return Lotto(numbers: lottoNumber)
+        return Lotto(try LottoNumbers(numbers: numbers.sorted(by: <)))
     }
     
-    public func auto(n: Int) throws -> [Lotto] {
-        print("\n\(n)개를 구매했습니다.")
-        var lottos: [Lotto] = []
+    public func auto(n: Int) throws -> Lottos {
+        ResultView.printPurchaseMessage(n)
         
+        var lottos: [Lotto] = []
+
         for _ in 0..<n {
             let newLotto = try autoNumbers()
-            print(newLotto.numbers)
             lottos.append(newLotto)
+            ResultView.printLottoNumbers(of: newLotto)
         }
-        
-        return lottos
+
+        return Lottos(lottos)
     }
     
 }
