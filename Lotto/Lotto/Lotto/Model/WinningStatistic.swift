@@ -8,7 +8,7 @@
 import Foundation
 
 final class WinningStatistic {
-    private var statistic: [Winning: Int] = [:]
+    private(set) var statistic: [Winning: Int] = [:]
     private var winningNumbers: [Int: Int] = [:]
     
     init() {
@@ -55,13 +55,6 @@ final class WinningStatistic {
     
     func addWinningStatistic(rank: Winning) {
         statistic[rank]! += 1
-    }
-    
-    func winningResultPrint() {
-        for winning in Winning.allCases {
-            let count = statistic[winning] ?? 0
-            print("\(winning.description) \(winning.price)원 - \(count)개")
-        }
     }
     
     func winningTotalPrice() -> Int {

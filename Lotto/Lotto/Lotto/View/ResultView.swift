@@ -26,7 +26,10 @@ struct ResultView {
     }
     
     func winningTypeCountPrint() {
-        statistic.winningResultPrint()
+        for winning in Winning.allCases {
+            let count = statistic.statistic[winning] ?? 0
+            print("\(winning.description) \(winning.price)원 - \(count)개")
+        }
     }
     
     func match(_ lottos: [Lotto]) {
