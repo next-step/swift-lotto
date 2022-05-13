@@ -37,7 +37,7 @@ final class LottoController {
         let winningNumbersInput = readLine()
         let splitCommaNumbers = stringConverter.split(winningNumbersInput, sepratedCharacterSet: [","])
         let numbers = try stringConverter.stringsToInts(input: splitCommaNumbers)
-        resultView.registerWinningNumbers(numbers)
+        try resultView.registerWinningNumbers(numbers)
     }
     
     func statisticResult() {

@@ -11,7 +11,13 @@ struct ResultView {
     private let statistic = WinningStatistic()
     private let statisticText = "당첨 통계\n---------"
     
-    func registerWinningNumbers(_ numbers: [Int]) {
+    func registerWinningNumbers(_ numbers: [Int]) throws {
+        guard numbers.count == 6 else {
+            throw InputError.invalidWinningNumberCount
+        }
+        guard Set(numbers).count == 6 else {
+            throw InputError.duplicateWinningNumber
+        }
         statistic.registerWinningNumbers(numbers)
     }
     
