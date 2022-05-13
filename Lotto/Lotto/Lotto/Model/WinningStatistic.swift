@@ -53,10 +53,6 @@ final class WinningStatistic {
         }
     }
     
-    func addWinningStatistic(rank: Winning) {
-        statistic[rank]! += 1
-    }
-    
     func winningTotalPrice() -> Int {
         var money = 0
         for winning in Winning.allCases {
