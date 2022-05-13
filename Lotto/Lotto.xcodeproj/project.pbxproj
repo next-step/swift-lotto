@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		1F8C82E8282B3D9300326A10 /* Winning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C82E7282B3D9300326A10 /* Winning.swift */; };
 		1F8C82EB282BEB7500326A10 /* LottoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C82EA282BEB7500326A10 /* LottoController.swift */; };
+		1F8C82EE282EA09600326A10 /* Winning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C82E7282B3D9300326A10 /* Winning.swift */; };
+		1F8C82EF282EA09900326A10 /* WinningStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6693B282AB720003E16F7 /* WinningStatistic.swift */; };
+		1F8C82F0282EA09B00326A10 /* LottoGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD66939282AB6AC003E16F7 /* LottoGenerator.swift */; };
+		1F8C82F1282EA09D00326A10 /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD66937282AB69E003E16F7 /* Lotto.swift */; };
+		1F8C82F2282EA0A000326A10 /* LottoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C82EA282BEB7500326A10 /* LottoController.swift */; };
+		1F8C82F3282EA0A200326A10 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD66933282AB67A003E16F7 /* InputView.swift */; };
+		1F8C82F4282EA0A400326A10 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD66935282AB681003E16F7 /* ResultView.swift */; };
 		1FD6691A28267FB6003E16F7 /* LottoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6691928267FB6003E16F7 /* LottoTest.swift */; };
 		1FD669202826815D003E16F7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6691F2826815D003E16F7 /* Calculator.swift */; };
 		1FD669212826822E003E16F7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6691F2826815D003E16F7 /* Calculator.swift */; };
@@ -258,11 +265,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8C82F0282EA09B00326A10 /* LottoGenerator.swift in Sources */,
 				1FD66926282687FC003E16F7 /* StringConverterTest.swift in Sources */,
 				1FD6692C282752AC003E16F7 /* CalculatorTest.swift in Sources */,
 				1FD669212826822E003E16F7 /* Calculator.swift in Sources */,
+				1F8C82EF282EA09900326A10 /* WinningStatistic.swift in Sources */,
 				1FD6691A28267FB6003E16F7 /* LottoTest.swift in Sources */,
+				1F8C82F2282EA0A000326A10 /* LottoController.swift in Sources */,
+				1F8C82F4282EA0A400326A10 /* ResultView.swift in Sources */,
+				1F8C82F1282EA09D00326A10 /* Lotto.swift in Sources */,
 				1FD6692A2826C85E003E16F7 /* InputError.swift in Sources */,
+				1F8C82F3282EA0A200326A10 /* InputView.swift in Sources */,
+				1F8C82EE282EA09600326A10 /* Winning.swift in Sources */,
 				1FD669292826C57B003E16F7 /* StringConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

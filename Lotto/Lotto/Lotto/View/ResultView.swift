@@ -25,7 +25,8 @@ struct ResultView {
     
     func match(_ lottos: [Lotto]) {
         for lotto in lottos {
-            statistic.insertStatistic(lotto)
+            let winning = statistic.match(lotto.numbers)
+            statistic.insertStatistic(winning)
         }
     }
     

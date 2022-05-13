@@ -41,7 +41,8 @@ class LottoTest: XCTestCase {
     
     func test_로또번호_3개일치() {
         winningStatistic.registerWinningNumbers([1,3,5,7,9,11])
-        let resultWinning = winningStatistic.match(numbers: [1,2,3,4,5,6])
+        let numbers = [1,2,3,4,5,6]
+        let resultWinning = winningStatistic.match(numbers)
         let expectedWinning = Winning.fourth
         
         XCTAssert(resultWinning == expectedWinning, "로또 번호 3개 일치 실패")

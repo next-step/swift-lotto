@@ -39,15 +39,18 @@ final class WinningStatistic {
         }
     }
     
-    func insertStatistic(_ lotto: Lotto) {
+    func match(_ numbers: [Int]) -> Winning? {
         var count = 0
-        for number in lotto.numbers {
+        for number in numbers {
             count += winningNumbers[number] ?? 0
         }
-        if let winning = Winning.rank(count) {
+        return Winning.rank(count)
+    }
+    
+    func insertStatistic(_ winning: Winning?) {
+        if let winning = winning {
             statistic[winning]! += 1
         }
-        
     }
     
     func addWinningStatistic(rank: Winning) {
