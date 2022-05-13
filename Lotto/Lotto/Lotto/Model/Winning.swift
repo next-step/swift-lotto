@@ -12,7 +12,7 @@ enum Winning: CaseIterable {
     case third
     case fourth
     
-    var price: Int {
+    var reward: Int {
         switch self {
         case .first: return 20_0000_0000
         case .second: return 150_0000

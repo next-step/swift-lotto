@@ -61,7 +61,7 @@ final class WinningStatistic {
         var money = 0
         for winning in Winning.allCases {
             let count = statistic[winning] ?? 0
-            money += winning.price * count
+            money += winning.reward * count
         }
         return money
     }
