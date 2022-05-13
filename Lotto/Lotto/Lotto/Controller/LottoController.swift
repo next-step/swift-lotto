@@ -44,7 +44,7 @@ final class LottoController {
         resultView.statisticStartPrint()
         resultView.match(lottos)
         resultView.winningTypeCountPrint()
-        resultView.lotteryYieldPrint(inputMoney: inputMoney)
+        resultView.lotteryRewardPrint(inputMoney: inputMoney)
     }
     
     

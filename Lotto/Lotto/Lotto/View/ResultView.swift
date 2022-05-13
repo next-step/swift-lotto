@@ -9,7 +9,6 @@ import Foundation
 
 struct ResultView {
     private let statistic = WinningStatistic()
-    private let statisticText = "당첨 통계\n---------"
     
     func registerWinningNumbers(_ numbers: [Int]) throws {
         guard numbers.count == 6 else {
@@ -22,13 +21,13 @@ struct ResultView {
     }
     
     func statisticStartPrint() {
-        print(statisticText)
+        LottoGuide.statisticStart.show()
     }
     
     func winningTypeCountPrint() {
         for winning in Winning.allCases {
             let count = statistic.statistic[winning] ?? 0
-            print("\(winning.description) \(winning.reward)원 - \(count)개")
+            LottoGuide.winningTypeRewardCount(type: winning, count: count).show()
         }
     }
     
@@ -39,13 +38,13 @@ struct ResultView {
         }
     }
     
-    func lotteryYieldPrint(inputMoney: Int) {
+    func lotteryRewardPrint(inputMoney: Int) {
         guard inputMoney >= 1000 else {
-            print("총 수익률은 없습니다")
+            LottoGuide.totalRewardRatio("0").show()
             return
         }
         let ratio = ratioString(numerator: statistic.winningTotalPrice(), denominator: inputMoney)
-        print("총 수익률은 \(ratio) 입니다")
+        LottoGuide.totalRewardRatio(ratio).show()
     }
     
     private func ratioString(numerator: Int, denominator: Int) -> String {

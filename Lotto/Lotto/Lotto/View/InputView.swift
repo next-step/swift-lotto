@@ -8,13 +8,8 @@
 import Foundation
 
 struct InputView {
-    private let inputMoneyText = "구매금액을 입력해 주세요."
-    private let totalLotteyCountText = "개를 구매했습니다."
-    private let winningNumbersInputText = "지난 주 당첨 번호를 입력해 주세요."
-
-    
     func inputMoney() -> String {
-        print(inputMoneyText)
+        LottoGuide.inputMoneyText.show()
         let money = readLine() ?? ""
         return money
     }
@@ -27,10 +22,10 @@ struct InputView {
     }
     
     func lotteryTotalCount(_ count: Int) {
-        print("\(count)"+totalLotteyCountText)
+        LottoGuide.totalLotteyCountText(count).show()
     }
     
     func winningNumbersInputTextPrint() {
-        print(winningNumbersInputText)
+        LottoGuide.winningNumbersInputText.show()
     }
 }

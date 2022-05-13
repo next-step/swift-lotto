@@ -16,6 +16,7 @@
 		1F8C82F2282EA0A000326A10 /* LottoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C82EA282BEB7500326A10 /* LottoController.swift */; };
 		1F8C82F3282EA0A200326A10 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD66933282AB67A003E16F7 /* InputView.swift */; };
 		1F8C82F4282EA0A400326A10 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD66935282AB681003E16F7 /* ResultView.swift */; };
+		1F8C82F6282EB18D00326A10 /* LottoGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C82F5282EB18D00326A10 /* LottoGuide.swift */; };
 		1FD6691A28267FB6003E16F7 /* LottoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6691928267FB6003E16F7 /* LottoTest.swift */; };
 		1FD669202826815D003E16F7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6691F2826815D003E16F7 /* Calculator.swift */; };
 		1FD669212826822E003E16F7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6691F2826815D003E16F7 /* Calculator.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		1F8C82E7282B3D9300326A10 /* Winning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Winning.swift; sourceTree = "<group>"; };
 		1F8C82EA282BEB7500326A10 /* LottoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoController.swift; sourceTree = "<group>"; };
+		1F8C82F5282EB18D00326A10 /* LottoGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoGuide.swift; sourceTree = "<group>"; };
 		1FD6691728267FB6003E16F7 /* LottoTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LottoTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD6691928267FB6003E16F7 /* LottoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTest.swift; sourceTree = "<group>"; };
 		1FD6691F2826815D003E16F7 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				1FD66933282AB67A003E16F7 /* InputView.swift */,
 				1FD66935282AB681003E16F7 /* ResultView.swift */,
+				1F8C82F5282EB18D00326A10 /* LottoGuide.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				1F8C82EB282BEB7500326A10 /* LottoController.swift in Sources */,
 				1FD66924282686E5003E16F7 /* InputError.swift in Sources */,
 				1FD66934282AB67A003E16F7 /* InputView.swift in Sources */,
+				1F8C82F6282EB18D00326A10 /* LottoGuide.swift in Sources */,
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
 				1FD66938282AB69E003E16F7 /* Lotto.swift in Sources */,
 				1FD669282826C563003E16F7 /* StringConverter.swift in Sources */,
