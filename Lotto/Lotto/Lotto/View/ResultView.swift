@@ -49,7 +49,7 @@ struct ResultView {
     }
     
     private func ratioString(numerator: Int, denominator: Int) -> String {
-        let ratio = Double(denominator) / Double(numerator)
+        let ratio = Double(numerator) / Double(denominator)
         let toTwoDecimalPlaces = String(format: "%.2f", ratio)
         return toTwoDecimalPlaces
     }

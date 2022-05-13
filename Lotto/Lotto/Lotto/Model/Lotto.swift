@@ -18,12 +18,12 @@ struct Lotto {
     }
     
     init() {
-        var generateNumbers: Set<Int> = []
-        while generateNumbers.count < 6 {
+        var generatedNumbers: Set<Int> = []
+        while generatedNumbers.count < 6 {
             let number = Int.random(in: randomRange)
-            generateNumbers.insert(number)
+            generatedNumbers.insert(number)
         }
-        numbers = Array(generateNumbers).sorted(by: <)
+        numbers = Array(generatedNumbers).sorted(by: <)
     }
 
 }
