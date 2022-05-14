@@ -8,11 +8,11 @@
 import Foundation
 
 struct StringConverter {
-    func split(_ input: String?) -> [String] {
+    func split(_ input: String?, sepratedCharacterSet: CharacterSet = [",",":"]) -> [String] {
         guard let input = input else { return [""] }
         guard !input.isEmpty else { return [""] }
         
-        return input.components(separatedBy: [",",":"])
+        return input.components(separatedBy: sepratedCharacterSet)
     }
     
     func emptyValueChangeZero(inputArray: [String]) -> [String] {
@@ -30,9 +30,9 @@ struct StringConverter {
         return input
     }
     
-    func stringToInt(inputArray: [String]) throws -> [Int] {
+    func stringsToInts(input: [String]) throws -> [Int] {
         var intArray: [Int] = []
-        for value in inputArray {
+        for value in input {
             let intValue = try stringToInt(input:value)
             intArray.append(intValue)
         }
