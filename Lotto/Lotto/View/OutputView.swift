@@ -2,12 +2,13 @@
 //  OutputView.swift
 //  Lotto
 //
-//  Created by nylah.j on 2022/05/10.
+//  Created by nylah.j on 2022/05/08.
 //
 
 import Foundation
 
 struct OutputView {
+
     static func print(lottoCount: Int) {
         Swift.print("\(lottoCount)개를 구매했습니다.")
     }

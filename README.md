@@ -32,8 +32,3 @@ NEXTSTEP with yagom-academy
     - LottoNumber: 로또 숫자 하나를 나타낸다.
 7. LottoTicketFormatter: LottoTicket 인스턴스를 출력할 문자열로 변환한다.
 8. WinningRecordFormatter: WinningRecord인스턴스를 출력할 문자열로 변환한다. 
-
-
-
-
-

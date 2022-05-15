@@ -2,7 +2,7 @@
 //  InputView.swift
 //  Lotto
 //
-//  Created by nylah.j on 2022/05/10.
+//  Created by nylah.j on 2022/05/08.
 //
 
 import Foundation
