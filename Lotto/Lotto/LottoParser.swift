@@ -25,7 +25,6 @@ struct LottoParser {
 
         let lottoNumbers = lottoInput.components(separatedBy: sepearator)
             .compactMap { Int($0) }
-            .compactMap { LottoNumber($0) }
         return try Lotto(numbers: lottoNumbers)
     }
 }

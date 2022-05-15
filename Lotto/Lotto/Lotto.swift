@@ -7,26 +7,44 @@
 
 import Foundation
 
+enum LottoConstant {
+    static let minValue = 1
+    static let maxValue = 45
+    static let numberRange = minValue...maxValue
+    static let numberCount = 6
+}
+
 struct Lotto {
     enum Error: LocalizedError {
         case invalidNumberCount(Int)
+        case invalidLottoNumber
         
         var errorDescription: String? {
             switch self {
             case .invalidNumberCount(let count):
-                return "로또 번호 개수는 \(Lotto.numberCount)개입니다. 현재 입력된 로또 번호 개수: \(count)"
+                return "로또 번호 개수는 \(LottoConstant.numberCount)개입니다. 현재 입력된 로또 번호 개수: \(count)"
+                
+            
+            case .invalidLottoNumber:
+                return "로또 번호는 \(LottoConstant.minValue)~\(LottoConstant.maxValue) 이내여야 합니다."
             }
         }
     }
     
-    static let numberCount = 6
-    let numbers: Set<LottoNumber>
+    let numbers: Set<Int>
     
-    init<LottoNumbers: Collection>(numbers: LottoNumbers) throws where LottoNumbers.Element == LottoNumber  {
+    init<LottoNumbers: Collection>(numbers: LottoNumbers) throws where LottoNumbers.Element == Int  {
         let setNumbers = Set(numbers)
         
-        guard setNumbers.count == Lotto.numberCount else {
+        guard setNumbers.count == LottoConstant.numberCount else {
             throw Error.invalidNumberCount(numbers.count)
+        }
+        
+        let result = numbers.reduce(true) { partialResult, number in
+            partialResult && LottoConstant.numberRange.contains(number)
+        }
+        if result == false {
+            throw Error.invalidLottoNumber
         }
         
         self.numbers = setNumbers

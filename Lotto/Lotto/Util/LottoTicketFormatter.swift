@@ -10,15 +10,14 @@ import Foundation
 struct LottoTicketFormatter {
     private static let lottoNumberSeparator = ","
     
-    static func format(_ lottoTicket: LottoTicket) -> String {
+    static func format(_ lottoTicket: LottoBag) -> String {
         return lottoTicket.lottoList.reduce("") { partialResult, lotto in
             partialResult + "[" + format(lotto) + "]" + "\n"
         }
     }
     
     private static func format(_ lotto: Lotto) -> String {
-        return lotto.numbers.map { $0.value }
-            .sorted()
+        return lotto.numbers.sorted()
             .map { String($0) }
             .joined(separator: lottoNumberSeparator)
     }

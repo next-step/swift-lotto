@@ -20,11 +20,14 @@ struct LottoSeller {
     }
     
     private static let lottoPrice = Money(value: 1000)!
-    let lottoTicketMachine: LottoTicketMachine
+    let lottoFactory: LottoFactory
     
-    func sellLotto(for money: Money) throws -> LottoTicket {
+    func sellLotto(for money: Money) throws -> LottoBag {
         let lottoCount = try availableLottoCount(with: money)
-        return try lottoTicketMachine.issueTicket(havingLottoCount: lottoCount)
+        let lottoList = try (0..<lottoCount).map { _ in
+            try lottoFactory.make()
+        }
+        return LottoBag(lottoList: lottoList)
     }
     
     private func availableLottoCount(with money: Money) throws -> Int {

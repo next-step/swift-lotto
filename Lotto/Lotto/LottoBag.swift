@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct LottoTicket {
+struct LottoBag {
     let lottoList: [Lotto]
     
     var lottoCount: Int { return lottoList.count }
     
-    func winningRecord(with winningLotto: Lotto) -> WinningRecord {
+    func winningRecord(with winningLotto: Lotto) throws -> WinningRecord {
         let equalNumberCounts = lottoList.map { lotto in
             lotto.equalNumberCount(with: winningLotto)
         }

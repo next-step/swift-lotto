@@ -18,7 +18,7 @@ class LottoTest: XCTestCase {
 
     func test_init_Lotto를_구성하는_번호개수가_6개가_아니면_에러를_발생시킨다() {
         // given
-        let lottoNumbers = [1, 2, 3, 4, 5, 6]
+        let lottoNumbers = [1, 2, 3, 4, 5, 4]
 
         // when
         // then

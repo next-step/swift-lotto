@@ -12,8 +12,7 @@ do {
     
     let lottoNumberGenerater = RandomLottoNumberGenerator()
     let lottoFactory = LottoFactory(lottoNumberGenerator: lottoNumberGenerater)
-    let lottoTicketMachine = LottoTicketMachine(lottoFactory: lottoFactory)
-    let lottoSeller = LottoSeller(lottoTicketMachine: lottoTicketMachine)
+    let lottoSeller = LottoSeller(lottoFactory: lottoFactory)
     
     let lottoTicket = try lottoSeller.sellLotto(for: money)
     OutputView.print(lottoCount: lottoTicket.lottoCount)
@@ -24,7 +23,7 @@ do {
     let winningLottoInput = InputView.readWinningLotto()
     let winningLotto = try LottoParser.parse(winningLottoInput)
     
-    let winningRecord = lottoTicket.winningRecord(with: winningLotto)
+    let winningRecord = try lottoTicket.winningRecord(with: winningLotto)
     let formattedRecord = WinningRecordFormatter.format(winningRecord)
     OutputView.print(winningRecord: formattedRecord)
 } catch(let error) {

@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct LottoTicketMachine {
+struct LottoBagFactory {
     let lottoFactory: LottoFactory
     
-    func issueTicket(havingLottoCount lottoCount: Int) throws -> LottoTicket {
+    func make(havingLottoCount lottoCount: Int) throws -> LottoBag {
         let lottoList = try (0..<lottoCount).map { _ in
             try lottoFactory.make()
         }
-        return LottoTicket(lottoList: lottoList)
+        return LottoBag(lottoList: lottoList)
     }
 }
