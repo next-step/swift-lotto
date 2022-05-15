@@ -13,7 +13,7 @@ class StubLottoNumberGenerator: LottoNumberGenerator {
     
     func generate() throws -> LottoNumber {
         lottoNumber += 1
-        return LottoNumber(lottoNumber)!
+        return LottoNumber(lottoNumber)
     }
 }
 
@@ -71,7 +71,7 @@ class LottoSellerTest: XCTestCase {
         // then
         XCTAssertThrowsError(try lottoSeller.sellLotto(for: money), "금액이 로또를 사기에 부족한 경우 에러를 던진다") { error in
             XCTAssert(error is LottoSeller.Error)
-            XCTAssertTrue(error.localizedDescription == LottoSeller.Error.nonEnoughMoney.errorDescription)
+            XCTAssertTrue(error.localizedDescription == LottoSeller.Error.notEnoughMoney.errorDescription)
         }
     }
 }

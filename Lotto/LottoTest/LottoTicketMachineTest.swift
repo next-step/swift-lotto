@@ -16,7 +16,7 @@ class LottoTicketMachineTest: XCTestCase {
         let lottoCount = 7
         
         // when
-        let lottoTicket = try? lottoTicketMachine.printTicket(havingLottoCount: lottoCount)
+        let lottoTicket = try? lottoTicketMachine.issueTicket(havingLottoCount: lottoCount)
         
         // then
         XCTAssert(lottoCount == lottoTicket?.lottoList.count)

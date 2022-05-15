@@ -12,15 +12,26 @@ protocol LottoNumberGenerator {
 }
 
 struct RandomLottoNumberGenerator: LottoNumberGenerator {
-    private let lottoNumberRange = LottoNumber.minValue...LottoNumber.maxValue
+    enum Error: LocalizedError {
+        case invalidValue
+        
+        var errorDescription: String? {
+            switch self {
+            case .invalidValue: return "LottoNumber는 \(minValue)이상 \(maxValue)이하여야 합니다."
+            }
+        }
+    }
+                    
+    private static let minValue = 1
+    private static let maxValue = 45
+    private var lottoNumberRange: ClosedRange<Int> { return Self.minValue...Self.maxValue }
     
     func generate() throws -> LottoNumber {
         let randomNumber = Int.random(in: lottoNumberRange)
-        
-        guard let lottoNumber = LottoNumber(randomNumber) else {
-            throw LottoNumber.Error.invalidValue
+        guard lottoNumberRange.contains(randomNumber) else {
+            throw Error.invalidValue
         }
-        
-        return lottoNumber
+    
+        return .init(randomNumber)
     }
 }
