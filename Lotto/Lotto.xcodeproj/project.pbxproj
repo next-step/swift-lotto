@@ -16,6 +16,7 @@
 		2EAB30142830F15500B80DB0 /* LottoNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C4222827C13700BC60E7 /* LottoNumberGenerator.swift */; };
 		2EAB30182830F1FC00B80DB0 /* LottoBagTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB30172830F1FC00B80DB0 /* LottoBagTest.swift */; };
 		2EAB301A2830F48C00B80DB0 /* LottoSellerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB30192830F48C00B80DB0 /* LottoSellerTest.swift */; };
+		2EAB301C2830F57A00B80DB0 /* LottoParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB301B2830F57A00B80DB0 /* LottoParserTest.swift */; };
 		2EB16C57282AB09A003EBF4C /* LottoTicketFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB16C56282AB09A003EBF4C /* LottoTicketFormatter.swift */; };
 		2EB16C59282AB36C003EBF4C /* LottoParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB16C58282AB36C003EBF4C /* LottoParser.swift */; };
 		2ED9C40D2827BA5400BC60E7 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C40C2827BA5400BC60E7 /* Money.swift */; };
@@ -61,6 +62,7 @@
 		2EAB30122830EFFA00B80DB0 /* StubLottoNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubLottoNumberGenerator.swift; sourceTree = "<group>"; };
 		2EAB30172830F1FC00B80DB0 /* LottoBagTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoBagTest.swift; sourceTree = "<group>"; };
 		2EAB30192830F48C00B80DB0 /* LottoSellerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoSellerTest.swift; sourceTree = "<group>"; };
+		2EAB301B2830F57A00B80DB0 /* LottoParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoParserTest.swift; sourceTree = "<group>"; };
 		2EB16C56282AB09A003EBF4C /* LottoTicketFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTicketFormatter.swift; sourceTree = "<group>"; };
 		2EB16C58282AB36C003EBF4C /* LottoParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoParser.swift; sourceTree = "<group>"; };
 		2ED9C40C2827BA5400BC60E7 /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				2EAB300F2830EF8D00B80DB0 /* LottoBagFactoryTest.swift */,
 				2EAB30172830F1FC00B80DB0 /* LottoBagTest.swift */,
 				2EAB30192830F48C00B80DB0 /* LottoSellerTest.swift */,
+				2EAB301B2830F57A00B80DB0 /* LottoParserTest.swift */,
 			);
 			path = LottoTest;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				2ED9C41C2827BCD400BC60E7 /* MoneyTest.swift in Sources */,
 				2EAB30182830F1FC00B80DB0 /* LottoBagTest.swift in Sources */,
 				2ED9C4362827D00C00BC60E7 /* LottoBag.swift in Sources */,
+				2EAB301C2830F57A00B80DB0 /* LottoParserTest.swift in Sources */,
 				2EAB30142830F15500B80DB0 /* LottoNumberGenerator.swift in Sources */,
 				2EAB30132830EFFA00B80DB0 /* StubLottoNumberGenerator.swift in Sources */,
 				2EAB300C2830C90C00B80DB0 /* LottoFactory.swift in Sources */,
