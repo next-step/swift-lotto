@@ -20,8 +20,8 @@ struct StringCalculator {
     }
     
     private func catchCalculatorError(at separatedFormula: [String]) throws {
-        let o = separatedFormula.map { Int($0) }
-        if o.contains(nil) { throw StringCalculatorError.invalidFormula }
-        if o.compactMap({ $0 }).contains(where: { $0 < 0 }) { throw StringCalculatorError.negativeNumber }
+        let converted = separatedFormula.map { Int($0) }
+        if converted.contains(nil) { throw StringCalculatorError.invalidFormula }
+        if converted.compactMap({ $0 }).contains(where: { $0 < 0 }) { throw StringCalculatorError.negativeNumber }
     }
 }
