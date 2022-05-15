@@ -10,7 +10,7 @@ import Foundation
 struct LottoTicketMachine {
     let lottoFactory: LottoFactory
     
-    func printTicket(havingLottoCount lottoCount: Int) throws -> LottoTicket {
+    func issueTicket(havingLottoCount lottoCount: Int) throws -> LottoTicket {
         let lottoList = try (0..<lottoCount).map { _ in
             try lottoFactory.make()
         }

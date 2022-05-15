@@ -24,7 +24,7 @@ struct LottoSeller {
     
     func sellLotto(for money: Money) throws -> LottoTicket {
         let lottoCount = try availableLottoCount(with: money)
-        return try lottoTicketMachine.printTicket(havingLottoCount: lottoCount)
+        return try lottoTicketMachine.issueTicket(havingLottoCount: lottoCount)
     }
     
     private func availableLottoCount(with money: Money) throws -> Int {
