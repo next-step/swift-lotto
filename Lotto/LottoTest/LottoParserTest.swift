@@ -23,4 +23,16 @@ class LottoParserTest: XCTestCase {
         // then
         XCTAssert(lotto == expectedLotto)
     }
+    
+    func test_parse_nil이_입력되면_nonNumber_error를_throw합니다() {
+        // given
+        let nilInput: String? = nil
+        
+        // when
+        // then
+        XCTAssertThrowsError(try LottoParser.parse(nilInput), "nil이 입력되면 파싱시도시 nonNumber error를 throw 합니다.") { error in
+            XCTAssert(error is LottoParser.Error)
+            XCTAssertEqual(error.localizedDescription, LottoParser.Error.nonNumber.localizedDescription)
+        }
+    }
 }
