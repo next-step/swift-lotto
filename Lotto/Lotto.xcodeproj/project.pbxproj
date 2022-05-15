@@ -102,6 +102,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EAB30092830C09D00B80DB0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2EB16C56282AB09A003EBF4C /* LottoTicketFormatter.swift */,
+				2E70F425282C0ABD007E01B8 /* WinningRecordFormatter.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		2ED9C4152827BCAA00BC60E7 /* LottoTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,8 +132,6 @@
 			children = (
 				2EE19BDB282A8970003D4916 /* InputView.swift */,
 				2EE19BDF282A8C8E003D4916 /* OutputView.swift */,
-				2EB16C56282AB09A003EBF4C /* LottoTicketFormatter.swift */,
-				2E70F425282C0ABD007E01B8 /* WinningRecordFormatter.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,6 +157,7 @@
 		C7905FC427311CC6004C3FCC /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
+				2EAB30092830C09D00B80DB0 /* Util */,
 				2EE19BDA282A8966003D4916 /* View */,
 				C7905FC527311CC6004C3FCC /* main.swift */,
 				2ED9C40C2827BA5400BC60E7 /* Money.swift */,
