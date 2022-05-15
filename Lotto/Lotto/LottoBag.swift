@@ -12,7 +12,7 @@ struct LottoBag {
     
     var lottoCount: Int { return lottoList.count }
     
-    func winningRecord(with winningLotto: Lotto) throws -> WinningRecord {
+    func winningRecord(with winningLotto: Lotto) -> WinningRecord {
         let equalNumberCounts = lottoList.map { lotto in
             lotto.equalNumberCount(with: winningLotto)
         }
