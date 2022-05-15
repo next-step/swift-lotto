@@ -40,13 +40,13 @@ struct Lotto {
             throw Error.invalidNumberCount(numbers.count)
         }
         
-        let result = numbers.reduce(true) { partialResult, number in
+        let hasValidNumbers = numbers.reduce(true) { partialResult, number in
             partialResult && LottoConstant.numberRange.contains(number)
         }
-        if result == false {
+        if hasValidNumbers == false {
             throw Error.invalidLottoNumber
         }
-        
+    
         self.numbers = setNumbers
     }
     
