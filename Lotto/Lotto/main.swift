@@ -12,17 +12,11 @@ do {
     let generator = LottoGenerator()
     let lottos = try generator.auto(n: count)
     
-//    let prev = try InputView.readPrevWinningNumber()
+    let winningNumbers = try InputView.readPrevWinningNumber()
+    let bonusNumber = try InputView.readBonusNumber(winningNumbers: winningNumbers)
+    let winningLotto = try WinnerLotto(winningNumbers, bonus: bonusNumber)
     
-    let winningNumbers = try LottoNumbers(numbers: [
-                                            try LottoNumber(1),
-                                            try LottoNumber(2),
-                                            try LottoNumber(3),
-                                            try  LottoNumber(4),
-                                            try  LottoNumber(5),
-                                            try  LottoNumber(6)])
-    
-    ResultView.printResult(of: lottos, winningNumbers: winningNumbers)
+    ResultView.printResult(of: lottos, winningLotto: winningLotto)
 } catch let error as LottoError {
     print(error.errorDescription)
 }
