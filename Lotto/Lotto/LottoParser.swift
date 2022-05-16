@@ -20,25 +20,28 @@ struct LottoParser {
     
     private static let sepearator = ", "
     
-    static func parseLotto(_ lottoInput: String?) throws -> DefaultLotto {
-        guard let lottoInput = lottoInput else { throw Error.nonNumber }
-
-        let lottoNumbers = lottoInput.components(separatedBy: sepearator)
-            .compactMap { Int($0) }
+    static func parseLotto(_ lottoNumberInput: String?) throws -> DefaultLotto {
+        let lottoNumbers = try parseLottoNumbers(lottoNumberInput)
         return try DefaultLotto(numbers: lottoNumbers)
     }
     
-    static func parseWinningLotto(lottoInput: String?, bonusNumberInput: String?) throws -> WinningLotto {
-        guard let lottoInput = lottoInput else { throw Error.nonNumber }
+    static func parseWinningLotto(lottoNumberInput: String?, bonusNumberInput: String?) throws -> WinningLotto {
+        let lottoNumbers = try parseLottoNumbers(lottoNumberInput)
+        
+        guard let bonusNumberInput = bonusNumberInput,
+              let bonusNumber = Int(bonusNumberInput) else {
+                  throw Error.nonNumber
+              }
+
+        return try WinningLotto(numbers: lottoNumbers, bonusNumber: bonusNumber)
+    }
+    
+    static func parseLottoNumbers(_ lottoNumberInput: String?) throws -> [Int] {
+        guard let lottoInput = lottoNumberInput else { throw Error.nonNumber }
 
         let lottoNumbers = lottoInput.components(separatedBy: sepearator)
             .compactMap { Int($0) }
         
-        guard let bonusNumberInput = bonusNumberInput,
-              let bonusNumber = Int(bonusNumberInput) else {
-                    throw Error.nonNumber
-              }
-
-        return try WinningLotto(numbers: lottoNumbers, bonusNumber: bonusNumber)
+        return lottoNumbers
     }
 }
