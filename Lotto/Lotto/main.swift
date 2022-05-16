@@ -24,9 +24,11 @@ do {
     let bonusNumberInput = InputView.readBonusNumber()
     let winningLotto = try LottoParser.parseWinningLotto(lottoNumberInput: winningLottoInput, bonusNumberInput: bonusNumberInput)
     
-    let winningRecord = lottoTicket.winningRecord(with: winningLotto as Lotto as! WinningLotto)
+    let winningRecord = lottoTicket.winningRecord(with: winningLotto)
     let formattedRecord = WinningRecordFormatter.format(winningRecord)
+    
     OutputView.print(winningRecord: formattedRecord)
+    OutputView.print(profitRate: winningRecord.calculateProfitRate(inputMoney: money))
 } catch(let error) {
     OutputView.print(error: error)
 }

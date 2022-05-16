@@ -44,7 +44,7 @@ class LottoParserTest: XCTestCase {
         let winningLotto = try WinningLotto(numbers: [1, 2, 3, 4, 5, 6], bonusNumber: 7)
         
         // when
-        let result = try LottoParser.parseWinningLotto(lottoNumberInputgi: lottoInput, bonusNumberInput: bonusNumberInput)
+        let result = try LottoParser.parseWinningLotto(lottoNumberInput: lottoInput, bonusNumberInput: bonusNumberInput)
         
         // then
         XCTAssertEqual(result.numbers, winningLotto.numbers)
