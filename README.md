@@ -2,6 +2,22 @@
 ### Effective Swift
 NEXTSTEP with yagom-academy
 
+### [2단계] 로또(2등) 구현 방법
+1. 보너스 번호를 입력받는다.
+    - InputView에 보너스 번호를 입력받는 메서드(`readBonusNumber()`) 추가함  
+1. WinningLotto 구조체를 만들어 bonus number를 갖는 당첨 로또를 나타내도록 했다.
+    - WinningLotto와 기존의 로또(DefaultLotto)는 Lotto 프로토콜을 따른다.
+    - Lotto 프로토콜은 `numbers: Set<Int>` 프로퍼티와 다른 로또와 일치하는 번호 개수를 반환하는 `equalNumberCount(with lotto: Lotto) -> Int` 메서드를 갖는다.  
+    -> 따라서 모든 Lotto는 숫자 집합을 가지며, 다른 로또와 비교할 수 있도록 만들었다.
+2. LottoParser에서 당첨번호(String) 보너스 번호(String)을 받아서 WinningLotto를 반환하는 메서드(`parseWinningLotto()`)를 구현   
+4. WinningCount를 힌트로 주어진 Rank로 수정했다.
+5. WinningRecord의 intializer에서 bonus번호도 받을 수 있도록 수정했다.
+    - typealias를 사용하여 (당첨숫자, 보너스번호 일치여부) tuple를 inialzier 파라미터로 받는다.
+
+6. **TicketBag에서 WinningRecord를 생성할 때, (당첨숫자, 보너스번호 일치여부) 를 생성한다**
+    - 다른 로또가 WiningLotto의 보너스 번호를 갖고 있는지 여부(Bool)을 반환하는 `checkBonusNumber(in:)`메서드를 WinningLotto에 구현 
+    
+
 ### 프로그래밍 요구사항
 1. 사용자의 입력을 받는다.
     - 구매 금액을 입력받는다.
