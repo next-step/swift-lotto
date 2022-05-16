@@ -14,11 +14,11 @@ enum Rank: CaseIterable {
     
     static func from(matchingCount: Int,  matchBonus: Bool) -> Self {
         switch matchingCount {
-        case 3: return .fifth
-        case 4: return .fourth
-        case 5: return .third
-        case 5 where matchBonus == true: return second
         case 6: return first
+        case 5 where matchBonus == true: return second
+        case 5: return .third
+        case 4: return .fourth
+        case 3: return .fifth
         default: return miss
         }
     }
