@@ -11,20 +11,11 @@ struct ResultView {
     private let statistic = WinningStatistic()
     private let winningNumber = WinningNumber()
     
-    func registerWinningNumbers(_ numbers: [Int]) throws {
-        guard numbers.count == 6 else {
-            throw InputError.invalidWinningNumberCount
-        }
-        guard Set(numbers).count == 6 else {
-            throw InputError.duplicateWinningNumber
-        }
+    func registerWinningNumbers(_ numbers: [Int]) {
         winningNumber.register(numbers)
     }
     
-    func registerBonusNumber(_ bonusNumber: Int) throws {
-        guard bonusNumber >= 1 , bonusNumber <= 45 else {
-            throw InputError.invalidNumber
-        }
+    func registerBonusNumber(_ bonusNumber: Int) {
         winningNumber.register(bonusNumber)
     }
     

@@ -37,15 +37,17 @@ final class LottoController {
         let winningNumbersInput = readLine()
         let splitCommaNumbers = stringConverter.split(winningNumbersInput, sepratedCharacterSet: [","])
         let numbers = try stringConverter.stringsToInts(input: splitCommaNumbers)
-        try resultView.registerWinningNumbers(numbers)
+        try validateWinningNumbers(numbers)
+        resultView.registerWinningNumbers(numbers)
         
     }
     
     func winningBonusNumberSetting() throws {
         inputView.winningBonusNumberInputTextPrint()
-        let bonusNumberInput = readLine()
-        let changeToInt = try stringConverter.stringToInt(input: bonusNumberInput)
-        try resultView.registerBonusNumber(changeToInt)
+        let bonusNumberString = readLine()
+        let bonusNumber = try stringConverter.stringToInt(input: bonusNumberString)
+        try validateWinningBonusNumber(bonusNumber)
+        resultView.registerBonusNumber(bonusNumber)
     }
     
     func statisticResult() {
@@ -55,5 +57,18 @@ final class LottoController {
         resultView.lotteryRewardPrint(inputMoney: inputMoney)
     }
     
+    private func validateWinningNumbers(_ numbers: [Int]) throws {
+        guard numbers.count == 6 else {
+            throw InputError.invalidWinningNumberCount
+        }
+        guard Set(numbers).count == 6 else {
+            throw InputError.duplicateWinningNumber
+        }
+    }
     
+    private func validateWinningBonusNumber(_ bonusNumber: Int) throws {
+        guard bonusNumber >= 1 , bonusNumber <= 45 else {
+            throw InputError.invalidNumber
+        }
+    }
 }
