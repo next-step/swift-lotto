@@ -66,7 +66,6 @@ struct LottoNumbers: CustomStringConvertible {
 
 struct Lotto: CustomStringConvertible {
     private let value: LottoNumbers
-//    let rank: Match.Rank
     
     var description: String {
         return String(describing: value)
@@ -74,7 +73,6 @@ struct Lotto: CustomStringConvertible {
     
     init(_ value: LottoNumbers, _ rank: Match.Rank = .miss) {
         self.value = value
-//        self.rank = rank
     }
     
     func getRank(winningNumbers: LottoNumbers) -> Match {
@@ -83,19 +81,21 @@ struct Lotto: CustomStringConvertible {
 }
 
 struct Lottos {
-    private var value: [Lotto]
-//    private let fifthPlace: Int = 0
+    private let value: [Lotto]
     
-    init(_ value: [Lotto]) {
-        self.value = value
+    init(_ lottos: [Lotto]) {
+        self.value = lottos
     }
     
-    mutating func append(_ v: Lotto) {
-        self.value.append(v)
+    func place(rank: Match.Rank, winningNumbers: LottoNumbers) -> Int {
+        return value.map {
+            $0.getRank(winningNumbers: winningNumbers).rank == rank
+        }.count
     }
     
-    func place(with rank: Match.Rank, winningNumbers: LottoNumbers) -> Int {
-        value.map { $0.getRank(winningNumbers: winningNumbers)}.filter { $0.rank == rank}.count
+    func profit(winningNumbers: LottoNumbers) {
+        LottoReward.allCases.map { (money) in
+            money.rawValue * place(rank: .fifth, winningNumbers: winningNumbers)
+        }
     }
-       
 }

@@ -31,14 +31,12 @@ class LottoGenerator {
     public func auto(n: Int) throws -> Lottos {
         ResultView.printPurchaseMessage(n)
         
-        var lottos: [Lotto] = []
-
-        for _ in 0..<n {
+        let lottos: [Lotto] = try (0..<n).map { _ in
             let newLotto = try autoNumbers()
-            lottos.append(newLotto)
-            ResultView.printLottoNumbers(of: newLotto)
+            print(newLotto)
+            return newLotto
         }
-
+        
         return Lottos(lottos)
     }
     
