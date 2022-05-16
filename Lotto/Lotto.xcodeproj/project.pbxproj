@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C810FB02832A09E000DC907 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2B96F2825620300E9239C /* ResultView.swift */; };
 		6CD2B966282560FE00E9239C /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2B965282560FE00E9239C /* Lotto.swift */; };
 		6CD2B96C282561BC00E9239C /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2B96B282561BC00E9239C /* InputView.swift */; };
 		6CD2B9702825620300E9239C /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2B96F2825620300E9239C /* ResultView.swift */; };
@@ -296,6 +297,7 @@
 				6CD904C228258D4D0039C827 /* Lotto.swift in Sources */,
 				6CD904B628258CE10039C827 /* LottoTests.swift in Sources */,
 				6CD904BE28258D4C0039C827 /* Constants.swift in Sources */,
+				6C810FB02832A09E000DC907 /* ResultView.swift in Sources */,
 				CB59DCE9282CBE0E00291BC6 /* LottoReward.swift in Sources */,
 				CB59DCEA282CBE1100291BC6 /* Match.swift in Sources */,
 			);
