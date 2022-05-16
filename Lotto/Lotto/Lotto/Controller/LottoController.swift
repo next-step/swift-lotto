@@ -38,11 +38,19 @@ final class LottoController {
         let splitCommaNumbers = stringConverter.split(winningNumbersInput, sepratedCharacterSet: [","])
         let numbers = try stringConverter.stringsToInts(input: splitCommaNumbers)
         try resultView.registerWinningNumbers(numbers)
+        
+    }
+    
+    func winningBonusNumberSetting() throws {
+        inputView.winningBonusNumberInputTextPrint()
+        let bonusNumberInput = readLine()
+        let changeToInt = try stringConverter.stringToInt(input: bonusNumberInput)
+        try resultView.registerBonusNumber(changeToInt)
     }
     
     func statisticResult() {
         resultView.statisticStartPrint()
-        resultView.match(lottos)
+        resultView.match(my: lottos)
         resultView.winningTypeCountPrint()
         resultView.lotteryRewardPrint(inputMoney: inputMoney)
     }

@@ -28,4 +28,8 @@ struct InputView {
     func winningNumbersInputTextPrint() {
         LottoGuide.winningNumbersInputText.show()
     }
+    
+    func winningBonusNumberInputTextPrint() {
+        LottoGuide.winningBonusNumberInputText.show()
+    }
 }

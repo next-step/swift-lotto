@@ -9,6 +9,7 @@ import Foundation
 
 struct ResultView {
     private let statistic = WinningStatistic()
+    private let winningNumber = WinningNumber()
     
     func registerWinningNumbers(_ numbers: [Int]) throws {
         guard numbers.count == 6 else {
@@ -17,7 +18,14 @@ struct ResultView {
         guard Set(numbers).count == 6 else {
             throw InputError.duplicateWinningNumber
         }
-        statistic.registerWinningNumbers(numbers)
+        winningNumber.register(numbers)
+    }
+    
+    func registerBonusNumber(_ bonusNumber: Int) throws {
+        guard bonusNumber >= 1 , bonusNumber <= 45 else {
+            throw InputError.invalidNumber
+        }
+        winningNumber.register(bonusNumber)
     }
     
     func statisticStartPrint() {
@@ -31,9 +39,9 @@ struct ResultView {
         }
     }
     
-    func match(_ lottos: [Lotto]) {
+    func match(my lottos: [Lotto]) {
         for lotto in lottos {
-            let winning = statistic.match(lotto.numbers)
+            let winning = winningNumber.match(lotto.numbers)
             statistic.insertStatistic(winning)
         }
     }

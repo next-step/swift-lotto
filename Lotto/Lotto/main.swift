@@ -12,6 +12,7 @@ do {
     try lottoController.lotterySetting()
     lottoController.lottoPrinter()
     try lottoController.winningNumbersSetting()
+    try lottoController.winningBonusNumberSetting()
     lottoController.statisticResult()
     
 } catch let error as InputError {

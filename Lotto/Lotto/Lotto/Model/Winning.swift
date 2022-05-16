@@ -32,11 +32,11 @@ enum Winning: CaseIterable {
         }
     }
     
-    static func rank(_ matchCount: Int, matchcBonus: Bool = false) -> Winning? {
+    static func rank(_ matchCount: Int, matchBonus: Bool = false) -> Winning? {
         if matchCount == 6 {
             return .first
         }
-        if matchCount == 5, matchcBonus {
+        if matchCount == 5, matchBonus {
             return .second
         }
         if matchCount == 5 {

@@ -39,8 +39,8 @@ struct StringConverter {
         return intArray
     }
     
-    private func stringToInt(input: String) throws -> Int {
-        if let intValue = Int(input) {
+    func stringToInt(input: String?) throws -> Int {
+        if let inputString = input, let intValue = Int(inputString) {
             return intValue
         }
         throw InputError.invalidNumber
