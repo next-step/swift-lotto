@@ -13,12 +13,12 @@ struct LottoBag {
     var lottoCount: Int { return lottoList.count }
     
     func winningRecord(with winningLotto: WinningLotto) -> WinningRecord {
-        let recurdUnits = lottoList.map { lotto -> (Int, Bool) in
+        let recordUnit = lottoList.map { lotto -> (Int, Bool) in
             let equalNumberCount = winningLotto.equalNumberCount(with: lotto)
             let matchBonus = winningLotto.checkBonusNumber(in: lotto)
             return (equalNumberCount, matchBonus)
         }
         
-        return WinningRecord(recordUnits: recurdUnits)
+        return WinningRecord(recordUnits: recordUnit)
     }
 }
