@@ -14,16 +14,9 @@ class LottoGenerator {
     private func autoNumbers() throws -> Lotto {
         var numbers: Set<LottoNumber> = []
 
-//        repeat {
-//            numbers.insert(try LottoNumber(randomNumber))
-//        } while numbers.count < Constants.defaultLottoCount
-
-        numbers.insert(try LottoNumber(1))
-        numbers.insert(try LottoNumber(2))
-        numbers.insert(try LottoNumber(3))
-        numbers.insert(try LottoNumber(4))
-        numbers.insert(try LottoNumber(12))
-        numbers.insert(try LottoNumber(13))
+        repeat {
+            numbers.insert(try LottoNumber(randomNumber))
+        } while numbers.count < Constants.defaultLottoCount
         
         return Lotto(try LottoNumbers(numbers: numbers.sorted(by: <)))
     }
