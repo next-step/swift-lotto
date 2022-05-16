@@ -12,7 +12,7 @@ class LottoParserTest: XCTestCase {
         // given
         let lottoInput = "1, 2, 3, 4, 5, 6"
         
-        let expectedLotto = try? Lotto(numbers: [1, 2, 3, 4, 5, 6])
+        let expectedLotto = try? DefaultLotto(numbers: [1, 2, 3, 4, 5, 6])
         
         // when
         guard let lotto = try? LottoParser.parse(lottoInput) else {
@@ -21,7 +21,7 @@ class LottoParserTest: XCTestCase {
         }
         
         // then
-        XCTAssert(lotto == expectedLotto)
+        XCTAssert(lotto.numbers == expectedLotto?.numbers)
     }
     
     func test_parse_nil이_입력되면_nonNumber_error를_throw합니다() {

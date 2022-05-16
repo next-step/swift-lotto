@@ -23,8 +23,8 @@ class LottoSellerTest: XCTestCase {
         // given
         let money = Money(value: 2200)!
         
-        let firstLotto = try? Lotto(numbers: [1, 2, 3, 4, 5, 6])
-        let secondLotto = try? Lotto(numbers: [7, 8, 9, 10, 11, 12])
+        let firstLotto = try? DefaultLotto(numbers: [1, 2, 3, 4, 5, 6])
+        let secondLotto = try? DefaultLotto(numbers: [7, 8, 9, 10, 11, 12])
         
         let expectedLottoTicket = LottoBag(lottoList: [firstLotto, secondLotto]
                                             .compactMap({ $0 }))

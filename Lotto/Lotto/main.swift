@@ -23,7 +23,7 @@ do {
     let winningLottoInput = InputView.readWinningLotto()
     let winningLotto = try LottoParser.parse(winningLottoInput)
     
-    let winningRecord = lottoTicket.winningRecord(with: winningLotto)
+    let winningRecord = lottoTicket.winningRecord(with: winningLotto as Lotto as! WinningLotto)
     let formattedRecord = WinningRecordFormatter.format(winningRecord)
     OutputView.print(winningRecord: formattedRecord)
 } catch(let error) {
