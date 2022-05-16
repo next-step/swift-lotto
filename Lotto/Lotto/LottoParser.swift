@@ -29,6 +29,16 @@ struct LottoParser {
     }
     
     static func parseWinningLotto(lottoInput: String?, bonusNumberInput: String?) throws -> WinningLotto {
-        return try WinningLotto(numbers: [1, 2, 3, 1, 2, 3], bonusNumber: 7)
+        guard let lottoInput = lottoInput else { throw Error.nonNumber }
+
+        let lottoNumbers = lottoInput.components(separatedBy: sepearator)
+            .compactMap { Int($0) }
+        
+        guard let bonusNumberInput = bonusNumberInput,
+              let bonusNumber = Int(bonusNumberInput) else {
+                    throw Error.nonNumber
+              }
+
+        return try WinningLotto(numbers: lottoNumbers, bonusNumber: bonusNumber)
     }
 }
