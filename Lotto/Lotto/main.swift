@@ -7,26 +7,25 @@
 import Foundation
 
 do {
-    let input = InputView.readInput()
+    let moneyInput = InputView.readMoney()
+    let money = try MoneyParser.parse(moneyInput)
     
-    let splitter = Splitter()
-    let inputParser = InputParser(splitter: splitter, numberGenerator: PositiveNumberGenerator.self)
-    let operands = try inputParser.parse(input: input)
+    let lottoNumberGenerater = RandomLottoNumberGenerator()
+    let lottoFactory = LottoFactory(lottoNumberGenerator: lottoNumberGenerater)
+    let lottoSeller = LottoSeller(lottoFactory: lottoFactory)
     
-    var plusOperator = [Operator]()
-    for _ in 0..<operands.count - 1 {
-        plusOperator.append(Plus())
-    }
+    let lottoTicket = try lottoSeller.sellLotto(for: money)
+    OutputView.print(lottoCount: lottoTicket.lottoCount)
     
-    let result = Calculator().calculate(operands: operands, operators: plusOperator)
-    OutputView.print(result)
+    let formattedLottoTicket = LottoTicketFormatter.format(lottoTicket)
+    OutputView.print(lottoTicket: formattedLottoTicket)
+    
+    let winningLottoInput = InputView.readWinningLotto()
+    let winningLotto = try LottoParser.parse(winningLottoInput)
+    
+    let winningRecord = lottoTicket.winningRecord(with: winningLotto)
+    let formattedRecord = WinningRecordFormatter.format(winningRecord)
+    OutputView.print(winningRecord: formattedRecord)
 } catch(let error) {
-    print(error.localizedDescription)
+    OutputView.print(error: error)
 }
-
-
-
-
-
-
-
