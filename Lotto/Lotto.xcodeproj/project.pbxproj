@@ -17,6 +17,7 @@
 		1F8C82F3282EA0A200326A10 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD66933282AB67A003E16F7 /* InputView.swift */; };
 		1F8C82F4282EA0A400326A10 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD66935282AB681003E16F7 /* ResultView.swift */; };
 		1F8C82F6282EB18D00326A10 /* LottoGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C82F5282EB18D00326A10 /* LottoGuide.swift */; };
+		1F8C82F72831D16B00326A10 /* LottoGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C82F5282EB18D00326A10 /* LottoGuide.swift */; };
 		1FD6691A28267FB6003E16F7 /* LottoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6691928267FB6003E16F7 /* LottoTest.swift */; };
 		1FD669202826815D003E16F7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6691F2826815D003E16F7 /* Calculator.swift */; };
 		1FD669212826822E003E16F7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6691F2826815D003E16F7 /* Calculator.swift */; };
@@ -271,6 +272,7 @@
 				1F8C82F0282EA09B00326A10 /* LottoGenerator.swift in Sources */,
 				1FD66926282687FC003E16F7 /* StringConverterTest.swift in Sources */,
 				1FD6692C282752AC003E16F7 /* CalculatorTest.swift in Sources */,
+				1F8C82F72831D16B00326A10 /* LottoGuide.swift in Sources */,
 				1FD669212826822E003E16F7 /* Calculator.swift in Sources */,
 				1F8C82EF282EA09900326A10 /* WinningStatistic.swift in Sources */,
 				1FD6691A28267FB6003E16F7 /* LottoTest.swift in Sources */,

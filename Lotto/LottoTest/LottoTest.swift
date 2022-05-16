@@ -31,7 +31,7 @@ class LottoTest: XCTestCase {
         let lotto = Lotto()
         let expectedValue = true
         var resultValue = false
-        if lotto.min >= 1, lotto.max <= 45 {
+        if lotto.min() >= 1, lotto.max() <= 45 {
             resultValue = true
         }
             
