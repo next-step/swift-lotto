@@ -9,6 +9,32 @@ import Foundation
 
 typealias EqualNumberCount = Int
 
+enum Rank: CaseIterable {
+    case first, second, third, fourth, fifth, miss
+    
+    static func from(matchingCount: Int,  matchBonus: Bool) -> Self {
+        switch matchingCount {
+        case 3: return .fifth
+        case 4: return .fourth
+        case 5: return .third
+        case 5 where matchBonus == true: return second
+        case 6: return first
+        default: return miss
+        }
+    }
+    
+    var prize: Int {
+        switch self {
+        case .first: return 2_000_000_000
+        case .second: return 30_000_000
+        case .third: return 1_500_000
+        case .fourth: return 50_000
+        case .fifth: return 5_000
+        case .miss: return 0
+        }
+    }
+}
+
 enum WinningCount: EqualNumberCount, CaseIterable {
     case three = 3
     case four = 4
@@ -37,6 +63,7 @@ struct WinningRecord: Equatable {
     }
     
     func calculateProfitRate(inputMoney: Money) -> Double {
+        
         let profit = value.reduce(0) { (partialResult: Int, value) in
             let (winningCount, lottoCount) = value
             return partialResult + winningCount.prize * lottoCount

@@ -20,11 +20,11 @@ struct LottoParser {
     
     private static let sepearator = ", "
     
-    static func parse(_ lottoInput: String?) throws -> Lotto {
+    static func parse(_ lottoInput: String?) throws -> DefaultLotto {
         guard let lottoInput = lottoInput else { throw Error.nonNumber }
 
         let lottoNumbers = lottoInput.components(separatedBy: sepearator)
             .compactMap { Int($0) }
-        return try Lotto(numbers: lottoNumbers)
+        return try DefaultLotto(numbers: lottoNumbers)
     }
 }
