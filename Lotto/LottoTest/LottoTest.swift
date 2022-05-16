@@ -40,7 +40,7 @@ class LottoTest: XCTestCase {
         let lottoNumbers = [1, 45, 0, 46, 2, 3]
         
         // when
-        // when
+        // wheng
         XCTAssertThrowsError(try DefaultLotto(numbers: lottoNumbers), "Lotto는 1에서45이내의_숫자만_갖는다_그외의_숫자가_입력되면_error를_던진다") { error in
             XCTAssert(error is LottoError)
             XCTAssert(error.localizedDescription == LottoError.invalidLottoNumber.localizedDescription)

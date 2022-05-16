@@ -20,7 +20,7 @@ struct LottoParser {
     
     private static let sepearator = ", "
     
-    static func parse(_ lottoInput: String?) throws -> DefaultLotto {
+    static func parseLotto(_ lottoInput: String?) throws -> DefaultLotto {
         guard let lottoInput = lottoInput else { throw Error.nonNumber }
 
         let lottoNumbers = lottoInput.components(separatedBy: sepearator)
