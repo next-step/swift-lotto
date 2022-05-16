@@ -29,7 +29,6 @@ class WinningLottoTest: XCTestCase {
         let result = winningLotto.doesBonusNumberMatch(with: lotto)
         
         // then
-        XCTAssertTrue(result)
+        XCTAssertFalse(result)
     }
-
 }

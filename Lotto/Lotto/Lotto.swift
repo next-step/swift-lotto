@@ -69,7 +69,8 @@ struct WinningLotto: Lotto {
     }
     
     func doesBonusNumberMatch(with lotto: Lotto) -> Bool {
-        return false
+        let count = lotto.numbers.filter { $0 == bonusNumber }.count
+        return count > 0
     }
 }
 
