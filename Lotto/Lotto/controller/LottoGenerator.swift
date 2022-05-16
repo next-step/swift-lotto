@@ -7,9 +7,10 @@
 
 class LottoGenerator {
     
-    var randomNumber: Int {
+    private var randomNumber: Int {
         return Int.random(in: Constants.defaultLottoRange)
     }
+    
     private func autoNumbers() throws -> Lotto {
         var numbers: Set<LottoNumber> = []
 
