@@ -6,7 +6,7 @@
 //
 
 struct Match {
-    enum Rank: CaseIterable {
+    enum Rank {
         case first, second, third, fourth, fifth
         case miss
     }
