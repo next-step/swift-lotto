@@ -15,7 +15,7 @@ struct LottoBag {
     func winningRecord(with winningLotto: WinningLotto) -> WinningRecord {
         let recurdUnits = lottoList.map { lotto -> (Int, Bool) in
             let equalNumberCount = winningLotto.equalNumberCount(with: lotto)
-            let matchBonus = winningLotto.doesBonusNumberMatch(with: lotto)
+            let matchBonus = winningLotto.checkBonusNumber(in: lotto)
             return (equalNumberCount, matchBonus)
         }
         

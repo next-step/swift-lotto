@@ -14,7 +14,7 @@ class WinningLottoTest: XCTestCase {
         let lotto = try DefaultLotto(numbers: [7, 1, 2, 3, 4, 5])
         
         // when
-        let result = winningLotto.doesBonusNumberMatch(with: lotto)
+        let result = winningLotto.checkBonusNumber(in: lotto)
         
         // then
         XCTAssertTrue(result)
@@ -26,7 +26,7 @@ class WinningLottoTest: XCTestCase {
         let lotto = try DefaultLotto(numbers: [1, 2, 3, 4, 5, 6])
         
         // when
-        let result = winningLotto.doesBonusNumberMatch(with: lotto)
+        let result = winningLotto.checkBonusNumber(in: lotto)
         
         // then
         XCTAssertFalse(result)
