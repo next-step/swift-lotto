@@ -76,7 +76,7 @@ struct Lotto: CustomStringConvertible {
         return String(describing: value)
     }
     
-    init(_ value: LottoNumbers, _ rank: Match.Rank = .miss) {
+    init(_ value: LottoNumbers) {
         self.value = value
     }
     
@@ -90,7 +90,10 @@ struct WinnerLotto {
     let numbers: LottoNumbers
     let bonusNumber: LottoNumber
     
-    init(_ lotto: LottoNumbers, bonus: LottoNumber) {
+    init(_ lotto: LottoNumbers, bonus: LottoNumber) throws {
+        if lotto.contains(bonus) {
+            throw LottoError.duplicateNumber
+        }
         self.bonusNumber = bonus
         self.numbers = lotto
     }
@@ -98,6 +101,10 @@ struct WinnerLotto {
 
 struct Lottos {
     private let value: [Lotto]
+    
+    public var count: Int {
+        value.count
+    }
     
     init(_ lottos: [Lotto]) {
         self.value = lottos
@@ -118,7 +125,7 @@ struct Lottos {
     func profit(from winnerLotto: WinnerLotto) -> Double {
         let places = placeAll(from: winnerLotto)
         let amount = (Double) (places.map { $0.reward }.reduce(0, +))
-        let price = (Double) (value.count * Constants.lottoPrice)
+        let price = (Double) (count * Constants.lottoPrice)
         
         return amount / price
     }
