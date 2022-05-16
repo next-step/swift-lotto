@@ -9,13 +9,17 @@ import Foundation
 import AppKit
 
 enum LottoError: LocalizedError {
-    case autoGenerateError
+    case invalidLottoNumber
+    case digitError
+    case winnerNumberError
     case invalidInput
     case duplicateNumber
     
     var errorDescription: String {
         switch self {
-        case .autoGenerateError: return "로또 번호 자동 생성 오류"
+        case .invalidLottoNumber: return "잘못된 로또 번호"
+        case .digitError: return "로또 번호 자릿수 오류"
+        case .winnerNumberError: return  "잘못된 당첨 번호"
         case .invalidInput: return "사용자 입력 오류"
         case .duplicateNumber: return "중복 당첨 번호"
         }
@@ -31,7 +35,7 @@ struct LottoNumber: Hashable, Comparable, CustomStringConvertible {
     
     init(_ value: Int) throws {
         guard Constants.defaultLottoRange.contains(value) else {
-            throw LottoError.autoGenerateError
+            throw LottoError.invalidLottoNumber
         }
         self.wrapped = value
     }
@@ -49,8 +53,9 @@ struct LottoNumbers: CustomStringConvertible {
     }
     
     init(numbers: [LottoNumber]) throws {
-        guard Constants.defaultLottoCount == Set(numbers).count else {
-            throw LottoError.duplicateNumber
+        guard Constants.defaultLottoCount == numbers.count,
+              Constants.defaultLottoCount == Set(numbers).count else {
+            throw LottoError.digitError
         }
         self.value = numbers
     }
@@ -75,8 +80,19 @@ struct Lotto: CustomStringConvertible {
         self.value = value
     }
     
-    func getRank(winningNumbers: LottoNumbers) -> Match {
-        Match(matchingCount: value.matchCount(from: winningNumbers))
+    func match(from winnerLotto: WinnerLotto) -> Match {
+        let matchBonus = value.contains(winnerLotto.bonusNumber)
+        return Match(matchingCount: value.matchCount(from: winnerLotto.numbers), matchBonus: matchBonus)
+    }
+}
+
+struct WinnerLotto {
+    let numbers: LottoNumbers
+    let bonusNumber: LottoNumber
+    
+    init(_ lotto: LottoNumbers, bonus: LottoNumber) {
+        self.bonusNumber = bonus
+        self.numbers = lotto
     }
 }
 
@@ -87,15 +103,23 @@ struct Lottos {
         self.value = lottos
     }
     
-    func place(rank: Match.Rank, winningNumbers: LottoNumbers) -> Int {
-        return value.map {
-            $0.getRank(winningNumbers: winningNumbers).rank == rank
+    private func placeAll(from winnerLotto: WinnerLotto) -> [Match] {
+        return value.map { (lotto) in
+            lotto.match(from: winnerLotto)
+        }
+    }
+    
+    func placeCount(of rank: Match.Rank, from winnerLotto: WinnerLotto) -> Int {
+        return value.filter { (lotto) in
+            lotto.match(from: winnerLotto).rank == rank
         }.count
     }
     
-    func profit(winningNumbers: LottoNumbers) {
-        LottoReward.allCases.map { (money) in
-            money.rawValue * place(rank: .fifth, winningNumbers: winningNumbers)
-        }
+    func profit(from winnerLotto: WinnerLotto) -> Double {
+        let places = placeAll(from: winnerLotto)
+        let amount = (Double) (places.map { $0.reward }.reduce(0, +))
+        let price = (Double) (value.count * Constants.lottoPrice)
+        
+        return amount / price
     }
 }
