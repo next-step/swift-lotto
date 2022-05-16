@@ -27,4 +27,8 @@ struct LottoParser {
             .compactMap { Int($0) }
         return try DefaultLotto(numbers: lottoNumbers)
     }
+    
+    static func parseWinningLotto(lottoInput: String?, bonusNumberInput: String?) throws -> WinningLotto {
+        return try WinningLotto(numbers: [1, 2, 3, 1, 2, 3], bonusNumber: 7)
+    }
 }

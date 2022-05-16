@@ -24,7 +24,7 @@ class LottoParserTest: XCTestCase {
         XCTAssert(lotto.numbers == expectedLotto?.numbers)
     }
     
-    func test_parse_nil이_입력되면_nonNumber_error를_throw합니다() {
+    func test_parseLotto_nil이_입력되면_nonNumber_error를_throw합니다() {
         // given
         let nilInput: String? = nil
         
@@ -35,4 +35,19 @@ class LottoParserTest: XCTestCase {
             XCTAssertEqual(error.localizedDescription, LottoParser.Error.nonNumber.localizedDescription)
         }
     }
+    
+    func test_parseWinningLotto_사용자로부터_입력받은_로또숫자와_보너스번호를_갖는_WinningLotto를_반환한다() throws {
+        // given
+        let lottoInput = "1, 2, 3, 4, 5, 6"
+        let bonusNumberInput = "7"
+        
+        let winningLotto = try WinningLotto(numbers: [1, 2, 3, 4, 5, 6], bonusNumber: 7)
+        
+        // when
+        let result = try LottoParser.parseWinningLotto(lottoInput: lottoInput, bonusNumberInput: bonusNumberInput)
+        
+        // then
+        XCTAssertEqual(result.numbers, winningLotto.numbers)
+        XCTAssertEqual(result.bonusNumber, winningLotto.bonusNumber)
+     }
 }
