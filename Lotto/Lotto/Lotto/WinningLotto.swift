@@ -28,8 +28,7 @@ struct WinningLotto: Lotto {
     }
     
     func checkBonusNumber(in lotto: Lotto) -> Bool {
-        let count = lotto.numbers.filter { $0 == bonusNumber }.count
-        return count > 0
+        return lotto.contains(number: bonusNumber)
     }
 }
 
