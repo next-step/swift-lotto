@@ -21,7 +21,7 @@ class LottoGenerator {
         return Lotto(try LottoNumbers(numbers: numbers.sorted(by: <)))
     }
     
-    private func auto(n: Int) throws -> Lottos {
+    internal func auto(n: Int) throws -> Lottos {
         let lottos: [Lotto] = try (0..<n).map { _ in
             return try autoNumbers()
         }
