@@ -34,6 +34,28 @@ struct InputView {
         throw LottoError.invalidInput
     }
     
+    static func readManualNumbers(count: Int) throws -> Lottos {
+        print("\n수동으로 구매할 번호를 입력해 주세요.")
+        
+        let lottos: [Lotto] = try (0..<count).map { _ in
+            if let input: String = readLine() {
+                let splited: [String] = input.components(separatedBy: ",")
+                
+                let numbers: [LottoNumber] = try splited.map {
+                    if let number = Int($0.trimmingCharacters(in: .whitespaces)) {
+                        return try LottoNumber(number)
+                    }
+                    throw LottoError.winnerNumberError
+                }
+                let numbers2 = try LottoNumbers(numbers: numbers)
+                return Lotto(numbers2)
+            }
+            throw LottoError.invalidInput
+        }
+        
+        return Lottos(lottos)
+    }
+    
     static func readPrevWinningNumber() throws -> LottoNumbers {
         print("\n지난 주 당첨 번호를 입력해 주세요.")
         
