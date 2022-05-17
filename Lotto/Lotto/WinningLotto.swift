@@ -35,3 +35,13 @@ struct WinningLotto: Lotto {
         return count > 0
     }
 }
+
+extension WinningLotto {
+    func equalNumberCount(with lotto: Lotto) -> Int {
+        let count = lotto.numbers.filter {
+            self.numbers.contains($0)
+        }.count
+        
+        return count
+    }
+}

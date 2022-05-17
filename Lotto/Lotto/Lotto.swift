@@ -33,13 +33,3 @@ enum LottoError: Error {
         }
     }
 }
-
-extension Lotto {
-    func equalNumberCount(with lotto: Lotto) -> Int {
-        let count = lotto.numbers.filter {
-            self.numbers.contains($0)
-        }.count
-        
-        return count
-    }
-}
