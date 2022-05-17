@@ -21,6 +21,19 @@ struct InputView {
         throw LottoError.invalidInput
     }
     
+    static func readManualCount(purchaseCount: Int) throws -> Int {
+        print("\n수동으로 구매할 로또 수를 입력해 주세요.")
+        
+        if let input: String = readLine(),
+           let count: Int = Int(input) {
+            if count > purchaseCount {
+                throw LottoError.invalidManualCount
+            }
+            return count
+        }
+        throw LottoError.invalidInput
+    }
+    
     static func readPrevWinningNumber() throws -> LottoNumbers {
         print("\n지난 주 당첨 번호를 입력해 주세요.")
         
