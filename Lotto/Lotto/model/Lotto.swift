@@ -13,6 +13,7 @@ enum LottoError: LocalizedError {
     case winnerNumberError
     case invalidInput
     case duplicateNumber
+    case invalidManualCount
     
     var errorDescription: String {
         switch self {
@@ -21,6 +22,7 @@ enum LottoError: LocalizedError {
         case .winnerNumberError: return  "잘못된 당첨 번호"
         case .invalidInput: return "사용자 입력 오류"
         case .duplicateNumber: return "중복 당첨 번호"
+        case .invalidManualCount: return "초과 수동 구매"
         }
     }
 }
