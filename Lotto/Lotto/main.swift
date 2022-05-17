@@ -7,10 +7,14 @@
 import Foundation
 
 do {
-    let count = try InputView.readPurchasePrice()
+    let purchaseCount = try InputView.readPurchasePrice()
+    let manualCount = try InputView.readManualCount(purchaseCount: purchaseCount)
+    let autoCount = purchaseCount - manualCount
+    let manualLottos = try InputView.readManualNumbers(count: manualCount)
 
     let generator = LottoGenerator()
-    let lottos = try generator.auto(n: count)
+    let lottos = try generator.purchase(manualLottos: manualLottos, autoCount: autoCount)
+    ResultView.printLottos(of: lottos)
     
     let winningNumbers = try InputView.readPrevWinningNumber()
     let bonusNumber = try InputView.readBonusNumber(winningNumbers: winningNumbers)
