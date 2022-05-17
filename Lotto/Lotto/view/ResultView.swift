@@ -6,12 +6,16 @@
 //
 
 struct ResultView {
-    static func printPurchaseMessage(_ n: Int) {
-        print("\n\(n)개를 구매했습니다.")
+    static func printPurchaseMessage(manual: Int, auto: Int) {
+        print("\n수동으로 \(manual)장, 자동으로 \(auto)장을 구매했습니다")
     }
     
     static func printLottoNumbers(of lotto: Lotto) {
         print(lotto)
+    }
+    
+    static func printLottos(of lottos: Lottos) {
+        print(lottos)
     }
     
     static func printResult(of lottos: Lottos, winningLotto: WinnerLotto) {
