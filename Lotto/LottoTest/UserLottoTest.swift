@@ -45,4 +45,15 @@ class UserLottoTest: XCTestCase {
         // then
         XCTAssertTrue(result)
     }
+    
+    func test_contains_입력된_숫자를_로또가_가지고_있지않으면_false를_반환한다() throws {
+        // given
+        let lotto = try UserLotto(numbers: [1, 2, 3, 4, 5, 6])
+        
+        // when
+        let result = lotto.contains(number: 7)
+        
+        // then
+        XCTAssertFalse(result)
+    }
 }
