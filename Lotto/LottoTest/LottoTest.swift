@@ -14,5 +14,16 @@ class LottoTest: XCTestCase {
         sut.buyLotto(for: 10000)
         XCTAssertEqual(sut.lottos.count, 10)
     }
+    
+    func test_6자리_로또_번호_생성() {
+        let sut = Lotto.generate(by: LottoNumbers([
+            LottoNumber(1),
+            LottoNumber(2),
+            LottoNumber(3),
+            LottoNumber(4),
+            LottoNumber(5),
+            LottoNumber(6)
+        ]))
+    }
 
 }

@@ -21,5 +21,14 @@ class LottoCustomer {
 }
 
 struct Lotto {
+    var numbers = [Int]()
     
+    static func generate(by lottoNumbers: LottoNumbers) -> Lotto {
+        var lotto = Lotto()
+        for _ in 0..<6 {
+            lotto.numbers.append(lottoNumbers.pop())
+        }
+        return lotto
+    }
 }
+
