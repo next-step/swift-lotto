@@ -23,7 +23,7 @@ struct UserLotto: Lotto {
     }
     
     func contains(number: Int) -> Bool {
-        return false
+        numbers.contains(number)
     }
 }
 
