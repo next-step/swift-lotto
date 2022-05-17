@@ -127,6 +127,16 @@
 			path = Stub;
 			sourceTree = "<group>";
 		};
+		2EAB303C2833D4BA00B80DB0 /* Lotto */ = {
+			isa = PBXGroup;
+			children = (
+				2EAB300A2830C24D00B80DB0 /* UserLottoFactory.swift */,
+				2EAB30332833C24500B80DB0 /* UserLotto.swift */,
+				2EAB30352833C26D00B80DB0 /* WinningLotto.swift */,
+			);
+			path = Lotto;
+			sourceTree = "<group>";
+		};
 		2ED9C4152827BCAA00BC60E7 /* LottoTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +184,7 @@
 		C7905FC427311CC6004C3FCC /* Lotto */ = {
 			isa = PBXGroup;
 			children = (
+				2EAB303C2833D4BA00B80DB0 /* Lotto */,
 				2EAB30092830C09D00B80DB0 /* Util */,
 				2EE19BDA282A8966003D4916 /* View */,
 				C7905FC527311CC6004C3FCC /* main.swift */,
@@ -186,9 +197,6 @@
 				2EE19BE1282A967D003D4916 /* MoneyParser.swift */,
 				2EE19BE6282A9FCF003D4916 /* LottoSeller.swift */,
 				2EB16C58282AB36C003EBF4C /* LottoParser.swift */,
-				2EAB300A2830C24D00B80DB0 /* UserLottoFactory.swift */,
-				2EAB30332833C24500B80DB0 /* UserLotto.swift */,
-				2EAB30352833C26D00B80DB0 /* WinningLotto.swift */,
 			);
 			path = Lotto;
 			sourceTree = "<group>";
