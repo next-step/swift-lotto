@@ -7,15 +7,6 @@
 
 import Foundation
 
-struct LottoNumberValidator {
-    static func validate<LottoNumbers: Collection>(numbers: LottoNumbers) -> Bool where LottoNumbers.Element == Int {
-        
-        return numbers.reduce(true) { partialResult, number in
-            partialResult && LottoConstant.numberRange.contains(number)
-        }
-    }
-}
-
 struct UserLotto: Lotto {
     let numbers: Set<Int>
     
@@ -25,11 +16,9 @@ struct UserLotto: Lotto {
         guard setNumbers.count == LottoConstant.numberCount else {
             throw LottoError.invalidNumberCount(numbers.count)
         }
-       
-        if LottoNumberValidator.validate(numbers: numbers) == false {
-            throw LottoError.invalidLottoNumber
-        }
-    
+
+        if numbers.canBeLottoNumbers() == false { throw LottoError.invalidLottoNumber }
+
         self.numbers = setNumbers
     }
 }

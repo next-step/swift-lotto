@@ -18,7 +18,7 @@ struct WinningLotto: Lotto {
             throw LottoError.invalidNumberCount(numbers.count)
         }
         
-        if LottoNumberValidator.validate(numbers: numbers) == false {
+        if numbers.canBeLottoNumbers() == false {
             throw LottoError.invalidLottoNumber
         }
     
