@@ -100,8 +100,15 @@ struct WinnerLotto {
     }
 }
 
-struct Lottos {
+struct Lottos: CustomStringConvertible {
+    
     private let value: [Lotto]
+    
+    var description: String {
+        return value.map { (lotto) in
+            String(describing: lotto)
+        }.joined(separator: "\n")
+    }
     
     public var count: Int {
         value.count
@@ -109,6 +116,10 @@ struct Lottos {
     
     init(_ lottos: [Lotto]) {
         self.value = lottos
+    }
+    
+    static func + (lhs: Lottos, rhs: Lottos) -> Lottos {
+        Lottos(lhs.value + rhs.value)
     }
     
     private func placeAll(from winnerLotto: WinnerLotto) -> [Match] {
