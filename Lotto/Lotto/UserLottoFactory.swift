@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LottoFactory {
+struct UserLottoFactory {
     let lottoNumberGenerator: LottoNumberGenerator
     
     func make() throws -> UserLotto {

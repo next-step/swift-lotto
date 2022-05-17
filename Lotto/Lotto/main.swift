@@ -11,7 +11,7 @@ do {
     let money = try MoneyParser.parse(moneyInput)
     
     let lottoNumberGenerater = RandomLottoNumberGenerator()
-    let lottoFactory = LottoFactory(lottoNumberGenerator: lottoNumberGenerater)
+    let lottoFactory = UserLottoFactory(lottoNumberGenerator: lottoNumberGenerater)
     let lottoSeller = LottoSeller(lottoFactory: lottoFactory)
     
     let lottoTicket = try lottoSeller.sellLotto(for: money)

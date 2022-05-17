@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		2E70F424282C0480007E01B8 /* LottoParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB16C58282AB36C003EBF4C /* LottoParser.swift */; };
 		2E70F426282C0ABD007E01B8 /* WinningRecordFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E70F425282C0ABD007E01B8 /* WinningRecordFormatter.swift */; };
-		2EAB300B2830C24D00B80DB0 /* LottoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB300A2830C24D00B80DB0 /* LottoFactory.swift */; };
-		2EAB300C2830C90C00B80DB0 /* LottoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB300A2830C24D00B80DB0 /* LottoFactory.swift */; };
+		2EAB300B2830C24D00B80DB0 /* UserLottoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB300A2830C24D00B80DB0 /* UserLottoFactory.swift */; };
+		2EAB300C2830C90C00B80DB0 /* UserLottoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB300A2830C24D00B80DB0 /* UserLottoFactory.swift */; };
 		2EAB30102830EF8D00B80DB0 /* LottoBagFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB300F2830EF8D00B80DB0 /* LottoBagFactoryTest.swift */; };
 		2EAB30132830EFFA00B80DB0 /* StubLottoNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB30122830EFFA00B80DB0 /* StubLottoNumberGenerator.swift */; };
 		2EAB30142830F15500B80DB0 /* LottoNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C4222827C13700BC60E7 /* LottoNumberGenerator.swift */; };
@@ -62,7 +62,7 @@
 
 /* Begin PBXFileReference section */
 		2E70F425282C0ABD007E01B8 /* WinningRecordFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningRecordFormatter.swift; sourceTree = "<group>"; };
-		2EAB300A2830C24D00B80DB0 /* LottoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoFactory.swift; sourceTree = "<group>"; };
+		2EAB300A2830C24D00B80DB0 /* UserLottoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLottoFactory.swift; sourceTree = "<group>"; };
 		2EAB300F2830EF8D00B80DB0 /* LottoBagFactoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoBagFactoryTest.swift; sourceTree = "<group>"; };
 		2EAB30122830EFFA00B80DB0 /* StubLottoNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubLottoNumberGenerator.swift; sourceTree = "<group>"; };
 		2EAB30172830F1FC00B80DB0 /* LottoBagTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoBagTest.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 				2EE19BE1282A967D003D4916 /* MoneyParser.swift */,
 				2EE19BE6282A9FCF003D4916 /* LottoSeller.swift */,
 				2EB16C58282AB36C003EBF4C /* LottoParser.swift */,
-				2EAB300A2830C24D00B80DB0 /* LottoFactory.swift */,
+				2EAB300A2830C24D00B80DB0 /* UserLottoFactory.swift */,
 				2EAB30332833C24500B80DB0 /* UserLotto.swift */,
 				2EAB30352833C26D00B80DB0 /* WinningLotto.swift */,
 			);
@@ -295,7 +295,7 @@
 				2EAB30142830F15500B80DB0 /* LottoNumberGenerator.swift in Sources */,
 				2EAB30382833C28D00B80DB0 /* UserLotto.swift in Sources */,
 				2EAB30132830EFFA00B80DB0 /* StubLottoNumberGenerator.swift in Sources */,
-				2EAB300C2830C90C00B80DB0 /* LottoFactory.swift in Sources */,
+				2EAB300C2830C90C00B80DB0 /* UserLottoFactory.swift in Sources */,
 				2E70F424282C0480007E01B8 /* LottoParser.swift in Sources */,
 				2EE19BE4282A9723003D4916 /* MoneyParserTest.swift in Sources */,
 				2EAB301A2830F48C00B80DB0 /* LottoSellerTest.swift in Sources */,
@@ -318,7 +318,7 @@
 				2EE19BE7282A9FCF003D4916 /* LottoSeller.swift in Sources */,
 				2ED9C4352827D00C00BC60E7 /* LottoBag.swift in Sources */,
 				2E70F426282C0ABD007E01B8 /* WinningRecordFormatter.swift in Sources */,
-				2EAB300B2830C24D00B80DB0 /* LottoFactory.swift in Sources */,
+				2EAB300B2830C24D00B80DB0 /* UserLottoFactory.swift in Sources */,
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
 				2EE19BE0282A8C8E003D4916 /* OutputView.swift in Sources */,
 				2EB16C57282AB09A003EBF4C /* LottoTicketFormatter.swift in Sources */,

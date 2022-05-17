@@ -31,4 +31,16 @@ class WinningLottoTest: XCTestCase {
         // then
         XCTAssertFalse(result)
     }
+    
+    func test_equalNumberCount_입력받은_Lotto와_일치하는_번호개수를_반환한다() {
+        // given
+        let lotto = try! UserLotto(numbers: [2, 3, 4, 5, 6, 7])
+        let winLotto = try! WinningLotto(numbers: [1, 2, 3, 4, 5, 6], bonusNumber: 7)
+
+        // when
+        let equalNumberCount = winLotto.equalNumberCount(with:lotto)
+
+        // then
+        XCTAssertEqual(equalNumberCount, 5)
+    }
 }
