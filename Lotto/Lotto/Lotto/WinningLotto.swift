@@ -18,10 +18,7 @@ struct WinningLotto: Lotto {
             throw LottoError.invalidNumberCount(numbers.count)
         }
         
-        let hasValidNumbers = numbers.reduce(true) { partialResult, number in
-            partialResult && LottoConstant.numberRange.contains(number)
-        }
-        if hasValidNumbers == false {
+        if LottoNumberValidator.validate(numbers: numbers) == false {
             throw LottoError.invalidLottoNumber
         }
     
