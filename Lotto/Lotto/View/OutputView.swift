@@ -23,7 +23,7 @@ struct OutputView {
     }
     
     static func print(profitRate: Double) {
-        let profiteRateView = String(format: "총 수익률은 %2.f입니다.", profitRate)
+        let profiteRateView = String(format: "총 수익률은 %.2f입니다.", profitRate)
         Swift.print(profiteRateView)
     }
     
