@@ -9,7 +9,7 @@ import XCTest
 @testable import Lotto
 
 
-class LottoTest: XCTestCase {
+class UserLottoTest: XCTestCase {
 
     func test_init_Lotto를_구성하는_번호개수가_6개가_아니면_에러를_발생시킨다() {
         // given
@@ -33,5 +33,16 @@ class LottoTest: XCTestCase {
             XCTAssert(error is LottoError)
             XCTAssert(error.localizedDescription == LottoError.invalidLottoNumber.localizedDescription)
         }
+    }
+    
+    func test_contains_입력된_숫자를_로또가_가지고_있으면_true를_반환한다() throws {
+        // given
+        let lotto = try UserLotto(numbers: [1, 2, 3, 4, 5, 6])
+        
+        // when
+        let result = lotto.contains(number: 6)
+        
+        // then
+        XCTAssertTrue(result)
     }
 }
