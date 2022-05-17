@@ -32,3 +32,23 @@ struct Lotto {
     }
 }
 
+class LottoNumbers {
+    private var numbers: [LottoNumber]
+    
+    init(_ numbers: [LottoNumber]) {
+        self.numbers = numbers
+    }
+    
+    func pop() -> Int {
+        return numbers.removeFirst().value
+    }
+}
+
+struct LottoNumber {
+    let value: Int
+    
+    init?(_ value: Int) {
+        guard 1...45 ~= value else { return nil }
+        self.value = value
+    }
+}

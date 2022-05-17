@@ -23,7 +23,9 @@ class LottoTest: XCTestCase {
             LottoNumber(4),
             LottoNumber(5),
             LottoNumber(6)
-        ]))
+        ].compactMap({ $0 })))
+        
+        XCTAssertEqual(sut.numbers, [1, 2, 3, 4, 5, 6])
     }
 
 }
