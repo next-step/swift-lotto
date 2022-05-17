@@ -8,7 +8,7 @@
 import Foundation
 
 struct LottoBag {
-    let lottoList: [DefaultLotto]
+    let lottoList: [UserLotto]
     
     var lottoCount: Int { return lottoList.count }
     

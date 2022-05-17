@@ -74,7 +74,7 @@ struct WinningLotto: Lotto {
     }
 }
 
-struct DefaultLotto: Lotto {
+struct UserLotto: Lotto {
     let numbers: Set<Int>
     
     init<LottoNumbers: Collection>(numbers: LottoNumbers) throws where LottoNumbers.Element == Int  {

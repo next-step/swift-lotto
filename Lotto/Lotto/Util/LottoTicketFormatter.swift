@@ -16,7 +16,7 @@ struct LottoTicketFormatter {
         }
     }
     
-    private static func format(_ lotto: DefaultLotto) -> String {
+    private static func format(_ lotto: UserLotto) -> String {
         return lotto.numbers.sorted()
             .map { String($0) }
             .joined(separator: lottoNumberSeparator)

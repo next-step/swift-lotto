@@ -12,7 +12,7 @@ class LottoParserTest: XCTestCase {
         // given
         let lottoInput = "1, 2, 3, 4, 5, 6"
         
-        let expectedLotto = try? DefaultLotto(numbers: [1, 2, 3, 4, 5, 6])
+        let expectedLotto = try? UserLotto(numbers: [1, 2, 3, 4, 5, 6])
         
         // when
         guard let lotto = try? LottoParser.parseLotto(lottoInput) else {

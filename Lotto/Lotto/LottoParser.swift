@@ -20,9 +20,9 @@ struct LottoParser {
     
     private static let sepearator = ", "
     
-    static func parseLotto(_ lottoNumberInput: String?) throws -> DefaultLotto {
+    static func parseLotto(_ lottoNumberInput: String?) throws -> UserLotto {
         let lottoNumbers = try parseLottoNumbers(lottoNumberInput)
-        return try DefaultLotto(numbers: lottoNumbers)
+        return try UserLotto(numbers: lottoNumbers)
     }
     
     static func parseWinningLotto(lottoNumberInput: String?, bonusNumberInput: String?) throws -> WinningLotto {
