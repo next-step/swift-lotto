@@ -9,7 +9,10 @@ import Foundation
 
 struct LottoNumberValidator {
     static func validate<LottoNumbers: Collection>(numbers: LottoNumbers) -> Bool where LottoNumbers.Element == Int {
-        return false
+        
+        return numbers.reduce(true) { partialResult, number in
+            partialResult && LottoConstant.numberRange.contains(number)
+        }
     }
 }
 
