@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct LottoNumberValidator {
+    static func validate<LottoNumbers: Collection>(numbers: LottoNumbers) -> Bool where LottoNumbers.Element == Int {
+        return false
+    }
+}
+
 struct UserLotto: Lotto {
     let numbers: Set<Int>
     
