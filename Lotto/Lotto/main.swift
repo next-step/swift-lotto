@@ -14,17 +14,17 @@ do {
     let lottoFactory = UserLottoFactory(lottoNumberGenerator: lottoNumberGenerater)
     let lottoSeller = LottoSeller(lottoFactory: lottoFactory)
     
-    let lottoTicket = try lottoSeller.sellLotto(for: money)
-    OutputView.print(lottoCount: lottoTicket.lottoCount)
+    let lottoBag = try lottoSeller.sellLotto(for: money)
+    OutputView.print(lottoCount: lottoBag.lottoCount)
     
-    let formattedLottoTicket = LottoTicketFormatter.format(lottoTicket)
+    let formattedLottoTicket = LottoTicketFormatter.format(lottoBag)
     OutputView.print(lottoTicket: formattedLottoTicket)
     
     let winningLottoInput = InputView.readWinningLotto()
     let bonusNumberInput = InputView.readBonusNumber()
     let winningLotto = try LottoParser.parseWinningLotto(lottoNumberInput: winningLottoInput, bonusNumberInput: bonusNumberInput)
     
-    let winningRecord = lottoTicket.winningRecord(with: winningLotto)
+    let winningRecord = lottoBag.winningRecord(with: winningLotto)
     let formattedRecord = WinningRecordFormatter.format(winningRecord)
     
     OutputView.print(winningRecord: formattedRecord)
