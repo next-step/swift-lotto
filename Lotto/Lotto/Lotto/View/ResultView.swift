@@ -12,7 +12,7 @@ struct ResultView {
     private enum ResultText: UserInformable {
         case purchaseCount(value: Int)
         case winningStatisticsHeader
-        case winning(matchCountForWinning: Int, prizeMoneyForWinning: Int, winningCount: Int)
+        case winning(description: String)
         case earningsRate(value: Double)
         
         var guideDescription: String {
@@ -21,8 +21,8 @@ struct ResultView {
                 return "\(purchaseCount) 개를 구매했습니다."
             case .winningStatisticsHeader:
                 return "당첨 통계\n------"
-            case let .winning(matchCountForWinning, prizeMoneyForWinning, winningCount):
-                return "\(matchCountForWinning)개 일치 (\(prizeMoneyForWinning)원)- \(winningCount)개"
+            case let .winning(description):
+                return description
             case let .earningsRate(earningsRate):
                 let formattedEarningsRate = String(format: "%.2f", earningsRate)
                 return "총 수익률은 \(formattedEarningsRate) 입니다."
@@ -49,12 +49,14 @@ struct ResultView {
     }
     
     private func printCountForEachWinning(with lottoResult: LottoResult) {
-        let matchCountForWinningRange: ClosedRange<Int> = (3...6)
-        matchCountForWinningRange.forEach { matchCountForWinning in
-            let lottoRank = LottoRank.rank(matchNumberCount: matchCountForWinning)
-            userGuider.printGuide(for: ResultText.winning(matchCountForWinning: matchCountForWinning,
-                                                          prizeMoneyForWinning: lottoRank.prizeMoney,
-                                                          winningCount: lottoResult.winningCount(for: lottoRank)))
+        LottoRank.allCases.map { lottoRank -> String in
+            let matchNumberCount: Int = lottoRank.matchNumberCount
+            let prizeMoney: Int = lottoRank.prizeMoney
+            let winningRankCount: Int = lottoResult.winningCount(for: lottoRank)
+            let bonusMatchDescription: String = lottoRank == .second ? ", 보너스 번호 일치" : ""
+            return "\(matchNumberCount)개 일치\(bonusMatchDescription)(\(prizeMoney)원)- \(winningRankCount)개"
+        }.forEach { description in
+            userGuider.printGuide(for: ResultText.winning(description: description))
         }
     }
 }

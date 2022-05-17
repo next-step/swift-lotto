@@ -8,36 +8,42 @@ import Foundation
 
 do {
     let inputView = InputView()
-    let purchaseMoney: Int = try inputView.recievePurchaseMoney()
+    let purchaseMoney: Int = try inputView.receivePurchaseMoney()
 
     let resultView = ResultView()
     let purchaseCount = purchaseMoney / Lotto.Constants.price
     resultView.printPurchaseCount(with: purchaseCount)
 
-    let lottos: [Lotto] = buyLottos(for: purchaseCount)
+    let lottos: [Lotto] = try buyLottos(for: purchaseCount)
     resultView.printLottos(for: lottos)
     
-    let winningNumbers: [Int] = try inputView.recieveWinningNumbers()
-    let lottoResult: LottoResult = try lottoResult(lottos: lottos, winningNumbers: winningNumbers)
+    let winningLotto: Lotto = try inputView.receiveWinningLotto()
+    let bonusNumber: Int = try inputView.receiveBonusNumber(in: winningLotto)
+    
+    let lottoResult: LottoResult = try lottoResult(lottos: lottos,
+                                                   winningLotto: winningLotto,
+                                                   bonusNumber: bonusNumber)
     resultView.printWinningStatistics(with: lottoResult)
-} catch let error as UserInformable {
+} catch {
     let errorView = ErrorView()
-    errorView.guideInputError(error: error)
+    errorView.printError(for: error)
 }
 
-private func buyLottos(for purchaseCount: Int) -> [Lotto] {
-    let lottoNumbersGenerator = LottoNumbersGenerator()
-    let lottos: [Lotto] = (1...purchaseCount).map { _ in
-        let lottoNumbers = lottoNumbersGenerator.generate()
-        return Lotto(numbers: lottoNumbers)
-    }
+private func buyLottos(for purchaseCount: Int) throws -> [Lotto] {
+    let lottoGenerator = LottoGenerator()
+    let lottos: [Lotto] = try (1...purchaseCount)
+        .map { _ in
+            try lottoGenerator.generate()
+        }
     return lottos
 }
 
 private func lottoResult(lottos: [Lotto],
-                         winningNumbers: [Int]) throws -> LottoResult {
+                         winningLotto: Lotto,
+                         bonusNumber: Int) throws -> LottoResult {
     
-    let lottoRankChecker = try LottoRankChecker(winningNumbers: winningNumbers)
+    let lottoRankChecker = try LottoRankChecker(winningLotto: winningLotto,
+                                                bonusNumber: bonusNumber)
     let lottoResult = LottoResult(lottos: lottos,
                                   lottoRankChecker: lottoRankChecker)
     return lottoResult

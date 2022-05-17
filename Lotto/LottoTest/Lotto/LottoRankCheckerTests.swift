@@ -13,7 +13,9 @@ class LottoRankCheckerTests: XCTestCase {
     
     override func setUpWithError() throws {
         let winningNumbers = [1,2,3,4,5,6]
-        sut = try LottoRankChecker(winningNumbers: winningNumbers)
+        let winningLotto = try Lotto(numbers: winningNumbers)
+        let bonusNumber = 45
+        sut = try LottoRankChecker(winningLotto: winningLotto, bonusNumber: bonusNumber)
     }
     
     override func tearDownWithError() throws {
@@ -22,154 +24,127 @@ class LottoRankCheckerTests: XCTestCase {
     
     // MARK: - init
     
-    func test_lottoRankCheckerInit_whenWinningNumbersCountIsUnderSix_throwError() {
+    func test_lottoRankCheckerInit() throws {
         //given
-        let winningNumbers = [1,2,3,4,5]
+        let winningNumbers = [1,2,3,4,5,6]
+        let winningLotto = try Lotto(numbers: winningNumbers)
+        let bonusNumber = 45
         
         // when
         // then
-        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers))
+        XCTAssertNoThrow(try LottoRankChecker(winningLotto: winningLotto, bonusNumber: bonusNumber))
     }
     
-    func test_lottoRankCheckerInit_whenWinningNumbersCountIsOverSix_throwError() {
+    func test_lottoRankCheckerInit_whenbonusNumbersIsDuplicated_throwError() throws {
         //given
-        let winningNumbers = [1,2,3,4,5,6,7]
+        let winningNumbers = [1,2,3,4,5,6]
+        let winningLotto = try Lotto(numbers: winningNumbers)
+        let bonusNumber = 1
         
-        // when
         // then
-        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers))
+        XCTAssertThrowsError(try LottoRankChecker(winningLotto: winningLotto, bonusNumber: bonusNumber))
     }
     
-    func test_lottoRankCheckerInit_whenWinningNumbersContainOverRanged_throwError() throws {
+    func test_lottoRankCheckerInit_whenbonusNumbersIsOverRanged_throwError() throws {
         //given
-        let winningNumbers = [1,2,3,4,5,46]
-        
-        // when
-        // then
-        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers))
-    }
-    
-    func test_lottoRankCheckerInit_whenWinningNumbersContainUnderRanged_throwError() throws {
-        //given
-        let winningNumbers = [0,1,2,3,4,5]
-        
-        // when
-        // then
-        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers))
-    }
-    
-    func test_lottoRankCheckerInit_whenWinningNumbersAreDuplicated_throwError() throws {
-        //given
-        let winningNumbers = [1,2,3,4,5,5]
+        let winningNumbers = [1,2,3,4,5,6]
+        let winningLotto = try Lotto(numbers: winningNumbers)
+        let bonusNumber = 47
         
         // then
-        XCTAssertThrowsError(try LottoRankChecker(winningNumbers: winningNumbers))
+        XCTAssertThrowsError(try LottoRankChecker(winningLotto: winningLotto, bonusNumber: bonusNumber))
     }
     
     // MARK: - lottoRank
     
     func test_lottoRank_sixNumberAreEqualToTheWinningNumbers_eqaulToFirst() throws {
         //given
-        
         let candidateNumbers = [1,2,3,4,5,6]
+        let candidateLotto = try Lotto(numbers:candidateNumbers)
         
         // when
-        let lottoRank: LottoRank = try sut.rank(of: candidateNumbers)
+        let lottoRank: LottoRank = sut.rank(of: candidateLotto)
         
         // then
         let expectation: LottoRank = LottoRank.first
         XCTAssertEqual(lottoRank, expectation)
     }
     
-    func test_lottoRank_fiveNumberAreEqualToTheWinningNumbers_eqaulToSecond() throws {
+    func test_lottoRank_fiveNumberAreEqualToTheWinningNumbersAndMatchBonusNumber_eqaulToSecond() throws {
         //given
-        let candidateNumbers = [1,2,3,4,5,7]
+        let candidateNumbers = [1,2,3,4,5,45]
+        let candidateLotto = try Lotto(numbers:candidateNumbers)
         
         // when
-        let lottoRank: LottoRank = try sut.rank(of: candidateNumbers)
+        let lottoRank: LottoRank = sut.rank(of: candidateLotto)
         
         // then
         let expectation: LottoRank = LottoRank.second
         XCTAssertEqual(lottoRank, expectation)
     }
     
-    func test_lottoRank_fourNumberAreEqualToTheWinningNumbers_eqaulToThird() throws {
+    func test_lottoRank_fiveNumberAreEqualToTheWinningNumbersAndNoMatchbonusNumber_eqaulToThird() throws {
         //given
-        let candidateNumbers = [1,2,3,4,7,8]
+        let candidateNumbers = [1,2,3,4,5,7]
+        let candidateLotto = try Lotto(numbers:candidateNumbers)
         
         // when
-        let lottoRank: LottoRank = try sut.rank(of: candidateNumbers)
+        let lottoRank: LottoRank = sut.rank(of: candidateLotto)
         
         // then
         let expectation: LottoRank = LottoRank.third
         XCTAssertEqual(lottoRank, expectation)
     }
     
-    func test_lottoRank_threeNumberAreEqualToTheWinningNumbers_eqaulToForth() throws {
+    func test_lottoRank_fourNumberAreEqualToTheWinningNumbersAndMatchBonusNumber_eqaulToForth() throws {
         //given
-        let candidateNumbers = [1,2,3,7,8,9]
+        let candidateNumbers = [1,2,3,4,7,45]
+        let candidateLotto = try Lotto(numbers:candidateNumbers)
         
         // when
-        let lottoRank: LottoRank = try sut.rank(of: candidateNumbers)
+        let lottoRank: LottoRank = sut.rank(of: candidateLotto)
         
         // then
         let expectation: LottoRank = LottoRank.forth
         XCTAssertEqual(lottoRank, expectation)
     }
     
+    func test_lottoRank_fourNumberAreEqualToTheWinningNumbersAndNoMatchBonusNumber_eqaulToForth() throws {
+        //given
+        let candidateNumbers = [1,2,3,4,7,8]
+        let candidateLotto = try Lotto(numbers:candidateNumbers)
+        
+        // when
+        let lottoRank: LottoRank = sut.rank(of: candidateLotto)
+        
+        // then
+        let expectation: LottoRank = LottoRank.forth
+        XCTAssertEqual(lottoRank, expectation)
+    }
+    
+    func test_lottoRank_threeNumberAreEqualToTheWinningNumbers_eqaulToFifth() throws {
+        //given
+        let candidateNumbers = [1,2,3,7,8,9]
+        let candidateLotto = try Lotto(numbers:candidateNumbers)
+        
+        // when
+        let lottoRank: LottoRank = sut.rank(of: candidateLotto)
+        
+        // then
+        let expectation: LottoRank = LottoRank.fifth
+        XCTAssertEqual(lottoRank, expectation)
+    }
+    
     func test_lottoRank_underThreeNumberAreEqualToTheWinningNumbers_eqaulToNone() throws {
         //given
         let candidateNumbers = [1,2,7,8,9,10]
+        let candidateLotto = try Lotto(numbers:candidateNumbers)
         
         // when
-        let lottoRank: LottoRank = try sut.rank(of: candidateNumbers)
+        let lottoRank: LottoRank = sut.rank(of: candidateLotto)
         
         // then
         let expectation: LottoRank = LottoRank.none
         XCTAssertEqual(lottoRank, expectation)
-    }
-    
-    func test_lottoRank_whenNumbersContainOverRanged_throwError() throws {
-        //given
-        let candidateNumbers = [1,2,3,4,5,46]
-        
-        // when
-        // then
-        XCTAssertThrowsError(try sut.rank(of: candidateNumbers))
-    }
-    
-    func test_lottoRank_whenNumbersContainUnderRanged_throwError() throws {
-        //given
-        let candidateNumbers = [0,1,2,3,4,5]
-        
-        // when
-        // then
-        XCTAssertThrowsError(try sut.rank(of: candidateNumbers))
-    }
-    
-    func test_lottoRank_whenNumbersCountIsUnderSix_throwError() throws {
-        //given
-        let candidateNumbers = [1,2,3,4,5]
-        
-        // when
-        // then
-        XCTAssertThrowsError(try sut.rank(of: candidateNumbers))
-    }
-    
-    func test_lottoRank_whenNumbersCountIsOverSix_throwError() throws {
-        //given
-        let candidateNumbers = [1,2,3,4,5,6,7]
-        
-        // when
-        // then
-        XCTAssertThrowsError(try sut.rank(of: candidateNumbers))
-    }
-    
-    func test_lottoRank_whenNumbersAreDuplicated_throwError() throws {
-        //given
-        let candidateNumbers = [1,2,3,4,5,5]
-        
-        // then
-        XCTAssertThrowsError(try sut.rank(of: candidateNumbers))
     }
 }

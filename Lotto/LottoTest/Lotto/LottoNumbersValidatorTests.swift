@@ -19,6 +19,8 @@ class LottoNumbersValidatorTests: XCTestCase {
         sut = nil
     }
     
+    // MARK: - validate
+    
     func test_validate() throws {
         //given
         let input = [1,2,3,4,5,6]
@@ -88,6 +90,7 @@ class LottoNumbersValidatorTests: XCTestCase {
     }
     
     // MARK: - guideDescription
+    
     func test_guideDescription_whenNumbersCountIsUnderSix() {
         //given
         let numbers = [1,2,3,4,5]
@@ -95,7 +98,7 @@ class LottoNumbersValidatorTests: XCTestCase {
         // when
         // then
         XCTAssertThrowsError(try sut.validate(of: numbers)) { error in
-            let result = (error as? LottoNumbersValidator.LottoNumbersValidatorError)?.guideDescription
+            let result = (error as? LottoNumbersValidator.LottoNumbersValidatorError)?.localizedDescription
             let expectation = "로또 번호 개수가 6개가 아닙니다"
             XCTAssertEqual(result, expectation)
         }
@@ -108,7 +111,7 @@ class LottoNumbersValidatorTests: XCTestCase {
         // when
         // then
         XCTAssertThrowsError(try sut.validate(of: numbers)) { error in
-            let result = (error as? LottoNumbersValidator.LottoNumbersValidatorError)?.guideDescription
+            let result = (error as? LottoNumbersValidator.LottoNumbersValidatorError)?.localizedDescription
             let expectation = "1과 45 사이에 포함되지 않는 번호가 있습니다"
             XCTAssertEqual(result, expectation)
         }
@@ -121,7 +124,7 @@ class LottoNumbersValidatorTests: XCTestCase {
         // when
         // then
         XCTAssertThrowsError(try sut.validate(of: numbers)) { error in
-            let result = (error as? LottoNumbersValidator.LottoNumbersValidatorError)?.guideDescription
+            let result = (error as? LottoNumbersValidator.LottoNumbersValidatorError)?.localizedDescription
             let expectation = "중복되는 번호가 있습니다"
             XCTAssertEqual(result, expectation)
         }

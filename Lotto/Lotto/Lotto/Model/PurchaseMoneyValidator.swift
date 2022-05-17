@@ -9,11 +9,11 @@ import Foundation
 
 struct PurchaseMoneyValidator {
     
-    enum PurchaseMoneyValidatorError: Error, UserInformable {
+    enum PurchaseMoneyValidatorError: LocalizedError {
         case underMinimumMoney
         case notUnitOfLotto
         
-        var guideDescription: String {
+        var errorDescription: String? {
             switch self {
             case .underMinimumMoney:
                 return "로또를 구입하기 위해서는 1000원 이상이 필요합니다"

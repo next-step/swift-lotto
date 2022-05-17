@@ -19,31 +19,20 @@ class UserInputConverterTests: XCTestCase {
         sut = nil
     }
     
-    // MARK: - convertToMoney
+    // MARK: - convertToInt
     
-    func test_convertToMoney_whenInputIsIntString_equalToOriginalInputAsInt() throws {
+    func test_convertToInt_whenInputIsIntString_equalToOriginalInputAsInt() throws {
         //given
         let input = "1000"
         
         // when
-        let result = try sut.convertToMoney(from: input)
+        let result = try sut.convertToInt(from: input)
         
         // then
         let expectation = 1000
         XCTAssertEqual(result, expectation)
     }
-    
-    func test_validPurchaseMoney_whenInputIsNotIntString_throwNotInt() throws {
-        //given
-        let input = "#$"
-        
-        // when
-        // then
-        let expectation = UserInputConverter.UserInputConverterError.PurchaseMoney.notInt
-        XCTAssertThrowsError(try sut.convertToMoney(from: input)) { error in
-            XCTAssertEqual(error as? UserInputConverter.UserInputConverterError.PurchaseMoney, expectation)
-        }
-    }
+
     
     // MARK: - convertToWinningNumbers
     
@@ -94,29 +83,16 @@ class UserInputConverterTests: XCTestCase {
         }
     }
     
-    // MARK: - guideDescription
+    // MARK: - errorDescription
     
-    func test_guideDescription_whenConvertToMoneyInputIsNotIntString() throws {
-        //given
-        let input = "#$"
-        
-        // when
-        // then
-        XCTAssertThrowsError(try sut.convertToMoney(from: input)) { error in
-            let result = (error as? UserInputConverter.UserInputConverterError.PurchaseMoney)?.guideDescription
-            let expectation = "Int 값이 아닙니다"
-            XCTAssertEqual(result, expectation)
-        }
-    }
-    
-    func test_guideDescription_whenConvertToWinningNumbersInputHasExtraSeparators() throws {
+    func test_errorDescription_whenConvertToWinningNumbersInputHasExtraSeparators() throws {
         //given
         let input = ", 1, 2,, 3, 4, 5, 6,"
         
         // when
         // then
         XCTAssertThrowsError(try sut.convertToWinningNumbers(from: input)) { error in
-            let result = (error as? UserInputConverter.UserInputConverterError.WinningNumbers)?.guideDescription
+            let result = error.localizedDescription
             let expectation = "숫자와 구분자를 위한 하나의 , 만 입력해주세요"
             XCTAssertEqual(result, expectation)
         }
