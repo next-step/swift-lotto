@@ -18,6 +18,10 @@
 		2EAB301A2830F48C00B80DB0 /* LottoSellerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB30192830F48C00B80DB0 /* LottoSellerTest.swift */; };
 		2EAB301C2830F57A00B80DB0 /* LottoParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB301B2830F57A00B80DB0 /* LottoParserTest.swift */; };
 		2EAB30262832730600B80DB0 /* WinningLottoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB30252832730600B80DB0 /* WinningLottoTest.swift */; };
+		2EAB30342833C24500B80DB0 /* UserLotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB30332833C24500B80DB0 /* UserLotto.swift */; };
+		2EAB30362833C26D00B80DB0 /* WinningLotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB30352833C26D00B80DB0 /* WinningLotto.swift */; };
+		2EAB30372833C28600B80DB0 /* WinningLotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB30352833C26D00B80DB0 /* WinningLotto.swift */; };
+		2EAB30382833C28D00B80DB0 /* UserLotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB30332833C24500B80DB0 /* UserLotto.swift */; };
 		2EB16C57282AB09A003EBF4C /* LottoTicketFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB16C56282AB09A003EBF4C /* LottoTicketFormatter.swift */; };
 		2EB16C59282AB36C003EBF4C /* LottoParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB16C58282AB36C003EBF4C /* LottoParser.swift */; };
 		2ED9C40D2827BA5400BC60E7 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9C40C2827BA5400BC60E7 /* Money.swift */; };
@@ -65,6 +69,8 @@
 		2EAB30192830F48C00B80DB0 /* LottoSellerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoSellerTest.swift; sourceTree = "<group>"; };
 		2EAB301B2830F57A00B80DB0 /* LottoParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoParserTest.swift; sourceTree = "<group>"; };
 		2EAB30252832730600B80DB0 /* WinningLottoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningLottoTest.swift; sourceTree = "<group>"; };
+		2EAB30332833C24500B80DB0 /* UserLotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLotto.swift; sourceTree = "<group>"; };
+		2EAB30352833C26D00B80DB0 /* WinningLotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningLotto.swift; sourceTree = "<group>"; };
 		2EB16C56282AB09A003EBF4C /* LottoTicketFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoTicketFormatter.swift; sourceTree = "<group>"; };
 		2EB16C58282AB36C003EBF4C /* LottoParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoParser.swift; sourceTree = "<group>"; };
 		2ED9C40C2827BA5400BC60E7 /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
@@ -181,6 +187,8 @@
 				2EE19BE6282A9FCF003D4916 /* LottoSeller.swift */,
 				2EB16C58282AB36C003EBF4C /* LottoParser.swift */,
 				2EAB300A2830C24D00B80DB0 /* LottoFactory.swift */,
+				2EAB30332833C24500B80DB0 /* UserLotto.swift */,
+				2EAB30352833C26D00B80DB0 /* WinningLotto.swift */,
 			);
 			path = Lotto;
 			sourceTree = "<group>";
@@ -285,6 +293,7 @@
 				2ED9C4362827D00C00BC60E7 /* LottoBag.swift in Sources */,
 				2EAB301C2830F57A00B80DB0 /* LottoParserTest.swift in Sources */,
 				2EAB30142830F15500B80DB0 /* LottoNumberGenerator.swift in Sources */,
+				2EAB30382833C28D00B80DB0 /* UserLotto.swift in Sources */,
 				2EAB30132830EFFA00B80DB0 /* StubLottoNumberGenerator.swift in Sources */,
 				2EAB300C2830C90C00B80DB0 /* LottoFactory.swift in Sources */,
 				2E70F424282C0480007E01B8 /* LottoParser.swift in Sources */,
@@ -294,6 +303,7 @@
 				2ED9C4432827DCA000BC60E7 /* WinningStatisticsTest.swift in Sources */,
 				2ED9C4392827D5C000BC60E7 /* WinningRecord.swift in Sources */,
 				2ED9C4292827C2E300BC60E7 /* Lotto.swift in Sources */,
+				2EAB30372833C28600B80DB0 /* WinningLotto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +313,7 @@
 			files = (
 				2ED9C40D2827BA5400BC60E7 /* Money.swift in Sources */,
 				2EB16C59282AB36C003EBF4C /* LottoParser.swift in Sources */,
+				2EAB30362833C26D00B80DB0 /* WinningLotto.swift in Sources */,
 				2ED9C4282827C2E300BC60E7 /* Lotto.swift in Sources */,
 				2EE19BE7282A9FCF003D4916 /* LottoSeller.swift in Sources */,
 				2ED9C4352827D00C00BC60E7 /* LottoBag.swift in Sources */,
@@ -312,6 +323,7 @@
 				2EE19BE0282A8C8E003D4916 /* OutputView.swift in Sources */,
 				2EB16C57282AB09A003EBF4C /* LottoTicketFormatter.swift in Sources */,
 				2ED9C4302827CE4700BC60E7 /* LottoBagFactory.swift in Sources */,
+				2EAB30342833C24500B80DB0 /* UserLotto.swift in Sources */,
 				2EE19BE2282A967D003D4916 /* MoneyParser.swift in Sources */,
 				2EE19BDC282A8970003D4916 /* InputView.swift in Sources */,
 				2ED9C4232827C13700BC60E7 /* LottoNumberGenerator.swift in Sources */,
