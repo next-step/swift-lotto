@@ -38,7 +38,7 @@ class WinningLottoTest: XCTestCase {
         let winLotto = try! WinningLotto(numbers: [1, 2, 3, 4, 5, 6], bonusNumber: 7)
 
         // when
-        let equalNumberCount = winLotto.equalNumberCount(with:lotto)
+        let equalNumberCount = winLotto.equalNumberCount(with: lotto)
 
         // then
         XCTAssertEqual(equalNumberCount, 5)

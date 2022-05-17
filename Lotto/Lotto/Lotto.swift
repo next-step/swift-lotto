@@ -16,6 +16,13 @@ enum LottoConstant {
 
 protocol Lotto {
     var numbers: Set<Int> { get }
+    func contains(number: Int) -> Bool 
+}
+
+extension Lotto {
+    func contains(number: Int) -> Bool {
+        numbers.contains(number)
+    }
 }
 
 enum LottoError: Error {

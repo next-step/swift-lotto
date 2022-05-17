@@ -21,9 +21,4 @@ struct UserLotto: Lotto {
 
         self.numbers = setNumbers
     }
-    
-    func contains(number: Int) -> Bool {
-        numbers.contains(number)
-    }
 }
-
