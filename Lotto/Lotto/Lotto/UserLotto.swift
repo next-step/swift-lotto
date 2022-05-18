@@ -16,8 +16,10 @@ struct UserLotto: Lotto {
         guard setNumbers.count == LottoConstant.numberCount else {
             throw LottoError.invalidNumberCount(numbers.count)
         }
-
-        if numbers.canBeLottoNumbers() == false { throw LottoError.invalidLottoNumber }
+        
+        if LottoNumberValidator.validate(numbers: numbers) == false {
+            throw LottoError.invalidLottoNumber
+        }
 
         self.numbers = setNumbers
     }
