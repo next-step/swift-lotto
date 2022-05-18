@@ -9,7 +9,7 @@ import Foundation
 
 struct InputView {
     func inputMoney() -> String {
-        LottoGuide.inputMoneyText.show()
+        LottoInputGuide.money.show()
         let money = readLine() ?? ""
         return money
     }
@@ -22,14 +22,14 @@ struct InputView {
     }
     
     func printBuyingLottosCount(_ count: Int) {
-        LottoGuide.totalLotteyCountText(count).show()
+        LottoInputGuide.buyingLottoCount(count).show()
     }
     
     func printRecentlyWinningNumbers() {
-        LottoGuide.winningNumbersInputText.show()
+        LottoInputGuide.winningNumbers.show()
     }
     
     func printRecentlyWinningBonusNumber() {
-        LottoGuide.winningBonusNumberInputText.show()
+        LottoInputGuide.winningBonusNumber.show()
     }
 }

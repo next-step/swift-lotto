@@ -14,7 +14,7 @@ class LottoTest: XCTestCase {
     let winningNumber = WinningNumber()
     
     func test_1000원미만_300원_입금시_로또0개_생성() {
-        let lottoCount = lottoGenerator.moneyToLottoCount(300)
+        let lottoCount = lottoGenerator.changeMoneyToLottoCount(input: 300)
         let expectedCount = 0
         
         XCTAssert(lottoCount == expectedCount, "로또 1000원 미만 입금시 로또 0개 생성")

@@ -20,13 +20,13 @@ struct ResultView {
     }
     
     func printStatisticStart() {
-        LottoGuide.statisticStart.show()
+        LottoStatisticGuide.start.show()
     }
     
     func printWinningTypeCount() {
         for winning in Winning.allCases {
             let count = statistic.statistic[winning] ?? 0
-            LottoGuide.winningTypeRewardCount(type: winning, count: count).show()
+            LottoStatisticGuide.winningTypeRewardCount(type: winning, count: count).show()
         }
     }
     
@@ -39,11 +39,11 @@ struct ResultView {
     
     func printLottoReward(than inputMoney: Int) {
         guard inputMoney >= 1000 else {
-            LottoGuide.totalRewardRatio("0").show()
+            LottoStatisticGuide.totalRewardRatio("0").show()
             return
         }
         let ratio = ratioString(numerator: statistic.appearWinningTotalPrice(), denominator: inputMoney)
-        LottoGuide.totalRewardRatio(ratio).show()
+        LottoStatisticGuide.totalRewardRatio(ratio).show()
     }
     
     private func ratioString(numerator: Int, denominator: Int) -> String {
