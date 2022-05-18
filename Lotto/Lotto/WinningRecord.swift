@@ -9,39 +9,53 @@ import Foundation
 
 typealias EqualNumberCount = Int
 
-enum WinningCount: EqualNumberCount, CaseIterable {
-    case three = 3
-    case four = 4
-    case five = 5
-    case six = 6
+enum Rank: CaseIterable {
+    case first, second, third, fourth, fifth, miss
+    
+    static func from(matchingCount: Int,  matchBonus: Bool) -> Self {
+        switch matchingCount {
+        case 6: return first
+        case 5 where matchBonus == true: return second
+        case 5: return .third
+        case 4: return .fourth
+        case 3: return .fifth
+        default: return miss
+        }
+    }
     
     var prize: Int {
         switch self {
-        case .three: return 5_000
-        case .four: return 50_000
-        case .five: return 1_500_000
-        case .six: return 2_000_000_000
+        case .first: return 2_000_000_000
+        case .second: return 30_000_000
+        case .third: return 1_500_000
+        case .fourth: return 50_000
+        case .fifth: return 5_000
+        case .miss: return 0
         }
     }
 }
 
 struct WinningRecord: Equatable {
     typealias LottoCount =  Int
+    typealias RecordUnit = (matchingCount: Int, matchBonus: Bool)
     
     private let hundred: Double = 100
-    var value: [WinningCount: LottoCount] = [.three:0, .four: 0, .five: 0, .six: 0]
+    var value: [Rank: LottoCount] = [:]
     
-    init(equalNumberCounts: Array<Int>) {
-        equalNumberCounts.compactMap { WinningCount(rawValue: $0) }
-                        .forEach { value[$0]! += 1 }
+    init(recordUnits: [RecordUnit]) {
+        Rank.allCases.forEach { self.value[$0] = 0 }
+        
+        recordUnits.map{ matchingCount, matchBonus in
+            Rank.from(matchingCount: matchingCount, matchBonus: matchBonus)
+        }.forEach { value[$0]! += 1 }
     }
     
     func calculateProfitRate(inputMoney: Money) -> Double {
         let profit = value.reduce(0) { (partialResult: Int, value) in
-            let (winningCount, lottoCount) = value
-            return partialResult + winningCount.prize * lottoCount
+            let (rank, lottoCount) = value
+            return partialResult + rank.prize * lottoCount
         }
         
-        return Double(profit) / Double(inputMoney.value) * hundred
+        return Double(profit) / Double(inputMoney.value)
     }
 }

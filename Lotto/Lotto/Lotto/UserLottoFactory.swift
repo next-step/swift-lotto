@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct LottoFactory {
+struct UserLottoFactory {
     let lottoNumberGenerator: LottoNumberGenerator
     
-    func make() throws -> Lotto {
+    func make() throws -> UserLotto {
         var lottoNumbers = Set<Int>()
         
         repeat {
@@ -18,6 +18,6 @@ struct LottoFactory {
             lottoNumbers.insert(lottoNumber)
         } while(lottoNumbers.count < LottoConstant.numberCount)
         
-        return try! Lotto(numbers: lottoNumbers)
+        return try! UserLotto(numbers: lottoNumbers)
     }
 }

@@ -11,7 +11,7 @@ class LottoSellerTest: XCTestCase {
     var lottoSeller: LottoSeller!
     
     override func setUpWithError() throws {
-        let lottoFactory = LottoFactory(lottoNumberGenerator: StubLottoNumberGenerator())
+        let lottoFactory = UserLottoFactory(lottoNumberGenerator: StubLottoNumberGenerator())
         lottoSeller = LottoSeller(lottoFactory: lottoFactory)
     }
     
@@ -23,8 +23,8 @@ class LottoSellerTest: XCTestCase {
         // given
         let money = Money(value: 2200)!
         
-        let firstLotto = try? Lotto(numbers: [1, 2, 3, 4, 5, 6])
-        let secondLotto = try? Lotto(numbers: [7, 8, 9, 10, 11, 12])
+        let firstLotto = try? UserLotto(numbers: [1, 2, 3, 4, 5, 6])
+        let secondLotto = try? UserLotto(numbers: [7, 8, 9, 10, 11, 12])
         
         let expectedLottoTicket = LottoBag(lottoList: [firstLotto, secondLotto]
                                             .compactMap({ $0 }))

@@ -8,7 +8,7 @@
 import Foundation
 
 struct LottoBagFactory {
-    let lottoFactory: LottoFactory
+    let lottoFactory: UserLottoFactory
     
     func make(havingLottoCount lottoCount: Int) throws -> LottoBag {
         let lottoList = try (0..<lottoCount).map { _ in

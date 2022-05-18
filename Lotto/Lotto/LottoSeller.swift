@@ -20,7 +20,7 @@ struct LottoSeller {
     }
     
     private static let lottoPrice = Money(value: 1000)!
-    let lottoFactory: LottoFactory
+    let lottoFactory: UserLottoFactory
     
     func sellLotto(for money: Money) throws -> LottoBag {
         let lottoCount = try availableLottoCount(with: money)

@@ -22,7 +22,16 @@ struct OutputView {
         Swift.print(winningRecord)
     }
     
+    static func print(profitRate: Double) {
+        let profiteRateView = String(format: "총 수익률은 %.2f입니다.", profitRate)
+        Swift.print(profiteRateView)
+    }
+    
     static func print(error: Error) {
-        Swift.print(error.localizedDescription)
+        guard let localizedError = error as? LocalizedError else {
+            Swift.print(error.localizedDescription)
+            return
+        }
+        Swift.print(localizedError.errorDescription!)
     }
 }

@@ -11,21 +11,24 @@ do {
     let money = try MoneyParser.parse(moneyInput)
     
     let lottoNumberGenerater = RandomLottoNumberGenerator()
-    let lottoFactory = LottoFactory(lottoNumberGenerator: lottoNumberGenerater)
+    let lottoFactory = UserLottoFactory(lottoNumberGenerator: lottoNumberGenerater)
     let lottoSeller = LottoSeller(lottoFactory: lottoFactory)
     
-    let lottoTicket = try lottoSeller.sellLotto(for: money)
-    OutputView.print(lottoCount: lottoTicket.lottoCount)
+    let lottoBag = try lottoSeller.sellLotto(for: money)
+    OutputView.print(lottoCount: lottoBag.lottoCount)
     
-    let formattedLottoTicket = LottoTicketFormatter.format(lottoTicket)
+    let formattedLottoTicket = LottoTicketFormatter.format(lottoBag)
     OutputView.print(lottoTicket: formattedLottoTicket)
     
     let winningLottoInput = InputView.readWinningLotto()
-    let winningLotto = try LottoParser.parse(winningLottoInput)
+    let bonusNumberInput = InputView.readBonusNumber()
+    let winningLotto = try LottoParser.parseWinningLotto(lottoNumberInput: winningLottoInput, bonusNumberInput: bonusNumberInput)
     
-    let winningRecord = lottoTicket.winningRecord(with: winningLotto)
+    let winningRecord = lottoBag.winningRecord(with: winningLotto)
     let formattedRecord = WinningRecordFormatter.format(winningRecord)
+    
     OutputView.print(winningRecord: formattedRecord)
+    OutputView.print(profitRate: winningRecord.calculateProfitRate(inputMoney: money))
 } catch(let error) {
     OutputView.print(error: error)
 }
