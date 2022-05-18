@@ -21,7 +21,7 @@ class LottoGenerator {
         return Lotto(try LottoNumbers(numbers: numbers.sorted(by: <)))
     }
     
-    internal func auto(n: Int) throws -> Lottos {
+    func auto(n: Int) throws -> Lottos {
         let lottos: [Lotto] = try (0..<n).map { _ in
             return try autoNumbers()
         }
@@ -29,7 +29,7 @@ class LottoGenerator {
         return Lottos(lottos)
     }
     
-    internal func purchase(manualLottos: Lottos, autoCount: Int) throws -> Lottos {
+    func purchase(manualLottos: Lottos, autoCount: Int) throws -> Lottos {
         ResultView.printPurchaseMessage(manual: manualLottos.count, auto: autoCount)
         
         let autoLottos = try auto(n: autoCount)
