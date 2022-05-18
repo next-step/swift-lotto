@@ -29,7 +29,7 @@ final class WinningStatistic {
         }
     }
     
-    func winningTotalPrice() -> Int {
+    func appearWinningTotalPrice() -> Int {
         var money = 0
         for winning in Winning.allCases {
             let count = statistic[winning] ?? 0

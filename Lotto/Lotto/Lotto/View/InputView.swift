@@ -21,15 +21,15 @@ struct InputView {
         throw InputError.invalidMoney
     }
     
-    func lotteryTotalCount(_ count: Int) {
+    func printBuyingLottosCount(_ count: Int) {
         LottoGuide.totalLotteyCountText(count).show()
     }
     
-    func winningNumbersInputTextPrint() {
+    func printRecentlyWinningNumbers() {
         LottoGuide.winningNumbersInputText.show()
     }
     
-    func winningBonusNumberInputTextPrint() {
+    func printRecentlyWinningBonusNumber() {
         LottoGuide.winningBonusNumberInputText.show()
     }
 }
