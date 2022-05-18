@@ -47,8 +47,8 @@ struct InputView {
                     }
                     throw LottoError.winnerNumberError
                 }
-                let numbers2 = try LottoNumbers(numbers: numbers)
-                return Lotto(numbers2)
+                let lottoNumbers = try LottoNumbers(numbers: numbers)
+                return Lotto(lottoNumbers)
             }
             throw LottoError.invalidInput
         }
