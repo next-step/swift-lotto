@@ -8,7 +8,7 @@
 import Foundation
 
 struct Lotto {
-    let numbers: [Int]
+    private let numbers: [Int]
     
     init() {
         var numbers: Set<Int> = []
@@ -27,6 +27,10 @@ struct Lotto {
     
     func min() -> Int {
         return numbers.min() ?? 1
+    }
+    
+    func getNumbers() -> [Int] {
+        return numbers
     }
 
 }

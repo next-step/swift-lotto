@@ -18,7 +18,7 @@ final class LottoController {
     
     func lotterySetting() throws {
         let stringMoney = inputView.inputMoney()
-        let intMoney = try inputView.changeIntMoney(stringMoney)
+        let intMoney = try stringConverter.stringToInt(input: stringMoney)
         let lottoCount = lottoGenerator.changeMoneyToLottoCount(input: intMoney)
         inputMoney = intMoney
         inputView.printBuyingLottosCount(lottoCount)
@@ -27,7 +27,7 @@ final class LottoController {
     
     func lottoPrinter() {
         for lotto in lottos {
-            print(lotto.numbers)
+            print(lotto.getNumbers())
         }
     }
     

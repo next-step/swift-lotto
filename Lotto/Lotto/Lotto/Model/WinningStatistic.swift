@@ -8,7 +8,7 @@
 import Foundation
 
 final class WinningStatistic {
-    private(set) var statistic: [Winning: Int] = [:]
+    private var statistic: [Winning: Int] = [:]
     
     init() {
         statistic = initStatistic()
@@ -23,7 +23,12 @@ final class WinningStatistic {
 
     }
     
-    func insertStatistic(_ winning: Winning?) {
+    func get() -> [Winning: Int] {
+        return statistic
+    }
+
+    
+    func insert(_ winning: Winning?) {
         if let winning = winning {
             statistic[winning]! += 1
         }

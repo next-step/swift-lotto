@@ -25,15 +25,15 @@ struct ResultView {
     
     func printWinningTypeCount() {
         for winning in Winning.allCases {
-            let count = statistic.statistic[winning] ?? 0
+            let count = statistic.get()[winning] ?? 0
             LottoStatisticGuide.winningTypeRewardCount(type: winning, count: count).show()
         }
     }
     
     func match(my lottos: [Lotto]) {
         for lotto in lottos {
-            let winning = winningNumber.match(lotto.numbers)
-            statistic.insertStatistic(winning)
+            let winning = winningNumber.match(lotto.getNumbers())
+            statistic.insert(winning)
         }
     }
     

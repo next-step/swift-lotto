@@ -14,13 +14,6 @@ struct InputView {
         return money
     }
     
-    func changeIntMoney(_ text: String) throws -> Int {
-        if let intMoney = Int(text) {
-            return intMoney
-        }
-        throw InputError.invalidMoney
-    }
-    
     func printBuyingLottosCount(_ count: Int) {
         LottoInputGuide.buyingLottoCount(count).show()
     }
