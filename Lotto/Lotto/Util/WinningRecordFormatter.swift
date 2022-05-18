@@ -18,10 +18,16 @@ struct WinningRecordFormatter {
     }
     
     static func format(_ statistics: WinningRecord) -> String {
-        return String(format: Text.fifth, statistics.value[.first]!) + newLine
-                + String(format: Text.fourth, statistics.value[.fourth]!) + newLine
-                + String(format: Text.third, statistics.value[.third]!) + newLine
-                + String(format: Text.second, statistics.value[.second]!) + newLine
-                + String(format: Text.first, statistics.value[.first]!)
+        let fifth = String(format: Text.fifth, statistics.value[.first]!) + newLine
+        let fourth = String(format: Text.fourth, statistics.value[.fourth]!) + newLine
+        let third = String(format: Text.third, statistics.value[.third]!) + newLine
+        let second = String(format: Text.second, statistics.value[.second]!) + newLine
+        let first = String(format: Text.first, statistics.value[.first]!)
+        
+        return fifth
+                + fourth
+                + third
+                + second
+                + first
     }
 }
