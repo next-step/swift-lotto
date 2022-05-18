@@ -19,5 +19,12 @@ class LottoTest: XCTestCase {
         let sut = Lotto.generate(by: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
         XCTAssertEqual(sut.numbers, [1, 2, 3, 4, 5, 6])
     }
+    
+    func test_당첨번호와_숫자_6개가_동일한_로또() {
+        let sut = Lotto.generate(by: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
+        let prizeNumbers = LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init))
+        
+        XCTAssertEqual(sut.match(prizeNumbers), 6)
+    }
 
 }
