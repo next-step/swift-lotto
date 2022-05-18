@@ -16,15 +16,7 @@ class LottoTest: XCTestCase {
     }
     
     func test_6자리_로또_번호_생성() {
-        let sut = Lotto.generate(by: LottoNumbers([
-            LottoNumber(1),
-            LottoNumber(2),
-            LottoNumber(3),
-            LottoNumber(4),
-            LottoNumber(5),
-            LottoNumber(6)
-        ].compactMap({ $0 })))
-        
+        let sut = Lotto.generate(by: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
         XCTAssertEqual(sut.numbers, [1, 2, 3, 4, 5, 6])
     }
 
