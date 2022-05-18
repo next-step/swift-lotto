@@ -620,7 +620,7 @@ class LottoTests: XCTestCase {
         XCTAssertTrue(lottos.profit(from: winnerLotto) == profit)
     }
     
-    func test_로또_구매_검증() throws {
+    func test_로또_수동2개_자동3개_총5개_구매_검증() throws {
         // given
         let generator = LottoGenerator()
         
