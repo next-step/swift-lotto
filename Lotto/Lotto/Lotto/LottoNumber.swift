@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct LottoNumber {
+    let value: Int
+    
+    init?(_ value: Int) {
+        guard 1...45 ~= value else { return nil }
+        self.value = value
+    }
+}

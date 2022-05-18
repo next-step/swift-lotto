@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class LottoNumbers {
+    private var numbers: [LottoNumber]
+    
+    init(_ numbers: [LottoNumber]) {
+        self.numbers = numbers
+    }
+    
+    func pop() -> Int {
+        return numbers.removeFirst().value
+    }
+}
