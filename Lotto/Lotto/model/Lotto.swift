@@ -110,7 +110,7 @@ struct Lottos: CustomStringConvertible {
         }.joined(separator: "\n")
     }
     
-    public var count: Int {
+    var count: Int {
         value.count
     }
     
