@@ -28,6 +28,10 @@ struct OutputView {
     }
     
     static func print(error: Error) {
-        Swift.print(error.localizedDescription)
+        guard let localizedError = error as? LocalizedError else {
+            Swift.print(error.localizedDescription)
+            return
+        }
+        Swift.print(localizedError.errorDescription!)
     }
 }
