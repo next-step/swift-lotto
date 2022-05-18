@@ -18,7 +18,7 @@ struct LottoParser {
         }
     }
     
-    private static let sepearator = ", "
+    private static let sepearator = CharacterSet(charactersIn: ", ")
     
     static func parseLotto(_ lottoNumberInput: String?) throws -> UserLotto {
         let lottoNumbers = try parseLottoNumbers(lottoNumberInput)
