@@ -56,6 +56,6 @@ struct WinningRecord: Equatable {
             return partialResult + rank.prize * lottoCount
         }
         
-        return Double(profit) / Double(inputMoney.value) * hundred
+        return Double(profit) / Double(inputMoney.value)
     }
 }
