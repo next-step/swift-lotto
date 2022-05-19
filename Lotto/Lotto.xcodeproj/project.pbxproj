@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C43B45528354E7200EE3938 /* LottoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43B45428354E7200EE3938 /* LottoError.swift */; };
+		6C43B45A28354E8F00EE3938 /* LottoNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43B45928354E8F00EE3938 /* LottoNumber.swift */; };
+		6C43B46228354ECB00EE3938 /* LottoNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43B46128354ECB00EE3938 /* LottoNumbers.swift */; };
+		6C43B46A28354EE900EE3938 /* WinnerLotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43B46928354EE900EE3938 /* WinnerLotto.swift */; };
+		6C43B47228354EFD00EE3938 /* Lottos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43B47128354EFD00EE3938 /* Lottos.swift */; };
 		6C810FB02832A09E000DC907 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2B96F2825620300E9239C /* ResultView.swift */; };
 		6CD2B966282560FE00E9239C /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2B965282560FE00E9239C /* Lotto.swift */; };
 		6CD2B96C282561BC00E9239C /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2B96B282561BC00E9239C /* InputView.swift */; };
@@ -42,6 +47,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6C43B45428354E7200EE3938 /* LottoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoError.swift; sourceTree = "<group>"; };
+		6C43B45928354E8F00EE3938 /* LottoNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumber.swift; sourceTree = "<group>"; };
+		6C43B46128354ECB00EE3938 /* LottoNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumbers.swift; sourceTree = "<group>"; };
+		6C43B46928354EE900EE3938 /* WinnerLotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerLotto.swift; sourceTree = "<group>"; };
+		6C43B47128354EFD00EE3938 /* Lottos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottos.swift; sourceTree = "<group>"; };
 		6CD2B965282560FE00E9239C /* Lotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto.swift; sourceTree = "<group>"; };
 		6CD2B96B282561BC00E9239C /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		6CD2B96F2825620300E9239C /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
@@ -98,8 +108,13 @@
 			isa = PBXGroup;
 			children = (
 				6CD2B982282563C700E9239C /* Constants.swift */,
-				6CD2B965282560FE00E9239C /* Lotto.swift */,
+				6C43B45428354E7200EE3938 /* LottoError.swift */,
 				CB726797282C93170021757B /* LottoReward.swift */,
+				6C43B45928354E8F00EE3938 /* LottoNumber.swift */,
+				6C43B46128354ECB00EE3938 /* LottoNumbers.swift */,
+				6C43B46928354EE900EE3938 /* WinnerLotto.swift */,
+				6CD2B965282560FE00E9239C /* Lotto.swift */,
+				6C43B47128354EFD00EE3938 /* Lottos.swift */,
 				CB726799282C93300021757B /* Match.swift */,
 			);
 			path = model;
@@ -304,10 +319,15 @@
 			files = (
 				6CD2B966282560FE00E9239C /* Lotto.swift in Sources */,
 				CBBB1BA3282217CE00123805 /* StringCalculator.swift in Sources */,
+				6C43B46228354ECB00EE3938 /* LottoNumbers.swift in Sources */,
+				6C43B47228354EFD00EE3938 /* Lottos.swift in Sources */,
 				6CD2B96C282561BC00E9239C /* InputView.swift in Sources */,
 				CBBB1BA52822187E00123805 /* Validator.swift in Sources */,
+				6C43B45528354E7200EE3938 /* LottoError.swift in Sources */,
 				CB726798282C93180021757B /* LottoReward.swift in Sources */,
+				6C43B46A28354EE900EE3938 /* WinnerLotto.swift in Sources */,
 				6CD2B97D2825631D00E9239C /* LottoGenerator.swift in Sources */,
+				6C43B45A28354E8F00EE3938 /* LottoNumber.swift in Sources */,
 				C7905FC627311CC6004C3FCC /* main.swift in Sources */,
 				CB72679A282C93300021757B /* Match.swift in Sources */,
 				6CD2B9702825620300E9239C /* ResultView.swift in Sources */,

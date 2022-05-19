@@ -619,4 +619,41 @@ class LottoTests: XCTestCase {
         // then
         XCTAssertTrue(lottos.profit(from: winnerLotto) == profit)
     }
+    
+    func test_로또_수동2개_자동3개_총5개_구매_검증() throws {
+        // given
+        let generator = LottoGenerator()
+        
+        let manualLotto1 = Lotto(
+            try LottoNumbers(numbers: [
+                try LottoNumber(11),
+                try LottoNumber(22),
+                try LottoNumber(33),
+                try LottoNumber(44),
+                try LottoNumber(15),
+                try LottoNumber(16)
+            ])
+        )
+        
+        let manualLotto2 = Lotto(
+            try LottoNumbers(numbers: [
+                try LottoNumber(11),
+                try LottoNumber(22),
+                try LottoNumber(33),
+                try LottoNumber(44),
+                try LottoNumber(15),
+                try LottoNumber(16)
+            ])
+        )
+        
+        let manualLottos = Lottos([manualLotto1, manualLotto2])
+        
+        // when
+        let purchaseCount = 5
+        let purchaseLottos = try generator.purchase(manualLottos: manualLottos, autoCount: 3)
+        
+        // then
+        XCTAssertTrue(purchaseLottos.count == purchaseCount)
+    }
+    
 }

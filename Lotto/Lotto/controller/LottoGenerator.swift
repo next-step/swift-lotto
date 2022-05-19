@@ -21,16 +21,19 @@ class LottoGenerator {
         return Lotto(try LottoNumbers(numbers: numbers.sorted(by: <)))
     }
     
-    public func auto(n: Int) throws -> Lottos {
-        ResultView.printPurchaseMessage(n)
-        
+    func auto(n: Int) throws -> Lottos {
         let lottos: [Lotto] = try (0..<n).map { _ in
-            let newLotto = try autoNumbers()
-            print(newLotto)
-            return newLotto
+            return try autoNumbers()
         }
         
         return Lottos(lottos)
+    }
+    
+    func purchase(manualLottos: Lottos, autoCount: Int) throws -> Lottos {
+        ResultView.printPurchaseMessage(manual: manualLottos.count, auto: autoCount)
+        
+        let autoLottos = try auto(n: autoCount)
+        return manualLottos + autoLottos
     }
     
 }
