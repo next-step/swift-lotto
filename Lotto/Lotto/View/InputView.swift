@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct InputView {
-    
+enum InputView {
     static func readMoney() -> String? {
         print("구입금액을 입력해 주세요.")
         return readLine()
