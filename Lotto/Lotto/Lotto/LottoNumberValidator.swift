@@ -9,20 +9,17 @@ import Foundation
 
 struct LottoNumberValidator<LottoNumbers: Collection> where LottoNumbers.Element == Int {
     
-    static func validate(numbers: LottoNumbers) -> Bool {
-        guard validateNumberCount(of: numbers) else { return false }
-        return validateNumberRange(of: numbers)
-    }
-    
-    private static func validateNumberCount(of numbers: LottoNumbers) -> Bool {
-        
+    static func validateNumberCount(of numbers: LottoNumbers) throws {
         let setNumbers = Set(numbers)
-        return setNumbers.count == LottoConstant.numberCount
+        guard setNumbers.count == LottoConstant.numberCount else {
+            throw LottoError.invalidNumberCount(setNumbers.count)
+        }
     }
     
-    private static func validateNumberRange(of numbers: LottoNumbers) -> Bool {
-        return numbers.reduce(true) { partialResult, number in
+    static func validateNumberRange(of numbers: LottoNumbers) throws {
+        let result = numbers.reduce(true) { partialResult, number in
             partialResult && LottoConstant.numberRange.contains(number)
         }
+        guard result else { throw LottoError.invalidLottoNumber }
     }
 }
