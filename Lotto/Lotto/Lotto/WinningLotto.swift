@@ -14,15 +14,10 @@ struct WinningLotto: Lotto {
     init<LottoNumbers: Collection>(numbers: LottoNumbers, bonusNumber: Int) throws where LottoNumbers.Element == Int {
         let setNumbers = Set(numbers)
         
-        guard setNumbers.count == LottoConstant.numberCount else {
-            throw LottoError.invalidNumberCount(numbers.count)
-        }
-        
-        if LottoNumberValidator.validate(numbers: numbers) == false {
-            throw LottoError.invalidLottoNumber
-        }
-    
-        if bonusNumber < 0 { throw LottoError.invalidLottoNumber }
+        try LottoNumberValidator.validateNumberCount(of: numbers)
+        try LottoNumberValidator.validateNumberRange(of: numbers)
+        try LottoNumberValidator.validateNumberRange(of: [bonusNumber])
+       
         self.numbers = setNumbers
         self.bonusNumber = bonusNumber
     }

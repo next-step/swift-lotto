@@ -11,16 +11,10 @@ struct UserLotto: Lotto {
     let numbers: Set<Int>
     
     init<LottoNumbers: Collection>(numbers: LottoNumbers) throws where LottoNumbers.Element == Int  {
-        let setNumbers = Set(numbers) 
         
-        guard setNumbers.count == LottoConstant.numberCount else {
-            throw LottoError.invalidNumberCount(numbers.count)
-        }
+        try LottoNumberValidator.validateNumberCount(of: numbers)
+        try LottoNumberValidator.validateNumberRange(of: numbers)
         
-        if LottoNumberValidator.validate(numbers: numbers) == false {
-            throw LottoError.invalidLottoNumber
-        }
-
-        self.numbers = setNumbers
+        self.numbers = Set(numbers)
     }
 }
