@@ -9,42 +9,41 @@ import Foundation
 
 struct ResultView {
     private let statistic = WinningStatistic()
+    private let winningNumber = WinningNumber()
     
-    func registerWinningNumbers(_ numbers: [Int]) throws {
-        guard numbers.count == 6 else {
-            throw InputError.invalidWinningNumberCount
-        }
-        guard Set(numbers).count == 6 else {
-            throw InputError.duplicateWinningNumber
-        }
-        statistic.registerWinningNumbers(numbers)
+    func registerWinningNumbers(_ numbers: [Int]) {
+        winningNumber.register(numbers)
     }
     
-    func statisticStartPrint() {
-        LottoGuide.statisticStart.show()
+    func registerBonusNumber(_ bonusNumber: Int) {
+        winningNumber.register(bonusNumber)
     }
     
-    func winningTypeCountPrint() {
+    func printStatisticStart() {
+        LottoStatisticGuide.start.show()
+    }
+    
+    func printWinningTypeCount() {
         for winning in Winning.allCases {
-            let count = statistic.statistic[winning] ?? 0
-            LottoGuide.winningTypeRewardCount(type: winning, count: count).show()
+            let count = statistic.get()[winning] ?? 0
+            LottoStatisticGuide.winningTypeRewardCount(type: winning, count: count).show()
         }
     }
     
-    func match(_ lottos: [Lotto]) {
+    func match(my lottos: [Lotto]) {
         for lotto in lottos {
-            let winning = statistic.match(lotto.numbers)
-            statistic.insertStatistic(winning)
+            let winning = winningNumber.match(lotto.getNumbers())
+            statistic.insert(winning)
         }
     }
     
-    func lotteryRewardPrint(inputMoney: Int) {
+    func printLottoReward(than inputMoney: Int) {
         guard inputMoney >= 1000 else {
-            LottoGuide.totalRewardRatio("0").show()
+            LottoStatisticGuide.totalRewardRatio("0").show()
             return
         }
-        let ratio = ratioString(numerator: statistic.winningTotalPrice(), denominator: inputMoney)
-        LottoGuide.totalRewardRatio(ratio).show()
+        let ratio = ratioString(numerator: statistic.appearWinningTotalPrice(), denominator: inputMoney)
+        LottoStatisticGuide.totalRewardRatio(ratio).show()
     }
     
     private func ratioString(numerator: Int, denominator: Int) -> String {

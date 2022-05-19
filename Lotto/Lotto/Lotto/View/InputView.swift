@@ -9,23 +9,20 @@ import Foundation
 
 struct InputView {
     func inputMoney() -> String {
-        LottoGuide.inputMoneyText.show()
+        LottoInputGuide.money.show()
         let money = readLine() ?? ""
         return money
     }
     
-    func changeIntMoney(_ text: String) throws -> Int {
-        if let intMoney = Int(text) {
-            return intMoney
-        }
-        throw InputError.invalidMoney
+    func printBuyingLottosCount(_ count: Int) {
+        LottoInputGuide.buyingLottoCount(count).show()
     }
     
-    func lotteryTotalCount(_ count: Int) {
-        LottoGuide.totalLotteyCountText(count).show()
+    func printRecentlyWinningNumbers() {
+        LottoInputGuide.winningNumbers.show()
     }
     
-    func winningNumbersInputTextPrint() {
-        LottoGuide.winningNumbersInputText.show()
+    func printRecentlyWinningBonusNumber() {
+        LottoInputGuide.winningBonusNumber.show()
     }
 }

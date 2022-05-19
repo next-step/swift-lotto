@@ -18,34 +18,57 @@ final class LottoController {
     
     func lotterySetting() throws {
         let stringMoney = inputView.inputMoney()
-        let intMoney = try inputView.changeIntMoney(stringMoney)
-        let lottoCount = lottoGenerator.moneyToLottoCount(intMoney)
+        let intMoney = try stringConverter.stringToInt(input: stringMoney)
+        let lottoCount = lottoGenerator.changeMoneyToLottoCount(input: intMoney)
         inputMoney = intMoney
-        inputView.lotteryTotalCount(lottoCount)
+        inputView.printBuyingLottosCount(lottoCount)
         lottos = lottoGenerator.generate(count: lottoCount)
     }
     
     func lottoPrinter() {
         for lotto in lottos {
-            print(lotto.numbers)
+            print(lotto.getNumbers())
         }
     }
     
-    func winningNumbersSetting() throws {
-        inputView.winningNumbersInputTextPrint()
+    func setWinningNumbers() throws {
+        inputView.printRecentlyWinningNumbers()
         
         let winningNumbersInput = readLine()
         let splitCommaNumbers = stringConverter.split(winningNumbersInput, sepratedCharacterSet: [","])
         let numbers = try stringConverter.stringsToInts(input: splitCommaNumbers)
-        try resultView.registerWinningNumbers(numbers)
+        try validateWinningNumbers(numbers)
+        resultView.registerWinningNumbers(numbers)
+        
     }
     
-    func statisticResult() {
-        resultView.statisticStartPrint()
-        resultView.match(lottos)
-        resultView.winningTypeCountPrint()
-        resultView.lotteryRewardPrint(inputMoney: inputMoney)
+    func setWinningBonusNumber() throws {
+        inputView.printRecentlyWinningBonusNumber()
+        let bonusNumberString = readLine()
+        let bonusNumber = try stringConverter.stringToInt(input: bonusNumberString)
+        try validateWinningBonusNumber(bonusNumber)
+        resultView.registerBonusNumber(bonusNumber)
     }
     
+    func printStatisticResult() {
+        resultView.printStatisticStart()
+        resultView.match(my: lottos)
+        resultView.printWinningTypeCount()
+        resultView.printLottoReward(than: inputMoney)
+    }
     
+    private func validateWinningNumbers(_ numbers: [Int]) throws {
+        guard numbers.count == 6 else {
+            throw InputError.invalidWinningNumberCount
+        }
+        guard Set(numbers).count == 6 else {
+            throw InputError.duplicateWinningNumber
+        }
+    }
+    
+    private func validateWinningBonusNumber(_ bonusNumber: Int) throws {
+        guard bonusNumber >= 1 , bonusNumber <= 45 else {
+            throw InputError.invalidNumber
+        }
+    }
 }

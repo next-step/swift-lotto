@@ -11,36 +11,42 @@ enum Winning: CaseIterable {
     case second
     case third
     case fourth
+    case fifth
     
     var reward: Int {
         switch self {
         case .first: return 20_0000_0000
-        case .second: return 150_0000
-        case .third: return 5_0000
-        case .fourth: return 5000
+        case .second: return 3000_0000
+        case .third: return 150_0000
+        case .fourth: return 5_0000
+        case .fifth: return 5000
         }
     }
     var description: String {
         switch self {
         case .first: return "6개 일치"
-        case .second: return "5개 일치"
-        case .third: return "4개 일치"
-        case .fourth: return "3개 일치"
+        case .second: return "5개 일치 + 보너스 일치"
+        case .third: return "5개 일치"
+        case .fourth: return "4개 일치"
+        case .fifth: return "3개 일치"
         }
     }
     
-    static func rank(_ input: Int) -> Winning? {
-        if input == 6 {
+    static func rank(_ matchCount: Int, matchBonus: Bool = false) -> Winning? {
+        if matchCount == 6 {
             return .first
         }
-        if input == 5 {
+        if matchCount == 5, matchBonus {
             return .second
         }
-        if input == 4 {
+        if matchCount == 5 {
             return .third
         }
-        if input == 3 {
+        if matchCount == 4 {
             return .fourth
+        }
+        if matchCount == 3 {
+            return .fifth
         }
         return nil
     }

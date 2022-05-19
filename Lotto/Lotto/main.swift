@@ -11,8 +11,9 @@ let lottoController = LottoController()
 do {
     try lottoController.lotterySetting()
     lottoController.lottoPrinter()
-    try lottoController.winningNumbersSetting()
-    lottoController.statisticResult()
+    try lottoController.setWinningNumbers()
+    try lottoController.setWinningBonusNumber()
+    lottoController.printStatisticResult()
     
 } catch let error as InputError {
     error.showError()
