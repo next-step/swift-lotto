@@ -11,6 +11,7 @@ struct CustomLotto: Lotto {
     var numbers: Set<Int>
     
     init<LottoNumberCollection: Collection>(numbers: LottoNumberCollection) throws where LottoNumberCollection.Element == Int {
+        
         let numberSet = Set(numbers)
         guard LottoConstant.numberCount == numberSet.count else {
             throw LottoError.invalidNumberCount(numberSet.count)
