@@ -23,8 +23,7 @@ do {
         try LottoParser.parseCustomLotto($0) }
     
     let lottoBag = try lottoSeller.sellLotto(for: money, with: customLottos)
-    OutputView.print(lottoCount: lottoBag.lottoCount)
-    
+
     let formattedLottoBag = LottoBagFormatter.format(lottoBag)
     OutputView.print(lottoBag: formattedLottoBag)
     
