@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LottoTicketFormatter {
+struct LottoBagFormatter {
     private static let lottoNumberSeparator = ","
     
     static func format(_ lottoTicket: LottoBag) -> String {
