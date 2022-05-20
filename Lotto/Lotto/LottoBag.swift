@@ -11,6 +11,9 @@ struct LottoBag {
     let lottoList: [Lotto]
     
     var lottoCount: Int { return lottoList.count }
+    func lottoCount<T: Lotto>(_ lottoType: T.Type) -> Int {
+        return lottoList.filter { type(of: $0) == lottoType }.count
+    }
     
     func winningRecord(with winningLotto: WinningLotto) -> WinningRecord {
         let recordUnit = lottoList.map { lotto -> (Int, Bool) in

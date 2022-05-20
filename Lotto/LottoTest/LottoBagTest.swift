@@ -45,4 +45,23 @@ class LottoBagTest: XCTestCase {
         // then
         XCTAssertEqual(2, lottoTicket.lottoCount)
     }
+    
+    func test_lottoCount_주어진_타입의_로또_개수를_반환한다() throws {
+        // given
+        let userLottos = [try UserLotto(numbers: [1, 2, 3, 4, 5, 6]),
+                          try UserLotto(numbers: [1, 2, 3, 4, 5, 6])]
+        let customLottos = [try CustomLotto(numbers: [1, 2, 3, 4, 5, 6]),
+                            try CustomLotto(numbers: [1, 2, 3, 4, 5, 6]),
+                            try CustomLotto(numbers: [2, 3, 4, 5, 6, 7])]
+        
+        let lottoBag = LottoBag(lottoList: userLottos + customLottos)
+        
+        // when
+        let userLottoCount = lottoBag.lottoCount(UserLotto.self)
+        let customLottoCount = lottoBag.lottoCount(CustomLotto.self)
+        
+        // then
+        XCTAssertEqual(userLottos.count, userLottoCount)
+        XCTAssertEqual(customLottos.count, customLottoCount)
+    }
 }
