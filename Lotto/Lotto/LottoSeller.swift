@@ -23,14 +23,19 @@ struct LottoSeller {
     let lottoFactory: UserLottoFactory
     
     func sellLotto(for money: Money, with lottos: [Lotto] = []) throws -> LottoBag {
+        if money.value <= 0 { throw Error.notEnoughMoney }
         let moneyValue = money.value - lottos.count * LottoSeller.lottoPrice.value
         if moneyValue < 0 { throw Error.notEnoughMoney }
         let money = Money(value: moneyValue)!
+        // money == 0 lottos가 존재
+        if money.value == 0 && lottos.isEmpty == false {
+            return LottoBag(lottoList: lottos)
+        }
         let lottoCount = try availableLottoCount(with: money)
         let lottoList = try (0..<lottoCount).map { _ in
             try lottoFactory.make()
         }
-        return LottoBag(lottoList: lottoList)
+        return LottoBag(lottoList: lottoList + lottos)
     }
     
     private func availableLottoCount(with money: Money) throws -> Int {
