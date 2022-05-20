@@ -61,7 +61,7 @@ class LottoBagTest: XCTestCase {
         let customLottoCount = lottoBag.lottoCount(CustomLotto.self)
         
         // then
-        XCTAssertEqual(userLottos.count, userLottoCount)
-        XCTAssertEqual(customLottos.count, customLottoCount)
+        XCTAssertEqual(userLottos.count, userLottoCount.value)
+        XCTAssertEqual(customLottos.count, customLottoCount.value)
     }
 }
