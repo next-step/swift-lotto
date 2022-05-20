@@ -8,10 +8,6 @@
 import Foundation
 
 struct OutputView {
-
-    static func print(lottoCount: Int) {
-        Swift.print("\(lottoCount)개를 구매했습니다.")
-    }
     static func print(lottoBag: String) {
         Swift.print(lottoBag)
     }
