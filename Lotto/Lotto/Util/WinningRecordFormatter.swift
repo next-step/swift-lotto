@@ -18,7 +18,7 @@ struct WinningRecordFormatter {
     }
     
     static func format(_ statistics: WinningRecord) -> String {
-        let fifth = String(format: Text.fifth, statistics.value[.first]!) + newLine
+        let fifth = String(format: Text.fifth, statistics.value[.fifth]!) + newLine
         let fourth = String(format: Text.fourth, statistics.value[.fourth]!) + newLine
         let third = String(format: Text.third, statistics.value[.third]!) + newLine
         let second = String(format: Text.second, statistics.value[.second]!) + newLine
