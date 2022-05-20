@@ -28,6 +28,11 @@ enum InputView {
         return (0..<count).map { _ in readLine() }
     }
     
+    static func readCustomLotto(of count: LottoCount) -> [String?] {
+        print("수동으로 구매할 번호를 입력해 주세요.")
+        return (0..<count.value).map { _ in readLine() }
+    }
+    
     static func readBonusNumber() -> String? {
         print("보너스 번호를 입력해 주세요.")
         return readLine()
