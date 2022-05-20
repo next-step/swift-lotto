@@ -9,8 +9,7 @@ import Foundation
 
 struct LottoBag {
     let lottoList: [Lotto]
-    
-    var lottoCount: Int { return lottoList.count }
+
     func lottoCount<T: Lotto>(_ lottoType: T.Type) -> LottoCount {
         let count = lottoList.filter { type(of: $0) == lottoType }.count
         return LottoCount(count) ?? LottoCount.zero
