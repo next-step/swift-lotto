@@ -14,10 +14,9 @@ do {
     let lottoFactory = UserLottoFactory(lottoNumberGenerator: lottoNumberGenerater)
     let lottoSeller = LottoSeller(lottoFactory: lottoFactory)
     
-    guard let lottoCountInput = InputView.readCustomLottoCount(),
-          let lottoCount = Int(lottoCountInput) else {
-              exit(0)
-          }
+    let lottoCountInput = InputView.readCustomLottoCount()
+    let lottoCount = try LottoCountParser.parse(lottoCountInput)
+    
     let customLottoInput = InputView.readCustomLotto(of: lottoCount)
     let customLottos = try customLottoInput.map {
         try LottoParser.parseCustomLotto($0) }
