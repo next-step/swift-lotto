@@ -36,6 +36,11 @@ struct LottoParser {
         return try WinningLotto(numbers: lottoNumbers, bonusNumber: bonusNumber)
     }
     
+    static func parseCustomLotto(_ lottoInput: String?) throws -> CustomLotto {
+        let lottoNumbers = try parseLottoNumbers(lottoInput)
+        return try CustomLotto(numbers: lottoNumbers)
+    }
+    
     static func parseLottoNumbers(_ lottoNumberInput: String?) throws -> [Int] {
         guard let lottoInput = lottoNumberInput else { throw Error.nonNumber }
 

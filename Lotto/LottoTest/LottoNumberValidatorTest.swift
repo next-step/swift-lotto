@@ -25,5 +25,5 @@ class LottoNumberValidatorTest: XCTestCase {
         // when
         // then
         XCTAssertThrowsError(try LottoNumberValidator.validateNumberCount(of: invalidLottoNumbers))
-g    }
+    }
 }
