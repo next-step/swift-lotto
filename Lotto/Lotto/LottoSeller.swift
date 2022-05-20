@@ -22,7 +22,10 @@ struct LottoSeller {
     private static let lottoPrice = Money(value: 1000)!
     let lottoFactory: UserLottoFactory
     
-    func sellLotto(for money: Money) throws -> LottoBag {
+    func sellLotto(for money: Money, with lottos: [Lotto] = []) throws -> LottoBag {
+        let moneyValue = money.value - lottos.count * LottoSeller.lottoPrice.value
+        if moneyValue < 0 { throw Error.notEnoughMoney }
+        let money = Money(value: moneyValue)!
         let lottoCount = try availableLottoCount(with: money)
         let lottoList = try (0..<lottoCount).map { _ in
             try lottoFactory.make()

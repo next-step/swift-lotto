@@ -47,4 +47,18 @@ class LottoSellerTest: XCTestCase {
             XCTAssertTrue(error.localizedDescription == LottoSeller.Error.notEnoughMoney.errorDescription)
         }
     }
+    
+    func test_sellLotto_로또를_넘기면서_호출하면_해당_로또를포함하면서_구매가능한_최대수량의_로또를담은_LottoBag을_반환한다() throws {
+        // given
+        let money = Money(value: 2000)!
+        let customLotto1 = try CustomLotto(numbers: [1, 2, 3, 4, 5, 6])
+        let customLotto2 = try CustomLotto(numbers: [1, 2, 3, 4, 6, 7])
+        
+        // when
+        let lottoBag = try lottoSeller.sellLotto(for: money, with: [customLotto1, customLotto2])
+        
+        // then
+        XCTAssertTrue(lottoBag.lottoList.contains { $0.numbers == customLotto1.numbers })
+        XCTAssertTrue(lottoBag.lottoList.contains { $0.numbers == customLotto2.numbers })
+    }
 }
