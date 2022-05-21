@@ -8,19 +8,24 @@ import Foundation
 
 do {
     let inputView = InputView()
+
     let purchaseMoney: Int = try inputView.receivePurchaseMoney()
+    let manualBuyCount: Int = try inputView.receiveManualBuyCount(inBudget: purchaseMoney)
+    let purchasableCount = purchaseMoney / Lotto.Constants.price
+    let automaticBuyCount: Int = purchasableCount - manualBuyCount
 
     let resultView = ResultView()
-    let purchaseCount = purchaseMoney / Lotto.Constants.price
-    resultView.printPurchaseCount(with: purchaseCount)
-
-    let lottos: [Lotto] = try buyLottos(for: purchaseCount)
-    resultView.printLottos(for: lottos)
+    resultView.printPurchaseCount(manual: manualBuyCount, automatic: automaticBuyCount)
+    
+    let manualLottos: [Lotto] = try inputView.receiveManualLottos(for: manualBuyCount)
+    let automaticLottos: [Lotto] = try buyAutomaticLottos(for: automaticBuyCount)
+    let allLottos: [Lotto] = manualLottos + automaticLottos
+    resultView.printLottos(for: allLottos)
     
     let winningLotto: Lotto = try inputView.receiveWinningLotto()
     let bonusNumber: Int = try inputView.receiveBonusNumber(in: winningLotto)
     
-    let lottoResult: LottoResult = try lottoResult(lottos: lottos,
+    let lottoResult: LottoResult = try lottoResult(lottos: allLottos,
                                                    winningLotto: winningLotto,
                                                    bonusNumber: bonusNumber)
     resultView.printWinningStatistics(with: lottoResult)
@@ -29,7 +34,7 @@ do {
     errorView.printError(for: error)
 }
 
-private func buyLottos(for purchaseCount: Int) throws -> [Lotto] {
+private func buyAutomaticLottos(for purchaseCount: Int) throws -> [Lotto] {
     let lottoGenerator = LottoGenerator()
     let lottos: [Lotto] = try (1...purchaseCount)
         .map { _ in
