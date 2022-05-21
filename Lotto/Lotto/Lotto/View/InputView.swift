@@ -36,7 +36,7 @@ struct InputView {
     private let stringConverter = StringConverter()
     private let userInputConverter = UserInputConverter()
     private let purchaseLottoValidator = PurchaseLottoValidator()
-    private let lottoNumbersValidator = LottoNumbersValidator()
+    private let lottoValidator = LottoValidator()
     private let lottoBonusNumberValidator = LottoBonusNumberValidator()
     
     func receivePurchaseMoney() throws -> Int {

@@ -9,10 +9,10 @@ import Foundation
 
 struct LottoBonusNumberValidator {
     
-    private let lottoNumbersValidator = LottoNumbersValidator()
+    private let lottoValidator = LottoValidator()
     
     func validate(_ bonusNumber: LottoNumber, in winningLotto: Lotto) throws {
         let winningNumbersWithBonus = winningLotto.numbers + [bonusNumber]
-        try lottoNumbersValidator.validateAllUniqueNumbers(of: winningNumbersWithBonus)
+        try lottoValidator.validateAllUniqueNumbers(of: winningNumbersWithBonus)
     }
 }

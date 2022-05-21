@@ -1,5 +1,5 @@
 //
-//  LottoNumbersValidatorTests.swift
+//  LottoValidatorTests.swift
 //  LottoTest
 //
 //  Created by 강수진 on 2022/05/06.
@@ -7,12 +7,12 @@
 
 import XCTest
 
-class LottoNumbersValidatorTests: XCTestCase {
+class LottoValidatorTests: XCTestCase {
 
-    var sut: LottoNumbersValidator!
+    var sut: LottoValidator!
     
     override func setUpWithError() throws {
-        sut = LottoNumbersValidator()
+        sut = LottoValidator()
     }
     
     override func tearDownWithError() throws {
@@ -36,9 +36,9 @@ class LottoNumbersValidatorTests: XCTestCase {
         
         // when
         // then
-        let expectation = LottoNumbersValidator.LottoNumbersValidatorError.invalidNumberCount
+        let expectation = LottoValidator.LottoValidatorError.invalidNumberCount
         XCTAssertThrowsError(try sut.validate(of: numbers)) { error in
-            XCTAssertEqual(error as? LottoNumbersValidator.LottoNumbersValidatorError, expectation)
+            XCTAssertEqual(error as? LottoValidator.LottoValidatorError, expectation)
         }
     }
     
@@ -48,9 +48,9 @@ class LottoNumbersValidatorTests: XCTestCase {
         
         // when
         // then
-        let expectation = LottoNumbersValidator.LottoNumbersValidatorError.invalidNumberCount
+        let expectation = LottoValidator.LottoValidatorError.invalidNumberCount
         XCTAssertThrowsError(try sut.validate(of: numbers)) { error in
-            XCTAssertEqual(error as? LottoNumbersValidator.LottoNumbersValidatorError, expectation)
+            XCTAssertEqual(error as? LottoValidator.LottoValidatorError, expectation)
         }
     }
     
@@ -59,9 +59,9 @@ class LottoNumbersValidatorTests: XCTestCase {
         let numbers = try [1,2,3,4,5,5].map(LottoNumber.init)
         
         // then
-        let expectation = LottoNumbersValidator.LottoNumbersValidatorError.hasDuplicate
+        let expectation = LottoValidator.LottoValidatorError.hasDuplicate
         XCTAssertThrowsError(try sut.validate(of: numbers)) { error in
-            XCTAssertEqual(error as? LottoNumbersValidator.LottoNumbersValidatorError, expectation)
+            XCTAssertEqual(error as? LottoValidator.LottoValidatorError, expectation)
         }
     }
     
@@ -74,7 +74,7 @@ class LottoNumbersValidatorTests: XCTestCase {
         // when
         // then
         XCTAssertThrowsError(try sut.validate(of: numbers)) { error in
-            let result = (error as? LottoNumbersValidator.LottoNumbersValidatorError)?.localizedDescription
+            let result = (error as? LottoValidator.LottoValidatorError)?.localizedDescription
             let expectation = "로또 번호 개수가 6개가 아닙니다"
             XCTAssertEqual(result, expectation)
         }
@@ -87,7 +87,7 @@ class LottoNumbersValidatorTests: XCTestCase {
         // when
         // then
         XCTAssertThrowsError(try sut.validate(of: numbers)) { error in
-            let result = (error as? LottoNumbersValidator.LottoNumbersValidatorError)?.localizedDescription
+            let result = (error as? LottoValidator.LottoValidatorError)?.localizedDescription
             let expectation = "중복되는 번호가 있습니다"
             XCTAssertEqual(result, expectation)
         }

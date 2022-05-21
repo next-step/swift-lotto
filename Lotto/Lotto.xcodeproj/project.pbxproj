@@ -27,9 +27,9 @@
 		3BDF151D282559F100F03D3C /* LottoRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF151C282559F100F03D3C /* LottoRank.swift */; };
 		3BDF151E28255A0200F03D3C /* LottoRankChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF151A282559E600F03D3C /* LottoRankChecker.swift */; };
 		3BDF151F28255A0400F03D3C /* LottoRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF151C282559F100F03D3C /* LottoRank.swift */; };
-		3BDF15222825619100F03D3C /* LottoNumbersValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15212825619100F03D3C /* LottoNumbersValidator.swift */; };
-		3BDF15232825619B00F03D3C /* LottoNumbersValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15212825619100F03D3C /* LottoNumbersValidator.swift */; };
-		3BDF15252825629300F03D3C /* LottoNumbersValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15242825629300F03D3C /* LottoNumbersValidatorTests.swift */; };
+		3BDF15222825619100F03D3C /* LottoValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15212825619100F03D3C /* LottoValidator.swift */; };
+		3BDF15232825619B00F03D3C /* LottoValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15212825619100F03D3C /* LottoValidator.swift */; };
+		3BDF15252825629300F03D3C /* LottoValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15242825629300F03D3C /* LottoValidatorTests.swift */; };
 		3BDF152A2825664300F03D3C /* UserInputConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15292825664300F03D3C /* UserInputConverterTests.swift */; };
 		3BDF152C2825665000F03D3C /* UserInputConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF152B2825665000F03D3C /* UserInputConverter.swift */; };
 		3BDF15322825915800F03D3C /* PurchaseMoneyValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF15312825915800F03D3C /* PurchaseMoneyValidatorTests.swift */; };
@@ -85,8 +85,8 @@
 		3BDF15182825536A00F03D3C /* LottoRankCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoRankCheckerTests.swift; sourceTree = "<group>"; };
 		3BDF151A282559E600F03D3C /* LottoRankChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoRankChecker.swift; sourceTree = "<group>"; };
 		3BDF151C282559F100F03D3C /* LottoRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoRank.swift; sourceTree = "<group>"; };
-		3BDF15212825619100F03D3C /* LottoNumbersValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumbersValidator.swift; sourceTree = "<group>"; };
-		3BDF15242825629300F03D3C /* LottoNumbersValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumbersValidatorTests.swift; sourceTree = "<group>"; };
+		3BDF15212825619100F03D3C /* LottoValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoValidator.swift; sourceTree = "<group>"; };
+		3BDF15242825629300F03D3C /* LottoValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoValidatorTests.swift; sourceTree = "<group>"; };
 		3BDF15292825664300F03D3C /* UserInputConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputConverterTests.swift; sourceTree = "<group>"; };
 		3BDF152B2825665000F03D3C /* UserInputConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputConverter.swift; sourceTree = "<group>"; };
 		3BDF15312825915800F03D3C /* PurchaseMoneyValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMoneyValidatorTests.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 				3BDF15502826E67A00F03D3C /* LottoRankTests.swift */,
 				3BDF15182825536A00F03D3C /* LottoRankCheckerTests.swift */,
 				3BDF153E2825A23F00F03D3C /* LottoResultTests.swift */,
-				3BDF15242825629300F03D3C /* LottoNumbersValidatorTests.swift */,
+				3BDF15242825629300F03D3C /* LottoValidatorTests.swift */,
 				63E81F9A28332F92003B59B1 /* LottoBonusNumberValidatorTests.swift */,
 				632434EC28392E3600CEDA7F /* LottoNumberValidatorTests.swift */,
 				3BDF151328254BFC00F03D3C /* LottoGeneratorTests.swift */,
@@ -190,7 +190,7 @@
 				3BDF151A282559E600F03D3C /* LottoRankChecker.swift */,
 				3BDF153B28259F8700F03D3C /* LottoResult.swift */,
 				632434EE2839322600CEDA7F /* LottoNumberValidator.swift */,
-				3BDF15212825619100F03D3C /* LottoNumbersValidator.swift */,
+				3BDF15212825619100F03D3C /* LottoValidator.swift */,
 				6335504C283388C3008E4EE4 /* LottoBonusNumberValidator.swift */,
 				3BDF151528254C0600F03D3C /* LottoGenerator.swift */,
 				3BDF15332825916000F03D3C /* PurchaseMoneyValidator.swift */,
@@ -356,10 +356,10 @@
 				3B2540272822C49D00841024 /* StringCalculatorTests.swift in Sources */,
 				3B8A28FF2822868D00CF84C6 /* ValidOperandMaker.swift in Sources */,
 				3B2540342823060C00841024 /* Splitter.swift in Sources */,
-				3BDF15232825619B00F03D3C /* LottoNumbersValidator.swift in Sources */,
+				3BDF15232825619B00F03D3C /* LottoValidator.swift in Sources */,
 				3BDF15352825916B00F03D3C /* PurchaseMoneyValidator.swift in Sources */,
 				632434F02839327E00CEDA7F /* LottoNumberValidator.swift in Sources */,
-				3BDF15252825629300F03D3C /* LottoNumbersValidatorTests.swift in Sources */,
+				3BDF15252825629300F03D3C /* LottoValidatorTests.swift in Sources */,
 				3BDF151728254C2000F03D3C /* LottoGenerator.swift in Sources */,
 				3BDF152A2825664300F03D3C /* UserInputConverterTests.swift in Sources */,
 				3BDF153A28259F7900F03D3C /* Lotto.swift in Sources */,
@@ -373,7 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BDF15222825619100F03D3C /* LottoNumbersValidator.swift in Sources */,
+				3BDF15222825619100F03D3C /* LottoValidator.swift in Sources */,
 				3BDF15412825B11B00F03D3C /* InputView.swift in Sources */,
 				3BDF15392825982C00F03D3C /* Lotto.swift in Sources */,
 				3BDF15342825916000F03D3C /* PurchaseMoneyValidator.swift in Sources */,
