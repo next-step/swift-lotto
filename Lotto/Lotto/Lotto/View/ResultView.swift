@@ -10,15 +10,15 @@ import Foundation
 struct ResultView {
 
     private enum ResultText: UserInformable {
-        case purchaseCount(value: Int)
+        case purchaseCount(manual: Int, automatic: Int)
         case winningStatisticsHeader
         case winning(description: String)
         case earningsRate(value: Double)
         
         var guideDescription: String {
             switch self {
-            case let .purchaseCount(purchaseCount):
-                return "\(purchaseCount) 개를 구매했습니다."
+            case let .purchaseCount(manual, automatic):
+                return "수동으로 \(manual)장, 자동으로 \(automatic)장을 구매했습니다."
             case .winningStatisticsHeader:
                 return "당첨 통계\n------"
             case let .winning(description):
@@ -32,8 +32,8 @@ struct ResultView {
     
     private let userGuider = UserGuider()
     
-    func printPurchaseCount(with purchaseCount: Int) {
-        userGuider.printGuide(for: ResultText.purchaseCount(value: purchaseCount))
+    func printPurchaseCount(manual: Int, automatic: Int) {
+        userGuider.printGuide(for: ResultText.purchaseCount(manual: manual, automatic: automatic))
     }
     
     func printLottos(for lottos: [Lotto]) {
