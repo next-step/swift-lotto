@@ -35,14 +35,11 @@ struct InputView {
     private let userGuider = UserGuider()
     private let stringConverter = StringConverter()
     private let userInputConverter = UserInputConverter()
-    private let purchaseLottoValidator = PurchaseLottoValidator()
-    private let lottoValidator = LottoValidator()
-    private let lottoBonusNumberValidator = LottoBonusNumberValidator()
     
     func receivePurchaseMoney() throws -> Int {
         userGuider.printGuide(for: QuestionText.purchaseMoney)
         let purchaseMoney = try receiveInt()
-        try purchaseLottoValidator.validateMoney(purchaseMoney)
+        try PurchaseLottoValidator.validateMoney(purchaseMoney)
         return purchaseMoney
     }
     
@@ -51,7 +48,7 @@ struct InputView {
         
         let manualBuyCount = try receiveInt()
         
-        try purchaseLottoValidator.validateCount(manualBuyCount,
+        try PurchaseLottoValidator.validateCount(manualBuyCount,
                                                  inBudget: purchaseMoney)
         return manualBuyCount
     }
@@ -85,7 +82,7 @@ struct InputView {
         userGuider.printGuide(for: QuestionText.bonusNumber)
         let userInput: Int = try receiveInt()
         let bonusNumber = try LottoNumber(value: userInput)
-        try lottoBonusNumberValidator.validate(bonusNumber, in: winningLotto)
+        try LottoBonusNumberValidator.validate(bonusNumber, in: winningLotto)
         return bonusNumber
     }
     

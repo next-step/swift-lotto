@@ -27,7 +27,7 @@ struct PurchaseLottoValidator {
     }
 
     
-    func validateMoney(_ money: Int) throws {
+    static func validateMoney(_ money: Int) throws {
         let isEnoughMoneyToBuyLotto: Bool = money >= Lotto.Constants.price
         guard isEnoughMoneyToBuyLotto else {
             throw PurchaseLottoValidatorError.underMinimumMoney
@@ -39,7 +39,7 @@ struct PurchaseLottoValidator {
         }
     }
     
-    func validateCount(_ count: Int, inBudget money: Int) throws {
+    static func validateCount(_ count: Int, inBudget money: Int) throws {
         let minPurchaseableCount = 0
         let maxPurchaseableCount = money / Lotto.Constants.price
         let purchasableCountRange = minPurchaseableCount...maxPurchaseableCount

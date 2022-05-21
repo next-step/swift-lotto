@@ -189,10 +189,10 @@
 				3BDF151C282559F100F03D3C /* LottoRank.swift */,
 				3BDF151A282559E600F03D3C /* LottoRankChecker.swift */,
 				3BDF153B28259F8700F03D3C /* LottoResult.swift */,
+				3BDF151528254C0600F03D3C /* LottoGenerator.swift */,
 				632434EE2839322600CEDA7F /* LottoNumberValidator.swift */,
 				3BDF15212825619100F03D3C /* LottoValidator.swift */,
 				6335504C283388C3008E4EE4 /* LottoBonusNumberValidator.swift */,
-				3BDF151528254C0600F03D3C /* LottoGenerator.swift */,
 				3BDF15332825916000F03D3C /* PurchaseMoneyValidator.swift */,
 			);
 			path = Model;

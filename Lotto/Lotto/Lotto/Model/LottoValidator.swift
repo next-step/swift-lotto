@@ -23,18 +23,18 @@ struct LottoValidator {
         }
     }
     
-    func validate(of numbers: [LottoNumber]) throws {
+    static func validate(of numbers: [LottoNumber]) throws {
         try validateNumberCount(of: numbers)
         try validateAllUniqueNumbers(of: numbers)
     }
     
-    private func validateNumberCount(of numbers: [LottoNumber]) throws {
+    private static func validateNumberCount(of numbers: [LottoNumber]) throws {
         guard numbers.count == Lotto.Constants.numbersCount else {
             throw LottoValidatorError.invalidNumberCount
         }
     }
     
-    func validateAllUniqueNumbers(of numbers: [LottoNumber]) throws {
+    static func validateAllUniqueNumbers(of numbers: [LottoNumber]) throws {
         let isAllNumbersUnique = Set(numbers).count == numbers.count
         guard isAllNumbersUnique else {
             throw LottoValidatorError.hasDuplicate

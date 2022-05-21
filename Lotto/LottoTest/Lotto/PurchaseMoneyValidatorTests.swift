@@ -9,10 +9,10 @@ import XCTest
 
 class PurchaseLottoValidatorTests: XCTestCase {
 
-    var sut: PurchaseLottoValidator!
+    var sut: PurchaseLottoValidator.Type!
     
     override func setUpWithError() throws {
-        sut = PurchaseLottoValidator()
+        sut = PurchaseLottoValidator.self
     }
     
     override func tearDownWithError() throws {

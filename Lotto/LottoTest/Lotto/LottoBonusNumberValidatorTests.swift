@@ -9,10 +9,10 @@ import XCTest
 
 class LottoBonusNumberValidatorTests: XCTestCase {
 
-    var sut: LottoBonusNumberValidator!
+    var sut: LottoBonusNumberValidator.Type!
     
     override func setUpWithError() throws {
-        sut = LottoBonusNumberValidator()
+        sut = LottoBonusNumberValidator.self
     }
     
     override func tearDownWithError() throws {
