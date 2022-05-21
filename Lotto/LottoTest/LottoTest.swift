@@ -9,7 +9,6 @@ import XCTest
 @testable import Lotto
 
 class LottoTest: XCTestCase {
-    
     func test_로또번호_중복아닌6개숫자_생성() {
         let lotto = Lotto()
         let lottoNumbers = Set(lotto.getNumbers())

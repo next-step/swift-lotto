@@ -23,9 +23,9 @@ final class WinningNumber {
         return initWinningNumbers
     }
     
-    func register(_ numbers: [Int]) {
-        for number in numbers {
-            winningNumbers[number]! += 1
+    func register(_ winningNumbers: [Int]) {
+        for number in winningNumbers {
+            self.winningNumbers[number]! += 1
         }
     }
     
@@ -37,7 +37,7 @@ final class WinningNumber {
         var count = 0
         let isBonusMatch = numbers.contains(bonusNumber)
         for number in numbers {
-            count += winningNumbers[number] ?? 0
+            count += self.winningNumbers[number] ?? 0
         }
         return Winning.rank(count,matchBonus: isBonusMatch)
     }

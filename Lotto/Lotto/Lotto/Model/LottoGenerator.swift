@@ -16,11 +16,4 @@ struct LottoGenerator {
         }
         return lottos
     }
-    
-    func changeMoneyToLottoCount(input money: Int) -> Int {
-        if money < 0 {
-            return 0
-        }
-        return money/1000
-    }
 }
