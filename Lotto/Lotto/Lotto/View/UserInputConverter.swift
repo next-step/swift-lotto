@@ -34,7 +34,7 @@ struct UserInputConverter {
         do {
             let components = splitter.components(of: removeSpace(of: input))
             let winningNumbers = try components.map(stringConverter.convertToInt)
-            return winningNumbers.map(LottoNumber.init)
+            return try winningNumbers.map(LottoNumber.init)
         } catch {
             throw UserInputConverterError.WinningNumbers.extraInputs
         }

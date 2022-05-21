@@ -23,4 +23,3 @@ struct Lotto {
         self.numbers = numbers
     }
 }
-

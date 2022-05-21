@@ -12,7 +12,6 @@ struct LottoBonusNumberValidator {
     private let lottoNumbersValidator = LottoNumbersValidator()
     
     func validate(_ bonusNumber: LottoNumber, in winningLotto: Lotto) throws {
-        try lottoNumbersValidator.validateNumberInRange(of: bonusNumber)
         let winningNumbersWithBonus = winningLotto.numbers + [bonusNumber]
         try lottoNumbersValidator.validateAllUniqueNumbers(of: winningNumbersWithBonus)
     }

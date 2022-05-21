@@ -84,7 +84,7 @@ struct InputView {
     func receiveBonusNumber(in winningLotto: Lotto) throws -> LottoNumber {
         userGuider.printGuide(for: QuestionText.bonusNumber)
         let userInput: Int = try receiveInt()
-        let bonusNumber = LottoNumber(value: userInput)
+        let bonusNumber = try LottoNumber(value: userInput)
         try lottoBonusNumberValidator.validate(bonusNumber, in: winningLotto)
         return bonusNumber
     }

@@ -24,7 +24,7 @@ class LottoResultTests: XCTestCase {
         let winningNumber4 = 4
         let winningNumber5 = 5
         let winningNumber6 = 6
-        let winningNumbers = [winningNumber1,
+        let winningNumbers = try [winningNumber1,
                               winningNumber2,
                               winningNumber3,
                               winningNumber4,
@@ -39,37 +39,37 @@ class LottoResultTests: XCTestCase {
         let noneWinningNumber2 = 8
         let noneWinningNumber3 = 9
         let noneWinningNumber4 = 10
-        firstWinningNumbers = [winningNumber1,
+        firstWinningNumbers = try [winningNumber1,
                                winningNumber2,
                                winningNumber3,
                                winningNumber4,
                                winningNumber5,
                                winningNumber6].map(LottoNumber.init)
-        secondWinningNumbers = [winningNumber1,
+        secondWinningNumbers = try [winningNumber1,
                                 winningNumber2,
                                 winningNumber3,
                                 winningNumber4,
                                 winningNumber5,
                                 bonusNumber].map(LottoNumber.init)
-        thirdWinningNumbers = [winningNumber1,
+        thirdWinningNumbers = try [winningNumber1,
                                winningNumber2,
                                winningNumber3,
                                winningNumber4,
                                winningNumber5,
                                noneWinningNumber1].map(LottoNumber.init)
-        forthWinningNumbers = [winningNumber1,
+        forthWinningNumbers = try [winningNumber1,
                                winningNumber2,
                                winningNumber3,
                                winningNumber4,
                                noneWinningNumber1,
                                noneWinningNumber2].map(LottoNumber.init)
-        fifthWinningNumbers = [winningNumber1,
+        fifthWinningNumbers = try [winningNumber1,
                                winningNumber2,
                                winningNumber3,
                                noneWinningNumber1,
                                noneWinningNumber2,
                                noneWinningNumber3].map(LottoNumber.init)
-        noneWinningNumbers = [winningNumber1,
+        noneWinningNumbers = try [winningNumber1,
                               winningNumber2,
                               noneWinningNumber1,
                               noneWinningNumber2,

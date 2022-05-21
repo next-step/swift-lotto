@@ -11,15 +11,12 @@ struct LottoNumbersValidator {
     
     enum LottoNumbersValidatorError: LocalizedError {
         case invalidNumberCount
-        case containOutOfRange
         case hasDuplicate
         
         var errorDescription: String? {
             switch self {
             case .invalidNumberCount:
                 return "로또 번호 개수가 6개가 아닙니다"
-            case .containOutOfRange:
-                return "1과 45 사이에 포함되지 않는 번호가 있습니다"
             case .hasDuplicate:
                 return "중복되는 번호가 있습니다"
             }
@@ -28,20 +25,12 @@ struct LottoNumbersValidator {
     
     func validate(of numbers: [LottoNumber]) throws {
         try validateNumberCount(of: numbers)
-        try numbers.forEach(validateNumberInRange)
         try validateAllUniqueNumbers(of: numbers)
     }
     
     private func validateNumberCount(of numbers: [LottoNumber]) throws {
         guard numbers.count == Lotto.Constants.numbersCount else {
             throw LottoNumbersValidatorError.invalidNumberCount
-        }
-    }
-    
-    func validateNumberInRange(of number: LottoNumber) throws {
-        let isNumberInRange = Lotto.Constants.numberRange ~= number.value
-        guard isNumberInRange else {
-            throw LottoNumbersValidatorError.containOutOfRange
         }
     }
     
