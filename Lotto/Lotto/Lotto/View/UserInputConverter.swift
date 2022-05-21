@@ -30,7 +30,7 @@ struct UserInputConverter {
         return result
     }
     
-    func convertToWinningNumbers(from input: String) throws -> [Int] {        
+    func convertToLottoNumbers(from input: String) throws -> [Int] {        
         do {
             let components = splitter.components(of: removeSpace(of: input))
             let winningNumbers = try components.map(stringConverter.convertToInt)

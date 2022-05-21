@@ -41,7 +41,7 @@ class UserInputConverterTests: XCTestCase {
         let input = "1,2,3,4,5,6"
         
         // when
-        let result = try sut.convertToWinningNumbers(from: input)
+        let result = try sut.convertToLottoNumbers(from: input)
         
         // then
         let expectation = [1,2,3,4,5,6]
@@ -53,7 +53,7 @@ class UserInputConverterTests: XCTestCase {
         let input = "1, 2, 3, 4, 5, 6"
         
         // when
-        let result = try sut.convertToWinningNumbers(from: input)
+        let result = try sut.convertToLottoNumbers(from: input)
         
         // then
         let expectation = [1,2,3,4,5,6]
@@ -67,7 +67,7 @@ class UserInputConverterTests: XCTestCase {
         // when
         // then
         let expectation = UserInputConverter.UserInputConverterError.WinningNumbers.extraInputs
-        XCTAssertThrowsError(try sut.convertToWinningNumbers(from: input)) { error in
+        XCTAssertThrowsError(try sut.convertToLottoNumbers(from: input)) { error in
             XCTAssertEqual(error as? UserInputConverter.UserInputConverterError.WinningNumbers, expectation)
         }
     }
@@ -78,7 +78,7 @@ class UserInputConverterTests: XCTestCase {
         
         // then
         let expectation = UserInputConverter.UserInputConverterError.WinningNumbers.extraInputs
-        XCTAssertThrowsError(try sut.convertToWinningNumbers(from: input)) { error in
+        XCTAssertThrowsError(try sut.convertToLottoNumbers(from: input)) { error in
             XCTAssertEqual(error as? UserInputConverter.UserInputConverterError.WinningNumbers, expectation)
         }
     }
@@ -91,7 +91,7 @@ class UserInputConverterTests: XCTestCase {
         
         // when
         // then
-        XCTAssertThrowsError(try sut.convertToWinningNumbers(from: input)) { error in
+        XCTAssertThrowsError(try sut.convertToLottoNumbers(from: input)) { error in
             let result = error.localizedDescription
             let expectation = "숫자와 구분자를 위한 하나의 , 만 입력해주세요"
             XCTAssertEqual(result, expectation)

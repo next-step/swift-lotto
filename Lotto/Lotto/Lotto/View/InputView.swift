@@ -45,9 +45,9 @@ struct InputView {
         
         let userInput: String? = readLine()
         let unwrappedUserInput: String = try stringConverter.unwrapOptional(from: userInput)
-        let winningNumbers = try userInputConverter.convertToWinningNumbers(from: unwrappedUserInput)
-        let winningLotto = try Lotto(numbers: winningNumbers)
-        return winningLotto
+        let lottoNumbers: [Int] = try userInputConverter.convertToLottoNumbers(from: unwrappedUserInput)
+        let lotto = try Lotto(numbers: lottoNumbers)
+        return lotto
     }
     
     func receiveBonusNumber(in winningLotto: Lotto) throws -> Int {
