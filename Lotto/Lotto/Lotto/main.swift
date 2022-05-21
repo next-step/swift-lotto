@@ -17,7 +17,7 @@ do {
     let resultView = ResultView()
     resultView.printPurchaseCount(manual: manualBuyCount, automatic: automaticBuyCount)
     
-    let manualLottos: [Lotto] = try inputView.receiveManualLottos(for: manualBuyCount)
+    let manualLottos: [Lotto] = manualBuyCount > 0 ? try inputView.receiveManualLottos(for: manualBuyCount) : []
     let automaticLottos: [Lotto] = try buyAutomaticLottos(for: automaticBuyCount)
     let allLottos: [Lotto] = manualLottos + automaticLottos
     resultView.printLottos(for: allLottos)
