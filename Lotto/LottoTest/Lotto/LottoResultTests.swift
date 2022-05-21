@@ -10,12 +10,12 @@ import XCTest
 class LottoResultTests: XCTestCase {
     
     var lottoRankChecker: LottoRankChecker!
-    var firstWinningNumbers: [Int]!
-    var secondWinningNumbers: [Int]!
-    var thirdWinningNumbers: [Int]!
-    var forthWinningNumbers: [Int]!
-    var fifthWinningNumbers: [Int]!
-    var noneWinningNumbers: [Int]!
+    var firstWinningNumbers: [LottoNumber]!
+    var secondWinningNumbers: [LottoNumber]!
+    var thirdWinningNumbers: [LottoNumber]!
+    var forthWinningNumbers: [LottoNumber]!
+    var fifthWinningNumbers: [LottoNumber]!
+    var noneWinningNumbers: [LottoNumber]!
     
     override func setUpWithError() throws {
         let winningNumber1 = 1
@@ -29,10 +29,11 @@ class LottoResultTests: XCTestCase {
                               winningNumber3,
                               winningNumber4,
                               winningNumber5,
-                              winningNumber6]
+                              winningNumber6].map(LottoNumber.init)
         let winningLotto = try Lotto(numbers: winningNumbers)
         let bonusNumber = 45
-        lottoRankChecker = try LottoRankChecker(winningLotto: winningLotto, bonusNumber: bonusNumber)
+        lottoRankChecker = try LottoRankChecker(winningLotto: winningLotto,
+                                                bonusNumber: LottoNumber(value: bonusNumber))
         
         let noneWinningNumber1 = 7
         let noneWinningNumber2 = 8
@@ -43,37 +44,37 @@ class LottoResultTests: XCTestCase {
                                winningNumber3,
                                winningNumber4,
                                winningNumber5,
-                               winningNumber6]
+                               winningNumber6].map(LottoNumber.init)
         secondWinningNumbers = [winningNumber1,
                                 winningNumber2,
                                 winningNumber3,
                                 winningNumber4,
                                 winningNumber5,
-                                bonusNumber]
+                                bonusNumber].map(LottoNumber.init)
         thirdWinningNumbers = [winningNumber1,
                                winningNumber2,
                                winningNumber3,
                                winningNumber4,
                                winningNumber5,
-                               noneWinningNumber1]
+                               noneWinningNumber1].map(LottoNumber.init)
         forthWinningNumbers = [winningNumber1,
                                winningNumber2,
                                winningNumber3,
                                winningNumber4,
                                noneWinningNumber1,
-                               noneWinningNumber2]
+                               noneWinningNumber2].map(LottoNumber.init)
         fifthWinningNumbers = [winningNumber1,
                                winningNumber2,
                                winningNumber3,
                                noneWinningNumber1,
                                noneWinningNumber2,
-                               noneWinningNumber3]
+                               noneWinningNumber3].map(LottoNumber.init)
         noneWinningNumbers = [winningNumber1,
                               winningNumber2,
                               noneWinningNumber1,
                               noneWinningNumber2,
                               noneWinningNumber3,
-                              noneWinningNumber4]
+                              noneWinningNumber4].map(LottoNumber.init)
     }
     
     override func tearDownWithError() throws {

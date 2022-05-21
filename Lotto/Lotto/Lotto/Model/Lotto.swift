@@ -16,10 +16,11 @@ struct Lotto {
     }
     
     private let lottoNumbersValidator = LottoNumbersValidator()
-    let numbers: [Int]
+    let numbers: [LottoNumber]
     
-    init(numbers: [Int]) throws {
+    init(numbers: [LottoNumber]) throws {
         try lottoNumbersValidator.validate(of: numbers)
         self.numbers = numbers
     }
 }
+

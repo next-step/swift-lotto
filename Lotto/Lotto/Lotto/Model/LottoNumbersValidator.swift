@@ -26,26 +26,26 @@ struct LottoNumbersValidator {
         }
     }
     
-    func validate(of numbers: [Int]) throws {
+    func validate(of numbers: [LottoNumber]) throws {
         try validateNumberCount(of: numbers)
         try numbers.forEach(validateNumberInRange)
         try validateAllUniqueNumbers(of: numbers)
     }
     
-    private func validateNumberCount(of numbers: [Int]) throws {
+    private func validateNumberCount(of numbers: [LottoNumber]) throws {
         guard numbers.count == Lotto.Constants.numbersCount else {
             throw LottoNumbersValidatorError.invalidNumberCount
         }
     }
     
-    func validateNumberInRange(of number: Int) throws {
-        let isNumberInRange = Lotto.Constants.numberRange ~= number
+    func validateNumberInRange(of number: LottoNumber) throws {
+        let isNumberInRange = Lotto.Constants.numberRange ~= number.value
         guard isNumberInRange else {
             throw LottoNumbersValidatorError.containOutOfRange
         }
     }
     
-    func validateAllUniqueNumbers(of numbers: [Int]) throws {
+    func validateAllUniqueNumbers(of numbers: [LottoNumber]) throws {
         let isAllNumbersUnique = Set(numbers).count == numbers.count
         guard isAllNumbersUnique else {
             throw LottoNumbersValidatorError.hasDuplicate

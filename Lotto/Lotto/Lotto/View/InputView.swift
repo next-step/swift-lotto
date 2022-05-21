@@ -76,14 +76,15 @@ struct InputView {
     private func receiveLotto() throws -> Lotto {
         let userInput: String? = readLine()
         let unwrappedUserInput: String = try stringConverter.unwrapOptional(from: userInput)
-        let lottoNumbers: [Int] = try userInputConverter.convertToLottoNumbers(from: unwrappedUserInput)
+        let lottoNumbers: [LottoNumber] = try userInputConverter.convertToLottoNumbers(from: unwrappedUserInput)
         let lotto = try Lotto(numbers: lottoNumbers)
         return lotto
     }
     
-    func receiveBonusNumber(in winningLotto: Lotto) throws -> Int {
+    func receiveBonusNumber(in winningLotto: Lotto) throws -> LottoNumber {
         userGuider.printGuide(for: QuestionText.bonusNumber)
-        let bonusNumber = try receiveInt()
+        let userInput: Int = try receiveInt()
+        let bonusNumber = LottoNumber(value: userInput)
         try lottoBonusNumberValidator.validate(bonusNumber, in: winningLotto)
         return bonusNumber
     }

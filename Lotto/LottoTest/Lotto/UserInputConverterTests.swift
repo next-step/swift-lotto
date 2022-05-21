@@ -44,7 +44,7 @@ class UserInputConverterTests: XCTestCase {
         let result = try sut.convertToLottoNumbers(from: input)
         
         // then
-        let expectation = [1,2,3,4,5,6]
+        let expectation = [1,2,3,4,5,6].map(LottoNumber.init)
         XCTAssertEqual(result, expectation)
     }
     
@@ -56,7 +56,7 @@ class UserInputConverterTests: XCTestCase {
         let result = try sut.convertToLottoNumbers(from: input)
         
         // then
-        let expectation = [1,2,3,4,5,6]
+        let expectation = [1,2,3,4,5,6].map(LottoNumber.init)
         XCTAssertEqual(result, expectation)
     }
     

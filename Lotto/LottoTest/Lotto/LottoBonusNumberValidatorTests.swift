@@ -23,8 +23,8 @@ class LottoBonusNumberValidatorTests: XCTestCase {
     
     func test_validate() throws {
         //given
-        let bonusNumber = 45
-        let winningNumbers = [1,2,3,4,5,6]
+        let bonusNumber = LottoNumber(value: 45)
+        let winningNumbers = [1,2,3,4,5,6].map(LottoNumber.init)
         let winningLotto = try Lotto(numbers: winningNumbers)
         
         // when
@@ -34,8 +34,8 @@ class LottoBonusNumberValidatorTests: XCTestCase {
     
     func test_validate_whenBonusNumbersIsDuplicated_throwHasDuplicate() throws {
         //given
-        let bonusNumber = 1
-        let winningNumbers = [1,2,3,4,5,6]
+        let bonusNumber = LottoNumber(value: 1)
+        let winningNumbers = [1,2,3,4,5,6].map(LottoNumber.init)
         let winningLotto = try Lotto(numbers: winningNumbers)
         
         // then
@@ -47,8 +47,8 @@ class LottoBonusNumberValidatorTests: XCTestCase {
     
     func test_validate_whenBonusNumbersIsOverRanged_throwContainOutOfRange() throws {
         //given
-        let bonusNumber = 46
-        let winningNumbers = [1,2,3,4,5,6]
+        let bonusNumber = LottoNumber(value: 46)
+        let winningNumbers = [1,2,3,4,5,6].map(LottoNumber.init)
         let winningLotto = try Lotto(numbers: winningNumbers)
         
         // then

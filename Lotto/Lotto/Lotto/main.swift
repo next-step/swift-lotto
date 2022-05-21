@@ -23,7 +23,7 @@ do {
     resultView.printLottos(for: allLottos)
     
     let winningLotto: Lotto = try inputView.receiveWinningLotto()
-    let bonusNumber: Int = try inputView.receiveBonusNumber(in: winningLotto)
+    let bonusNumber: LottoNumber = try inputView.receiveBonusNumber(in: winningLotto)
     
     let lottoResult: LottoResult = try lottoResult(lottos: allLottos,
                                                    winningLotto: winningLotto,
@@ -45,7 +45,7 @@ private func buyAutomaticLottos(for purchaseCount: Int) throws -> [Lotto] {
 
 private func lottoResult(lottos: [Lotto],
                          winningLotto: Lotto,
-                         bonusNumber: Int) throws -> LottoResult {
+                         bonusNumber: LottoNumber) throws -> LottoResult {
     
     let lottoRankChecker = try LottoRankChecker(winningLotto: winningLotto,
                                                 bonusNumber: bonusNumber)

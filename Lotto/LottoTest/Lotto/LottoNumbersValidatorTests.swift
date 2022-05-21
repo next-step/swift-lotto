@@ -23,7 +23,7 @@ class LottoNumbersValidatorTests: XCTestCase {
     
     func test_validate() throws {
         //given
-        let input = [1,2,3,4,5,6]
+        let input = [1,2,3,4,5,6].map(LottoNumber.init)
         
         // when
         // then
@@ -32,7 +32,7 @@ class LottoNumbersValidatorTests: XCTestCase {
     
     func test_validate_whenNumbersCountIsUnderSix_throwInvalidNumberCount() {
         //given
-        let numbers = [1,2,3,4,5]
+        let numbers = [1,2,3,4,5].map(LottoNumber.init)
         
         // when
         // then
@@ -44,7 +44,7 @@ class LottoNumbersValidatorTests: XCTestCase {
     
     func test_validate_whenNumbersCountIsOverSix_throwInvalidNumberCount() {
         //given
-        let numbers = [1,2,3,4,5,6,7]
+        let numbers = [1,2,3,4,5,6,7].map(LottoNumber.init)
         
         // when
         // then
@@ -56,7 +56,7 @@ class LottoNumbersValidatorTests: XCTestCase {
     
     func test_validate_wheNumbersContainOverRanged_throwContainOutOfRange() throws {
         //given
-        let numbers = [1,2,3,4,5,46]
+        let numbers = [1,2,3,4,5,46].map(LottoNumber.init)
         
         // when
         // then
@@ -68,7 +68,7 @@ class LottoNumbersValidatorTests: XCTestCase {
     
     func test_validate_whenNumbersContainUnderRanged_throwContainOutOfRange() throws {
         //given
-        let numbers = [0,1,2,3,4,5]
+        let numbers = [0,1,2,3,4,5].map(LottoNumber.init)
         
         // when
         // then
@@ -80,7 +80,7 @@ class LottoNumbersValidatorTests: XCTestCase {
     
     func test_validate_whenNumbersAreDuplicated_throwHasDuplicate() throws {
         //given
-        let numbers = [1,2,3,4,5,5]
+        let numbers = [1,2,3,4,5,5].map(LottoNumber.init)
         
         // then
         let expectation = LottoNumbersValidator.LottoNumbersValidatorError.hasDuplicate
@@ -93,7 +93,7 @@ class LottoNumbersValidatorTests: XCTestCase {
     
     func test_guideDescription_whenNumbersCountIsUnderSix() {
         //given
-        let numbers = [1,2,3,4,5]
+        let numbers = [1,2,3,4,5].map(LottoNumber.init)
         
         // when
         // then
@@ -106,7 +106,7 @@ class LottoNumbersValidatorTests: XCTestCase {
     
     func test_guideDescription_wheNumbersContainOverRanged() throws {
         //given
-        let numbers = [1,2,3,4,5,46]
+        let numbers = [1,2,3,4,5,46].map(LottoNumber.init)
         
         // when
         // then
@@ -119,7 +119,7 @@ class LottoNumbersValidatorTests: XCTestCase {
     
     func test_guideDescription_whenNumbersAreDuplicated() throws {
         //given
-        let numbers = [1,2,3,4,5,5]
+        let numbers = [1,2,3,4,5,5].map(LottoNumber.init)
         
         // when
         // then

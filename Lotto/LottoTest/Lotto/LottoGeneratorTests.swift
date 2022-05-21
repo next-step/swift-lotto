@@ -46,9 +46,10 @@ class LottoGeneratorTests: XCTestCase {
         // when
         let lotto: Lotto = try sut.generate()
         
+        
         // then
         let lottoNumberRange = 1...45
-        let isAllNumbersInRange = lotto.numbers.allSatisfy { lottoNumber in
+        let isAllNumbersInRange = lotto.numbers.map { $0.value }.allSatisfy { lottoNumber in
             lottoNumberRange ~= lottoNumber
         }
         

@@ -10,10 +10,10 @@ import Foundation
 struct LottoRankChecker {
     
     private let winningLotto: Lotto
-    private let bonusNumber: Int
+    private let bonusNumber: LottoNumber
     private let lottoBonusNumberValidator = LottoBonusNumberValidator()
     
-    init(winningLotto: Lotto, bonusNumber: Int) throws {
+    init(winningLotto: Lotto, bonusNumber: LottoNumber) throws {
         try lottoBonusNumberValidator.validate(bonusNumber, in: winningLotto)
         
         self.winningLotto = winningLotto

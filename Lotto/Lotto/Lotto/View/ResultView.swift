@@ -38,7 +38,9 @@ struct ResultView {
     
     func printLottos(for lottos: [Lotto]) {
         lottos.forEach { lotto in
-            Swift.print(lotto.numbers.sorted())
+            Swift.print(lotto.numbers
+                            .map{ $0.value }
+                            .sorted())
         }
     }
     
