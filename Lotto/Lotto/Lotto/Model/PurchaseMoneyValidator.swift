@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct PurchaseMoneyValidator {
+struct PurchaseLottoValidator {
     
-    enum PurchaseMoneyValidatorError: LocalizedError {
+    enum PurchaseLottoValidatorError: LocalizedError {
         case underMinimumMoney
         case notUnitOfLotto
+        case invalidPurchaseCount
         
         var errorDescription: String? {
             switch self {
@@ -19,19 +20,31 @@ struct PurchaseMoneyValidator {
                 return "로또를 구입하기 위해서는 1000원 이상이 필요합니다"
             case .notUnitOfLotto:
                 return "금액이 로또 금액인 1000원 단위로 나뉘어지지 않습니다"
+            case .invalidPurchaseCount:
+                return "유효한 로또 구입 개수가 아닙니다"
             }
         }
     }
+
     
-    func validate(of money: Int) throws {
+    func validateMoney(_ money: Int) throws {
         let isEnoughMoneyToBuyLotto: Bool = money >= Lotto.Constants.price
         guard isEnoughMoneyToBuyLotto else {
-            throw PurchaseMoneyValidatorError.underMinimumMoney
+            throw PurchaseLottoValidatorError.underMinimumMoney
         }
         
         let isUnitOfLotto: Bool = money % Lotto.Constants.price == 0
         guard isUnitOfLotto else {
-            throw PurchaseMoneyValidatorError.notUnitOfLotto
+            throw PurchaseLottoValidatorError.notUnitOfLotto
+        }
+    }
+    
+    func validateCount(_ count: Int, inBudget money: Int) throws {
+        let minPurchaseableCount = 0
+        let maxPurchaseableCount = money / Lotto.Constants.price
+        let purchasableCountRange = minPurchaseableCount...maxPurchaseableCount
+        guard purchasableCountRange ~= count else {
+            throw PurchaseLottoValidatorError.invalidPurchaseCount
         }
     }
 }

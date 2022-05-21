@@ -29,14 +29,14 @@ struct InputView {
     private let userGuider = UserGuider()
     private let stringConverter = StringConverter()
     private let userInputConverter = UserInputConverter()
-    private let purchaseMoneyValidator = PurchaseMoneyValidator()
+    private let purchaseLottoValidator = PurchaseLottoValidator()
     private let lottoNumbersValidator = LottoNumbersValidator()
     private let lottoBonusNumberValidator = LottoBonusNumberValidator()
     
     func receivePurchaseMoney() throws -> Int {
         userGuider.printGuide(for: QuestionText.purchaseMoney)
         let purchaseMoney = try receiveInt()
-        try purchaseMoneyValidator.validate(of: purchaseMoney)
+        try purchaseLottoValidator.validateMoney(purchaseMoney)
         return purchaseMoney
     }
     
