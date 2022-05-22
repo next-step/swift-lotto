@@ -9,16 +9,20 @@ import Foundation
 
 enum LottoInputGuide {
     case money
-    case buyingLottoCount(Int)
+    case buyingLottoCount(Int,Int)
     case winningNumbers
     case winningBonusNumber
+    case manualLottoCountInput
+    case manualLottoInput
     
     var description: String {
         switch self {
         case .money: return "구매금액을 입력해 주세요."
-        case .buyingLottoCount(let count): return "\(count)개를 구매했습니다."
+        case .buyingLottoCount(let manualCount, let autoCount): return "수동으로 \(manualCount)장, 자동으로 \(autoCount)장을 구매했습니다."
         case .winningNumbers: return "지난 주 당첨 번호를 입력해 주세요."
         case .winningBonusNumber: return "보너스 번호를 입력해 주세요."
+        case .manualLottoCountInput: return "수동으로 구매할 로또 수를 입력해 주세요."
+        case .manualLottoInput: return "수동으로 구매할 번호를 입력해 주세요."
         }
     }
     
@@ -41,6 +45,7 @@ enum LottoStatisticGuide {
             return "\(winning.description) \(winning.reward)원 - \(count)개"
         }
     }
+    
     func show() {
         print(description)
     }

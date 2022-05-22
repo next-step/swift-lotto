@@ -12,6 +12,7 @@ enum InputError: Error {
     case invalidMoney
     case invalidNumberCount
     case duplicateNumber
+    case negativeNumber
     
     var errorDescription: String {
         switch self {
@@ -23,6 +24,8 @@ enum InputError: Error {
             return "번호가 6개가 아닙니다"
         case .duplicateNumber:
             return "번호에 중복이 포함되어 있습니다."
+        case .negativeNumber:
+            return "음수는 입력할 수 없습니다."
         }
     }
 }

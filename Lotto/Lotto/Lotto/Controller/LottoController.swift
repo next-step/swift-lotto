@@ -14,15 +14,39 @@ final class LottoController {
     private let stringConverter = StringConverter()
     private let lottoValidator = LottoInputValidator()
     
-    func setMoney() throws -> Int {
+    func setMoneyAndValidPositive() throws -> Int {
         let stringMoney = inputView.inputMoney()
         let intMoney = try stringConverter.stringToInt(input: stringMoney)
+        try lottoValidator.validatePositive(intMoney)
         return intMoney
     }
     
-    func setAutoLottos(lottoCount: Int) -> [Lotto] {
-        inputView.printBuyingLottosCount(lottoCount)
-        let lottos = lottoGenerator.generate(count: lottoCount)
+    func setTotalLottos(lottoCount: Int, manualSetLotto: [Lotto]) -> [Lotto] {
+        let manualCount = manualSetLotto.count
+        let autoCount = lottoCount - manualCount
+        inputView.printBuyingLottosCount(autoCount: autoCount, manualCount: manualCount)
+        let lottos = manualSetLotto + lottoGenerator.generate(count: autoCount)
+        return lottos
+    }
+    
+    func setInputLottoCountAndValidPositive() throws -> Int {
+        inputView.printManualLottoCountInput()
+        let input = readLine()
+        let count = try stringConverter.stringToInt(input: input)
+        try lottoValidator.validatePositive(count)
+        return count
+    }
+    
+    func setMutualLottos(inputCount: Int) throws -> [Lotto] {
+        guard inputCount > 0 else { return [] }
+        inputView.printManualLottoInput()
+        var lottos = [Lotto]()
+        for _ in 0..<inputCount {
+            let input = stringConverter.split(readLine(),sepratedCharacterSet: [","])
+            let lottoNumbers = try stringConverter.stringsToInts(input: input)
+            try lottoValidator.validateLottoNumbersCount(lottoNumbers)
+            lottos.append(Lotto.init(numbers: lottoNumbers))
+        }
         return lottos
     }
     

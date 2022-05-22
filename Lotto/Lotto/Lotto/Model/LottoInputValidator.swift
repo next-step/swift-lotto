@@ -25,6 +25,12 @@ struct LottoInputValidator {
         }
     }
     
+    func validatePositive(_ number: Int) throws {
+        guard number >= 0 else {
+            throw InputError.negativeNumber
+        }
+    }
+    
     private func countValid(_ numbers: [Int]) throws {
         guard numbers.count == 6 else {
             throw InputError.invalidNumberCount
