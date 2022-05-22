@@ -30,4 +30,20 @@ class LottoBagFactoryTest: XCTestCase {
         // then
         XCTAssert(lottoBag?.totalCount == lottoCount)
     }
+    
+    func test_make_with파라미터로_주어진_로또들을_포함하는_LottoBag인스턴스가_생성된다() throws {
+        // given
+        let givenLottos = [try CustomLotto(numbers: [7, 8, 9, 10, 11, 12]),
+                           try CustomLotto(numbers: [1, 2, 3, 7, 8, 9]),
+                           try CustomLotto(numbers: [13, 14, 15, 4, 5, 6])]
+                
+        
+        // when
+        let lottoBag = try lottoBagFactory.make(havingLottoCount: 5, with: givenLottos)
+        
+        // then
+        XCTAssertTrue(lottoBag.lottoList.contains { $0.numbers  == givenLottos[0].numbers})
+        XCTAssertTrue(lottoBag.lottoList.contains { $0.numbers == givenLottos[1].numbers})
+        XCTAssertTrue(lottoBag.lottoList.contains { $0.numbers == givenLottos[2].numbers})
+    }
 }
