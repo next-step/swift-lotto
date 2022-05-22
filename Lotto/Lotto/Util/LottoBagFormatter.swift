@@ -23,7 +23,7 @@ struct LottoBagFormatter {
     
     private static func format(_ lotto: Lotto) -> String {
         return lotto.numbers.sorted()
-            .map { String($0) }
+            .map { String($0.value) }
             .joined(separator: lottoNumberSeparator)
     }
 }

@@ -43,7 +43,8 @@ class LottoBagTest: XCTestCase {
 
         // when
         // then
-        XCTAssertEqual(2, lottoTicket.lottoCount)
+        
+        XCTAssertEqual(2, lottoTicket.totalCount)
     }
     
     func test_lottoCount_주어진_타입의_로또_개수를_반환한다() throws {

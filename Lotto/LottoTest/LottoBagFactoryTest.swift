@@ -28,6 +28,6 @@ class LottoBagFactoryTest: XCTestCase {
         let lottoBag = try? lottoBagFactory.make(havingLottoCount: 3)
 
         // then
-        XCTAssert(lottoBag?.lottoCount == lottoCount)
+        XCTAssert(lottoBag?.totalCount == lottoCount)
     }
 }

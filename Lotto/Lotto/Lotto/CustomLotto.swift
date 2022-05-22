@@ -8,14 +8,14 @@
 import Foundation
 
 struct CustomLotto: Lotto {
-    var numbers: Set<Int>
+    var numbers: Set<LottoNumber>
     
     init<LottoNumberCollection: Collection>(numbers: LottoNumberCollection) throws where LottoNumberCollection.Element == Int {
         
-        let numberSet = Set(numbers)
         try LottoNumberValidator.validateNumberCount(of: numbers)
         try LottoNumberValidator.validateNumberRange(of: numbers)
-
-        self.numbers = numberSet
+        
+        let lottoNumbers = numbers.map { LottoNumber($0) }
+        self.numbers = Set(lottoNumbers)
     }
 }

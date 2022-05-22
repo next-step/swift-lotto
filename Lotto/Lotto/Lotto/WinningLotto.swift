@@ -8,17 +8,17 @@
 import Foundation
 
 struct WinningLotto: Lotto {
-    var numbers: Set<Int>
+    let numbers: Set<LottoNumber>
     let bonusNumber: Int
     
     init<LottoNumbers: Collection>(numbers: LottoNumbers, bonusNumber: Int) throws where LottoNumbers.Element == Int {
-        let setNumbers = Set(numbers)
         
         try LottoNumberValidator.validateNumberCount(of: numbers)
         try LottoNumberValidator.validateNumberRange(of: numbers)
         try LottoNumberValidator.validateNumberRange(of: [bonusNumber])
        
-        self.numbers = setNumbers
+        let lottoNumbers = numbers.map { LottoNumber($0) }
+        self.numbers = Set(lottoNumbers)
         self.bonusNumber = bonusNumber
     }
     

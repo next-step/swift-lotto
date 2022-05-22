@@ -33,7 +33,7 @@ class LottoSellerTest: XCTestCase {
         let lottoTicket = try? lottoSeller.sellLotto(for: money)
         
         // then
-        XCTAssert(lottoTicket?.lottoCount == expectedLottoTicket.lottoCount)
+        XCTAssert(lottoTicket?.totalCount == expectedLottoTicket.totalCount)
     }
     
     func test_sellLotto_금액이_로또를_사기에_부족한_경우_에러를_던진다() {

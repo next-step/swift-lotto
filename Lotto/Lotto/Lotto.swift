@@ -15,13 +15,13 @@ enum LottoConstant {
 }
 
 protocol Lotto {
-    var numbers: Set<Int> { get }
+    var numbers: Set<LottoNumber> { get }
     func contains(number: Int) -> Bool 
 }
 
 extension Lotto {
     func contains(number: Int) -> Bool {
-        numbers.contains(number)
+        numbers.contains(LottoNumber(number))
     }
 }
 
