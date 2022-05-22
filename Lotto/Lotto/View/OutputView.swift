@@ -13,7 +13,7 @@ struct OutputView {
     }
     
     static func print(winningRecord: String) {
-        Swift.print("당첨 통계")
+        Swift.print("\n당첨 통계")
         Swift.print("---------")
         Swift.print(winningRecord)
     }
