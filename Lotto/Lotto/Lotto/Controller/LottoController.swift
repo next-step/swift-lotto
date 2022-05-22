@@ -14,14 +14,14 @@ final class LottoController {
     private let stringConverter = StringConverter()
     private let lottoValidator = LottoInputValidator()
     
-    func setMoneyAndValidPositive() throws -> Int {
+    func receiveInputMoneyAndValifyPositiveNumber() throws -> Int {
         let stringMoney = inputView.inputMoney()
         let intMoney = try stringConverter.stringToInt(input: stringMoney)
         try lottoValidator.validatePositive(intMoney)
         return intMoney
     }
     
-    func setTotalLottos(lottoCount: Int, manualSetLotto: [Lotto]) -> [Lotto] {
+    func generateTotalLottos(lottoCount: Int, manualSetLotto: [Lotto]) -> [Lotto] {
         let manualCount = manualSetLotto.count
         let autoCount = lottoCount - manualCount
         inputView.printBuyingLottosCount(autoCount: autoCount, manualCount: manualCount)
@@ -29,7 +29,7 @@ final class LottoController {
         return lottos
     }
     
-    func setInputLottoCountAndValidPositive() throws -> Int {
+    func receiveInputLottoCountAndValifyPositiveNumber() throws -> Int {
         inputView.printManualLottoCountInput()
         let input = readLine()
         let count = try stringConverter.stringToInt(input: input)
@@ -37,7 +37,7 @@ final class LottoController {
         return count
     }
     
-    func setMutualLottos(inputCount: Int) throws -> [Lotto] {
+    func receiveInputMutualLottosAndVerifyLottoRule(inputCount: Int) throws -> [Lotto] {
         guard inputCount > 0 else { return [] }
         inputView.printManualLottoInput()
         var lottos = [Lotto]()
@@ -62,7 +62,7 @@ final class LottoController {
         }
     }
     
-    func setWinningNumbers() throws {
+    func receiveInputWinningNumbersAndVerifyLottoRule() throws {
         inputView.printRecentlyWinningNumbers()
         
         let winningNumbersInput = readLine()
@@ -73,7 +73,7 @@ final class LottoController {
         
     }
     
-    func setWinningBonusNumber() throws {
+    func receiveWinningBonusNumberAndVerifyContainingRange() throws {
         inputView.printRecentlyWinningBonusNumber()
         let bonusNumberString = readLine()
         let bonusNumber = try stringConverter.stringToInt(input: bonusNumberString)
