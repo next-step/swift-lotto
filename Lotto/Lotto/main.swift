@@ -12,7 +12,8 @@ do {
     
     let lottoNumberGenerater = RandomLottoNumberGenerator()
     let lottoFactory = UserLottoFactory(lottoNumberGenerator: lottoNumberGenerater)
-    let lottoSeller = LottoSeller(lottoFactory: lottoFactory)
+    let lottoBagFactory = LottoBagFactory(lottoFactory: lottoFactory)
+    let lottoSeller = LottoSeller(lottoBagFactory: lottoBagFactory)
     
     let lottoCountInput = InputView.readCustomLottoCount()
     let lottoCount = try LottoCountParser.parse(lottoCountInput)
