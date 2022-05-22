@@ -7,16 +7,20 @@
 
 import Foundation
 
+
 struct WinningLotto: Lotto {
     let numbers: Set<LottoNumber>
     let bonusNumber: Int
+    let validators: [LottoValidator] = [RangeValidator(range: LottoConstant.numberRange),
+                                        CountValidator.init(count: LottoConstant.numberCount)]
     
     init<LottoNumbers: Collection>(numbers: LottoNumbers, bonusNumber: Int) throws where LottoNumbers.Element == Int {
+        try validators.forEach { try $0.validate(numbers: numbers) }
         
-        try LottoNumberValidator.validateNumberCount(of: numbers)
-        try LottoNumberValidator.validateNumberRange(of: numbers)
-        try LottoNumberValidator.validateNumberRange(of: [bonusNumber])
-       
+        if let rangeValidator = validators.filter({ type(of: $0) == RangeValidator.self }).first {
+            try rangeValidator.validate(numbers: [bonusNumber])
+        }
+        
         let lottoNumbers = numbers.map { LottoNumber($0) }
         self.numbers = Set(lottoNumbers)
         self.bonusNumber = bonusNumber
