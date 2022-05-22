@@ -38,7 +38,7 @@ struct LottoInputValidator {
     }
     private func duplicateValid(_ numbers: [Int]) throws {
         guard Set(numbers).count == 6 else {
-            throw InputError.duplicateNumber
+            throw InputError.duplicatedNumber
         }
     }
 }

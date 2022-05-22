@@ -11,7 +11,7 @@ enum InputError: Error {
     case invalidNumber
     case invalidMoney
     case invalidNumberCount
-    case duplicateNumber
+    case duplicatedNumber
     case negativeNumber
     case lottoOutOfRange
     
@@ -23,7 +23,7 @@ enum InputError: Error {
             return "유효한 돈이 아닙니다"
         case .invalidNumberCount:
             return "번호가 6개가 아닙니다"
-        case .duplicateNumber:
+        case .duplicatedNumber:
             return "번호에 중복이 포함되어 있습니다."
         case .negativeNumber:
             return "음수는 입력할 수 없습니다."
