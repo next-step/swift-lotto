@@ -15,6 +15,7 @@ do {
     let manulLottos = try lottoController.setMutualLottos(inputCount: manualCount)
     
     let totalLottos = lottoController.setTotalLottos(lottoCount: lottoCount, manualSetLotto: manulLottos)
+    try lottoController.checkLottoRange(lottos: totalLottos)
     lottoController.appearLottos(input: totalLottos)
     try lottoController.setWinningNumbers()
     try lottoController.setWinningBonusNumber()

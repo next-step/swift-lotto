@@ -56,6 +56,12 @@ final class LottoController {
         }
     }
     
+    func checkLottoRange(lottos: [Lotto]) throws {
+        for lotto in lottos {
+            try lottoValidator.validateNumbersRange(lotto.getNumbers())
+        }
+    }
+    
     func setWinningNumbers() throws {
         inputView.printRecentlyWinningNumbers()
         
