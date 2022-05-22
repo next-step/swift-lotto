@@ -27,4 +27,10 @@ class LottoTest: XCTestCase {
         XCTAssert(resultValue == expectedValue, "로또 번호 1이상 45 이하 아님")
     }
     
+    func test_로또번호_수동_입력_생성() {
+        let lotto = Lotto(numbers: [1,2,3,4,5,6])
+        let expected = [1,2,3,4,5,6]
+        XCTAssert(lotto.getNumbers() == expected, "로또 번호가 올바르게 입력되었습니다")
+    }
+    
 }

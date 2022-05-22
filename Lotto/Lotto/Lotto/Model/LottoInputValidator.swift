@@ -21,7 +21,7 @@ struct LottoInputValidator {
     
     func validateNumberRange(_ number: Int) throws {
         guard number >= 1 , number <= 45 else {
-            throw InputError.invalidNumber
+            throw InputError.lottoOutOfRange
         }
     }
     

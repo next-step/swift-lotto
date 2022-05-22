@@ -13,6 +13,7 @@ enum InputError: Error {
     case invalidNumberCount
     case duplicateNumber
     case negativeNumber
+    case lottoOutOfRange
     
     var errorDescription: String {
         switch self {
@@ -26,6 +27,8 @@ enum InputError: Error {
             return "번호에 중복이 포함되어 있습니다."
         case .negativeNumber:
             return "음수는 입력할 수 없습니다."
+        case .lottoOutOfRange:
+            return "로또 범위에 벗어났습니다"
         }
     }
 }
