@@ -35,11 +35,11 @@ struct StringConverter {
 
 extension StringConverter {
     func emptyValueChangeZero(inputArray: [String]) -> [String] {
-        var changeArray: [String] = []
+        var changedArray: [String] = []
         for value in inputArray {
-            changeArray.append(emptyValueChangeZero(input:value))
+            changedArray.append(emptyValueChangeZero(input:value))
         }
-        return changeArray
+        return changedArray
     }
     
     private func emptyValueChangeZero(input: String) -> String {
