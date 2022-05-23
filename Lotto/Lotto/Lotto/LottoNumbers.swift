@@ -10,11 +10,15 @@ import Foundation
 class LottoNumbers {
     private var numbers: [LottoNumber]
     
-    init(_ numbers: [LottoNumber]) {
-        self.numbers = numbers
+    var count: Int {
+        return numbers.count
     }
     
-    func pop() -> Int {
-        return numbers.removeFirst().value
+    var comparativeSet: Set<Int> {
+        return Set<Int>(numbers.map({ $0.value }))
+    }
+    
+    init(_ numbers: [LottoNumber]) {
+        self.numbers = numbers
     }
 }

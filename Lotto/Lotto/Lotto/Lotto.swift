@@ -8,13 +8,12 @@
 import Foundation
 
 struct Lotto {
-    var numbers = [Int]()
+    var numbers: LottoNumbers
     
-    static func generate(by lottoNumbers: LottoNumbers) -> Lotto {
-        var lotto = Lotto()
-        for _ in 0..<6 {
-            lotto.numbers.append(lottoNumbers.pop())
-        }
-        return lotto
+    func match(with comparedNumbers: LottoNumbers) -> Int {
+        let lhs = numbers.comparativeSet
+        let rhs = comparedNumbers.comparativeSet
+        
+        return lhs.intersection(rhs).count
     }
 }

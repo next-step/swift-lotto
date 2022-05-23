@@ -16,15 +16,21 @@ class LottoTest: XCTestCase {
     }
     
     func test_6자리_로또_번호_생성() {
-        let sut = Lotto.generate(by: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
-        XCTAssertEqual(sut.numbers, [1, 2, 3, 4, 5, 6])
+        let sut = Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
+        XCTAssertEqual(sut.numbers.count, 6)
     }
     
     func test_당첨번호와_숫자_6개가_동일한_로또() {
-        let sut = Lotto.generate(by: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
+        let sut = Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
         let prizeNumbers = LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init))
         
-        XCTAssertEqual(sut.match(prizeNumbers), 6)
+        XCTAssertEqual(sut.match(with: prizeNumbers), 6)
     }
 
+    func test_당첨번호와_숫자_5개가_동일한_로또() {
+        let sut = Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
+        let prizeNumbers = LottoNumbers([1, 2, 3, 4, 5, 7].compactMap(LottoNumber.init))
+        
+        XCTAssertEqual(sut.match(with: prizeNumbers), 5)
+    }
 }
