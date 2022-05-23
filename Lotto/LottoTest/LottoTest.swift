@@ -11,35 +11,46 @@ class LottoTest: XCTestCase {
     
     func test_10000원을_주면_로또_10장을_반환() {
         let sut = LottoCustomer()
+        let expected = 10
+        
         sut.buyLotto(for: 10000)
-        XCTAssertEqual(sut.lottos.count, 10)
+        
+        XCTAssertEqual(sut.lottos.count, expected)
     }
     
     func test_6자리_로또_번호_생성() {
         let sut = Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
-        XCTAssertEqual(sut.numbers.count, 6)
+        let expected = 6
+        
+        XCTAssertEqual(sut.numbers.count, expected)
     }
     
     func test_당첨번호와_숫자_6개가_동일한_로또() {
         let sut = Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
         let prizeNumbers = LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init))
         
-        XCTAssertEqual(sut.match(with: prizeNumbers), 6)
+        let expected = 6
+        
+        XCTAssertEqual(sut.match(with: prizeNumbers), expected)
     }
 
     func test_당첨번호와_숫자_5개가_동일한_로또() {
         let sut = Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
         let prizeNumbers = LottoNumbers([1, 2, 3, 4, 5, 7].compactMap(LottoNumber.init))
         
-        XCTAssertEqual(sut.match(with: prizeNumbers), 5)
+        let expected = 5
+        
+        XCTAssertEqual(sut.match(with: prizeNumbers), expected)
     }
     
     func test_당첨번호와_숫자_6개가_동일하면_1등_당첨금을_받음() {
         let sut = Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
         let prizeNumbers = LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init))
         
+        let expected = Lotto.Prize.first.rawValue
+        
         let matchNumber = sut.match(with: prizeNumbers)
         
-        XCTAssertEqual(sut.getPrize(by: matchNumber), Lotto.Prize.first.rawValue)
+        XCTAssertEqual(sut.getPrize(by: matchNumber), expected)
     }
 }
