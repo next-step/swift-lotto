@@ -33,4 +33,13 @@ class LottoTest: XCTestCase {
         
         XCTAssertEqual(sut.match(with: prizeNumbers), 5)
     }
+    
+    func test_당첨번호와_숫자_6개가_동일하면_1등_당첨금을_받음() {
+        let sut = Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
+        let prizeNumbers = LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init))
+        
+        let matchNumber = sut.match(with: prizeNumbers)
+        
+        XCTAssertEqual(sut.getPrize(by: matchNumber), Lotto.Prize.first.rawValue)
+    }
 }
