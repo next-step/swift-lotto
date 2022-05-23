@@ -11,11 +11,11 @@ struct ResultView {
     private let statistic = WinningStatistic()
     private let winningNumber = WinningNumber()
     
-    func registerWinningNumbers(_ numbers: [Int]) {
-        winningNumber.register(numbers)
+    func register(_ winningNumbers: [Int]) {
+        winningNumber.register(winningNumbers)
     }
     
-    func registerBonusNumber(_ bonusNumber: Int) {
+    func register(_ bonusNumber: Int) {
         winningNumber.register(bonusNumber)
     }
     

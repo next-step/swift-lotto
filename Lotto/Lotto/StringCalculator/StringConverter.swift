@@ -15,21 +15,6 @@ struct StringConverter {
         return input.components(separatedBy: sepratedCharacterSet)
     }
     
-    func emptyValueChangeZero(inputArray: [String]) -> [String] {
-        var changeArray: [String] = []
-        for value in inputArray {
-            changeArray.append(emptyValueChangeZero(input:value))
-        }
-        return changeArray
-    }
-    
-    private func emptyValueChangeZero(input: String) -> String {
-        if input.isEmpty {
-            return "0"
-        }
-        return input
-    }
-    
     func stringsToInts(input: [String]) throws -> [Int] {
         var intArray: [Int] = []
         for value in input {
@@ -46,4 +31,22 @@ struct StringConverter {
         throw InputError.invalidNumber
     }
     
+}
+
+extension StringConverter {
+    func emptyValueChangeZero(inputArray: [String]) -> [String] {
+        var changedArray: [String] = []
+        for value in inputArray {
+            changedArray.append(emptyValueChangeZero(input:value))
+        }
+        return changedArray
+    }
+    
+    private func emptyValueChangeZero(input: String) -> String {
+        if input.isEmpty {
+            return "0"
+        }
+        return input
+    }
+
 }

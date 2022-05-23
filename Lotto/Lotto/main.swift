@@ -9,11 +9,17 @@ import Foundation
 let lottoController = LottoController()
 
 do {
-    try lottoController.lotterySetting()
-    lottoController.lottoPrinter()
-    try lottoController.setWinningNumbers()
-    try lottoController.setWinningBonusNumber()
-    lottoController.printStatisticResult()
+    let money = try lottoController.receiveInputMoneyAndValifyPositiveNumber()
+    let lottoCount = lottoController.moneyToLottoCount(input: money)
+    let manualCount = try lottoController.receiveInputLottoCountAndValifyPositiveNumber()
+    let manulLottos = try lottoController.receiveInputMutualLottosAndVerifyLottoRule(inputCount: manualCount)
+    
+    let totalLottos = lottoController.generateTotalLottos(lottoCount: lottoCount, manualSetLotto: manulLottos)
+    try lottoController.checkLottoRange(lottos: totalLottos)
+    lottoController.appearLottos(input: totalLottos)
+    try lottoController.receiveInputWinningNumbersAndVerifyLottoRule()
+    try lottoController.receiveWinningBonusNumberAndVerifyContainingRange()
+    lottoController.printStatisticResult(money: money, lottos: totalLottos)
     
 } catch let error as InputError {
     error.showError()

@@ -14,8 +14,16 @@ struct InputView {
         return money
     }
     
-    func printBuyingLottosCount(_ count: Int) {
-        LottoInputGuide.buyingLottoCount(count).show()
+    func printManualLottoInput() {
+        LottoInputGuide.manualLottoInput.show()
+    }
+    
+    func printManualLottoCountInput() {
+        LottoInputGuide.manualLottoCountInput.show()
+    }
+    
+    func printBuyingLottosCount(autoCount: Int, manualCount: Int) {
+        LottoInputGuide.buyingLottoCount(manualCount,autoCount).show()
     }
     
     func printRecentlyWinningNumbers() {

@@ -21,6 +21,10 @@ struct Lotto {
         self.numbers = Array(numbers).sorted(by: <)
     }
     
+    init(numbers: [Int]) {
+        self.numbers = numbers
+    }
+    
     func max() -> Int {
         return numbers.max() ?? 45
     }
