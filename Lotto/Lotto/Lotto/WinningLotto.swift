@@ -8,22 +8,18 @@
 import Foundation
 
 
-struct WinningLotto: Lotto {
-    let numbers: Set<LottoNumber>
+class WinningLotto: Lotto {
     let bonusNumber: LottoNumber
-    let validators: [LottoValidator] = [RangeValidator(range: LottoConstant.numberRange),
-                                        CountValidator.init(count: LottoConstant.numberCount)]
+  
     
     init<LottoNumbers: Collection>(numbers: LottoNumbers, bonusNumber: Int) throws where LottoNumbers.Element == Int {
-        try validators.forEach { try $0.validate(numbers: numbers) }
         
-        if let rangeValidator = validators.filter({ type(of: $0) == RangeValidator.self }).first {
-            try rangeValidator.validate(numbers: [bonusNumber])
+        guard LottoConstant.numberRange.contains(bonusNumber) else {
+            throw LottoError.invalidLottoNumber
         }
-        
-        let lottoNumbers = numbers.map { LottoNumber($0) }
-        self.numbers = Set(lottoNumbers)
         self.bonusNumber = LottoNumber(bonusNumber)
+        
+        try super.init(numbers: numbers)
     }
     
     func checkBonusNumber(in lotto: Lotto) -> Bool {

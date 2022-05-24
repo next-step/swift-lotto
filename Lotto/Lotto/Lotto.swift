@@ -14,17 +14,39 @@ enum LottoConstant {
     static let numberCount = 6
 }
 
-protocol Lotto {
-    var numbers: Set<LottoNumber> { get }
+class Lotto {
+    var numbers: Set<LottoNumber>
     
-    func contains(number: LottoNumber) -> Bool 
-}
-
-extension Lotto {
+    init<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers: Collection, LottoNumbers.Element == Int {
+        let lottoNumbers = numbers.map { LottoNumber($0) }
+        self.numbers = Set(lottoNumbers)
+        try vaidate(numbers: numbers)
+    }
+    
+    func vaidate<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers: Collection, LottoNumbers.Element == Int {
+        try validateCount(numbers: numbers)
+        try validateRange(numbers: numbers)
+    }
+    
+    func validateCount<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers: Collection, LottoNumbers.Element == Int {
+        let setNumbers = Set(numbers)
+        guard setNumbers.count == LottoConstant.numberCount else {
+            throw LottoError.invalidNumberCount(setNumbers.count)
+        }
+    }
+    
+    func validateRange<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers: Collection, LottoNumbers.Element == Int {
+        let result = numbers.reduce(true) { partialResult, number in
+            partialResult && LottoConstant.numberRange.contains(number)
+        }
+        guard result else { throw LottoError.invalidLottoNumber }
+    }
+    
     func contains(number: LottoNumber) -> Bool {
         numbers.contains(number)
     }
 }
+
 
 enum LottoError: Error {
     case invalidNumberCount(Int)
