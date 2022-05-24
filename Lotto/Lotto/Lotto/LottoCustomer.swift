@@ -10,13 +10,21 @@ import Foundation
 class LottoCustomer {
     
     var lottos = [Lotto]()
+    private(set) var price = 0
     
     func buyLotto(for price: Int) {
+        self.price = price
         let lottoCount = price / 1000
         for _ in 0..<lottoCount {
             let lotto = Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
             lottos.append(lotto)
         }
+    }
+    
+    func getRatio(of returnPrize: Int) -> Double {
+        let rawRatio = Double(returnPrize) / Double(self.price)
+        let roundedRatio = round(rawRatio * 100) / 100.0
+        return roundedRatio
     }
 }
 
