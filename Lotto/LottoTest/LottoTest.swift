@@ -53,4 +53,12 @@ class LottoTest: XCTestCase {
         
         XCTAssertEqual(sut.getPrize(by: matchNumber), expected)
     }
+    
+    func test_10000원어치_로또를_구매후_5000원만큼_당첨되었을때_수익률() {
+        let sut = LottoCustomer()
+        let expected = 0.5
+        sut.buyLotto(for: 10000)
+        
+        XCTAssertEqual(sut.getRatio(of: 5000), expected)
+    }
 }
