@@ -40,7 +40,7 @@ class UserLottoTest: XCTestCase {
         let lotto = try UserLotto(numbers: [1, 2, 3, 4, 5, 6])
         
         // when
-        let result = lotto.contains(number: 6)
+        let result = lotto.contains(number: LottoNumber(6))
         
         // then
         XCTAssertTrue(result)
@@ -51,7 +51,7 @@ class UserLottoTest: XCTestCase {
         let lotto = try UserLotto(numbers: [1, 2, 3, 4, 5, 6])
         
         // when
-        let result = lotto.contains(number: 7)
+        let result = lotto.contains(number: LottoNumber(7))
         
         // then
         XCTAssertFalse(result)

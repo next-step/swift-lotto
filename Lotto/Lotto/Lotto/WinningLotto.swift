@@ -10,7 +10,7 @@ import Foundation
 
 struct WinningLotto: Lotto {
     let numbers: Set<LottoNumber>
-    let bonusNumber: Int
+    let bonusNumber: LottoNumber
     let validators: [LottoValidator] = [RangeValidator(range: LottoConstant.numberRange),
                                         CountValidator.init(count: LottoConstant.numberCount)]
     
@@ -23,7 +23,7 @@ struct WinningLotto: Lotto {
         
         let lottoNumbers = numbers.map { LottoNumber($0) }
         self.numbers = Set(lottoNumbers)
-        self.bonusNumber = bonusNumber
+        self.bonusNumber = LottoNumber(bonusNumber)
     }
     
     func checkBonusNumber(in lotto: Lotto) -> Bool {
