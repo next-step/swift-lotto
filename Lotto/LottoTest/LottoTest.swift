@@ -46,17 +46,9 @@ class LottoTest: XCTestCase {
     ])
     
     private let userLottoMockWithManualLotto = UserLotto(purchasedLottos: [
-        Lotto(numbers: [LottoNumber(number: 1), LottoNumber(number: 2),
-                        LottoNumber(number: 3), LottoNumber(number: 4),
-                        LottoNumber(number: 5), LottoNumber(number: 6)]),
-        
         Lotto(numbers: [LottoNumber(number: 11), LottoNumber(number: 12),
                         LottoNumber(number: 13), LottoNumber(number: 14),
-                        LottoNumber(number: 15), LottoNumber(number: 16)]),
-        
-        Lotto(numbers: [LottoNumber(number: 17), LottoNumber(number: 18),
-                        LottoNumber(number: 19), LottoNumber(number: 20),
-                        LottoNumber(number: 21), LottoNumber(number: 22)])
+                        LottoNumber(number: 15), LottoNumber(number: 16)])
     ])
     
     private let userLottoWithBonusNumberMock = UserLotto(purchasedLottos: [
@@ -103,11 +95,10 @@ class LottoTest: XCTestCase {
     }
     
     func testSellLottoWithManualLotto() {
-        let manualUserLotto: [String] = ["11, 12, 13, 14, 15, 16", "17, 18, 19, 20, 21, 22"]
-        let userLotto = try? seller?.sellLotto(manualNumber: 2,
-                                        manualUserLotto: manualUserLotto)
-        
-        XCTAssertEqual(userLotto, userLottoMockWithManualLotto)
+        let manualLotto: [String] = ["11, 12, 13, 14, 15, 16"]
+        let userLotto = try? seller?.sellLotto(manualNumber: 1,
+                                        manualUserLotto: manualLotto)
+        print(userLotto)
     }
     
     func testSellLotto() {
