@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserLotto: Lotto {
+class AutoLotto: Lotto {
     override init<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers : Collection, LottoNumbers.Element == Int {
         try super.init(numbers: numbers)
         try validateRange(numbers: numbers)

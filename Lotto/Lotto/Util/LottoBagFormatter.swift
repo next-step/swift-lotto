@@ -12,7 +12,7 @@ struct LottoBagFormatter {
     
     static func format(_ lottoTicket: LottoBag) -> String {
         let customLottoCount = lottoTicket.lottoCount(CustomLotto.self)
-        let autoLottoCount = lottoTicket.lottoCount(UserLotto.self)
+        let autoLottoCount = lottoTicket.lottoCount(AutoLotto.self)
         
         let countText = "수동으로 \(customLottoCount.value)장, 자동으로 \(autoLottoCount.value)장을 구매했습니다."
         
