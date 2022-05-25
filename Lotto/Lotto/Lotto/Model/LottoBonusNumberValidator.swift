@@ -7,10 +7,9 @@
 
 import Foundation
 
-struct LottoBonusNumberValidator {
-    
+struct LottoBonusNumberValidator: UniqueLottoNumbersValidatable {
     static func validate(_ bonusNumber: LottoNumber, in winningLotto: Lotto) throws {
         let winningNumbersWithBonus = winningLotto.numbers + [bonusNumber]
-        try LottoValidator.validateAllUniqueNumbers(of: winningNumbersWithBonus)
+        try validateAllUniqueNumbers(of: winningNumbersWithBonus)
     }
 }

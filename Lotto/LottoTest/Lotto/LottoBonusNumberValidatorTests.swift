@@ -39,9 +39,9 @@ class LottoBonusNumberValidatorTests: XCTestCase {
         let winningLotto = try Lotto(numbers: winningNumbers)
         
         // then
-        let expectation = LottoValidator.LottoValidatorError.hasDuplicate
+        let expectation = UniqueLottoNumbersError.hasDuplicate
         XCTAssertThrowsError(try sut.validate(bonusNumber, in: winningLotto)) { error in
-            XCTAssertEqual(error as? LottoValidator.LottoValidatorError, expectation)
+            XCTAssertEqual(error as? UniqueLottoNumbersError, expectation)
         }
     }
 }

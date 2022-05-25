@@ -54,6 +54,8 @@
 		632434F02839327E00CEDA7F /* LottoNumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632434EE2839322600CEDA7F /* LottoNumberValidator.swift */; };
 		6335504D283388C3008E4EE4 /* LottoBonusNumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335504C283388C3008E4EE4 /* LottoBonusNumberValidator.swift */; };
 		6335504E283389AD008E4EE4 /* LottoBonusNumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335504C283388C3008E4EE4 /* LottoBonusNumberValidator.swift */; };
+		638F8CDF283EA15C00604DE5 /* UniqueLottoNumbersValidatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638F8CDE283EA15C00604DE5 /* UniqueLottoNumbersValidatable.swift */; };
+		638F8CE0283EA17300604DE5 /* UniqueLottoNumbersValidatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638F8CDE283EA15C00604DE5 /* UniqueLottoNumbersValidatable.swift */; };
 		63E81F9B28332F93003B59B1 /* LottoBonusNumberValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E81F9A28332F92003B59B1 /* LottoBonusNumberValidatorTests.swift */; };
 		C7905FC627311CC6004C3FCC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7905FC527311CC6004C3FCC /* main.swift */; };
 /* End PBXBuildFile section */
@@ -103,6 +105,7 @@
 		632434EC28392E3600CEDA7F /* LottoNumberValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumberValidatorTests.swift; sourceTree = "<group>"; };
 		632434EE2839322600CEDA7F /* LottoNumberValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoNumberValidator.swift; sourceTree = "<group>"; };
 		6335504C283388C3008E4EE4 /* LottoBonusNumberValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoBonusNumberValidator.swift; sourceTree = "<group>"; };
+		638F8CDE283EA15C00604DE5 /* UniqueLottoNumbersValidatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueLottoNumbersValidatable.swift; sourceTree = "<group>"; };
 		63E81F9A28332F92003B59B1 /* LottoBonusNumberValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoBonusNumberValidatorTests.swift; sourceTree = "<group>"; };
 		C7905FC227311CC6004C3FCC /* Lotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7905FC527311CC6004C3FCC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -191,6 +194,7 @@
 				3BDF153B28259F8700F03D3C /* LottoResult.swift */,
 				3BDF151528254C0600F03D3C /* LottoGenerator.swift */,
 				632434EE2839322600CEDA7F /* LottoNumberValidator.swift */,
+				638F8CDE283EA15C00604DE5 /* UniqueLottoNumbersValidatable.swift */,
 				3BDF15212825619100F03D3C /* LottoValidator.swift */,
 				6335504C283388C3008E4EE4 /* LottoBonusNumberValidator.swift */,
 				3BDF15332825916000F03D3C /* PurchaseMoneyValidator.swift */,
@@ -349,6 +353,7 @@
 				3BDF15512826E67A00F03D3C /* LottoRankTests.swift in Sources */,
 				3B8A28FC2822866800CF84C6 /* ValidOperandMakerTests.swift in Sources */,
 				6335504E283389AD008E4EE4 /* LottoBonusNumberValidator.swift in Sources */,
+				638F8CE0283EA17300604DE5 /* UniqueLottoNumbersValidatable.swift in Sources */,
 				3BDF151F28255A0400F03D3C /* LottoRank.swift in Sources */,
 				3BDF151E28255A0200F03D3C /* LottoRankChecker.swift in Sources */,
 				3BDF151428254BFC00F03D3C /* LottoGeneratorTests.swift in Sources */,
@@ -388,6 +393,7 @@
 				3BDF153C28259F8700F03D3C /* LottoResult.swift in Sources */,
 				3BDF15432825B29E00F03D3C /* UserGuider.swift in Sources */,
 				3BDF152C2825665000F03D3C /* UserInputConverter.swift in Sources */,
+				638F8CDF283EA15C00604DE5 /* UniqueLottoNumbersValidatable.swift in Sources */,
 				3B8A28FE2822868200CF84C6 /* ValidOperandMaker.swift in Sources */,
 				3B2540252822C49300841024 /* StringCalculator.swift in Sources */,
 				3B2540312823053600841024 /* Splitter.swift in Sources */,

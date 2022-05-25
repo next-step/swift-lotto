@@ -7,18 +7,15 @@
 
 import Foundation
 
-struct LottoValidator {
+struct LottoValidator: UniqueLottoNumbersValidatable {
     
     enum LottoValidatorError: LocalizedError {
         case invalidNumberCount
-        case hasDuplicate
         
         var errorDescription: String? {
             switch self {
             case .invalidNumberCount:
                 return "로또 번호 개수가 6개가 아닙니다"
-            case .hasDuplicate:
-                return "중복되는 번호가 있습니다"
             }
         }
     }
@@ -31,13 +28,6 @@ struct LottoValidator {
     private static func validateNumberCount(of numbers: [LottoNumber]) throws {
         guard numbers.count == Lotto.Constants.numbersCount else {
             throw LottoValidatorError.invalidNumberCount
-        }
-    }
-    
-    static func validateAllUniqueNumbers(of numbers: [LottoNumber]) throws {
-        let isAllNumbersUnique = Set(numbers).count == numbers.count
-        guard isAllNumbersUnique else {
-            throw LottoValidatorError.hasDuplicate
         }
     }
 }
