@@ -8,8 +8,8 @@
 import Foundation
 
 struct LottoResultView {
-    static func printPurchasedLotto(_ result: Int) {
-        print("\(result)개를 구매했습니다.")
+    static func printPurchasedLotto(manualNumber: Int, autoNumber: Int) {
+        print("수동으로 \(manualNumber)장, 자동으로 \(autoNumber)장을 구매했습니다.")
     }
     
     static func printLottos(_ userLotto: UserLotto) {
@@ -42,5 +42,9 @@ struct LottoResultView {
     
     static func printTotalYield(_ totalYield: Double) {
         print("총 수익률은 \(totalYield)입니다.")
+    }
+    
+    static func printError(_ message: String) {
+        print(message)
     }
 }
