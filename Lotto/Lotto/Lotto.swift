@@ -20,12 +20,6 @@ class Lotto {
     init<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers: Collection, LottoNumbers.Element == Int {
         let lottoNumbers = numbers.map { LottoNumber($0) }
         self.numbers = Set(lottoNumbers)
-        try vaidate(numbers: numbers)
-    }
-    
-    func vaidate<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers: Collection, LottoNumbers.Element == Int {
-        try validateCount(numbers: numbers)
-        try validateRange(numbers: numbers)
     }
     
     func validateCount<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers: Collection, LottoNumbers.Element == Int {

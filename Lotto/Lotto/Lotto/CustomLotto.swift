@@ -7,4 +7,10 @@
 
 import Foundation
 
-class CustomLotto: Lotto {}
+class CustomLotto: Lotto {
+    override init<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers : Collection, LottoNumbers.Element == Int {
+        try super.init(numbers: numbers)
+        try validateCount(numbers: numbers)
+        try validateRange(numbers: numbers)
+    }
+}
