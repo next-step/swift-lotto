@@ -14,10 +14,8 @@ struct Lotto {
         return "\(numbers.comparativeSet.sorted())"
     }
     
-    func match(with comparedNumbers: LottoNumbers) -> Int {
-        let lhs = numbers.comparativeSet
-        let rhs = comparedNumbers.comparativeSet
-        
-        return lhs.intersection(rhs).count
+    func getPrize(with comparison: LottoNumbers) -> Prize {
+        let matchNumber = numbers.match(with: comparison)
+        return Prize.getPrize(by: matchNumber)
     }
 }

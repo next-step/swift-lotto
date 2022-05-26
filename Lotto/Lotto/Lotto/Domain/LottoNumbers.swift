@@ -22,6 +22,13 @@ class LottoNumbers {
         self.numbers = numbers
     }
     
+    func match(with comparedNumbers: LottoNumbers) -> Int {
+        let lhs = self.comparativeSet
+        let rhs = comparedNumbers.comparativeSet
+        
+        return lhs.intersection(rhs).count
+    }
+    
     static func generateByRandom() -> LottoNumbers {
         var randomPool = Set<Int>(1...45)
         var numbers = [Int]()

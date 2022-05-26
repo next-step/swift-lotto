@@ -31,7 +31,7 @@ class LottoTest: XCTestCase {
         
         let expected = 6
         
-        XCTAssertEqual(sut.match(with: prizeNumbers), expected)
+        XCTAssertEqual(sut.numbers.match(with: prizeNumbers), expected)
     }
 
     func test_당첨번호와_숫자_5개가_동일한_로또() {
@@ -40,7 +40,7 @@ class LottoTest: XCTestCase {
         
         let expected = 5
         
-        XCTAssertEqual(sut.match(with: prizeNumbers), expected)
+        XCTAssertEqual(sut.numbers.match(with: prizeNumbers), expected)
     }
     
     func test_당첨번호와_숫자_6개가_동일하면_1등_당첨금을_받음() {
@@ -49,7 +49,7 @@ class LottoTest: XCTestCase {
         
         let expected = Prize.first.rawValue
         
-        let matchNumber = sut.match(with: prizeNumbers)
+        let matchNumber = sut.numbers.match(with: prizeNumbers)
         
         XCTAssertEqual(Prize.getPrize(by: matchNumber).rawValue, expected)
     }
