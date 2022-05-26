@@ -12,15 +12,16 @@ class WinningLotto: Lotto {
     let bonusNumber: LottoNumber
   
     
-    init<LottoNumbers: Collection>(numbers: LottoNumbers, bonusNumber: Int) throws where LottoNumbers.Element == Int {
-        guard LottoConstant.numberRange.contains(bonusNumber) else {
-            throw LottoError.invalidLottoNumber
-        }
+    init?<LottoNumbers: Collection>(numbers: LottoNumbers, bonusNumber: Int) where LottoNumbers.Element == Int {
         self.bonusNumber = LottoNumber(bonusNumber)
         
-        try super.init(numbers: numbers)
-        try validateRange(numbers: numbers)
-        try validateCount(numbers: numbers)
+        super.init(numbers: numbers)
+        
+        guard (try? validateRange(number: bonusNumber)) != nil,
+              (try? validateRange(numbers: numbers)) != nil,
+              (try? validateCount(numbers: numbers)) != nil else {
+                  return nil
+              }
     }
     
     func checkBonusNumber(in lotto: Lotto) -> Bool {

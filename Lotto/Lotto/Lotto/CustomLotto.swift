@@ -8,9 +8,11 @@
 import Foundation
 
 class CustomLotto: Lotto {
-    override init<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers : Collection, LottoNumbers.Element == Int {
-        try super.init(numbers: numbers)
-        try validateCount(numbers: numbers)
-        try validateRange(numbers: numbers)
+    override init?<LottoNumbers>(numbers: LottoNumbers) where LottoNumbers : Collection, LottoNumbers.Element == Int {
+        super.init(numbers: numbers)
+        guard (try? validateCount(numbers: numbers)) != nil,
+              (try? validateRange(numbers: numbers)) != nil else {
+                  return nil
+              }
     }
 }

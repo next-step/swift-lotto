@@ -18,6 +18,17 @@ struct UserLottoFactory {
             lottoNumbers.insert(lottoNumber)
         } while(lottoNumbers.count < LottoConstant.numberCount)
         
-        return try! AutoLotto(numbers: lottoNumbers)
+        return AutoLotto(numbers: lottoNumbers)!
+    }
+    
+    func make2() throws -> AutoLotto? {
+        var lottoNumbers = Set<Int>()
+        
+        repeat {
+            let lottoNumber = try lottoNumberGenerator.generate()
+            lottoNumbers.insert(lottoNumber)
+        } while(lottoNumbers.count < LottoConstant.numberCount)
+        
+        return AutoLotto(numbers: lottoNumbers)
     }
 }

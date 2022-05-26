@@ -10,10 +10,12 @@ import Foundation
 struct LottoParser {
     enum Error: LocalizedError {
         case nonNumber
+        case parsingError
         
         var errorDescription: String? {
             switch self {
             case .nonNumber: return "로또는 숫자를 갖습니다."
+            case .parsingError: return "주어진 숫자가 로또 규칙을 만족하지 않습니다."
             }
         }
     }
@@ -22,7 +24,10 @@ struct LottoParser {
     
     static func parseLotto(_ lottoNumberInput: String?) throws -> AutoLotto {
         let lottoNumbers = try parseLottoNumbers(lottoNumberInput)
-        return try AutoLotto(numbers: lottoNumbers)
+        guard let autoLotto = AutoLotto(numbers: lottoNumbers) else {
+            throw Error.parsingError
+        }
+        return autoLotto
     }
     
     static func parseWinningLotto(lottoNumberInput: String?, bonusNumberInput: String?) throws -> WinningLotto {
@@ -32,13 +37,19 @@ struct LottoParser {
               let bonusNumber = Int(bonusNumberInput) else {
                   throw Error.nonNumber
               }
-
-        return try WinningLotto(numbers: lottoNumbers, bonusNumber: bonusNumber)
+        
+        guard let winningLotto = WinningLotto(numbers: lottoNumbers, bonusNumber: bonusNumber) else {
+            throw Error.parsingError
+        }
+        return winningLotto
     }
     
     static func parseCustomLotto(_ lottoInput: String?) throws -> CustomLotto {
         let lottoNumbers = try parseLottoNumbers(lottoInput)
-        return try CustomLotto(numbers: lottoNumbers)
+        guard let customLotto = CustomLotto(numbers: lottoNumbers) else {
+            throw Error.parsingError
+        }
+        return customLotto
     }
     
     static func parseLottoNumbers(_ lottoNumberInput: String?) throws -> [Int] {

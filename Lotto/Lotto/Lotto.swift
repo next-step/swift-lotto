@@ -17,7 +17,7 @@ enum LottoConstant {
 class Lotto {
     var numbers: Set<LottoNumber>
     
-    init<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers: Collection, LottoNumbers.Element == Int {
+    init?<LottoNumbers>(numbers: LottoNumbers) where LottoNumbers: Collection, LottoNumbers.Element == Int {
         let lottoNumbers = numbers.map { LottoNumber($0) }
         self.numbers = Set(lottoNumbers)
     }
@@ -30,10 +30,15 @@ class Lotto {
     }
     
     func validateRange<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers: Collection, LottoNumbers.Element == Int {
-        let result = numbers.reduce(true) { partialResult, number in
-            partialResult && LottoConstant.numberRange.contains(number)
+        try numbers.forEach {
+            try validateRange(number: $0)
         }
-        guard result else { throw LottoError.invalidLottoNumber }
+    }
+    
+    func validateRange(number: Int) throws {
+        guard LottoConstant.numberRange.contains(number) else {
+            throw LottoError.invalidLottoNumber
+        }
     }
     
     func contains(number: LottoNumber) -> Bool {

@@ -8,9 +8,11 @@
 import Foundation
 
 class AutoLotto: Lotto {
-    override init<LottoNumbers>(numbers: LottoNumbers) throws where LottoNumbers : Collection, LottoNumbers.Element == Int {
-        try super.init(numbers: numbers)
-        try validateRange(numbers: numbers)
-        try validateCount(numbers: numbers)
+    override init?<LottoNumbers>(numbers: LottoNumbers) where LottoNumbers : Collection, LottoNumbers.Element == Int {
+        super.init(numbers: numbers)
+        guard (try? validateRange(numbers: numbers)) != nil,
+              (try? validateCount(numbers: numbers)) != nil else {
+                  return nil
+              }
     }
 }
