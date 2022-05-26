@@ -29,22 +29,23 @@ class LottoNumbers {
         return lhs.intersection(rhs).count
     }
     
-    static func generateByRandom() -> LottoNumbers {
+    static func generateByRandom() throws -> LottoNumbers {
         var randomPool = Set<Int>(1...45)
         var numbers = [Int]()
         
         for _ in 0..<6 {
-            let randomNumber = randomPool.exportRandomElement()!
+            let randomNumber = try randomPool.exportRandomElement()
             numbers.append(randomNumber)
         }
+
         return LottoNumbers(numbers.compactMap(LottoNumber.init))
     }
 }
 
 
 extension Set {
-    mutating func exportRandomElement() -> Element? {
-        guard let element = self.randomElement() else { return nil }
+    mutating func exportRandomElement() throws -> Element {
+        guard let element = self.randomElement() else { throw LottoError.invalidRandomNumber }
         self.remove(element)
         return element
     }

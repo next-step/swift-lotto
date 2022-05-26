@@ -1,5 +1,5 @@
 //
-//  CustomerResultView.swift
+//  ConsumerResultView.swift
 //  Lotto
 //
 //  Created by 이우섭 on 2022/05/24.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct CustomerResultView {
+struct ConsumerResultView {
     
-    func printLottos(of customer: LottoCustomer) {
-        print("\(customer.lottos.count)개를 구매했습니다.")
-        customer.lottos.forEach {
+    func printLottos(of consumer: LottoConsumer) {
+        print("\(consumer.lottos.count)개를 구매했습니다.")
+        consumer.lottos.forEach {
             printLottoDescription(for: $0)
         }
         print()
@@ -27,7 +27,7 @@ struct CustomerResultView {
         }
     }
     
-    func printPrizeRatio(of consumer: LottoCustomer, totalPrizeMoney: Int) {
+    func printPrizeRatio(of consumer: LottoConsumer, totalPrizeMoney: Int) {
         print("총 수익율은 \(consumer.getRatio(of: totalPrizeMoney))입니다.")
     }
     

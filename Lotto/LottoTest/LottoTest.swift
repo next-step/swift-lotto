@@ -10,10 +10,10 @@ import XCTest
 class LottoTest: XCTestCase {
     
     func test_10000원을_주면_로또_10장을_반환() {
-        let sut = LottoCustomer()
+        let sut = LottoConsumer()
         let expected = 10
         
-        sut.buyLotto(for: 10000)
+        try? sut.buyLotto(for: 10000)
         
         XCTAssertEqual(sut.lottos.count, expected)
     }
@@ -55,10 +55,16 @@ class LottoTest: XCTestCase {
     }
     
     func test_10000원어치_로또를_구매후_5000원만큼_당첨되었을때_수익률() {
-        let sut = LottoCustomer()
+        let sut = LottoConsumer()
         let expected = 0.5
-        sut.buyLotto(for: 10000)
+        try? sut.buyLotto(for: 10000)
         
         XCTAssertEqual(sut.getRatio(of: 5000), expected)
+    }
+    
+    func test_돈이_1000원보다_적으면_insufficientMoney_오류반환() {
+        let sut = LottoConsumer()
+        let money = 999
+        XCTAssertThrowsError(try sut.buyLotto(for: money))
     }
 }

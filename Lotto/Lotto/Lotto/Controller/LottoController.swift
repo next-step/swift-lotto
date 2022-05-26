@@ -8,14 +8,14 @@
 import Foundation
 
 struct LottoController {
-    let inputView = CustomerInputView()
-    let outputView = CustomerResultView()
+    private let inputView = ConsumerInputView()
+    private let outputView = ConsumerResultView()
     
     func playLotto() throws {
-        let consumer = LottoCustomer()
+        let consumer = LottoConsumer()
         
         guard let consumePrice = inputView.readPrice() else { throw LottoError.invalidInput }
-        consumer.buyLotto(for: consumePrice)
+        try consumer.buyLotto(for: consumePrice)
         outputView.printLottos(of: consumer)
         
         guard let prizeNumbers = inputView.readPrizeNumbers() else { throw LottoError.invalidInput }

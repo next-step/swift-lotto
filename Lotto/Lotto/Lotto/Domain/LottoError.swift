@@ -9,4 +9,6 @@ import Foundation
 
 enum LottoError: Error {
     case invalidInput
+    case invalidRandomNumber
+    case insufficientMoney
 }

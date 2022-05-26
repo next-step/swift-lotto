@@ -11,6 +11,6 @@ let lottoController = LottoController()
 do {
     try lottoController.playLotto()
 } catch {
-    print("Lotto Error: \(error.localizedDescription)")
+    print("Lotto Error: \(error)")
 }
 
