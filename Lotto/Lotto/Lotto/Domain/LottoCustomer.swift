@@ -21,6 +21,10 @@ class LottoCustomer {
         }
     }
     
+    func checkLottoPrizes(with prizeNumbers: LottoNumbers) -> [Prize] {
+        return lottos.compactMap({ $0.getPrize(with: prizeNumbers) })
+    }
+    
     func getRatio(of returnPrize: Int) -> Double {
         let rawRatio = Double(returnPrize) / Double(self.price)
         let roundedRatio = round(rawRatio * 100) / 100.0

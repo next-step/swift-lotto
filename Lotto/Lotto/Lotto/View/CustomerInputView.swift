@@ -22,6 +22,7 @@ struct CustomerInputView {
             .compactMap(Int.init)
             .compactMap(LottoNumber.init)
         
+        guard numbers.count == 6 else { return nil }
         return LottoNumbers(numbers)
     }
 }

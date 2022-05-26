@@ -25,14 +25,14 @@ struct CustomerResultView {
             let printedPrize = Prize.getPrize(by: matchNumber)
             print("\(matchNumber)개 일치 (\(printedPrize.rawValue)원)- \(prizes.filter({ $0 == printedPrize }).count)개")
         }
-        
-        print("총 수익율은 \(customer.getRatio(of: prizes.reduce(0, { $0 + $1.rawValue })))입니다.")
+    }
+    
+    func printPrizeRatio(of consumer: LottoCustomer, totalPrizeMoney: Int) {
+        print("총 수익율은 \(consumer.getRatio(of: totalPrizeMoney))입니다.")
     }
     
     private func printLottoDescription(for lotto: Lotto) {
         let numbers = lotto.description
         print(numbers)
     }
-    
-    
 }
