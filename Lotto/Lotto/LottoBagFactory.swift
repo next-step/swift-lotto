@@ -10,10 +10,11 @@ import Foundation
 struct LottoBagFactory {
     let lottoFactory: UserLottoFactory
     
-    func make(havingLottoCount lottoCount: Int) throws -> LottoBag {
-        let lottoList = try (0..<lottoCount).map { _ in
+    func make(havingLottoCount lottoCount: Int, with lottos: [Lotto] = []) throws -> LottoBag {
+        let givenLottoCount = lottos.count
+        let lottoList = try (0..<lottoCount - givenLottoCount).map { _ in
             try lottoFactory.make()
         }
-        return LottoBag(lottoList: lottoList)
+        return LottoBag(lottoList: lottoList + lottos)
     }
 }

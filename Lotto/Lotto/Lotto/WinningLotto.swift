@@ -7,24 +7,21 @@
 
 import Foundation
 
-struct WinningLotto: Lotto {
-    var numbers: Set<Int>
-    let bonusNumber: Int
+
+class WinningLotto: Lotto {
+    let bonusNumber: LottoNumber
+  
     
-    init<LottoNumbers: Collection>(numbers: LottoNumbers, bonusNumber: Int) throws where LottoNumbers.Element == Int {
-        let setNumbers = Set(numbers)
+    init?<LottoNumbers: Collection>(numbers: LottoNumbers, bonusNumber: Int) where LottoNumbers.Element == Int {
+        self.bonusNumber = LottoNumber(bonusNumber)
         
-        guard setNumbers.count == LottoConstant.numberCount else {
-            throw LottoError.invalidNumberCount(numbers.count)
-        }
+        super.init(numbers: numbers)
         
-        if LottoNumberValidator.validate(numbers: numbers) == false {
-            throw LottoError.invalidLottoNumber
-        }
-    
-        if bonusNumber < 0 { throw LottoError.invalidLottoNumber }
-        self.numbers = setNumbers
-        self.bonusNumber = bonusNumber
+        guard (try? validateRange(number: bonusNumber)) != nil,
+              (try? validateRange(numbers: numbers)) != nil,
+              (try? validateCount(numbers: numbers)) != nil else {
+                  return nil
+              }
     }
     
     func checkBonusNumber(in lotto: Lotto) -> Bool {

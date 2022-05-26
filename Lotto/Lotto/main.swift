@@ -12,13 +12,20 @@ do {
     
     let lottoNumberGenerater = RandomLottoNumberGenerator()
     let lottoFactory = UserLottoFactory(lottoNumberGenerator: lottoNumberGenerater)
-    let lottoSeller = LottoSeller(lottoFactory: lottoFactory)
+    let lottoBagFactory = LottoBagFactory(lottoFactory: lottoFactory)
+    let lottoSeller = LottoSeller(lottoBagFactory: lottoBagFactory)
     
-    let lottoBag = try lottoSeller.sellLotto(for: money)
-    OutputView.print(lottoCount: lottoBag.lottoCount)
+    let lottoCountInput = InputView.readCustomLottoCount()
+    let lottoCount = try LottoCountParser.parse(lottoCountInput)
     
-    let formattedLottoTicket = LottoTicketFormatter.format(lottoBag)
-    OutputView.print(lottoTicket: formattedLottoTicket)
+    let customLottoInput = InputView.readCustomLotto(of: lottoCount)
+    let customLottos = try customLottoInput.map {
+        try LottoParser.parseCustomLotto($0) }
+    
+    let lottoBag = try lottoSeller.sellLotto(for: money, with: customLottos)
+
+    let formattedLottoBag = LottoBagFormatter.format(lottoBag)
+    OutputView.print(lottoBag: formattedLottoBag)
     
     let winningLottoInput = InputView.readWinningLotto()
     let bonusNumberInput = InputView.readBonusNumber()

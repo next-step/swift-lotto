@@ -12,7 +12,7 @@ class LottoParserTest: XCTestCase {
         // given
         let lottoInput = "1, 2, 3, 4, 5, 6"
         
-        let expectedLotto = try? UserLotto(numbers: [1, 2, 3, 4, 5, 6])
+        let expectedLotto = AutoLotto(numbers: [1, 2, 3, 4, 5, 6])
         
         // when
         guard let lotto = try? LottoParser.parseLotto(lottoInput) else {
@@ -41,14 +41,26 @@ class LottoParserTest: XCTestCase {
         let lottoInput = "1, 2, 3, 4, 5, 6"
         let bonusNumberInput = "7"
         
-        let winningLotto = try WinningLotto(numbers: [1, 2, 3, 4, 5, 6], bonusNumber: 7)
+        let winningLotto = WinningLotto(numbers: [1, 2, 3, 4, 5, 6], bonusNumber: 7)
         
         // when
         
         let result = try LottoParser.parseWinningLotto(lottoNumberInput: lottoInput, bonusNumberInput: bonusNumberInput)
         
         // then
-        XCTAssertEqual(result.numbers, winningLotto.numbers)
-        XCTAssertEqual(result.bonusNumber, winningLotto.bonusNumber)
+        XCTAssertEqual(result.numbers, winningLotto?.numbers)
+        XCTAssertEqual(result.bonusNumber, winningLotto?.bonusNumber)
      }
+    
+    func test_parsingCustomLotto_사용자로부터_입력받은_로또숫자를_갖는_CustomLotto를_반환한다() throws {
+        // given
+        let lottoInput = "1, 2, 3, 4, 5, 6"
+        let customLotto = CustomLotto(numbers: [1, 2, 3, 4, 5, 6])
+        
+        // when
+        let result = try LottoParser.parseCustomLotto(lottoInput)
+        
+        // then
+        XCTAssertEqual(customLotto?.numbers, result.numbers)
+    }
 }
