@@ -10,12 +10,12 @@ import XCTest
 class LottoResultTests: XCTestCase {
     
     var lottoRankChecker: LottoRankChecker!
-    var firstWinningNumbers: [Int]!
-    var secondWinningNumbers: [Int]!
-    var thirdWinningNumbers: [Int]!
-    var forthWinningNumbers: [Int]!
-    var fifthWinningNumbers: [Int]!
-    var noneWinningNumbers: [Int]!
+    var firstWinningNumbers: [LottoNumber]!
+    var secondWinningNumbers: [LottoNumber]!
+    var thirdWinningNumbers: [LottoNumber]!
+    var forthWinningNumbers: [LottoNumber]!
+    var fifthWinningNumbers: [LottoNumber]!
+    var noneWinningNumbers: [LottoNumber]!
     
     override func setUpWithError() throws {
         let winningNumber1 = 1
@@ -24,56 +24,57 @@ class LottoResultTests: XCTestCase {
         let winningNumber4 = 4
         let winningNumber5 = 5
         let winningNumber6 = 6
-        let winningNumbers = [winningNumber1,
+        let winningNumbers = try [winningNumber1,
                               winningNumber2,
                               winningNumber3,
                               winningNumber4,
                               winningNumber5,
-                              winningNumber6]
+                              winningNumber6].map(LottoNumber.init)
         let winningLotto = try Lotto(numbers: winningNumbers)
         let bonusNumber = 45
-        lottoRankChecker = try LottoRankChecker(winningLotto: winningLotto, bonusNumber: bonusNumber)
+        lottoRankChecker = try LottoRankChecker(winningLotto: winningLotto,
+                                                bonusNumber: LottoNumber(value: bonusNumber))
         
         let noneWinningNumber1 = 7
         let noneWinningNumber2 = 8
         let noneWinningNumber3 = 9
         let noneWinningNumber4 = 10
-        firstWinningNumbers = [winningNumber1,
+        firstWinningNumbers = try [winningNumber1,
                                winningNumber2,
                                winningNumber3,
                                winningNumber4,
                                winningNumber5,
-                               winningNumber6]
-        secondWinningNumbers = [winningNumber1,
+                               winningNumber6].map(LottoNumber.init)
+        secondWinningNumbers = try [winningNumber1,
                                 winningNumber2,
                                 winningNumber3,
                                 winningNumber4,
                                 winningNumber5,
-                                bonusNumber]
-        thirdWinningNumbers = [winningNumber1,
+                                bonusNumber].map(LottoNumber.init)
+        thirdWinningNumbers = try [winningNumber1,
                                winningNumber2,
                                winningNumber3,
                                winningNumber4,
                                winningNumber5,
-                               noneWinningNumber1]
-        forthWinningNumbers = [winningNumber1,
+                               noneWinningNumber1].map(LottoNumber.init)
+        forthWinningNumbers = try [winningNumber1,
                                winningNumber2,
                                winningNumber3,
                                winningNumber4,
                                noneWinningNumber1,
-                               noneWinningNumber2]
-        fifthWinningNumbers = [winningNumber1,
+                               noneWinningNumber2].map(LottoNumber.init)
+        fifthWinningNumbers = try [winningNumber1,
                                winningNumber2,
                                winningNumber3,
                                noneWinningNumber1,
                                noneWinningNumber2,
-                               noneWinningNumber3]
-        noneWinningNumbers = [winningNumber1,
+                               noneWinningNumber3].map(LottoNumber.init)
+        noneWinningNumbers = try [winningNumber1,
                               winningNumber2,
                               noneWinningNumber1,
                               noneWinningNumber2,
                               noneWinningNumber3,
-                              noneWinningNumber4]
+                              noneWinningNumber4].map(LottoNumber.init)
     }
     
     override func tearDownWithError() throws {

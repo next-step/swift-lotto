@@ -11,6 +11,8 @@ struct InputView {
     
     private enum QuestionText: UserInformable {
         case purchaseMoney
+        case manualBuyCount
+        case manualNumbers
         case winningNumbers
         case bonusNumber
         
@@ -18,6 +20,10 @@ struct InputView {
             switch self {
             case .purchaseMoney:
                 return "구입금액을 입력해 주세요."
+            case .manualBuyCount:
+                return "수동으로 구매할 로또 수를 입력해 주세요."
+            case .manualNumbers:
+                return "수동으로 구매할 번호를 입력해 주세요."
             case .winningNumbers:
                 return "지난 주 당첨 번호를 입력해 주세요."
             case .bonusNumber:
@@ -29,31 +35,54 @@ struct InputView {
     private let userGuider = UserGuider()
     private let stringConverter = StringConverter()
     private let userInputConverter = UserInputConverter()
-    private let purchaseMoneyValidator = PurchaseMoneyValidator()
-    private let lottoNumbersValidator = LottoNumbersValidator()
-    private let lottoBonusNumberValidator = LottoBonusNumberValidator()
     
     func receivePurchaseMoney() throws -> Int {
         userGuider.printGuide(for: QuestionText.purchaseMoney)
         let purchaseMoney = try receiveInt()
-        try purchaseMoneyValidator.validate(of: purchaseMoney)
+        try PurchaseLottoValidator.validateMoney(purchaseMoney)
         return purchaseMoney
+    }
+    
+    func receiveManualBuyCount(inBudget purchaseMoney: Int) throws -> Int {
+        userGuider.printGuide(for: QuestionText.manualBuyCount)
+        
+        let manualBuyCount = try receiveInt()
+        
+        try PurchaseLottoValidator.validateCount(manualBuyCount,
+                                                 inBudget: purchaseMoney)
+        return manualBuyCount
+    }
+    
+    func receiveManualLottos(for buyCount: Int) throws -> [Lotto] {
+        userGuider.printGuide(for: QuestionText.manualNumbers)
+        
+        let lottos: [Lotto] = try (0..<buyCount).map { _ -> Lotto in
+            let lotto: Lotto = try receiveLotto()
+            return lotto
+        }
+        return lottos
     }
     
     func receiveWinningLotto() throws -> Lotto {
         userGuider.printGuide(for: QuestionText.winningNumbers)
         
-        let userInput: String? = readLine()
-        let unwrappedUserInput: String = try stringConverter.unwrapOptional(from: userInput)
-        let winningNumbers = try userInputConverter.convertToWinningNumbers(from: unwrappedUserInput)
-        let winningLotto = try Lotto(numbers: winningNumbers)
-        return winningLotto
+        let lotto: Lotto = try receiveLotto()
+        return lotto
     }
     
-    func receiveBonusNumber(in winningLotto: Lotto) throws -> Int {
+    private func receiveLotto() throws -> Lotto {
+        let userInput: String? = readLine()
+        let unwrappedUserInput: String = try stringConverter.unwrapOptional(from: userInput)
+        let lottoNumbers: [LottoNumber] = try userInputConverter.convertToLottoNumbers(from: unwrappedUserInput)
+        let lotto = try Lotto(numbers: lottoNumbers)
+        return lotto
+    }
+    
+    func receiveBonusNumber(in winningLotto: Lotto) throws -> LottoNumber {
         userGuider.printGuide(for: QuestionText.bonusNumber)
-        let bonusNumber = try receiveInt()
-        try lottoBonusNumberValidator.validate(bonusNumber, in: winningLotto)
+        let userInput: Int = try receiveInt()
+        let bonusNumber = try LottoNumber(value: userInput)
+        try LottoBonusNumberValidator.validate(bonusNumber, in: winningLotto)
         return bonusNumber
     }
     
