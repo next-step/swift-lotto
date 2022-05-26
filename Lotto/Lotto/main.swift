@@ -16,7 +16,8 @@ let outputView = CustomerResultView()
 
 if let price = inputView.readPrice() {
     customer.buyLotto(for: price)
-    outputView.printLottos(for: customer)
-
+    
+    outputView.printLottos(of: customer)
+    outputView.printStatistics(of: customer)
 }
 

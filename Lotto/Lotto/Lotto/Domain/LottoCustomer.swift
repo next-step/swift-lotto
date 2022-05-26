@@ -16,7 +16,7 @@ class LottoCustomer {
         self.price = price
         let lottoCount = price / 1000
         for _ in 0..<lottoCount {
-            let lotto = Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init)))
+            let lotto = Lotto(numbers: LottoNumbers.generateByRandom())
             lottos.append(lotto)
         }
     }
