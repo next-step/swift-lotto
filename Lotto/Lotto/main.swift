@@ -18,6 +18,13 @@ if let price = inputView.readPrice() {
     customer.buyLotto(for: price)
     
     outputView.printLottos(of: customer)
-    outputView.printStatistics(of: customer)
+    if let prizeNumbers = inputView.readPrizeNumbers() {
+        let prizes = customer.lottos.compactMap({
+            $0.getPrize(with: prizeNumbers)
+        })
+        outputView.printStatistics(of: prizes)
+    }
+    
+    
 }
 

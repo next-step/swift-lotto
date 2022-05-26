@@ -13,4 +13,15 @@ struct CustomerInputView {
         guard let input = readLine(), let price = Int(input) else { return nil }
         return price
     }
+    
+    func readPrizeNumbers() -> LottoNumbers? {
+        print("지난 주 당첨 번호를 입력해 주세요.")
+        guard let input = readLine() else { return nil }
+        print()
+        let numbers = input.components(separatedBy: ", ")
+            .compactMap(Int.init)
+            .compactMap(LottoNumber.init)
+        
+        return LottoNumbers(numbers)
+    }
 }

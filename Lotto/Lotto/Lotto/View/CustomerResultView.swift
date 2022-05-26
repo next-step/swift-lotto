@@ -17,13 +17,16 @@ struct CustomerResultView {
         print()
     }
     
-    func printStatistics(of customer: LottoCustomer) {
+    func printStatistics(of prizes: [Prize]) {
         print("당첨 통계")
         print("---------")
+        
         for matchNumber in 3...6 {
-            print("\(matchNumber)개 일치 (\(Prize.getPrize(by: matchNumber).rawValue)원)- \(0)개")
+            let printedPrize = Prize.getPrize(by: matchNumber)
+            print("\(matchNumber)개 일치 (\(printedPrize.rawValue)원)- \(prizes.filter({ $0 == printedPrize }).count)개")
         }
-        print("총 수익율은 \(customer.getRatio(of: 14000))입니다.")
+        
+        print("총 수익율은 \(customer.getRatio(of: prizes.reduce(0, { $0 + $1.rawValue })))입니다.")
     }
     
     private func printLottoDescription(for lotto: Lotto) {
