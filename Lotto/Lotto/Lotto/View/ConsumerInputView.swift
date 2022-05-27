@@ -21,7 +21,12 @@ struct ConsumerInputView {
             .compactMap(LottoNumber.init)
         
         guard numbers.count == 6 else { return nil }
-        return LottoNumbers(numbers)
+        return LottoNumbers(numbers: numbers)
+    }
+    
+    func readBonusNumber() -> LottoNumber? {
+        guard let input = readInput(with: "보너스 번호를 입력해 주세요."), let number = Int(input) else { return nil }
+        return LottoNumber(number)
     }
     
     private func readInput(with comment: String) -> String? {

@@ -19,8 +19,12 @@ struct LottoController {
         outputView.printLottos(of: consumer)
         
         guard let prizeNumbers = inputView.readPrizeNumbers() else { throw LottoError.invalidInput }
-        let prizes = consumer.checkLottoPrizes(with: prizeNumbers)
+        guard let bonusNumber = inputView.readBonusNumber() else { throw LottoError.invalidInput }
+        
+        let prizes = consumer.checkLottoPrizes(with: prizeNumbers, bonusNumber: bonusNumber)
         outputView.printStatistics(of: prizes)
+        
+        
         
         outputView.printPrizeRatio(of: consumer, totalPrizeMoney: prizes.reduce(0, { $0 + $1.rawValue }))
     }

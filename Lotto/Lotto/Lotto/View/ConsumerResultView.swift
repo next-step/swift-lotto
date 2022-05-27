@@ -22,8 +22,12 @@ struct ConsumerResultView {
         print("---------")
         
         for matchNumber in 3...6 {
-            let printedPrize = Prize.getPrize(by: matchNumber)
-            print("\(matchNumber)개 일치 (\(printedPrize.rawValue)원)- \(prizes.filter({ $0 == printedPrize }).count)개")
+            let prize = Prize.getPrize(by: matchNumber)
+            print("\(matchNumber)개 일치 (\(prize.rawValue)원)- \(prizes.filter({ $0 == prize }).count)개")
+            
+            if matchNumber == 5 {
+                print("\(matchNumber)개 일치, 보너스 번호 일치(\(Prize.second.rawValue)원)- \(prizes.filter({ $0 == .second }).count)개")
+            }
         }
     }
     

@@ -14,8 +14,8 @@ struct Lotto {
         return "\(numbers.comparativeSet.sorted())"
     }
     
-    func getPrize(with comparison: LottoNumbers) -> Prize {
+    func getPrize(with comparison: LottoNumbers, bonusNumber: LottoNumber) -> Prize {
         let matchNumber = numbers.match(with: comparison)
-        return Prize.getPrize(by: matchNumber)
+        return Prize.getPrize(by: matchNumber, isBonus: numbers.matchBonus(with: bonusNumber))
     }
 }
