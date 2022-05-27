@@ -67,4 +67,18 @@ class LottoTest: XCTestCase {
         let money = 999
         XCTAssertThrowsError(try sut.buyLotto(for: money))
     }
+    
+    func test_가지고_있는_로또의_당첨여부_확인() {
+        let sut = LottoConsumer()
+        sut.lottos = [
+            Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init))),
+            Lotto(numbers: LottoNumbers([1, 2, 3, 4, 5, 7].compactMap(LottoNumber.init)))
+        ]
+        
+        let prizeNumbers: LottoNumbers = LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init))
+        
+        let expected: [Prize] = [.first, .second]
+        
+        XCTAssertEqual(sut.checkLottoPrizes(with: prizeNumbers), expected)
+    }
 }
