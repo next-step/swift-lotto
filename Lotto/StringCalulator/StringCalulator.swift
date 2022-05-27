@@ -20,6 +20,18 @@ class StringCalulator: XCTestCase {
         //then
         XCTAssertEqual(result, 0)
     }
+    
+    func test_InputString_nil아닐때_1반환하는지() {
+        //given
+        let inputString: String? = "1"
+        let inputView = InputView()
+        
+        //when
+        let result = inputView.validation(inputString)
+        
+        //then
+        XCTAssertEqual(result, 1)
+    }
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
