@@ -12,6 +12,7 @@ enum InputError: Error {
 }
 
 struct InputView {
+    
     func validation(_ receivedText: String?) -> Int {
         guard let input: String = receivedText,
               input.isEmpty == false else {
