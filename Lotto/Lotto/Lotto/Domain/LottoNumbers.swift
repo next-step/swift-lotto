@@ -18,7 +18,7 @@ class LottoNumbers {
         return Set<Int>(numbers.map({ $0.value }))
     }
     
-    init(_ numbers: [LottoNumber]) {
+    init(numbers: [LottoNumber]) {
         self.numbers = numbers
     }
     
@@ -42,7 +42,7 @@ class LottoNumbers {
             numbers.append(randomNumber)
         }
 
-        return LottoNumbers(numbers.compactMap(LottoNumber.init))
+        return LottoNumbers(numbers: numbers.compactMap(LottoNumber.init))
     }
 }
 
