@@ -15,4 +15,12 @@ struct InputView {
         }
         return 1
     }
+    
+    func convertToIntegerArray(receivedText text: String) -> [Int] {
+        if let number: Int = Int(text) {
+            return [number]
+        }
+        
+        return []
+    }
 }
