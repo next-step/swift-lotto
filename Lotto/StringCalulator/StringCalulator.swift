@@ -8,6 +8,18 @@
 import XCTest
 
 class StringCalulator: XCTestCase {
+    
+    func test_inputString_nil일때_0반환하는지() {
+        //given
+        let inputString: String? = nil
+        let inputView = InputView()
+        
+        //when
+        let result = inputView.validation(_ receivedString: String?)
+        
+        //then
+        XCTAssertEqual(result, 0)
+    }
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
