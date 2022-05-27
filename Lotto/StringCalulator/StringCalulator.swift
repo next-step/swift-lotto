@@ -44,6 +44,18 @@ class StringCalulator: XCTestCase {
         //then
         XCTAssertEqual(result[0], 1)
     }
+    
+    func test_컴마_콜론_섞인_1_2_3_4_5배열_숫자배열로_반환하는지(){
+        //given
+        let receivedText: String = "1,2:3,4:5"
+        let inputView = InputView()
+        
+        //when
+        let result = inputView.convertToIntegerArray(receivedText: receivedText)
+        
+        //then
+        XCTAssertEqual(result, [1,2,3,4,5])
+    }
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
