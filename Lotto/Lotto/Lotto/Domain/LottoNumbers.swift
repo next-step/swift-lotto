@@ -29,6 +29,10 @@ class LottoNumbers {
         return lhs.intersection(rhs).count
     }
     
+    func matchBonus(with bonusNumber: LottoNumber) -> Bool {
+        return numbers.contains(where: { bonusNumber.value == $0.value })
+    }
+    
     static func generateByRandom() throws -> LottoNumbers {
         var randomPool = Set<Int>(1...45)
         var numbers = [Int]()

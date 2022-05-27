@@ -63,7 +63,7 @@ class LottoTest: XCTestCase {
         
         let matchNumber = sut.numbers.match(with: prizeNumbers)
         let isBonus = sut.numbers.matchBonus(with: bonusNumber)
-        XCTAssertEqual(Prize.getPrize(by: matchNumber, isBonus: true), expected)
+        XCTAssertEqual(Prize.getPrize(by: matchNumber, isBonus: isBonus).rawValue, expected)
     }
     
     func test_10000원어치_로또를_구매후_5000원만큼_당첨되었을때_수익률() {
@@ -89,7 +89,7 @@ class LottoTest: XCTestCase {
         
         let prizeNumbers: LottoNumbers = LottoNumbers([1, 2, 3, 4, 5, 6].compactMap(LottoNumber.init))
         
-        let expected: [Prize] = [.first, .second]
+        let expected: [Prize] = [.first, .third]
         
         XCTAssertEqual(sut.checkLottoPrizes(with: prizeNumbers), expected)
     }

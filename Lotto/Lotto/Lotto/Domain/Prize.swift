@@ -9,21 +9,24 @@ import Foundation
 
 enum Prize: Int {
     case first = 2_000_000_000
-    case second = 1_500_000
-    case third = 50_000
-    case fourth = 5_000
+    case second = 30_000_000
+    case third = 1_500_000
+    case fourth = 50_000
+    case fifth = 5_000
     case miss = 0
     
-    static func getPrize(by matchNumber: Int) -> Prize {
+    static func getPrize(by matchNumber: Int, isBonus: Bool = false) -> Prize {
         switch matchNumber {
         case 6:
             return Prize.first
-        case 5:
+        case 5 where isBonus:
             return Prize.second
-        case 4:
+        case 5:
             return Prize.third
-        case 3:
+        case 4:
             return Prize.fourth
+        case 3:
+            return Prize.fifth
         default:
             return Prize.miss
         }
