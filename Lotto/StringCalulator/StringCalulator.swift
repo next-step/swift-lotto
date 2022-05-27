@@ -32,6 +32,18 @@ class StringCalulator: XCTestCase {
         //then
         XCTAssertEqual(result, 1)
     }
+    
+    func test_숫자하나_1를_문자열로_입력한_경우_해당숫자_1을_반환하는지() {
+        //given
+        let receivedText: String = "1"
+        let inputView = InputView()
+        
+        //when
+        let result = inputView.convertToIntegerArray(receivedText: receivedText)
+        
+        //then
+        XCTAssertEqual(result[0], 1)
+    }
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
