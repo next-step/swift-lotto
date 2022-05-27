@@ -56,6 +56,20 @@ class StringCalulator: XCTestCase {
         //then
         XCTAssertEqual(result, [1,2,3,4,5])
     }
+    
+    
+    func test_음수_섞여있을때_error_unacceptableNumbers_발생하는지(){
+        //given
+        let receivedText: String = "1,2:3,4:-5"
+        let inputView = InputView()
+        
+        //when / then
+        XCTAssertThrowsError(try inputView.convertToIntegerArray(receivedText: receivedText)) { error in
+            XCTAssertEqual(error as! InputError.unacceptableNumbers, true)
+        }
+    }
+    
+    
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
