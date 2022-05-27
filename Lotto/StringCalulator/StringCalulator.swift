@@ -15,7 +15,7 @@ class StringCalulator: XCTestCase {
         let inputView = InputView()
         
         //when
-        let result = inputView.validation(_ receivedString: String?)
+        let result = inputView.validation(inputString)
         
         //then
         XCTAssertEqual(result, 0)
