@@ -21,6 +21,8 @@ struct InputView {
             return [number]
         }
         
-        return []
+        return text.replacingOccurrences(of: ":", with: ",")
+            .components(separatedBy: ",")
+            .compactMap { Int($0) }
     }
 }
