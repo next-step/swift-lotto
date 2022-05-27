@@ -6,5 +6,11 @@
 
 import Foundation
 
-print("Hello, World!")
+let lottoController = LottoController()
+
+do {
+    try lottoController.playLotto()
+} catch {
+    print("Lotto Error: \(error)")
+}
 
