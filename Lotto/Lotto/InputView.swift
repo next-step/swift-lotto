@@ -8,8 +8,8 @@
 import Foundation
 
 struct InputView {
-    func validation(_ receivedString: String?) -> Int {
-        guard let input: String = receivedString,
+    func validation(_ receivedText: String?) -> Int {
+        guard let input: String = receivedText,
               input.isEmpty == false else {
             return 0
         }

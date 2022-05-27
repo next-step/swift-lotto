@@ -11,11 +11,11 @@ class StringCalulator: XCTestCase {
     
     func test_inputString_nil일때_0반환하는지() {
         //given
-        let inputString: String? = nil
+        let receivedText: String? = nil
         let inputView = InputView()
         
         //when
-        let result = inputView.validation(inputString)
+        let result = inputView.validation(receivedText)
         
         //then
         XCTAssertEqual(result, 0)
@@ -23,11 +23,11 @@ class StringCalulator: XCTestCase {
     
     func test_InputString_nil아닐때_1반환하는지() {
         //given
-        let inputString: String? = "1"
+        let receivedText: String? = "1"
         let inputView = InputView()
         
         //when
-        let result = inputView.validation(inputString)
+        let result = inputView.validation(receivedText)
         
         //then
         XCTAssertEqual(result, 1)
