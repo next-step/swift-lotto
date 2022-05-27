@@ -9,6 +9,10 @@ import Foundation
 
 struct InputView {
     func validation(_ receivedString: String?) -> Int {
-        return 0
+        guard let input: String = receivedString,
+              input.isEmpty == false else {
+            return 0
+        }
+        return 1
     }
 }
