@@ -24,8 +24,6 @@ struct LottoController {
         let prizes = consumer.checkLottoPrizes(with: prizeNumbers, bonusNumber: bonusNumber)
         outputView.printStatistics(of: prizes)
         
-        
-        
         outputView.printPrizeRatio(of: consumer, totalPrizeMoney: prizes.reduce(0, { $0 + $1.rawValue }))
     }
 }
