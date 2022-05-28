@@ -26,14 +26,20 @@ struct InputView {
             return [number]
         }
         
-        let result = text.replacingOccurrences(of: ":", with: ",")
-            .components(separatedBy: ",")
-            .compactMap { Int($0) }
+        let result = text.digitArray
        
         guard result.filter({ $0 < 0 }).isEmpty else {
             throw InputError.unacceptableNumbers
         }
         
         return result
+    }
+}
+
+private extension String {
+    var digitArray: [Int] {
+        return self.replacingOccurrences(of: ":", with: ",")
+            .components(separatedBy: ",")
+            .compactMap { Int($0) }
     }
 }
