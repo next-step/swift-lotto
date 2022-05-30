@@ -22,8 +22,8 @@ class LottoConsumer {
         }
     }
     
-    func checkLottoPrizes(with prizeNumbers: LottoNumbers) -> [Prize] {
-        return lottos.compactMap({ $0.getPrize(with: prizeNumbers) })
+    func checkLottoPrizes(with prizeNumbers: LottoNumbers, bonusNumber: LottoNumber) -> [Prize] {
+        return lottos.compactMap({ $0.getPrize(with: prizeNumbers, bonusNumber: bonusNumber) })
     }
     
     func getRatio(of returnPrize: Int) -> Double {

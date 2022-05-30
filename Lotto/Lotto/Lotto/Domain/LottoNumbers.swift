@@ -18,7 +18,7 @@ class LottoNumbers {
         return Set<Int>(numbers.map({ $0.value }))
     }
     
-    init(_ numbers: [LottoNumber]) {
+    init(numbers: [LottoNumber]) {
         self.numbers = numbers
     }
     
@@ -27,6 +27,10 @@ class LottoNumbers {
         let rhs = comparedNumbers.comparativeSet
         
         return lhs.intersection(rhs).count
+    }
+    
+    func matchBonus(with bonusNumber: LottoNumber) -> Bool {
+        return numbers.contains(where: { bonusNumber.value == $0.value })
     }
     
     static func generateByRandom() throws -> LottoNumbers {
@@ -38,7 +42,7 @@ class LottoNumbers {
             numbers.append(randomNumber)
         }
 
-        return LottoNumbers(numbers.compactMap(LottoNumber.init))
+        return LottoNumbers(numbers: numbers.compactMap(LottoNumber.init))
     }
 }
 
