@@ -15,7 +15,9 @@ struct LottoController {
         let consumer = LottoConsumer()
         
         guard let consumePrice = inputView.readPrice() else { throw LottoError.invalidInput }
-        try consumer.buyLotto(for: consumePrice)
+        guard let manualLottos = inputView.readManualLottos() else { throw LottoError.invalidInput }
+        
+        try consumer.buyLotto(for: consumePrice, manualLottos: manualLottos.compactMap(Lotto.init))
         outputView.printLottos(of: consumer)
         
         guard let prizeNumbers = inputView.readPrizeNumbers() else { throw LottoError.invalidInput }

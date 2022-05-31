@@ -11,4 +11,5 @@ enum LottoError: Error {
     case invalidInput
     case invalidRandomNumber
     case insufficientMoney
+    case tooManyManualLottos
 }
