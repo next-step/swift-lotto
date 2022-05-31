@@ -28,7 +28,7 @@ class LottoConsumerTest: XCTestCase {
             Lotto(numbers: LottoNumbers(numbers: [1, 2, 3, 4, 5, 7].compactMap(LottoNumber.init))),
         ]
         
-        XCTAssertThrowsError(sut.buyLotto(for: 1000, manualLottos: manualLottos))
+        XCTAssertThrowsError(try sut.buyLotto(for: 1000, manualLottos: manualLottos))
     }
     
     func test_10000원어치_로또를_구매후_5000원만큼_당첨되었을때_수익률() {

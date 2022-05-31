@@ -12,11 +12,14 @@ class LottoConsumer {
     var lottos = [Lotto]()
     private(set) var price = 0
     
-    func buyLotto(for price: Int) throws {
+    func buyLotto(for price: Int, manualLottos: [Lotto] = []) throws {
         guard price >= 1000 else { throw LottoError.insufficientMoney }
+        let randomLottoCount = price / 1000 - manualLottos.count
+        guard randomLottoCount >= 0 else { throw LottoError.tooManyManualLottos }
         self.price = price
-        let lottoCount = price / 1000
-        for _ in 0..<lottoCount {
+        
+        lottos += manualLottos
+        for _ in 0..<randomLottoCount {
             let lotto = Lotto(numbers: try LottoNumbers.generateByRandom())
             lottos.append(lotto)
         }
