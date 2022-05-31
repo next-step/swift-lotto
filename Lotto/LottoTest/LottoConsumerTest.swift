@@ -42,7 +42,7 @@ class LottoConsumerTest: XCTestCase {
         let manualExpected: Int = 2
         let autoExpected: Int = 3
         
-        XCTAssertEqual(sut.manualConut, manualExpected)
+        XCTAssertEqual(sut.manualCount, manualExpected)
         XCTAssertEqual(sut.autoCount, autoExpected)
     }
     
