@@ -42,8 +42,8 @@ class LottoConsumerTest: XCTestCase {
         let manualExpected: Int = 2
         let autoExpected: Int = 3
         
-        XCTAssertEqual(sut.lottos.manualConut, manualExpected)
-        XCTAssertEqual(sut.lottos.autoCount, autoExpected)
+        XCTAssertEqual(sut.manualConut, manualExpected)
+        XCTAssertEqual(sut.autoCount, autoExpected)
     }
     
     func test_10000원어치_로또를_구매후_5000원만큼_당첨되었을때_수익률() {
