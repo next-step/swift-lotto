@@ -10,7 +10,7 @@ import Foundation
 struct ConsumerResultView {
     
     func printLottos(of consumer: LottoConsumer) {
-        print("\(consumer.lottos.count)개를 구매했습니다.")
+        print("수동으로 \(consumer.manualCount)장, 자동으로 \(consumer.autoCount)장을 구매했습니다.")
         consumer.lottos.forEach {
             printLottoDescription(for: $0)
         }
